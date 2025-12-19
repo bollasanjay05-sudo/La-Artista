@@ -1,52 +1,61 @@
-/* ====== COLOR PALETTE ====== */
+/* =========================
+   ITALIAN FLAG – LUXURY PALETTE
+========================= */
 :root {
-  --green: #1F3D2B;
-  --ivory: #F6F4EF;
-  --burgundy: #7A1F2B;
-  --gold: #C2A86A;
+  --green: #1F3D2B;      /* Italian green */
+  --ivory: #F6F4EF;      /* Warm white */
+  --red: #7A1F2B;        /* Wine red */
+  --text-dark: #1C1C1C;
+  --text-muted: #6E6E6E;
 }
 
-/* ====== RESET ====== */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ====== BASE ====== */
+/* BASE */
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, sans-serif;
   background-color: var(--ivory);
-  color: var(--green);
-  line-height: 1.6;
+  color: var(--text-dark);
+  line-height: 1.7;
 }
 
+/* TYPOGRAPHY */
 h1, h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: normal;
-}
-
-a {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
   color: var(--green);
-  text-decoration: none;
+  margin-bottom: 20px;
 }
 
-/* ====== LAYOUT ====== */
+p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* LAYOUT */
 section {
-  padding: 80px 20px;
+  padding: 90px 20px;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-/* ====== BUTTONS ====== */
+/* BUTTONS */
 .btn {
   display: inline-block;
-  padding: 14px 30px;
+  padding: 16px 38px;
   border: 1px solid var(--green);
-  margin-right: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -59,9 +68,35 @@ section {
   color: var(--green);
 }
 
-/* ====== MENU ====== */
+/* MENU */
 .menu-item {
   display: flex;
-  ju
+  justify-content: space-between;
+  margin-top: 18px;
+  font-weight: 500;
+}
 
-  
+.menu-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 16px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+}
