@@ -1,1 +1,67 @@
+/* ====== COLOR PALETTE ====== */
+:root {
+  --green: #1F3D2B;
+  --ivory: #F6F4EF;
+  --burgundy: #7A1F2B;
+  --gold: #C2A86A;
+}
 
+/* ====== RESET ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ====== BASE ====== */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--ivory);
+  color: var(--green);
+  line-height: 1.6;
+}
+
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: normal;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+/* ====== LAYOUT ====== */
+section {
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ====== BUTTONS ====== */
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border: 1px solid var(--green);
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: var(--green);
+  color: var(--ivory);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--green);
+}
+
+/* ====== MENU ====== */
+.menu-item {
+  display: flex;
+  ju
+
+  
