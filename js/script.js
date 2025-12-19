@@ -578,3 +578,190 @@ if ('serviceWorker' in navigator) {
         );
     });
 }
+// Add to LaArtista class
+setupImageGallery() {
+    this.setupCarousel();
+    this.setupPhotoGrid();
+    this.setupParallax();
+    this.setupMasonry();
+    this.setupImageFilters();
+    this.setup3DCards();
+}
+
+setupCarousel() {
+    const carousel = document.querySelector('.carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const prevBtn = carousel.querySelector('.carousel-nav.prev');
+    const nextBtn = carousel.querySelector('.carousel-nav.next');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    
+    let currentSlide = 0;
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    
+    // Arrange slides next to one another
+    slides.forEach((slide, index) => {
+        slide.style.left = slideWidth * index + 'px';
+    });
+    
+    const moveToSlide = (index) => {
+        track.style.transform = 'translateX(-' + (slideWidth * index) + 'px)';
+        
+        // Update active states
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        
+        currentSlide = index;
+    };
+    
+    // Button click handlers
+    prevBtn?.addEventListener('click', () => {
+        const newIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+        moveToSlide(newIndex);
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+        const newIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+        moveToSlide(newIndex);
+    });
+    
+    // Dot click handlers
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            moveToSlide(index);
+        });
+    });
+    
+    // Auto slide
+    let slideInterval = setInterval(() => {
+        const newIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+        moveToSlide(newIndex);
+    }, 5000);
+    
+    // Pause on hover
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(() => {
+            const newIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+            moveToSlide(newIndex);
+        }, 5000);
+    });
+}
+
+setupPhotoGrid() {
+    const photoItems = document.querySelectorAll('.photo-item');
+    
+    photoItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const title = item.querySelector('.photo-title');
+            const desc = item.querySelector('.photo-description');
+            
+            title.style.transitionDelay = '0.2s';
+            desc.style.transitionDelay = '0.3s';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            const title = item.querySelector('.photo-title');
+            const desc = item.querySelector('.photo-description');
+            
+            title.style.transitionDelay = '0s';
+            desc.style.transitionDelay = '0s';
+        });
+    });
+}
+
+setupParallax() {
+    const parallaxSections = document.querySelectorAll('.parallax-section');
+    
+    window.addEventListener('scroll', () => {
+        parallaxSections.forEach(section => {
+            const bg = section.querySelector('.parallax-bg');
+            const content = section.querySelector('.parallax-content');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * 0.5;
+            
+            if (bg) {
+                bg.style.transform = `translateY(${rate}px)`;
+            }
+            
+            // Check if content is in view
+            const rect = content.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.8) {
+                content.classList.add('visible');
+            }
+        });
+    });
+}
+
+setupMasonry() {
+    const masonryGrid = document.querySelector('.masonry-grid');
+    if (!masonryGrid) return;
+    
+    // Initialize masonry layout
+    const items = masonryGrid.querySelectorAll('.masonry-item');
+    
+    // Add hover effect delay
+    items.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.1}s`;
+        
+        // Lazy load images
+        const img = item.querySelector('img');
+        if (img && img.dataset.src) {
+            img.src = img.dataset.src;
+        }
+    });
+}
+
+setupImageFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const filter = btn.dataset.filter;
+            
+            // Filter gallery items
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 100);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+setup3DCards() {
+    const flipCards = document.querySelectorAll('.flip-card');
+    
+    flipCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.querySelector('.flip-card-inner').classList.toggle('flipped');
+        });
+    });
+}
+
+// Add to init() method
+this.setupImageGallery();
