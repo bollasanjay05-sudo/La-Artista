@@ -747,3 +747,195 @@
     </script>
 </body>
 </html>
+<!-- Photo Grid Section -->
+<section class="container">
+    <h2 class="text-center">Our Gallery</h2>
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="food">Food</button>
+        <button class="filter-btn" data-filter="wine">Wine</button>
+        <button class="filter-btn" data-filter="place">Place</button>
+    </div>
+    
+    <div class="photo-grid">
+        <!-- Food Images -->
+        <div class="photo-item gallery-item" data-category="food">
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                 alt="Italian Pasta" class="photo-img img-loading"
+                 onload="this.classList.remove('img-loading')">
+            <div class="photo-overlay">
+                <h3 class="photo-title">Handmade Pasta</h3>
+                <p class="photo-description">Fresh pasta prepared daily with traditional techniques</p>
+            </div>
+        </div>
+        
+        <!-- Wine Images -->
+        <div class="photo-item gallery-item" data-category="wine">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                 alt="Italian Wine" class="photo-img img-loading"
+                 onload="this.classList.remove('img-loading')">
+            <div class="photo-overlay">
+                <h3 class="photo-title">Wine Selection</h3>
+                <p class="photo-description">Curated Italian wines from boutique vineyards</p>
+            </div>
+        </div>
+        
+        <!-- Place Images -->
+        <div class="photo-item gallery-item" data-category="place">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                 alt="Restaurant Interior" class="photo-img img-loading"
+                 onload="this.classList.remove('img-loading')">
+            <div class="photo-overlay">
+                <h3 class="photo-title">Our Dining Room</h3>
+                <p class="photo-description">Elegant atmosphere with modern Italian design</p>
+            </div>
+        </div>
+        
+        <!-- Add more images as needed -->
+    </div>
+</section>
+
+<!-- Carousel Section -->
+<section class="container">
+    <h2 class="text-center">Featured Dishes</h2>
+    <div class="carousel">
+        <div class="carousel-track">
+            <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+                     alt="Seafood Dish" class="carousel-image">
+                <div class="carousel-caption">
+                    <h3>Mediterranean Seafood</h3>
+                    <p>Fresh catch of the day with seasonal herbs</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+                     alt="Dessert" class="carousel-image">
+                <div class="carousel-caption">
+                    <h3>Artisan Desserts</h3>
+                    <p>Sweet creations by our pastry chef</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+                     alt="Main Course" class="carousel-image">
+                <div class="carousel-caption">
+                    <h3>Traditional Main Course</h3>
+                    <p>Classic Italian recipes with modern twist</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-nav prev">‹</button>
+        <button class="carousel-nav next">›</button>
+        <div class="carousel-dots">
+            <button class="carousel-dot active"></button>
+            <button class="carousel-dot"></button>
+            <button class="carousel-dot"></button>
+        </div>
+    </div>
+</section>
+
+<!-- Parallax Section -->
+<section class="parallax-section">
+    <div class="parallax-bg" 
+         style="background-image: url('https://images.unsplash.com/photo-1559314809-2b99056a8c4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="parallax-content">
+        <h2>Experience Fine Dining</h2>
+        <p>An unforgettable culinary journey awaits you at La Artista</p>
+    </div>
+</section>
+
+<!-- Masonry Grid -->
+<section class="container">
+    <h2 class="text-center">Behind the Scenes</h2>
+    <div class="masonry-grid">
+        <div class="masonry-item">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                 alt="Chef preparing food">
+            <div class="masonry-caption">
+                <h4>Chef at Work</h4>
+                <p>Our chef preparing authentic Italian dishes</p>
+            </div>
+        </div>
+        <div class="masonry-item">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w-400&q=80" 
+                 alt="Pizza making">
+            <div class="masonry-caption">
+                <h4>Art of Pizza Making</h4>
+                <p>Traditional techniques meet modern flavors</p>
+            </div>
+        </div>
+        <div class="masonry-item">
+            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                 alt="Wine tasting">
+            <div class="masonry-caption">
+                <h4>Wine Tasting</h4>
+                <p>Discover our carefully selected wine collection</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3D Flip Cards -->
+<section class="container">
+    <h2 class="text-center">Interactive Experience</h2>
+    <div class="photo-grid">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Italian Cuisine">
+                </div>
+                <div class="flip-card-back">
+                    <h3>Traditional Recipes</h3>
+                    <p>Family recipes passed down through generations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Ambiance">
+                </div>
+                <div class="flip-card-back">
+                    <h3>Elegant Ambiance</h3>
+                    <p>Perfect setting for romantic dinners and celebrations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Ingredients">
+                </div>
+                <div class="flip-card-back">
+                    <h3>Fresh Ingredients</h3>
+                    <p>Locally sourced and imported Italian specialties</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wine Section with Animation -->
+<section class="container text-center">
+    <h2>Our Wine Collection</h2>
+    <div class="wine-bottle floating-element">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+             alt="Wine Bottle" class="wine-bottle-img">
+    </div>
+    <p class="mt-2">Explore our curated selection of Italian wines</p>
+</section>
+
+<!-- Food Serving Animation -->
+<section class="container text-center">
+    <h2>Signature Dishes</h2>
+    <div class="serving-plate">
+        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w-600&q=80" 
+             alt="Signature Dish">
+    </div>
+</section>
