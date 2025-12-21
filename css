@@ -2,6 +2,454 @@
    ITALIAN FLAG – LUXURY PALETTE
 ========================= */
 :root {
+  --green: #1F3D2B;      /* Italian flag green */
+  --white: #FFFFFF;      /* Italian flag white */
+  --red: #D6273B;        /* Italian flag red - more vibrant */
+  --ivory: #F6F4EF;      /* Warm white background */
+  --gold: #C8A951;       /* Gold accent */
+  --green-light: #2D5A42;
+  --red-light: #E04055;
+  --text-dark: #1C1C1C;
+  --text-muted: #6E6E6E;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Italian flag color scheme */
+  --italian-green: #1F3D2B;
+  --italian-white: #FFFFFF;
+  --italian-red: #D6273B;
+}
+
+/* Add Italian flag stripes as decorative elements */
+.italian-flag-stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--italian-green) 33.33%,
+    var(--italian-white) 33.33% 66.66%,
+    var(--italian-red) 66.66%
+  );
+  z-index: 10;
+}
+
+.italian-flag-stripe.top {
+  top: 0;
+}
+
+.italian-flag-stripe.bottom {
+  bottom: 0;
+}
+
+/* Italian flag accent elements */
+.italian-accent {
+  border: 2px solid var(--italian-red);
+  position: relative;
+}
+
+.italian-accent::before,
+.italian-accent::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--italian-green),
+    var(--italian-white),
+    var(--italian-red)
+  );
+  left: 20px;
+  right: 20px;
+}
+
+.italian-accent::before {
+  top: -4px;
+}
+
+.italian-accent::after {
+  bottom: -4px;
+}
+
+/* Logo Styling */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.custom-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--italian-green);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  background: var(--ivory);
+  padding: 10px;
+}
+
+.custom-logo::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--italian-red);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.custom-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.logo-text {
+  text-align: center;
+}
+
+.logo-text h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 3.5rem;
+  color: var(--italian-green);
+  margin: 0;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.logo-text h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--italian-green),
+    var(--italian-white),
+    var(--italian-red)
+  );
+}
+
+.logo-text .subtitle {
+  font-size: 1.2rem;
+  color: var(--italian-red);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.logo-text .subtitle::before,
+.logo-text .subtitle::after {
+  content: '•';
+  margin: 0 10px;
+  color: var(--italian-green);
+}
+
+/* Red accent buttons and elements */
+.btn-red {
+  background-color: var(--italian-red);
+  color: var(--white);
+}
+
+.btn-red:hover {
+  background-color: var(--red-light);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(214, 39, 59, 0.2);
+}
+
+.red-accent {
+  color: var(--italian-red);
+}
+
+.red-border {
+  border-color: var(--italian-red);
+}
+
+.red-bg {
+  background-color: rgba(214, 39, 59, 0.1);
+}
+
+/* Hero section with Italian colors */
+.hero-italian {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-italian::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(31, 61, 43, 0.1) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(214, 39, 59, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+/* Updated Photo Grid with Italian arrangement */
+.photo-grid-italian {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 150px);
+  gap: 20px;
+  margin: 4rem 0;
+}
+
+.photo-item-1 {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 3;
+}
+
+.photo-item-2 {
+  grid-column: 5 / span 4;
+  grid-row: 1 / span 4;
+  border: 3px solid var(--italian-red);
+}
+
+.photo-item-3 {
+  grid-column: 9 / span 4;
+  grid-row: 1 / span 3;
+}
+
+.photo-item-4 {
+  grid-column: 1 / span 3;
+  grid-row: 4 / span 3;
+}
+
+.photo-item-5 {
+  grid-column: 4 / span 3;
+  grid-row: 4 / span 3;
+  border: 3px solid var(--italian-green);
+}
+
+.photo-item-6 {
+  grid-column: 7 / span 3;
+  grid-row: 5 / span 3;
+}
+
+.photo-item-7 {
+  grid-column: 10 / span 3;
+  grid-row: 4 / span 3;
+}
+
+.photo-item-8 {
+  grid-column: 1 / span 4;
+  grid-row: 7 / span 2;
+}
+
+.photo-item-9 {
+  grid-column: 5 / span 4;
+  grid-row: 6 / span 3;
+  border: 3px solid var(--italian-white);
+  background: var(--white);
+}
+
+.photo-item-10 {
+  grid-column: 9 / span 4;
+  grid-row: 7 / span 2;
+}
+
+/* Category indicators */
+.category-label {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.category-food {
+  background-color: var(--italian-green);
+  color: var(--white);
+}
+
+.category-wine {
+  background-color: var(--italian-red);
+  color: var(--white);
+}
+
+.category-place {
+  background-color: var(--italian-white);
+  color: var(--italian-green);
+  border: 1px solid var(--italian-green);
+}
+
+/* Section headers with Italian colors */
+.section-header-italian {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-header-italian h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-header-italian h2::before,
+.section-header-italian h2::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--italian-green),
+    var(--italian-white),
+    var(--italian-red)
+  );
+}
+
+.section-header-italian h2::before {
+  right: calc(100% + 20px);
+}
+
+.section-header-italian h2::after {
+  left: calc(100% + 20px);
+}
+
+.section-header-italian .subtitle {
+  color: var(--italian-red);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Testimonials with Italian flag colors */
+.testimonial-italian {
+  background: linear-gradient(
+    135deg,
+    rgba(31, 61, 43, 0.05) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(214, 39, 59, 0.05) 100%
+  );
+  border-left: 4px solid var(--italian-red);
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.testimonial-italian::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--italian-green);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: "Playfair Display", serif;
+  opacity: 0.2;
+}
+
+/* Menu items with Italian colors */
+.menu-item-italian {
+  border-bottom: 1px solid rgba(214, 39, 59, 0.2);
+  padding: 1.5rem 0;
+  transition: var(--transition);
+}
+
+.menu-item-italian:hover {
+  background: rgba(214, 39, 59, 0.05);
+  padding-left: 1rem;
+  border-left: 4px solid var(--italian-red);
+}
+
+.menu-item-italian .price {
+  color: var(--italian-red);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Footer with Italian flag */
+.footer-italian {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-italian::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    var(--italian-green) 33.33%,
+    var(--italian-white) 33.33% 66.66%,
+    var(--italian-red) 66.66%
+  );
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .photo-grid-italian {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  
+  .photo-item-1,
+  .photo-item-2,
+  .photo-item-3,
+  .photo-item-4,
+  .photo-item-5,
+  .photo-item-6,
+  .photo-item-7,
+  .photo-item-8,
+  .photo-item-9,
+  .photo-item-10 {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 300px;
+  }
+  
+  .section-header-italian h2::before,
+  .section-header-italian h2::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .photo-grid-italian {
+    grid-template-columns: 1fr;
+  }
+  
+  .custom-logo {
+    width: 120px;
+    height: 120px;
+  }
+}/* =========================
+   ITALIAN FLAG – LUXURY PALETTE
+========================= */
+:root {
   --green: #1F3D2B;      /* Italian green */
   --ivory: #F6F4EF;      /* Warm white */
   --red: #7A1F2B;        /* Wine red */
