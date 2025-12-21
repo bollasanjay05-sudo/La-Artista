@@ -3,6 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'ARTISTA | ITALU RESTORANS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Inline styles for logo image optimization */
+        .logo-image-placeholder {
+            background: linear-gradient(135deg, #1F3D2B, #D6273B);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Playfair Display", serif;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Italian Flag Stripes -->
+    <div class="italian-flag-stripe top"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="custom-logo">
+                    <!-- Replace with your actual logo image -->
+                    <img src="path-to-your-logo/WhatsApp-Image-2025-12-21-at-10.15.58-AM.jpeg" 
+                         alt="L'ARTISTA Logo"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'logo-image-placeholder\'><div>L\'ARTISTA<br><span style=\"font-size:0.8em\">ITALIAN RESTAURANT</span></div></div>';">
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="#reservation" class="btn btn-red">RESERVE NOW</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-italian">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="https://cdn.coverr.co/videos/coverr-making-pasta-close-up-1333/1080p.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="logo-container">
+                <div class="custom-logo">
+                    <img src="path-to-your-logo/WhatsApp-Image-2025-12-21-at-10.15.58-AM.jpeg" 
+                         alt="L'ARTISTA Logo"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'logo-image-placeholder\'><div>L\'ARTISTA<br><span style=\"font-size:0.8em\">ITALIAN RESTAURANT</span></div></div>';">
+                </div>
+                <div class="logo-text">
+                    <h1>L'ARTISTA</h1>
+                    <div class="subtitle">ITALU RESTORANS</div>
+                    <p style="color: var(--white); margin-top: 1rem; font-size: 1.1rem;">
+                        Authentic Italian Cuisine ∙ Premium Wines ∙ Fine Dining Experience
+                    </p>
+                </div>
+            </div>
+            
+            <a href="#gallery" class="btn btn-outline" style="margin-top: 2rem;">
+                Explore Our Gallery
+            </a>
+        </div>
+        
+        <div class="scroll-indicator">
+            Discover More
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container">
+        <div class="section-header-italian">
+            <h2>About L'ARTISTA</h2>
+            <div class="subtitle">Authentic Italian Excellence</div>
+        </div>
+        
+        <div class="about-grid">
+            <div class="section-content">
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    <span class="red-accent" style="font-weight: 600;">L'ARTISTA</span> brings the true essence of Italy to your table. 
+                    Our name reflects our philosophy: every dish is a work of art, 
+                    every meal a masterpiece.
+                </p>
+                <p>
+                    Using only the finest ingredients imported directly from Italy, 
+                    our chefs craft traditional recipes with a modern artistic touch. 
+                    From handmade pasta to wood-fired pizza, every bite tells a story 
+                    of Italian culinary heritage.
+                </p>
+                <div style="margin-top: 2rem;">
+                    <a href="#menu" class="btn btn-red">View Our Menu</a>
+                    <a href="#reservation" class="btn btn-secondary" style="margin-left: 1rem;">Book a Table</a>
+                </div>
+            </div>
+            
+            <div class="about-image italian-accent">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                     alt="L'ARTISTA Restaurant Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section with Italian Arrangement -->
+    <section id="gallery" class="container">
+        <div class="section-header-italian">
+            <h2>Our Gallery</h2>
+            <div class="subtitle">A Taste of Italy</div>
+        </div>
+        
+        <!-- Food Photos (Green Accent) -->
+        <div class="section-header-italian" style="margin-top: 4rem;">
+            <h3 style="color: var(--italian-green);">Culinary Art</h3>
+            <div class="subtitle">Food Masterpieces</div>
+        </div>
+        
+        <div class="photo-grid-italian">
+            <!-- Main Feature Image -->
+            <div class="photo-item photo-item-2 scale-in">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Pizza Margherita" class="photo-img">
+                <div class="category-label category-food">FOOD</div>
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Pizza Margherita</h3>
+                    <p class="photo-description">Classic Neapolitan pizza with fresh mozzarella</p>
+                </div>
+            </div>
+            
+            <!-- Pasta -->
+            <div class="photo-item photo-item-1 scale-in">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Fresh Pasta" class="photo-img">
+                <div class="category-label category-food">PASTA</div>
+            </div>
+            
+            <!-- Antipasti -->
+            <div class="photo-item photo-item-3 scale-in">
+                <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Antipasti" class="photo-img">
+                <div class="category-label category-food">ANTIPASTI</div>
+            </div>
+        </div>
+        
+        <!-- Wine Photos (Red Accent) -->
+        <div class="section-header-italian" style="margin-top: 4rem;">
+            <h3 style="color: var(--italian-red);">Wine Selection</h3>
+            <div class="subtitle">Italian Vineyards</div>
+        </div>
+        
+        <div class="photo-grid" style="margin-top: 2rem;">
+            <div class="photo-item scale-in red-bg">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Italian Red Wine" class="photo-img">
+                <div class="category-label category-wine">RED WINE</div>
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Tuscan Reds</h3>
+                    <p class="photo-description">Premium selection from Chianti region</p>
+                </div>
+            </div>
+            
+            <div class="photo-item scale-in red-bg">
+                <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Wine Tasting" class="photo-img">
+                <div class="category-label category-wine">TASTING</div>
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Wine Experience</h3>
+                    <p class="photo-description">Curated tasting sessions with sommelier</p>
+                </div>
+            </div>
+            
+            <div class="photo-item scale-in red-bg">
+                <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="White Wine" class="photo-img">
+                <div class="category-label category-wine">WHITE WINE</div>
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Veneto Whites</h3>
+                    <p class="photo-description">Crisp and refreshing selections</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Place Photos (White Accent) -->
+        <div class="section-header-italian" style="margin-top: 4rem;">
+            <h3 style="color: var(--italian-green);">Our Ambiance</h3>
+            <div class="subtitle">Italian Atmosphere</div>
+        </div>
+        
+        <div class="photo-grid" style="margin-top: 2rem;">
+            <div class="photo-item scale-in">
+                <img src="https://images.unsplash.com/photo-1559314809-2b99056a8c4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Restaurant Interior" class="photo-img">
+                <div class="category-label category-place">INTERIOR</div>
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Elegant Dining</h3>
+                    <p class="photo-description">Modern Italian design with classic touches</p>
+                </div>
+            </div>
+            
+            <div class="photo-item scale-in">
+                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Terrace View" class="photo-img">
+                <div class="category-label category-place">TERRACE</div>
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Outdoor Terrace</h3>
+                    <p class="photo-description">Al fresco dining with beautiful views</p>
+                </div>
+            </div>
+            
+            <div class="photo-item scale-in">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Kitchen View" class="photo-img">
+                <div class="category-label category-place">KITCHEN</div>
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Open Kitchen</h3>
+                    <p class="photo-description">Watch our chefs create culinary art</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="container" style="background: linear-gradient(135deg, rgba(31, 61, 43, 0.03) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(214, 39, 59, 0.03) 100%); padding: 4rem 2rem; border-radius: 12px;">
+        <div class="section-header-italian">
+            <h2>Our Menu</h2>
+            <div class="subtitle">Italian Classics & Innovations</div>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-category italian-accent">
+                <h3 style="color: var(--italian-green);">Antipasti</h3>
+                <div class="menu-item-italian">
+                    <div class="menu-item-name">Bruschetta al Pomodoro</div>
+                    <div class="menu-item-price">€14</div>
+                    <div class="menu-desc">Toasted bread with fresh tomatoes, basil, garlic, and extra virgin olive oil</div>
+                </div>
+                <div class="menu-item-italian">
+                    <div class="menu-item-name">Prosciutto e Burrata</div>
+                    <div class="menu-item-price">€18</div>
+                    <div class="menu-desc">Parma ham with creamy burrata, arugula, and balsamic reduction</div>
+                </div>
+            </div>
+            
+            <div class="menu-category italian-accent">
+                <h3 style="color: var(--italian-red);">Primi Piatti</h3>
+                <div class="menu-item-italian">
+                    <div class="menu-item-name">Tagliatelle al Ragù</div>
+                    <div class="menu-item-price">€22</div>
+                    <div class="menu-desc">Handmade tagliatelle with slow-cooked meat sauce</div>
+                </div>
+                <div class="menu-item-italian">
+                    <div class="menu-item-name">Risotto ai Funghi</div>
+                    <div class="menu-item-price">€24</div>
+                    <div class="menu-desc">Carnaroli rice with wild mushrooms and parmesan</div>
+                </div>
+            </div>
+            
+            <div class="menu-category italian-accent">
+                <h3 style="color: var(--italian-green);">Dolci</h3>
+                <div class="menu-item-italian">
+                    <div class="menu-item-name">Tiramisù</div>
+                    <div class="menu-item-price">€12</div>
+                    <div class="menu-desc">Traditional Italian dessert with mascarpone and espresso</div>
+                </div>
+                <div class="menu-item-italian">
+                    <div class="menu-item-name">Panna Cotta</div>
+                    <div class="menu-item-price">€10</div>
+                    <div class="menu-desc">Vanilla cream dessert with berry compote</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="#reservation" class="btn btn-red">Make a Reservation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-italian">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="custom-logo" style="width: 80px; height: 80px; margin-bottom: 1rem;">
+                        <img src="path-to-your-logo/WhatsApp-Image-2025-12-21-at-10.15.58-AM.jpeg" 
+                             alt="L'ARTISTA Logo"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'logo-image-placeholder\' style=\"width:100%;height:100%;font-size:0.7em\">L\'ARTISTA</div>';">
+                    </div>
+                    <h3>L'ARTISTA</h3>
+                    <p style="color: rgba(255,255,255,0.8);">ITALU RESTORANS</p>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        Authentic Italian dining experience where every meal is a masterpiece.
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a href="tel:+37112345678" style="color: var(--italian-red);">+371 12 345 678</a>
+                    <a href="mailto:info@lartista.lv" style="color: rgba(255,255,255,0.8);">info@lartista.lv</a>
+                    <p style="color: rgba(255,255,255,0.8);">Riga, Latvia</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Hours</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Monday - Friday: 5PM - 11PM</p>
+                    <p style="color: rgba(255,255,255,0.8);">Saturday - Sunday: 12PM - 11PM</p>
+                    <p style="color: var(--italian-red); font-weight: 600;">Reservations recommended</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 L'ARTISTA | ITALU RESTORANS. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
+                    Celebrating Italian culinary art in the heart of Riga
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Italian Flag Stripes -->
+    <div class="italian-flag-stripe bottom"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Artista | Rooftop Restaurant & Bar</title>
     <meta name="description" content="Fine Italian dining experience at La Artista rooftop restaurant in Riga">
     
