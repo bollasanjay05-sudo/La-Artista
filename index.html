@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        /* Additional inline styles for logo */
+        /* Additional inline styles for logo fallback */
         .logo-image-placeholder {
             background: linear-gradient(135deg, #1F3D2B, #D6273B);
             color: white;
@@ -34,6 +34,15 @@
             border-radius: 50%;
             width: 100%;
             height: 100%;
+            font-size: 0.7rem;
+        }
+        
+        .hero-logo-placeholder {
+            font-size: 1rem;
+        }
+        
+        .footer-logo-placeholder {
+            font-size: 0.6rem;
         }
     </style>
 </head>
@@ -51,10 +60,10 @@
         <div class="nav-container">
             <div class="logo">
                 <div class="custom-logo nav-logo">
-                    <!-- Your Logo Here -->
+                    <!-- Navigation Logo -->
                     <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Logo"
-                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder\"><div>L\'ARTISTA<br><span style=\"font-size:0.8em\">ITALIAN RESTAURANT</span></div></div>';">
+                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder\">L\'ARTISTA</div>';">
                 </div>
                 <span class="logo-text">L'ARTISTA</span>
             </div>
@@ -108,9 +117,10 @@
         <div class="hero-content">
             <div class="logo-container">
                 <div class="custom-logo hero-logo">
+                    <!-- Hero Logo -->
                     <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Logo"
-                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder\"><div>L\'ARTISTA<br><span style=\"font-size:0.8em\">ITALIAN RESTAURANT</span></div></div>';">
+                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder hero-logo-placeholder\">L\'ARTISTA<br>ITALIAN RESTAURANT</div>';">
                 </div>
                 <div class="logo-text">
                     <h1>L'ARTISTA</h1>
@@ -325,19 +335,19 @@
             <form id="reservationForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Full Name" required>
+                        <input type="text" class="form-input" placeholder="Full Name" required name="name">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Email Address" required>
+                        <input type="email" class="form-input" placeholder="Email Address" required name="email">
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="form-input" placeholder="Phone Number" required>
+                        <input type="tel" class="form-input" placeholder="Phone Number" required name="phone">
                     </div>
                     <div class="form-group">
-                        <input type="date" class="form-input" required>
+                        <input type="date" class="form-input" required name="date">
                     </div>
                     <div class="form-group">
-                        <select class="form-input" required>
+                        <select class="form-input" required name="guests">
                             <option value="">Number of Guests</option>
                             <option value="1-2">1-2 Guests</option>
                             <option value="3-4">3-4 Guests</option>
@@ -346,7 +356,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-input" required>
+                        <select class="form-input" required name="time">
                             <option value="">Time</option>
                             <option value="18:00">18:00</option>
                             <option value="19:00">19:00</option>
@@ -357,7 +367,7 @@
                     </div>
                 </div>
                 <div class="form-group" style="margin-top: 1.5rem;">
-                    <textarea class="form-textarea" placeholder="Special Requests" rows="3"></textarea>
+                    <textarea class="form-textarea" placeholder="Special Requests" rows="3" name="requests"></textarea>
                 </div>
                 <div class="text-center" style="margin-top: 2rem;">
                     <button type="submit" class="btn btn-red">Book Now</button>
@@ -410,9 +420,10 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <div class="custom-logo footer-logo">
+                        <!-- Footer Logo -->
                         <img src="images/lartista-logo.png" 
                              alt="L'ARTISTA Logo"
-                             onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder\" style=\"width:100%;height:100%;font-size:0.7em\">L\'ARTISTA</div>';">
+                             onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder footer-logo-placeholder\">L\'ARTISTA</div>';">
                     </div>
                     <h3>L'ARTISTA</h3>
                     <p class="footer-subtitle">ITALU RESTORANS</p>
@@ -463,5 +474,21 @@
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
+    
+    <!-- Initialize Service Worker -->
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
