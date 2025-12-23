@@ -19,10 +19,10 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        /* Additional inline styles for logo fallback */
+        /* Enhanced logo fallback */
         .logo-image-placeholder {
-            background: linear-gradient(135deg, #1F3D2B, #D6273B);
-            color: white;
+            background: linear-gradient(135deg, var(--green), var(--red));
+            color: var(--ivory);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -34,15 +34,17 @@
             border-radius: 50%;
             width: 100%;
             height: 100%;
-            font-size: 0.7rem;
         }
         
-        .hero-logo-placeholder {
-            font-size: 1rem;
+        /* Debug: Add border to check if images are loading */
+        .custom-logo img {
+            border: 2px solid transparent;
         }
         
-        .footer-logo-placeholder {
-            font-size: 0.6rem;
+        /* Make sure fallback shows if image doesn't load */
+        .custom-logo img:not([src]),
+        .custom-logo img[src=""] {
+            display: none;
         }
     </style>
 </head>
@@ -61,9 +63,9 @@
             <div class="logo">
                 <div class="custom-logo nav-logo">
                     <!-- Navigation Logo -->
-                    <img src="images/lartista-logo.png" 
+                    <img src="./images/lartista-logo.png" 
                          alt="L'ARTISTA Logo"
-                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder\">L\'ARTISTA</div>';">
+                         onerror="handleLogoError(this, 'nav')">
                 </div>
                 <span class="logo-text">L'ARTISTA</span>
             </div>
@@ -109,6 +111,7 @@
         <div class="hero-video">
             <video autoplay muted loop playsinline>
                 <source src="https://cdn.coverr.co/videos/coverr-making-pasta-close-up-1333/1080p.mp4" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
         </div>
         
@@ -118,9 +121,9 @@
             <div class="logo-container">
                 <div class="custom-logo hero-logo">
                     <!-- Hero Logo -->
-                    <img src="images/lartista-logo.png" 
+                    <img src="./images/lartista-logo.png" 
                          alt="L'ARTISTA Logo"
-                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder hero-logo-placeholder\">L\'ARTISTA<br>ITALIAN RESTAURANT</div>';">
+                         onerror="handleLogoError(this, 'hero')">
                 </div>
                 <div class="logo-text">
                     <h1>L'ARTISTA</h1>
@@ -136,7 +139,7 @@
             </a>
         </div>
         
-        <div class="scroll-indicator">
+        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
             Discover More
         </div>
     </section>
@@ -421,9 +424,9 @@
                 <div class="footer-column">
                     <div class="custom-logo footer-logo">
                         <!-- Footer Logo -->
-                        <img src="images/lartista-logo.png" 
+                        <img src="./images/lartista-logo.png" 
                              alt="L'ARTISTA Logo"
-                             onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-image-placeholder footer-logo-placeholder\">L\'ARTISTA</div>';">
+                             onerror="handleLogoError(this, 'footer')">
                     </div>
                     <h3>L'ARTISTA</h3>
                     <p class="footer-subtitle">ITALU RESTORANS</p>
@@ -475,8 +478,29 @@
     <!-- JavaScript -->
     <script src="js/script.js"></script>
     
-    <!-- Initialize Service Worker -->
+    <!-- Logo Error Handler -->
     <script>
+        function handleLogoError(img, location) {
+            console.log('Logo failed to load for:', location);
+            img.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.className = 'logo-image-placeholder';
+            
+            if (location === 'hero') {
+                fallback.innerHTML = 'L\'ARTISTA<br><span style="font-size:0.7em">ITALIAN RESTAURANT</span>';
+                fallback.style.fontSize = '1rem';
+                fallback.style.padding = '20px';
+            } else if (location === 'nav') {
+                fallback.innerHTML = 'L\'ARTISTA';
+                fallback.style.fontSize = '0.7rem';
+            } else if (location === 'footer') {
+                fallback.innerHTML = 'L\'ARTISTA';
+                fallback.style.fontSize = '0.6rem';
+            }
+            
+            img.parentElement.appendChild(fallback);
+        }
+        
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
@@ -489,6 +513,21 @@
                     });
             });
         }
+        
+        // Debug: Check if images are loading
+        window.addEventListener('load', function() {
+            const logoImages = document.querySelectorAll('.custom-logo img');
+            logoImages.forEach(img => {
+                console.log('Checking logo:', img.src);
+                console.log('Logo complete:', img.complete);
+                console.log('Logo natural width:', img.naturalWidth);
+                
+                if (img.naturalWidth === 0) {
+                    console.log('Logo failed to load or is 0px width');
+                    img.style.border = '2px solid red'; // Debug border
+                }
+            });
+        });
     </script>
 </body>
 </html>
