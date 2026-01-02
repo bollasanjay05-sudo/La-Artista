@@ -11,18 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#1F3D2B">
-    
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        /* Additional inline styles */
+        /* Logo fallback style */
         .logo-fallback {
             display: flex;
             flex-direction: column;
@@ -39,6 +35,7 @@
             height: 100%;
         }
         
+        /* WhatsApp floating button */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -46,16 +43,17 @@
             bottom: 40px;
             right: 40px;
             background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
+            color: white;
+            border-radius: 50%;
             text-align: center;
             font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         
         .whatsapp-float:hover {
@@ -63,33 +61,36 @@
             transform: scale(1.1);
         }
         
-        .capacity-badge {
-            background: linear-gradient(135deg, #1F3D2B, #2D5A42);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(31, 61, 43, 0.3);
+        /* Simple loading animation */
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #D6273B;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <!-- Loader -->
-    <div class="loader">
+    <div class="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #F6F4EF; display: flex; align-items: center; justify-content: center; z-index: 9999;">
         <div class="loader-spinner"></div>
     </div>
 
-    <!-- Italian Flag Stripe Top -->
+    <!-- Italian Flag Stripe -->
     <div class="italian-flag-stripe top"></div>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/37112345678?text=I'm%20interested%20in%20reserving%20a%20table%20at%20L'ARTISTA" 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/37112345678?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
        class="whatsapp-float" 
        target="_blank"
-       aria-label="Contact us on WhatsApp">
+       title="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -97,9 +98,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <!-- YOUR LOGO - Replace 'images/lartista-logo.png' with your actual logo file -->
                 <div class="custom-logo nav-logo">
-                    <img src="images/YOUR-LOGO-FILENAME.png" 
+                    <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Logo"
                          onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA</div></div>';">
                 </div>
@@ -113,12 +113,11 @@
             </button>
             
             <ul class="nav-links">
-                <li><a href="#home" class="nav-red">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#reservation">Reservation</a></li>
-                <li><a href="#events">Events</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             
@@ -133,12 +132,11 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu">
         <ul class="nav-links">
-            <li><a href="#home" class="nav-red">Home</a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#reservation">Reservation</a></li>
-            <li><a href="#events">Events</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-actions">
@@ -159,8 +157,7 @@
         <div class="hero-content">
             <div class="logo-container">
                 <div class="custom-logo hero-logo">
-                    <!-- YOUR LOGO -->
-                    <img src="images/YOUR-LOGO-FILENAME.png" 
+                    <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Logo"
                          onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA<br><span style=\"font-size:0.7em\">ITALIAN RESTAURANT</span></div></div>';">
                 </div>
@@ -170,11 +167,6 @@
                     <p class="hero-tagline">
                         Authentic Italian Cuisine ∙ Premium Wines ∙ Fine Dining Experience
                     </p>
-                    
-                    <!-- Capacity Badge -->
-                    <div class="capacity-badge">
-                        <i class="fas fa-users"></i> CAPACITY: 150+ GUESTS
-                    </div>
                 </div>
             </div>
             
@@ -195,7 +187,7 @@
 
     <!-- About Section -->
     <section id="about" class="container fade-in">
-        <div class="section-header-italian">
+        <div class="section-header">
             <h2>About L'ARTISTA</h2>
             <div class="subtitle">Authentic Italian Excellence</div>
         </div>
@@ -203,18 +195,18 @@
         <div class="about-grid">
             <div class="section-content">
                 <p class="intro-text">
-                    <span class="red-accent" style="font-weight: 600;">L'ARTISTA</span> brings the true essence of Italy to your table. 
+                    <span class="red-text" style="font-weight: 600;">L'ARTISTA</span> brings the true essence of Italy to your table. 
                     Our name reflects our philosophy: every dish is a work of art, 
                     every meal a masterpiece.
                 </p>
                 <p>
-                    Located in the heart of Riga, our spacious restaurant can accommodate 
-                    <strong>over 150 guests</strong> comfortably, making it perfect for 
-                    intimate dinners, family gatherings, and large celebrations alike.
+                    Using only the finest ingredients imported directly from Italy, 
+                    our chefs craft traditional recipes with a modern artistic touch. 
+                    From handmade pasta to wood-fired pizza, every bite tells a story 
+                    of Italian culinary heritage.
                 </p>
                 
-                <!-- Features Grid -->
-                <div class="features-grid" style="margin-top: 2rem;">
+                <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="fas fa-wine-glass-alt"></i>
@@ -225,23 +217,28 @@
                     
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-utensils"></i>
                         </div>
-                        <h4>Large Capacity</h4>
-                        <p>150+ guests for events</p>
+                        <h4>Handmade Pasta</h4>
+                        <p>Fresh pasta made daily</p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-parking"></i>
+                            <i class="fas fa-fire"></i>
                         </div>
-                        <h4>Parking</h4>
-                        <p>Convenient parking available</p>
+                        <h4>Wood-Fired Pizza</h4>
+                        <p>Authentic Neapolitan style</p>
                     </div>
+                </div>
+                
+                <div class="button-group">
+                    <a href="#menu" class="btn btn-red">View Our Menu</a>
+                    <a href="#reservation" class="btn btn-outline">Book a Table</a>
                 </div>
             </div>
             
-            <div class="about-image italian-accent red-glow">
+            <div class="about-image">
                 <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
                      alt="L'ARTISTA Restaurant Interior">
             </div>
@@ -250,178 +247,124 @@
 
     <!-- Gallery Section -->
     <section id="gallery" class="container fade-in">
-        <div class="section-header-italian">
+        <div class="section-header">
             <h2>Our Gallery</h2>
             <div class="subtitle">A Taste of Italy</div>
         </div>
         
-        <div class="photo-grid-italian">
-            <div class="photo-item photo-item-2 scale-in">
+        <div class="photo-grid">
+            <div class="photo-item">
                 <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                     alt="Pizza Margherita" class="photo-img">
-                <div class="category-label category-food">FOOD</div>
+                     alt="Pizza Margherita">
+                <div class="photo-caption">Pizza Margherita</div>
             </div>
             
-            <div class="photo-item photo-item-1 scale-in">
+            <div class="photo-item">
                 <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                     alt="Fresh Pasta" class="photo-img">
-                <div class="category-label category-food">PASTA</div>
+                     alt="Fresh Pasta">
+                <div class="photo-caption">Fresh Pasta</div>
             </div>
             
-            <div class="photo-item photo-item-3 scale-in">
+            <div class="photo-item">
                 <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                     alt="Antipasti" class="photo-img">
-                <div class="category-label category-food">ANTIPASTI</div>
-            </div>
-        </div>
-        
-        <div class="text-center" style="margin-top: 3rem;">
-            <a href="#contact" class="btn btn-red">
-                <i class="fas fa-images"></i> VIEW FULL GALLERY
-            </a>
-        </div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events" class="container fade-in red-bg-section">
-        <div class="section-header-italian">
-            <h2>Events & Catering</h2>
-            <div class="subtitle">Perfect Venue for Every Occasion</div>
-        </div>
-        
-        <div class="events-grid">
-            <div class="event-card">
-                <div class="event-icon">
-                    <i class="fas fa-glass-cheers"></i>
-                </div>
-                <h3>Weddings</h3>
-                <p>Up to 150 guests</p>
-                <p class="red-text">Full catering service available</p>
-            </div>
-            
-            <div class="event-card">
-                <div class="event-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>Corporate Events</h3>
-                <p>Meeting facilities</p>
-                <p class="red-text">AV equipment provided</p>
-            </div>
-            
-            <div class="event-card">
-                <div class="event-icon">
-                    <i class="fas fa-birthday-cake"></i>
-                </div>
-                <h3>Birthday Parties</h3>
-                <p>Custom menus</p>
-                <p class="red-text">Decoration service available</p>
+                     alt="Antipasti">
+                <div class="photo-caption">Antipasti</div>
             </div>
         </div>
     </section>
 
     <!-- Menu Section -->
     <section id="menu" class="container fade-in">
-        <div class="section-header-italian">
+        <div class="section-header">
             <h2>Our Menu</h2>
             <div class="subtitle">Italian Classics & Innovations</div>
         </div>
         
         <div class="menu-grid">
-            <div class="menu-category italian-accent">
+            <div class="menu-category">
                 <h3 class="red-text"><i class="fas fa-apple-alt"></i> Antipasti</h3>
-                <div class="menu-item-italian">
-                    <div class="menu-item-name">Bruschetta al Pomodoro</div>
-                    <div class="menu-item-price">€14</div>
-                    <div class="menu-desc">Toasted bread with fresh tomatoes, basil, garlic, and extra virgin olive oil</div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Bruschetta al Pomodoro</h4>
+                        <span class="price">€14</span>
+                    </div>
+                    <p class="menu-desc">Toasted bread with fresh tomatoes, basil, garlic, and extra virgin olive oil</p>
                 </div>
-                <div class="menu-item-italian">
-                    <div class="menu-item-name">Prosciutto e Burrata</div>
-                    <div class="menu-item-price">€18</div>
-                    <div class="menu-desc">Parma ham with creamy burrata, arugula, and balsamic reduction</div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Prosciutto e Burrata</h4>
+                        <span class="price">€18</span>
+                    </div>
+                    <p class="menu-desc">Parma ham with creamy burrata, arugula, and balsamic reduction</p>
                 </div>
             </div>
             
-            <div class="menu-category italian-accent">
+            <div class="menu-category">
                 <h3 class="red-text"><i class="fas fa-utensils"></i> Primi Piatti</h3>
-                <div class="menu-item-italian">
-                    <div class="menu-item-name">Tagliatelle al Ragù</div>
-                    <div class="menu-item-price">€22</div>
-                    <div class="menu-desc">Handmade tagliatelle with slow-cooked meat sauce</div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Tagliatelle al Ragù</h4>
+                        <span class="price">€22</span>
+                    </div>
+                    <p class="menu-desc">Handmade tagliatelle with slow-cooked meat sauce</p>
                 </div>
-                <div class="menu-item-italian">
-                    <div class="menu-item-name">Risotto ai Funghi</div>
-                    <div class="menu-item-price">€24</div>
-                    <div class="menu-desc">Carnaroli rice with wild mushrooms and parmesan</div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Risotto ai Funghi</h4>
+                        <span class="price">€24</span>
+                    </div>
+                    <p class="menu-desc">Carnaroli rice with wild mushrooms and parmesan</p>
                 </div>
             </div>
             
-            <div class="menu-category italian-accent">
+            <div class="menu-category">
                 <h3 class="red-text"><i class="fas fa-ice-cream"></i> Dolci</h3>
-                <div class="menu-item-italian">
-                    <div class="menu-item-name">Tiramisù</div>
-                    <div class="menu-item-price">€12</div>
-                    <div class="menu-desc">Traditional Italian dessert with mascarpone and espresso</div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Tiramisù</h4>
+                        <span class="price">€12</span>
+                    </div>
+                    <p class="menu-desc">Traditional Italian dessert with mascarpone and espresso</p>
                 </div>
-                <div class="menu-item-italian">
-                    <div class="menu-item-name">Panna Cotta</div>
-                    <div class="menu-item-price">€10</div>
-                    <div class="menu-desc">Vanilla cream dessert with berry compote</div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Panna Cotta</h4>
+                        <span class="price">€10</span>
+                    </div>
+                    <p class="menu-desc">Vanilla cream dessert with berry compote</p>
                 </div>
             </div>
-        </div>
-        
-        <div class="text-center" style="margin-top: 3rem;">
-            <a href="#reservation" class="btn btn-red">
-                <i class="fas fa-calendar-alt"></i> MAKE A RESERVATION
-            </a>
         </div>
     </section>
 
     <!-- Reservation Section -->
-    <section id="reservation" class="container fade-in red-bg-section">
-        <div class="section-header-italian">
+    <section id="reservation" class="container fade-in reservation-section">
+        <div class="section-header">
             <h2>Make a Reservation</h2>
             <div class="subtitle">Book Your Table</div>
-            <p class="section-subtitle" style="margin-top: 1rem; color: var(--red-dark);">
-                <i class="fas fa-info-circle"></i> Reservations are sent directly to our WhatsApp for immediate attention
-            </p>
         </div>
         
         <div class="reservation-form">
             <form id="reservationForm">
-                <div class="form-grid">
+                <div class="form-row">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" class="form-input" placeholder="Your Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                        <input type="text" id="name" class="form-control" placeholder="Your Full Name" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" class="form-input" placeholder="+371 12 345 678" required>
+                        <input type="tel" id="phone" class="form-control" placeholder="+371 12 345 678" required>
                     </div>
+                </div>
+                
+                <div class="form-row">
                     <div class="form-group">
                         <label for="date">Date *</label>
-                        <input type="date" id="date" class="form-input" required>
+                        <input type="date" id="date" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="guests">Number of Guests *</label>
-                        <select id="guests" class="form-input" required>
-                            <option value="">Select number of guests</option>
-                            <option value="1-2">1-2 Guests</option>
-                            <option value="3-4">3-4 Guests</option>
-                            <option value="5-6">5-6 Guests</option>
-                            <option value="7-10">7-10 Guests</option>
-                            <option value="11-20">11-20 Guests</option>
-                            <option value="21-50">21-50 Guests</option>
-                            <option value="51+">51+ Guests (Large Event)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Preferred Time *</label>
-                        <select id="time" class="form-input" required>
+                        <label for="time">Time *</label>
+                        <select id="time" class="form-control" required>
                             <option value="">Select time</option>
                             <option value="18:00">18:00</option>
                             <option value="19:00">19:00</option>
@@ -430,66 +373,75 @@
                             <option value="22:00">22:00</option>
                         </select>
                     </div>
-                </div>
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label for="requests">Special Requests</label>
-                    <textarea id="requests" class="form-textarea" placeholder="Any dietary requirements, special occasions, or other requests..." rows="3"></textarea>
+                    <div class="form-group">
+                        <label for="guests">Guests *</label>
+                        <select id="guests" class="form-control" required>
+                            <option value="">Select guests</option>
+                            <option value="1-2">1-2 Guests</option>
+                            <option value="3-4">3-4 Guests</option>
+                            <option value="5-6">5-6 Guests</option>
+                            <option value="7+">7+ Guests</option>
+                        </select>
+                    </div>
                 </div>
                 
-                <div class="whatsapp-notice" style="margin-top: 1.5rem; padding: 1rem; background: rgba(37, 211, 102, 0.1); border-radius: 8px;">
-                    <p style="margin: 0;">
-                        <i class="fab fa-whatsapp" style="color: #25d366;"></i> 
-                        Your reservation will be sent directly to our WhatsApp for immediate confirmation.
-                    </p>
+                <div class="form-group">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" class="form-control" placeholder="Any special requests or dietary requirements..." rows="3"></textarea>
                 </div>
                 
-                <div class="text-center" style="margin-top: 2rem;">
-                    <button type="submit" class="btn btn-red" id="submitReservation">
-                        <i class="fab fa-whatsapp"></i> SEND RESERVATION VIA WHATSAPP
-                    </button>
+                <div class="whatsapp-notice">
+                    <i class="fab fa-whatsapp"></i> 
+                    <span>Your reservation will be sent directly to our WhatsApp</span>
                 </div>
+                
+                <button type="submit" class="btn btn-red btn-block">
+                    <i class="fab fa-whatsapp"></i> SEND RESERVATION VIA WHATSAPP
+                </button>
             </form>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="container fade-in">
-        <div class="section-header-italian">
+        <div class="section-header">
             <h2>Contact Us</h2>
             <div class="subtitle">Visit or Get in Touch</div>
         </div>
         
         <div class="contact-grid">
             <div class="contact-info">
-                <div class="info-card red-card">
-                    <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Address</h3>
                     <p>Riga City Center, Latvia</p>
                     <p>Convenient parking available</p>
                 </div>
                 
-                <div class="info-card red-card">
-                    <h3><i class="fas fa-phone"></i> Contact</h3>
-                    <a href="tel:+37112345678" class="red-text">+371 12 345 678</a>
-                    <a href="mailto:info@lartista.lv" class="red-text">info@lartista.lv</a>
-                    <a href="https://wa.me/37112345678" class="whatsapp-link" style="margin-top: 10px; display: inline-block;">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <a href="tel:+37112345678">+371 12 345 678</a>
+                    <p>Call us for reservations</p>
                 </div>
                 
-                <div class="info-card red-card">
-                    <h3><i class="fas fa-clock"></i> Hours</h3>
-                    <p><strong>Monday - Friday:</strong> 5PM - 11PM</p>
-                    <p><strong>Saturday - Sunday:</strong> 12PM - 11PM</p>
-                    <p class="red-text" style="font-weight: 600; margin-top: 10px;">
-                        <i class="fas fa-check-circle"></i> Reservations recommended
-                    </p>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Hours</h3>
+                    <p><strong>Mon-Fri:</strong> 5PM - 11PM</p>
+                    <p><strong>Sat-Sun:</strong> 12PM - 11PM</p>
                 </div>
             </div>
             
             <div class="map-container">
-                <!-- Google Maps -->
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.8640557843444!2d24.10515641595344!3d56.94996488089194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfd75c3457a9%3A0x8b9b5b5b5b5b5b5b!2sRiga%2C%20Latvia!5e0!3m2!1sen!2slv!4v1645541234567!5m2!1sen!2slv" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17403.02626214777!2d24.105156315951567!3d56.94996488088995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfd75c3457a9%3A0x8b9b5b5b5b5b5b5b!2sRiga%2C%20Latvia!5e0!3m2!1sen!2slv!4v1645541234567!5m2!1sen!2slv" 
                     width="100%" 
                     height="400" 
                     style="border:0;" 
@@ -501,28 +453,25 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer-italian">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
                     <div class="custom-logo footer-logo">
-                        <!-- YOUR LOGO -->
-                        <img src="images/YOUR-LOGO-FILENAME.png" 
+                        <img src="images/lartista-logo.png" 
                              alt="L'ARTISTA Logo"
                              onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\" style=\"font-size:0.9em\">L\'ARTISTA</div>';">
                     </div>
                     <h3>L'ARTISTA</h3>
                     <p class="footer-subtitle">ITALU RESTORANS</p>
-                    <p class="footer-description">
-                        Authentic Italian dining experience where every meal is a masterpiece.
-                    </p>
+                    <p>Authentic Italian dining experience where every meal is a masterpiece.</p>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <a href="#menu"><i class="fas fa-utensils"></i> Menu</a>
                     <a href="#gallery"><i class="fas fa-images"></i> Gallery</a>
-                    <a href="#events"><i class="fas fa-calendar"></i> Events</a>
+                    <a href="#reservation"><i class="fas fa-calendar"></i> Reservation</a>
                     <a href="#contact"><i class="fas fa-phone"></i> Contact</a>
                 </div>
                 
@@ -532,7 +481,7 @@
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-tripadvisor"></i></a>
-                        <a href="https://wa.me/37112345678" class="social-icon whatsapp">
+                        <a href="https://wa.me/37112345678" class="social-icon whatsapp-icon">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
