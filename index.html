@@ -1,71 +1,1122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>L'ARTISTA – Italian Fine Dining</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/variables.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/menu.css">
-<link rel="stylesheet" href="css/animations.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'ARTISTA | Fine Italian Dining Restaurant</title>
+    <meta name="description" content="Premium fine dining Italian restaurant experience at L'ARTISTA">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1F3D2B">
+    
+    <style>
+        /* Logo fallback style */
+        .logo-fallback {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1F3D2B, #D6273B);
+            color: white;
+            font-family: "Playfair Display", serif;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Premium Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1F3D2B 0%, #2D5A42 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .loader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: white;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+        
+        .loader-spinner {
+            width: 70px;
+            height: 70px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #D6273B;
+            border-radius: 50%;
+            animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Premium Menu Item Numbers */
+        .allergy-info {
+            font-size: 11px;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        /* Premium Overlay Effect */
+        .premium-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(31, 61, 43, 0.4) 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                rgba(214, 39, 59, 0.4) 100%);
+            pointer-events: none;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Premium Loader -->
+    <div class="loader">
+        <div class="loader-logo">L'ARTISTA</div>
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Experience Italian Excellence</div>
+    </div>
 
-<nav>
-  <div class="wrap">
-    <strong>L'ARTISTA</strong>
-    <a href="#reservation">Reserve</a>
-  </div>
-</nav>
+    <!-- Italian Flag Stripe -->
+    <div class="italian-flag-stripe top"></div>
 
-<div class="hero">
-  <div>
-    <h1>L'ARTISTA</h1>
-    <p>Authentic Italian Fine Dining</p>
-  </div>
-</div>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/37112345678?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<section class="fade-up">
-<h2>Antipasti</h2>
+    <!-- Premium Navigation -->
+    <nav class="navbar premium-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="custom-logo nav-logo">
+                    <img src="images/lartista-logo.png" 
+                         alt="L'ARTISTA Fine Dining Restaurant Logo"
+                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA</div></div>';">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">L'ARTISTA</span>
+                    <span class="logo-sub">Fine Italian Dining</span>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link premium-nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link premium-nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link premium-nav-link">Gallery</a></li>
+                <li><a href="#menu" class="nav-link premium-nav-link">Menu</a></li>
+                <li><a href="#reservation" class="nav-link premium-nav-link">Reservation</a></li>
+                <li><a href="#contact" class="nav-link premium-nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="#reservation" class="btn btn-premium">
+                    <i class="fas fa-crown"></i> RESERVE TABLE
+                </a>
+            </div>
+        </div>
+    </nav>
 
-<div class="menu-item">
-<img src="images/dishes/burrata.jpg">
-<div>
-<h4>Creamy Burrata</h4>
-<p>Cherry tomatoes, asparagus, basil</p>
-<span>€18</span>
-</div>
-</div>
+    <!-- Premium Mobile Menu -->
+    <div class="mobile-menu premium-mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">L'ARTISTA</div>
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#menu" class="nav-link">Menu</a></li>
+            <li><a href="#reservation" class="nav-link">Reservation</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <a href="#reservation" class="btn btn-premium">RESERVE TABLE</a>
+        </div>
+    </div>
 
-<div class="menu-item">
-<img src="images/dishes/carpaccio.jpg">
-<div>
-<h4>Beef Carpaccio</h4>
-<p>Truffle oil, arugula</p>
-<span>€19</span>
-</div>
-</div>
-</section>
+    <!-- Premium Hero Section -->
+    <section id="home" class="hero hero-premium">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                <source src="https://cdn.coverr.co/videos/coverr-making-pasta-close-up-1333/1080p.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="premium-overlay"></div>
+        
+        <div class="hero-content premium-hero-content">
+            <div class="logo-container premium-logo-container">
+                <div class="custom-logo hero-logo premium-hero-logo">
+                    <img src="images/lartista-logo.png" 
+                         alt="L'ARTISTA Fine Dining Restaurant"
+                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA<br><span style=\"font-size:0.7em\">FINE DINING</span></div></div>';">
+                </div>
+                <div class="logo-text premium-logo-text">
+                    <h1 class="premium-title">
+                        <span class="title-line-1">L'ARTISTA</span>
+                        <span class="title-line-2">Fine Italian Dining</span>
+                    </h1>
+                    <div class="subtitle premium-subtitle">
+                        Where Culinary Art Meets Italian Excellence
+                    </div>
+                    <p class="hero-tagline premium-tagline">
+                        Michelin-star inspired cuisine ∙ Curated wine selection ∙ Unforgettable dining experience
+                    </p>
+                </div>
+            </div>
+            
+            <div class="hero-buttons premium-hero-buttons">
+                <a href="#reservation" class="btn btn-premium btn-large">
+                    <i class="fas fa-calendar-check"></i> RESERVE EXPERIENCE
+                </a>
+                <a href="#menu" class="btn btn-outline-premium btn-large">
+                    <i class="fas fa-book-open"></i> EXPLORE MENU
+                </a>
+            </div>
+            
+            <div class="hero-features">
+                <div class="feature-item">
+                    <i class="fas fa-star"></i>
+                    <span>Fine Dining Experience</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-wine-glass-alt"></i>
+                    <span>Premium Wine Selection</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-cheese"></i>
+                    <span>Authentic Ingredients</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator premium-scroll-indicator">
+            <div class="scroll-text">Discover Excellence</div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
 
-<section id="reservation" class="fade-up">
-<h2>Reservation</h2>
+    <!-- Premium About Section -->
+    <section id="about" class="container fade-in premium-section">
+        <div class="section-header premium-section-header">
+            <h2 class="premium-h2">About L'ARTISTA</h2>
+            <div class="subtitle premium-subtitle">Excellence in Italian Fine Dining</div>
+            <div class="section-divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-utensils divider-icon"></i>
+                <span class="divider-line"></span>
+            </div>
+        </div>
+        
+        <div class="about-grid premium-about-grid">
+            <div class="section-content premium-content">
+                <p class="intro-text premium-intro">
+                    <span class="highlight-red">L'ARTISTA</span> transcends ordinary dining to deliver an 
+                    <span class="highlight-green">unforgettable culinary journey</span>. Our philosophy is simple: 
+                    every dish is a masterpiece, every ingredient tells a story, every moment creates a memory.
+                </p>
+                <p class="premium-description">
+                    Under the guidance of Executive Chef Marco Rossi, our team crafts Michelin-star inspired 
+                    cuisine using only the finest ingredients sourced directly from Italy. From the sun-drenched 
+                    tomatoes of Sicily to the exquisite truffles of Alba, each element is carefully selected 
+                    to honor traditional Italian culinary artistry while embracing modern innovation.
+                </p>
+                
+                <div class="features-grid premium-features-grid">
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Michelin Inspired</h4>
+                        <p>Fine dining excellence</p>
+                    </div>
+                    
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h4>Farm to Table</h4>
+                        <p>Fresh seasonal ingredients</p>
+                    </div>
+                    
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
+                        <h4>Sommelier Curated</h4>
+                        <p>Premium wine pairings</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image premium-about-image">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                         alt="L'ARTISTA Fine Dining Restaurant Interior"
+                         loading="lazy">
+                    <div class="image-caption">Our Elegant Dining Room</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<form id="reservationForm">
-<input name="name" placeholder="Name" required><br>
-<input name="phone" placeholder="Phone" required><br>
-<input type="date" name="date" required><br>
-<input type="time" name="time" required><br>
-<input name="guests" placeholder="Guests" required><br>
-<textarea name="message" placeholder="Message"></textarea><br>
-<button type="submit">Reserve via WhatsApp & Email</button>
-</form>
-</section>
+    <!-- Premium Gallery Section -->
+    <section id="gallery" class="container fade-in premium-section">
+        <div class="section-header premium-section-header">
+            <h2 class="premium-h2">Gallery</h2>
+            <div class="subtitle premium-subtitle">Culinary Artistry</div>
+            <div class="section-divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-camera divider-icon"></i>
+                <span class="divider-line"></span>
+            </div>
+        </div>
+        
+        <div class="gallery-grid premium-gallery-grid">
+            <!-- Food Images -->
+            <div class="gallery-item premium-gallery-item" data-category="food">
+                <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Artisanal Pizza"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Artisanal Pizza</h3>
+                        <p>Wood-fired perfection</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item premium-gallery-item" data-category="food">
+                <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Handmade Pasta"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Handmade Pasta</h3>
+                        <p>Fresh daily preparation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item premium-gallery-item" data-category="ambiance">
+                <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Fine Dining Setting"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Elegant Setting</h3>
+                        <p>Premium dining experience</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item premium-gallery-item" data-category="food">
+                <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Antipasti Selection"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Antipasti Selection</h3>
+                        <p>Italian starters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script src="js/main.js"></script>
-<script src="js/reservation.js"></script>
+    <!-- Premium Menu Section -->
+    <section id="menu" class="container fade-in premium-section menu-section">
+        <div class="section-header premium-section-header">
+            <h2 class="premium-h2">Menu</h2>
+            <div class="subtitle premium-subtitle">Culinary Masterpieces</div>
+            <div class="section-divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-utensil-spoon divider-icon"></i>
+                <span class="divider-line"></span>
+            </div>
+            <p class="menu-note">All dishes prepared with the finest Italian ingredients. Please inform us of any allergies.</p>
+        </div>
+        
+        <div class="menu-tabs premium-menu-tabs">
+            <button class="menu-tab active" data-tab="starters">Starters</button>
+            <button class="menu-tab" data-tab="pastas">Pastas</button>
+            <button class="menu-tab" data-tab="mains">Main Courses</button>
+            <button class="menu-tab" data-tab="pizza">Pizza</button>
+            <button class="menu-tab" data-tab="sweets">Sweets</button>
+        </div>
+        
+        <!-- Starters Menu -->
+        <div class="menu-category premium-menu-category active" id="starters">
+            <div class="category-header">
+                <h3><i class="fas fa-seedling"></i> Starters</h3>
+                <p class="category-description">Begin your culinary journey</p>
+            </div>
+            
+            <div class="menu-items-grid">
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Creamy burrata</h4>
+                        <span class="price">€24</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Cherry tomatoes / asparagus / basil</p>
+                    <div class="allergy-info">Allergy: 1.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Vitello Tonnato</h4>
+                        <span class="price">€28</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Veal with tuna sauce / pine nuts</p>
+                    <div class="allergy-info">Allergy: 1.4.7.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Seasonal Insalata Mista</h4>
+                        <span class="price">€18</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Fresh seasonal mixed salad</p>
+                    <div class="allergy-info">Allergy: 1.8.9</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Caesar salad</h4>
+                        <span class="price">€22</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Crisp romaine / croutons / parmesan</p>
+                    <div class="allergy-info">Allergy: 1.3.4.7.10</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Beef Carpaccio</h4>
+                        <span class="price">€26</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Truffle oil / wild arugula</p>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Lemon garlic shrimps</h4>
+                        <span class="price">€32</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Fresh shrimps / focaccia bread</p>
+                    <div class="allergy-info">Allergy: 1.2.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Antipasto</h4>
+                        <span class="price">€38</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Finest Italian selection of cheeses and meats</p>
+                    <div class="allergy-info">Allergy: 1.6.7.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Bruschetta with stracciatella</h4>
+                        <span class="price">€20</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Mortadella / pistachios</p>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Tomato bruschetta</h4>
+                        <span class="price">€18</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">With ciliegine / fresh herbs</p>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Bruschetta with cured zucchini</h4>
+                        <span class="price">€22</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Pine nuts pesto</p>
+                    <div class="allergy-info">Allergy: 1.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Zuppa di Pesce</h4>
+                        <span class="price">€34</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Variety of seafood / stracciatella</p>
+                    <div class="allergy-info">Allergy: 1.2.4.7.9.13.14</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pastas Menu -->
+        <div class="menu-category premium-menu-category" id="pastas">
+            <div class="category-header">
+                <h3><i class="fas fa-pasta"></i> Pastas</h3>
+                <p class="category-description">Handmade pasta perfection</p>
+            </div>
+            
+            <div class="menu-items-grid">
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Spaghetti Carbonara</h4>
+                        <span class="price">€26</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Guanciale / pecorino romano</p>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Cacio e Pepe</h4>
+                        <span class="price">€24</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">With black truffles</p>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Pasta al Pesto di Pistacchio</h4>
+                        <span class="price">€28</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Pistachio pesto with stracciatella</p>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Penne Arrabbiata</h4>
+                        <span class="price">€22</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Spicy tomato sauce</p>
+                    <div class="allergy-info">Allergy: 1</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Spaghetti Frutti di Mare</h4>
+                        <span class="price">€32</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Seafood medley</p>
+                    <div class="allergy-info">Allergy: 1.2.4.9.13.14</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Kids Pasta</h4>
+                        <span class="price">€16</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Any pasta choice with tomato sauce or butter sauce</p>
+                    <div class="allergy-info">Allergy: 1.7.9.13</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>L'Artista Special</h4>
+                        <span class="price">€42</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Pasta with lobster and black caviar</p>
+                    <div class="allergy-info">Allergy: 1.2.4.7</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Courses Menu -->
+        <div class="menu-category premium-menu-category" id="mains">
+            <div class="category-header">
+                <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
+                <p class="category-description">Culinary centerpieces</p>
+            </div>
+            
+            <div class="menu-items-grid">
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Parmigiana di Melanzane</h4>
+                        <span class="price">€28</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Eggplant parmesan / basil pesto</p>
+                    <div class="allergy-info">Allergy: 1.7.8.9</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Creamy Risotto</h4>
+                        <span class="price">€32</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">With black truffles</p>
+                    <div class="allergy-info">Allergy: 1.7.12</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Zucchini Risotto</h4>
+                        <span class="price">€34</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">With gamberi (prawns)</p>
+                    <div class="allergy-info">Allergy: 1.2.7.12</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Veal Scallopini</h4>
+                        <span class="price">€38</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Lemon butter sauce / roasted potatoes or seasonal salad</p>
+                    <div class="allergy-info">Allergy: 1.3.9</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Seabass Fillet</h4>
+                        <span class="price">€36</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">With spinach risotto</p>
+                    <div class="allergy-info">Allergy: 1.4.6.7.9.12</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Homemade Ravioli</h4>
+                        <span class="price">€30</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Ricotta and spinach / gorgonzola sauce</p>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Tagliata di Manzo</h4>
+                        <span class="price">€42</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Sliced beef / roasted potatoes or seasonal salad</p>
+                    <div class="allergy-info">Allergy: 1.7.9.12</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pizza Menu -->
+        <div class="menu-category premium-menu-category" id="pizza">
+            <div class="category-header">
+                <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
+                <p class="category-description">Wood-fired perfection</p>
+            </div>
+            
+            <div class="menu-items-grid">
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Pizza Margherita</h4>
+                        <span class="price">€18</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Classic tomato and mozzarella</p>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Pizza Mortadella</h4>
+                        <span class="price">€22</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">With stracciatella and pistachios</p>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Quattro Formaggi</h4>
+                        <span class="price">€24</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Four cheese blend</p>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Pizza Diavola</h4>
+                        <span class="price">€26</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Spicy salami / chili oil</p>
+                    <div class="allergy-info">Allergy: 1.7.9</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Pizza Salamino</h4>
+                        <span class="price">€24</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Salami pizza</p>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Pizza Marinara</h4>
+                        <span class="price">€20</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Tomato / garlic / oregano</p>
+                    <div class="allergy-info">Allergy: 1.4</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Prosciutto di Parma</h4>
+                        <span class="price">€26</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Parma ham pizza</p>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Kids Margherita</h4>
+                        <span class="price">€16</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Smaller portion</p>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sweets Menu -->
+        <div class="menu-category premium-menu-category" id="sweets">
+            <div class="category-header">
+                <h3><i class="fas fa-ice-cream"></i> Sweets</h3>
+                <p class="category-description">Sweet conclusions</p>
+            </div>
+            
+            <div class="menu-items-grid">
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Tiramisu</h4>
+                        <span class="price">€14</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Classic Italian dessert</p>
+                    <div class="allergy-info">Allergy: 1.3.7.8</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Limoncello Cheesecake</h4>
+                        <span class="price">€16</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">With Italian meringue</p>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
+                </div>
+                
+                <div class="menu-item premium-menu-item">
+                    <div class="menu-item-header">
+                        <h4>Affogato</h4>
+                        <span class="price">€12</span>
+                    </div>
+                    <p class="menu-desc premium-menu-desc">Vanilla gelato with espresso</p>
+                    <div class="allergy-info">Allergy: 7</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-footer">
+            <p class="menu-note">* All prices include VAT. Additional 5€ for extra truffle serving.</p>
+        </div>
+    </section>
+
+    <!-- Premium Reservation Section -->
+    <section id="reservation" class="container fade-in premium-section reservation-section">
+        <div class="reservation-container">
+            <div class="section-header premium-section-header">
+                <h2 class="premium-h2">Reservation</h2>
+                <div class="subtitle premium-subtitle">Book Your Table</div>
+                <div class="section-divider">
+                    <span class="divider-line"></span>
+                    <i class="fas fa-calendar-alt divider-icon"></i>
+                    <span class="divider-line"></span>
+                </div>
+                <p class="reservation-note">For parties of 8 or more, please contact us directly at +371 12 345 678</p>
+            </div>
+            
+            <div class="reservation-grid">
+                <div class="reservation-info">
+                    <div class="info-card premium-info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Opening Hours</h3>
+                        <p><strong>Monday - Thursday:</strong> 5:00 PM - 11:00 PM</p>
+                        <p><strong>Friday - Saturday:</strong> 5:00 PM - 12:00 AM</p>
+                        <p><strong>Sunday:</strong> 12:00 PM - 10:00 PM</p>
+                    </div>
+                    
+                    <div class="info-card premium-info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Special Requests</h3>
+                        <p>Birthday celebrations</p>
+                        <p>Anniversary dinners</p>
+                        <p>Business meetings</p>
+                    </div>
+                    
+                    <div class="info-card premium-info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <h3>Private Dining</h3>
+                        <p>Up to 30 guests</p>
+                        <p>Customized menus</p>
+                        <p>Sommelier service</p>
+                    </div>
+                </div>
+                
+                <div class="reservation-form premium-reservation-form">
+                    <form id="reservationForm">
+                        <div class="form-grid premium-form-grid">
+                            <div class="form-group premium-form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i> Full Name *
+                                </label>
+                                <input type="text" id="name" class="form-control premium-form-control" 
+                                       placeholder="Your full name" required>
+                            </div>
+                            
+                            <div class="form-group premium-form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i> Email Address *
+                                </label>
+                                <input type="email" id="email" class="form-control premium-form-control" 
+                                       placeholder="your.email@example.com" required>
+                            </div>
+                            
+                            <div class="form-group premium-form-group">
+                                <label for="phone">
+                                    <i class="fas fa-phone"></i> Phone Number *
+                                </label>
+                                <input type="tel" id="phone" class="form-control premium-form-control" 
+                                       placeholder="+371 12 345 678" required>
+                            </div>
+                            
+                            <div class="form-group premium-form-group">
+                                <label for="date">
+                                    <i class="fas fa-calendar"></i> Date *
+                                </label>
+                                <input type="date" id="date" class="form-control premium-form-control" required>
+                            </div>
+                            
+                            <div class="form-group premium-form-group">
+                                <label for="time">
+                                    <i class="fas fa-clock"></i> Time *
+                                </label>
+                                <select id="time" class="form-control premium-form-control" required>
+                                    <option value="">Select time</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="17:30">5:30 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="18:30">6:30 PM</option>
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="19:30">7:30 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                    <option value="20:30">8:30 PM</option>
+                                    <option value="21:00">9:00 PM</option>
+                                    <option value="21:30">9:30 PM</option>
+                                    <option value="22:00">10:00 PM</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group premium-form-group">
+                                <label for="guests">
+                                    <i class="fas fa-users"></i> Number of Guests *
+                                </label>
+                                <select id="guests" class="form-control premium-form-control" required>
+                                    <option value="">Select guests</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8+ Guests (Contact us)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group premium-form-group">
+                            <label for="specialRequests">
+                                <i class="fas fa-edit"></i> Special Requests
+                            </label>
+                            <textarea id="specialRequests" class="form-control premium-form-control" 
+                                      placeholder="Any dietary restrictions, special occasions, or specific requests..." 
+                                      rows="4"></textarea>
+                        </div>
+                        
+                        <div class="notification-box premium-notification-box">
+                            <div class="notification-icon">
+                                <i class="fab fa-whatsapp"></i>
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Instant Confirmation</h4>
+                                <p>Your reservation will be sent immediately to our WhatsApp and email systems for prompt confirmation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-premium btn-large btn-submit">
+                                <i class="fas fa-paper-plane"></i> SEND RESERVATION
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Contact Section -->
+    <section id="contact" class="container fade-in premium-section">
+        <div class="section-header premium-section-header">
+            <h2 class="premium-h2">Contact</h2>
+            <div class="subtitle premium-subtitle">Visit Us</div>
+            <div class="section-divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-map-marker-alt divider-icon"></i>
+                <span class="divider-line"></span>
+            </div>
+        </div>
+        
+        <div class="contact-grid premium-contact-grid">
+            <div class="contact-info premium-contact-info">
+                <div class="contact-card premium-contact-card">
+                    <div class="contact-icon premium-contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Riga City Center</p>
+                    <p>Latvia</p>
+                    <p class="contact-note">Valet parking available</p>
+                </div>
+                
+                <div class="contact-card premium-contact-card">
+                    <div class="contact-icon premium-contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Contact</h3>
+                    <a href="tel:+37112345678" class="contact-link">+371 12 345 678</a>
+                    <a href="mailto:reservations@lartista.lv" class="contact-link">reservations@lartista.lv</a>
+                    <a href="https://wa.me/37112345678" class="whatsapp-link">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                </div>
+                
+                <div class="contact-card premium-contact-card">
+                    <div class="contact-icon premium-contact-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>Services</h3>
+                    <p>Private dining</p>
+                    <p>Catering services</p>
+                    <p>Wine tastings</p>
+                </div>
+            </div>
+            
+            <div class="map-container premium-map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17403.02626214777!2d24.105156315951567!3d56.94996488088995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfd75c3457a9%3A0x8b9b5b5b5b5b5b5b!2sRiga%2C%20Latvia!5e0!3m2!1sen!2slv!4v1645541234567!5m2!1sen!2slv" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    title="L'ARTISTA Restaurant Location">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="footer premium-footer">
+        <div class="footer-container">
+            <div class="footer-grid premium-footer-grid">
+                <div class="footer-column premium-footer-column">
+                    <div class="footer-logo-container">
+                        <div class="custom-logo footer-logo premium-footer-logo">
+                            <img src="images/lartista-logo.png" 
+                                 alt="L'ARTISTA Fine Dining"
+                                 onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\" style=\"font-size:0.9em\">L\'ARTISTA</div>';">
+                        </div>
+                        <div class="footer-logo-text">
+                            <h3>L'ARTISTA</h3>
+                            <p class="footer-subtitle">Fine Italian Dining</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Experience the art of Italian fine dining. Every dish tells a story, 
+                        every moment creates a memory.
+                    </p>
+                </div>
+                
+                <div class="footer-column premium-footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i> Menu</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                        <li><a href="#reservation"><i class="fas fa-chevron-right"></i> Reservations</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column premium-footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-links premium-social-links">
+                        <a href="#" class="social-icon premium-social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon premium-social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon premium-social-icon">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                        <a href="https://wa.me/37112345678" class="social-icon premium-social-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="newsletter premium-newsletter">
+                        <h5>Stay Updated</h5>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" class="newsletter-input" required>
+                            <button type="submit" class="btn btn-premium">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="footer-column premium-footer-column">
+                    <h4>Awards</h4>
+                    <div class="awards">
+                        <div class="award-item">
+                            <i class="fas fa-award"></i>
+                            <span>Michelin Guide 2023</span>
+                        </div>
+                        <div class="award-item">
+                            <i class="fas fa-star"></i>
+                            <span>Best Italian Restaurant 2022</span>
+                        </div>
+                        <div class="award-item">
+                            <i class="fas fa-wine-glass-alt"></i>
+                            <span>Wine Spectator Award</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom premium-footer-bottom">
+                <p>© <span id="currentYear"></span> L'ARTISTA Fine Italian Dining. All rights reserved.</p>
+                <p class="footer-note">
+                    <i class="fas fa-map-marker-alt"></i> 
+                    Celebrating Italian culinary excellence in the heart of Riga
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Italian Flag Stripe Bottom -->
+    <div class="italian-flag-stripe bottom"></div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 </html>
