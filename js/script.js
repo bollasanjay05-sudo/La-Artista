@@ -14,8 +14,8 @@ const menuCategories = document.querySelectorAll('.menu-category');
 
 // Restaurant Configuration
 const RESTAURANT_CONFIG = {
-    whatsappNumber: '37125722769', // Your WhatsApp number
-    restaurantEmail: 'bollasanjay05@gmail.com', // Your email
+    whatsappNumber: '37125722769',
+    restaurantEmail: 'bollasanjay05@gmail.com',
     restaurantName: "L'ARTISTA Fine Dining Restaurant",
     restaurantAddress: "Vaļņu iela 25, Riga, LV-1050, Latvia",
     phoneNumber: "+371 25 722 769"
@@ -23,7 +23,7 @@ const RESTAURANT_CONFIG = {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('%c L\'ARTISTA 🍝 ', 'background: linear-gradient(to right, #1F3D2B, #D6273B); color: white; padding: 10px; font-size: 16px; border-radius: 5px;');
+    console.log('L\'ARTISTA Restaurant Website Initialized');
     
     // Hide loader
     setTimeout(() => {
@@ -115,7 +115,7 @@ function initMenuTabs() {
 }
 
 // ============================================
-// RESERVATION SYSTEM
+// RESERVATION SYSTEM - WHATSAPP & EMAIL SIMULTANEOUSLY
 // ============================================
 function initReservationForm() {
     if (!reservationForm) return;
@@ -140,6 +140,7 @@ function initReservationForm() {
         const formData = {
             name: document.getElementById('name').value.trim(),
             phone: document.getElementById('phone').value.trim(),
+            email: document.getElementById('email').value.trim(),
             date: document.getElementById('date').value,
             time: document.getElementById('time').value,
             guests: document.getElementById('guests').value,
@@ -160,23 +161,25 @@ function initReservationForm() {
         submitBtn.disabled = true;
 
         try {
-            // Send to WhatsApp
-            sendToWhatsApp(formData);
-            
-            // Send to Email
-            sendToEmail(formData);
+            // Send to WhatsApp AND Email simultaneously
+            const whatsappSent = sendToWhatsApp(formData);
+            const emailSent = sendToEmail(formData);
 
-            showNotification('Reservation sent successfully! We\'ll confirm shortly.', 'success');
-            
-            // Reset form after delay
-            setTimeout(() => {
-                reservationForm.reset();
-                if (dateInput) {
-                    const tomorrow = new Date();
-                    tomorrow.setDate(tomorrow.getDate() + 1);
-                    dateInput.value = tomorrow.toISOString().split('T')[0];
-                }
-            }, 2000);
+            if (whatsappSent || emailSent) {
+                showNotification('Reservation sent to WhatsApp and Email! We\'ll confirm shortly.', 'success');
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    reservationForm.reset();
+                    if (dateInput) {
+                        const tomorrow = new Date();
+                        tomorrow.setDate(tomorrow.getDate() + 1);
+                        dateInput.value = tomorrow.toISOString().split('T')[0];
+                    }
+                }, 2000);
+            } else {
+                showNotification('Please try sending again.', 'error');
+            }
         } catch (error) {
             console.error('Reservation error:', error);
             showNotification('Error sending reservation. Please try again.', 'error');
@@ -213,6 +216,14 @@ function validateReservationForm(data) {
         };
     }
 
+    // Email validation (optional but if provided, validate)
+    if (data.email && !isValidEmail(data.email)) {
+        return {
+            isValid: false,
+            message: 'Please enter a valid email address'
+        };
+    }
+
     // Date validation
     const selectedDate = new Date(data.date);
     const today = new Date();
@@ -228,7 +239,12 @@ function validateReservationForm(data) {
     return { isValid: true, message: 'Valid' };
 }
 
-// Send to WhatsApp
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Send to WhatsApp AND Email simultaneously
 function sendToWhatsApp(formData) {
     // Format date
     const formattedDate = new Date(formData.date).toLocaleDateString('en-GB', {
@@ -242,7 +258,8 @@ function sendToWhatsApp(formData) {
     const message = `*NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
                    `*Guest Information*%0A` +
                    `Name: ${formData.name}%0A` +
-                   `Phone: ${formData.phone}%0A%0A` +
+                   `Phone: ${formData.phone}%0A` +
+                   `Email: ${formData.email || 'Not provided'}%0A%0A` +
                    `*Reservation Details*%0A` +
                    `Date: ${formattedDate}%0A` +
                    `Time: ${formData.time}%0A` +
@@ -281,6 +298,7 @@ NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}
 GUEST INFORMATION:
 Name: ${formData.name}
 Phone: ${formData.phone}
+Email: ${formData.email || 'Not provided'}
 
 RESERVATION DETAILS:
 Date: ${formattedDate}
@@ -460,7 +478,7 @@ function handleScroll() {
 // ============================================
 function initTouchEvents() {
     // Add touch support for menu items
-    document.querySelectorAll('.menu-item').forEach(item => {
+    document.querySelectorAll('.menu-item, .btn, .menu-tab, .social-icon').forEach(item => {
         item.addEventListener('touchstart', function() {
             this.classList.add('touch-active');
         });
@@ -522,6 +540,16 @@ notificationStyles.textContent = `
             left: 10px;
             max-width: calc(100% - 20px);
         }
+    }
+    
+    /* Fix for iOS tap highlights */
+    * {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    
+    /* Fix for iOS form elements */
+    input, select, textarea {
+        font-size: 16px !important;
     }
 `;
 document.head.appendChild(notificationStyles);
