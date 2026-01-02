@@ -1,6 +1,5 @@
 /* ============================================
-   L'ARTISTA FINE DINING - MOBILE OPTIMIZED
-   Italian Flag Colors Enhanced
+   L'ARTISTA FINE DINING - FULLY MOBILE OPTIMIZED
 ============================================ */
 :root {
   /* Italian Flag Colors */
@@ -102,6 +101,16 @@ section {
   }
 }
 
+@media (max-width: 480px) {
+  section {
+    padding: 50px 0;
+  }
+  
+  .container {
+    padding: 0 12px;
+  }
+}
+
 /* ============================================
    UTILITY CLASSES
 ============================================ */
@@ -155,27 +164,15 @@ section {
 }
 
 .btn-premium {
-  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  background: linear-gradient(135deg, var(--red), #b81e30);
   color: var(--white);
   border: 2px solid var(--red);
-  box-shadow: var(--shadow-red);
 }
 
 .btn-premium:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(214, 39, 59, 0.3);
-  background: linear-gradient(135deg, var(--red-dark), var(--red));
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: white;
-  border-color: white;
-}
-
-.btn-outline:hover {
-  background-color: white;
-  color: var(--red);
+  background: linear-gradient(135deg, #b81e30, var(--red));
 }
 
 .btn-outline-premium {
@@ -209,12 +206,12 @@ section {
 
 @media (max-width: 768px) {
   .btn {
-    padding: 10px 20px;
-    font-size: 13px;
+    padding: 12px 24px;
+    font-size: 14px;
   }
   
   .btn-large {
-    padding: 12px 24px;
+    padding: 14px 28px;
   }
   
   .button-group {
@@ -228,8 +225,19 @@ section {
   }
 }
 
+@media (max-width: 480px) {
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  
+  .btn-large {
+    padding: 12px 24px;
+  }
+}
+
 /* ============================================
-   NAVIGATION - SIMPLIFIED
+   NAVIGATION - FIXED
 ============================================ */
 .premium-navbar {
   position: fixed;
@@ -239,7 +247,7 @@ section {
   background: rgba(249, 247, 242, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  padding: 15px 0;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(214, 39, 59, 0.1);
   transition: var(--transition);
 }
@@ -271,15 +279,15 @@ section {
 }
 
 .nav-logo {
-  width: 80px; /* Increased from 60px */
-  height: 80px; /* Increased from 60px */
+  width: 80px;
+  height: 80px;
 }
 
 .hero-logo {
-  width: 200px; /* Increased from 150px */
-  height: 200px; /* Increased from 150px */
+  width: 200px;
+  height: 200px;
   border-width: 4px;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .custom-logo img {
@@ -295,7 +303,7 @@ section {
 
 .logo-main {
   font-family: 'Playfair Display', serif;
-  font-size: 28px; /* Increased from 24px */
+  font-size: 28px;
   font-weight: 600;
   color: var(--green);
   letter-spacing: 1px;
@@ -311,23 +319,25 @@ section {
   margin-top: 4px;
 }
 
-/* Navigation Links */
+/* Navigation Links - Smaller and Right Aligned */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 30px;
+  margin-left: auto;
 }
 
 .nav-link {
   text-decoration: none;
   color: var(--text-dark);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: var(--transition);
   position: relative;
   padding: 5px 0;
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -420,6 +430,7 @@ section {
 .premium-mobile-menu .nav-links {
   flex-direction: column;
   gap: 25px;
+  margin-left: 0;
 }
 
 .premium-mobile-menu .nav-link {
@@ -439,9 +450,19 @@ section {
 }
 
 /* Responsive Navigation */
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
   .nav-links {
     gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .nav-link {
+    font-size: 12px;
   }
 }
 
@@ -488,7 +509,7 @@ section {
 }
 
 /* ============================================
-   HERO SECTION
+   HERO SECTION - LOGO ABOVE NAME
 ============================================ */
 .hero-premium {
   min-height: 100vh;
@@ -530,12 +551,13 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   margin-bottom: 40px;
 }
 
 .premium-hero-logo {
   animation: float 6s ease-in-out infinite;
+  margin-bottom: 0;
 }
 
 @keyframes float {
@@ -544,7 +566,7 @@ section {
 }
 
 .premium-logo-text {
-  margin-top: 2rem; /* Logo moved down */
+  margin-top: 0;
 }
 
 .premium-title {
@@ -702,6 +724,10 @@ section {
     width: 120px;
     height: 120px;
   }
+  
+  .premium-hero-buttons .btn {
+    max-width: 100%;
+  }
 }
 
 /* ============================================
@@ -771,6 +797,10 @@ section {
   .section-header .subtitle {
     font-size: 14px;
   }
+  
+  .divider-line {
+    width: 30px;
+  }
 }
 
 /* ============================================
@@ -799,6 +829,53 @@ section {
   line-height: 1.8;
   color: var(--text-muted);
   margin-bottom: 30px;
+}
+
+.premium-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.premium-feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(214, 39, 59, 0.1);
+}
+
+.premium-feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--red);
+}
+
+.premium-feature-icon {
+  font-size: 2.5rem;
+  color: var(--red);
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: rgba(214, 39, 59, 0.1);
+  border-radius: 50%;
+}
+
+.premium-feature-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--green);
+}
+
+.premium-feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
 .premium-about-image {
@@ -860,8 +937,22 @@ section {
     font-size: 15px;
   }
   
+  .premium-features-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .image-frame img {
     height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .premium-feature-card {
+    padding: 1.5rem;
+  }
+  
+  .image-frame img {
+    height: 250px;
   }
 }
 
@@ -925,8 +1016,18 @@ section {
   }
 }
 
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-item img {
+    height: 180px;
+  }
+}
+
 /* ============================================
-   MENU SECTION - WITH PHOTOS
+   MENU SECTION - FIXED TABS
 ============================================ */
 .menu-section {
   background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
@@ -963,8 +1064,8 @@ section {
 }
 
 .menu-tab.active {
-  background: linear-gradient(135deg, var(--red), var(--red-dark));
-  color: white;
+  background: linear-gradient(135deg, var(--red), #b81e30);
+  color: white !important;
   border-color: var(--red);
   box-shadow: 0 4px 15px rgba(214, 39, 59, 0.3);
 }
@@ -1075,6 +1176,14 @@ section {
   margin-top: 8px;
 }
 
+.dish-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
 /* Menu Responsive */
 @media (max-width: 992px) {
   .menu-section {
@@ -1141,6 +1250,7 @@ section {
 @media (max-width: 480px) {
   .menu-section {
     padding: 30px 15px;
+    margin: 30px auto;
   }
   
   .menu-item {
@@ -1231,24 +1341,41 @@ textarea.form-control {
   resize: vertical;
 }
 
-.whatsapp-notice {
+.notification-box {
   background: rgba(37, 211, 102, 0.2);
-  padding: 15px;
-  border-radius: 8px;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 12px;
+  padding: 20px;
   margin: 25px 0;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
-.whatsapp-notice i {
+.notification-icon {
+  display: flex;
+  gap: 10px;
+  font-size: 28px;
+}
+
+.notification-icon i {
   color: #25d366;
-  font-size: 24px;
 }
 
-.whatsapp-notice span {
+.notification-icon .fa-envelope {
+  color: #D6273B;
+}
+
+.notification-content h4 {
+  color: white;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.notification-content p {
   color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
+  margin: 0;
 }
 
 /* Reservation Responsive */
@@ -1261,11 +1388,21 @@ textarea.form-control {
   .form-row {
     grid-template-columns: 1fr;
   }
+  
+  .notification-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 480px) {
   .reservation-section {
     padding: 30px 15px;
+  }
+  
+  .notification-icon {
+    font-size: 24px;
   }
 }
 
@@ -1395,7 +1532,7 @@ textarea.form-control {
 }
 
 /* ============================================
-   FOOTER
+   FOOTER - FIXED SOCIAL ICONS
 ============================================ */
 .footer {
   background: linear-gradient(135deg, var(--green) 0%, #1a3426 100%);
@@ -1474,30 +1611,53 @@ textarea.form-control {
 }
 
 .social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 45px;
   height: 45px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: white;
   text-decoration: none;
   font-size: 18px;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-  background: var(--red);
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
-.whatsapp-icon {
+.social-icon.facebook {
+  background: rgba(24, 119, 242, 0.2);
+}
+
+.social-icon.facebook:hover {
+  background: #1877F2;
+}
+
+.social-icon.instagram {
+  background: rgba(228, 64, 95, 0.2);
+}
+
+.social-icon.instagram:hover {
+  background: #E0405F;
+}
+
+.social-icon.tripadvisor {
+  background: rgba(52, 224, 161, 0.2);
+}
+
+.social-icon.tripadvisor:hover {
+  background: #34E0A1;
+}
+
+.social-icon.whatsapp {
   background: rgba(37, 211, 102, 0.2);
 }
 
-.whatsapp-icon:hover {
-  background: #25d366;
+.social-icon.whatsapp:hover {
+  background: #25D366;
 }
 
 .contact-info-footer p {
@@ -1545,6 +1705,10 @@ textarea.form-control {
     width: 80px;
     height: 80px;
   }
+  
+  .social-links {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1572,71 +1736,36 @@ textarea.form-control {
 }
 
 /* ============================================
-   WHATSAPP FLOAT BUTTON
+   IOS SPECIFIC FIXES
 ============================================ */
-@media (max-width: 768px) {
-  .whatsapp-float {
-    width: 55px;
-    height: 55px;
-    bottom: 20px;
-    right: 20px;
-    font-size: 26px;
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific styles */
+  .hero-premium {
+    min-height: -webkit-fill-available;
   }
-}
-
-@media (max-width: 480px) {
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
+  
+  .btn, .menu-tab, .social-icon {
+    cursor: pointer;
+  }
+  
+  /* Fix for iOS form elements */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
   }
 }
 
 /* ============================================
-   IPAD SPECIFIC STYLES
+   ANDROID SPECIFIC FIXES
 ============================================ */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  /* Hero Section */
-  .premium-title .title-line-1 {
-    font-size: 56px;
+@media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px) {
+  /* Android specific styles */
+  .hero-video video {
+    object-fit: cover;
   }
   
-  .premium-title .title-line-2 {
-    font-size: 22px;
-    letter-spacing: 4px;
-  }
-  
-  .hero-logo {
-    width: 180px;
-    height: 180px;
-  }
-  
-  /* Navigation */
-  .nav-links {
-    gap: 15px;
-  }
-  
-  .nav-link {
-    font-size: 13px;
-  }
-  
-  /* Menu */
-  .menu-item {
-    grid-template-columns: 1fr 1.5fr;
-  }
-  
-  .dish-photo {
-    height: 180px;
-  }
-  
-  /* Contact */
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  /* Footer */
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* Fix for Android touch feedback */
+  .btn:active, .menu-tab:active, .social-icon:active {
+    transform: scale(0.98);
   }
 }
 
@@ -1655,5 +1784,50 @@ textarea.form-control {
   
   .loader-text {
     font-size: 12px;
+  }
+}
+
+/* ============================================
+   TOUCH OPTIMIZATIONS
+============================================ */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch devices */
+  .menu-tab:hover, .social-icon:hover, .btn:hover {
+    transform: none;
+  }
+  
+  .menu-tab:active, .social-icon:active, .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .gallery-item:hover {
+    transform: none;
+  }
+  
+  .gallery-caption {
+    transform: translateY(0);
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .image-frame:hover img {
+    transform: none;
+  }
+  
+  .image-caption {
+    transform: translateY(0);
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* ============================================
+   SAFARI SPECIFIC FIXES
+============================================ */
+@supports (-webkit-hyphens:none) {
+  .premium-navbar {
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .btn-outline-premium {
+    -webkit-backdrop-filter: blur(10px);
   }
 }
