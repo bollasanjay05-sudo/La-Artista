@@ -121,14 +121,6 @@
             text-transform: uppercase;
         }
         
-        /* Premium Menu Item Numbers */
-        .allergy-info {
-            font-size: 11px;
-            color: #999;
-            font-style: italic;
-            margin-top: 5px;
-        }
-        
         /* Premium Overlay Effect */
         .premium-overlay {
             position: absolute;
@@ -153,9 +145,63 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
+        /* Menu tab active state */
+        .menu-tab.active {
+            background: linear-gradient(135deg, #D6273B, #b81e30);
+            color: white !important;
+        }
+        
+        /* Fix for social icons */
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: #D6273B;
+        }
+        
+        .social-icon.facebook:hover {
+            background: #1877F2;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #FFDC80);
+        }
+        
+        .social-icon.tripadvisor:hover {
+            background: #34E0A1;
+        }
+        
+        .social-icon.whatsapp:hover {
+            background: #25D366;
+        }
+        
         @media (max-width: 768px) {
             .dish-photo {
                 height: 150px;
+            }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -244,12 +290,12 @@
         
         <div class="hero-content premium-hero-content">
             <div class="logo-container premium-logo-container">
-                <div class="custom-logo hero-logo premium-hero-logo">
+                <div class="custom-logo hero-logo premium-hero-logo" style="margin-bottom: 0;">
                     <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Fine Dining Restaurant"
                          onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA<br><span style=\"font-size:0.7em\">FINE DINING</span></div></div>';">
                 </div>
-                <div class="logo-text premium-logo-text" style="margin-top: 2rem;">
+                <div class="logo-text premium-logo-text" style="margin-top: 1.5rem;">
                     <h1 class="premium-title">
                         <span class="title-line-1">L'ARTISTA</span>
                         <span class="title-line-2">Fine Dining Restaurant</span>
@@ -307,9 +353,30 @@
                     to honor traditional Italian culinary artistry while embracing modern innovation.
                 </p>
                 
-                <div class="button-group">
-                    <a href="#reservation" class="btn btn-premium">BOOK A TABLE</a>
-                    <a href="#menu" class="btn btn-outline">VIEW MENU</a>
+                <div class="features-grid premium-features-grid">
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Michelin Inspired</h4>
+                        <p>Fine dining excellence</p>
+                    </div>
+                    
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h4>Farm to Table</h4>
+                        <p>Fresh seasonal ingredients</p>
+                    </div>
+                    
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
+                        <h4>Sommelier Curated</h4>
+                        <p>Premium wine pairings</p>
+                    </div>
                 </div>
             </div>
             
@@ -364,7 +431,7 @@
             <button class="menu-tab" data-tab="pastas">Pastas</button>
             <button class="menu-tab" data-tab="mains">Main Courses</button>
             <button class="menu-tab" data-tab="pizza">Pizza</button>
-            <button class="menu-tab" data-tab="sweets">Sweets</button>
+            <button class="menu-tab" data-tab="desserts">Desserts</button>
         </div>
         
         <!-- Starters Menu -->
@@ -400,50 +467,6 @@
                     <div class="allergy-info">Allergy: 1.4.7.8</div>
                 </div>
             </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Seasonal Insalata Mista</h4>
-                        <span class="price">€18</span>
-                    </div>
-                    <p class="menu-desc">Fresh mixed salad with seasonal vegetables and house dressing</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Mixed greens, seasonal vegetables, house vinaigrette
-                    </div>
-                    <div class="allergy-info">Allergy: 1.8.9</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Caesar Salad</h4>
-                        <span class="price">€22</span>
-                    </div>
-                    <p class="menu-desc">Classic Caesar salad with homemade croutons and Parmigiano Reggiano</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Romaine lettuce, Caesar dressing, croutons, Parmesan cheese, anchovies
-                    </div>
-                    <div class="allergy-info">Allergy: 1.3.4.7.10</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                     alt="Beef Carpaccio" class="dish-photo">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Beef Carpaccio</h4>
-                        <span class="price">€26</span>
-                    </div>
-                    <p class="menu-desc">Thinly sliced beef tenderloin with truffle oil and wild arugula</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Beef tenderloin, truffle oil, arugula, Parmesan, lemon juice
-                    </div>
-                    <div class="allergy-info">Allergy: 1.7.8</div>
-                </div>
-            </div>
         </div>
         
         <!-- Pastas Menu -->
@@ -463,34 +486,6 @@
                         <strong>Ingredients:</strong> Spaghetti, guanciale, eggs, Pecorino Romano, black pepper
                     </div>
                     <div class="allergy-info">Allergy: 1.3.7</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Cacio e Pepe</h4>
-                        <span class="price">€24</span>
-                    </div>
-                    <p class="menu-desc">Roman pasta with black truffles</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Tonnarelli pasta, Pecorino Romano, black pepper, black truffles
-                    </div>
-                    <div class="allergy-info">Allergy: 1.7</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Pasta al Pesto di Pistacchio</h4>
-                        <span class="price">€28</span>
-                    </div>
-                    <p class="menu-desc">Pasta with pistachio pesto and stracciatella cheese</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Fresh pasta, pistachio pesto, stracciatella cheese, basil
-                    </div>
-                    <div class="allergy-info">Allergy: 1.7.8</div>
                 </div>
             </div>
         </div>
@@ -514,34 +509,6 @@
                     <div class="allergy-info">Allergy: 1.7.8.9</div>
                 </div>
             </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Veal Scallopini</h4>
-                        <span class="price">€38</span>
-                    </div>
-                    <p class="menu-desc">Veal with lemon butter sauce served with roasted potatoes or seasonal salad</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Veal, butter, lemon, white wine, capers, potatoes
-                    </div>
-                    <div class="allergy-info">Allergy: 1.3.9</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Tagliata di Manzo</h4>
-                        <span class="price">€42</span>
-                    </div>
-                    <p class="menu-desc">Sliced beef served with roasted potatoes or seasonal salad</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Beef sirloin, rosemary, garlic, olive oil, potatoes, arugula
-                    </div>
-                    <div class="allergy-info">Allergy: 1.7.9.12</div>
-                </div>
-            </div>
         </div>
         
         <!-- Pizza Menu -->
@@ -563,39 +530,11 @@
                     <div class="allergy-info">Allergy: 1.7</div>
                 </div>
             </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Quattro Formaggi</h4>
-                        <span class="price">€24</span>
-                    </div>
-                    <p class="menu-desc">Four cheese pizza blend</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Mozzarella, Gorgonzola, Parmesan, Fontina, tomato sauce
-                    </div>
-                    <div class="allergy-info">Allergy: 1.7</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <div class="menu-item-content">
-                    <div class="menu-item-header">
-                        <h4>Prosciutto di Parma</h4>
-                        <span class="price">€26</span>
-                    </div>
-                    <p class="menu-desc">Pizza with Parma ham</p>
-                    <div class="ingredients">
-                        <strong>Ingredients:</strong> Tomato sauce, mozzarella, Parma ham, arugula, Parmesan
-                    </div>
-                    <div class="allergy-info">Allergy: 1.7</div>
-                </div>
-            </div>
         </div>
         
-        <!-- Sweets Menu -->
-        <div class="menu-category" id="sweets">
-            <h3><i class="fas fa-ice-cream"></i> Sweets</h3>
+        <!-- Desserts Menu -->
+        <div class="menu-category" id="desserts">
+            <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
             
             <div class="menu-item">
                 <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
@@ -610,6 +549,20 @@
                         <strong>Ingredients:</strong> Mascarpone, espresso, ladyfingers, eggs, sugar, cocoa powder
                     </div>
                     <div class="allergy-info">Allergy: 1.3.7.8</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Limoncello Cheesecake</h4>
+                        <span class="price">€16</span>
+                    </div>
+                    <p class="menu-desc">Creamy cheesecake with Italian meringue</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Cream cheese, limoncello, Italian meringue, biscuit base
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
                 </div>
             </div>
             
@@ -682,13 +635,24 @@
                     <textarea id="message" class="form-control" placeholder="Any special requests or dietary requirements..." rows="3"></textarea>
                 </div>
                 
-                <div class="whatsapp-notice">
-                    <i class="fab fa-whatsapp"></i> 
-                    <span>Your reservation will be sent directly to our WhatsApp: +371 25722769</span>
+                <div class="form-group">
+                    <label for="email">Email Address (Optional)</label>
+                    <input type="email" id="email" class="form-control" placeholder="your.email@example.com">
+                </div>
+                
+                <div class="notification-box">
+                    <div class="notification-icon">
+                        <i class="fab fa-whatsapp"></i>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Instant Dual Confirmation</h4>
+                        <p>Your reservation will be sent to both WhatsApp and Email simultaneously</p>
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn btn-red btn-block">
-                    <i class="fab fa-whatsapp"></i> SEND RESERVATION VIA WHATSAPP
+                    <i class="fab fa-whatsapp"></i> SEND TO WHATSAPP & EMAIL
                 </button>
             </form>
         </div>
@@ -784,10 +748,16 @@
                 <div class="footer-column">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tripadvisor"></i></a>
-                        <a href="https://wa.me/37125722769" class="social-icon whatsapp-icon">
+                        <a href="#" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon tripadvisor">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                        <a href="https://wa.me/37125722769" class="social-icon whatsapp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -807,7 +777,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© <span id="currentYear"></span> L'ARTISTA Fine Italian Dining Restaurant. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> L'ARTISTA Fine Italian Dining Restaurant. All rights reserved.</p>
                 <p class="footer-note">
                     Celebrating Italian culinary art in the heart of Riga
                 </p>
