@@ -1,6 +1,7 @@
 /* ============================================
-   L'ARTISTA FINE DINING - FULLY MOBILE OPTIMIZED
+   L'ARTISTA FINE DINING - FULLY OPTIMIZED CSS
 ============================================ */
+
 :root {
   /* Italian Flag Colors */
   --green: #1F3D2B;
@@ -509,7 +510,7 @@ section {
 }
 
 /* ============================================
-   HERO SECTION - LOGO ABOVE NAME
+   HERO SECTION - LOGO ABOVE NAME (FIXED)
 ============================================ */
 .hero-premium {
   min-height: 100vh;
@@ -551,13 +552,13 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 0;
   margin-bottom: 40px;
 }
 
 .premium-hero-logo {
   animation: float 6s ease-in-out infinite;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 }
 
 @keyframes float {
@@ -570,7 +571,7 @@ section {
 }
 
 .premium-title {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .premium-title .title-line-1 {
@@ -804,7 +805,7 @@ section {
 }
 
 /* ============================================
-   ABOUT SECTION
+   ABOUT SECTION WITH VIDEO
 ============================================ */
 .premium-about-grid {
   display: grid;
@@ -889,14 +890,16 @@ section {
   position: relative;
 }
 
-.image-frame img {
+.image-frame img,
+.image-frame video {
   width: 100%;
-  height: 500px;
+  height: 400px;
   object-fit: cover;
   transition: transform 0.6s ease;
 }
 
-.image-frame:hover img {
+.image-frame:hover img,
+.image-frame:hover video {
   transform: scale(1.05);
 }
 
@@ -921,10 +924,16 @@ section {
   
   .premium-content {
     padding-right: 0;
+    order: 2;
   }
   
-  .image-frame img {
-    height: 400px;
+  .premium-about-image {
+    order: 1;
+  }
+  
+  .image-frame img,
+  .image-frame video {
+    height: 300px;
   }
 }
 
@@ -941,8 +950,9 @@ section {
     grid-template-columns: 1fr;
   }
   
-  .image-frame img {
-    height: 300px;
+  .image-frame img,
+  .image-frame video {
+    height: 250px;
   }
 }
 
@@ -951,8 +961,9 @@ section {
     padding: 1.5rem;
   }
   
-  .image-frame img {
-    height: 250px;
+  .image-frame img,
+  .image-frame video {
+    height: 200px;
   }
 }
 
@@ -1342,7 +1353,9 @@ textarea.form-control {
 }
 
 .notification-box {
-  background: rgba(37, 211, 102, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(37, 211, 102, 0.2) 0%, 
+    rgba(214, 39, 59, 0.2) 100%);
   border: 1px solid rgba(37, 211, 102, 0.3);
   border-radius: 12px;
   padding: 20px;
@@ -1354,7 +1367,9 @@ textarea.form-control {
 
 .notification-icon {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
   font-size: 28px;
 }
 
@@ -1736,40 +1751,6 @@ textarea.form-control {
 }
 
 /* ============================================
-   IOS SPECIFIC FIXES
-============================================ */
-@supports (-webkit-touch-callout: none) {
-  /* iOS specific styles */
-  .hero-premium {
-    min-height: -webkit-fill-available;
-  }
-  
-  .btn, .menu-tab, .social-icon {
-    cursor: pointer;
-  }
-  
-  /* Fix for iOS form elements */
-  input, select, textarea {
-    font-size: 16px; /* Prevents iOS zoom on focus */
-  }
-}
-
-/* ============================================
-   ANDROID SPECIFIC FIXES
-============================================ */
-@media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px) {
-  /* Android specific styles */
-  .hero-video video {
-    object-fit: cover;
-  }
-  
-  /* Fix for Android touch feedback */
-  .btn:active, .menu-tab:active, .social-icon:active {
-    transform: scale(0.98);
-  }
-}
-
-/* ============================================
    LOADER RESPONSIVE
 ============================================ */
 @media (max-width: 768px) {
@@ -1809,7 +1790,8 @@ textarea.form-control {
     background: rgba(0, 0, 0, 0.7);
   }
   
-  .image-frame:hover img {
+  .image-frame:hover img,
+  .image-frame:hover video {
     transform: none;
   }
   
@@ -1820,14 +1802,35 @@ textarea.form-control {
 }
 
 /* ============================================
-   SAFARI SPECIFIC FIXES
+   IOS SPECIFIC FIXES
 ============================================ */
-@supports (-webkit-hyphens:none) {
-  .premium-navbar {
-    -webkit-backdrop-filter: blur(10px);
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific styles */
+  .hero-premium {
+    min-height: -webkit-fill-available;
   }
   
-  .btn-outline-premium {
-    -webkit-backdrop-filter: blur(10px);
+  .btn, .menu-tab, .social-icon {
+    cursor: pointer;
+  }
+  
+  /* Fix for iOS form elements */
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* ============================================
+   ANDROID SPECIFIC FIXES
+============================================ */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px) {
+  /* Android specific styles */
+  .hero-video video {
+    object-fit: cover;
+  }
+  
+  /* Fix for Android touch feedback */
+  .btn:active, .menu-tab:active, .social-icon:active {
+    transform: scale(0.98);
   }
 }
