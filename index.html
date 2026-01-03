@@ -3,819 +3,1493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'ARTISTA | Fine Italian Dining</title>
+    <title>L'ARTISTA | Fine Italian Dining Restaurant</title>
+    <meta name="description" content="Premium fine dining Italian restaurant experience at L'ARTISTA in Riga, Latvia">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1F3D2B">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #0a0a0a;
-            color: #f5f5f5;
-            overflow-x: hidden;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: rgba(10, 10, 10, 0.95);
-            padding: 1.5rem 2rem;
-            position: fixed;
+        /* Logo fallback style */
+        .logo-fallback {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1F3D2B, #D6273B);
+            color: white;
+            font-family: "Playfair Display", serif;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-radius: 50%;
             width: 100%;
+            height: 100%;
+            font-size: 0.8em;
+        }
+        
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #333;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-img {
-            height: 50px;
-            width: auto;
-            animation: bounce 3s infinite ease-in-out;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .header-text {
-            font-size: 1.8rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-            color: #d4af37;
-            margin-left: 15px;
-        }
-        
-        .header-logo {
-            height: 50px;
-            width: auto;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 2rem;
-        }
-        
-        nav ul li a {
-            color: #f5f5f5;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            letter-spacing: 1px;
+            animation: pulse 2s infinite;
         }
         
-        nav ul li a:hover {
-            color: #d4af37;
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
         }
         
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: #f5f5f5;
-            font-size: 1.5rem;
-            cursor: pointer;
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 2rem;
-        }
-        
-        .hero-logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-logo {
-            height: 120px;
-            width: auto;
-            animation: bounce 3s infinite ease-in-out;
-            margin-bottom: 0.5rem;
-        }
-        
-        .restaurant-name {
-            font-size: 4.5rem;
-            letter-spacing: 8px;
-            color: #ffffff;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-            margin-top: 0.5rem;
-        }
-        
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            color: #d4af37;
-        }
-        
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .feature {
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .feature i {
-            color: #d4af37;
-            margin-right: 0.5rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-        
-        .btn-primary {
-            background-color: #d4af37;
-            color: #0a0a0a;
-        }
-        
-        .btn-primary:hover {
-            background-color: #b8941f;
-            transform: translateY(-3px);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: #f5f5f5;
-            border: 2px solid #d4af37;
-        }
-        
-        .btn-secondary:hover {
-            background-color: rgba(212, 175, 55, 0.1);
-            transform: translateY(-3px);
-        }
-        
-        /* About Section */
-        .section {
-            padding: 6rem 2rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            letter-spacing: 3px;
-            color: #d4af37;
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 2px;
-            background-color: #d4af37;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #f5f5f5;
-        }
-        
-        .about-text p {
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: #cccccc;
-            font-size: 1.1rem;
-        }
-        
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .about-feature {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: rgba(212, 175, 55, 0.05);
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        
-        .about-feature:hover {
-            transform: translateY(-5px);
-        }
-        
-        .about-feature i {
-            font-size: 2.5rem;
-            color: #d4af37;
-            margin-bottom: 1rem;
-        }
-        
-        .about-feature h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .about-feature p {
-            font-size: 0.95rem;
-            color: #cccccc;
-        }
-        
-        /* Video Section */
-        .video-section {
-            padding: 4rem 2rem;
-            background-color: #111;
-        }
-        
-        .video-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .video-placeholder {
-            width: 100%;
-            height: 500px;
-            background-color: #222;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #d4af37;
-        }
-        
-        .video-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            padding: 6rem 2rem;
-            text-align: center;
-            background-color: #0f0f0f;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .contact-method {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            background-color: rgba(212, 175, 55, 0.05);
-            border-radius: 10px;
-            width: 280px;
-        }
-        
-        .contact-method i {
-            font-size: 2.5rem;
-            color: #d4af37;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-method h3 {
-            margin-bottom: 1rem;
-            color: #f5f5f5;
-        }
-        
-        .contact-method a {
-            color: #d4af37;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        .contact-method a:hover {
-            color: #f5f5f5;
-            text-decoration: underline;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #050505;
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid #333;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer-logo {
-            height: 60px;
-            width: auto;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-text {
-            color: #888;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .social-icons a {
-            color: #d4af37;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: #f5f5f5;
-        }
-        
-        .copyright {
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-        
-        /* Mobile Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .restaurant-name {
-                font-size: 3.5rem;
-            }
-            
-            .tagline {
-                font-size: 1.3rem;
-            }
-            
-            .about-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem 1.5rem;
-            }
-            
-            .header-text {
-                font-size: 1.5rem;
-            }
-            
-            .header-logo {
-                height: 40px;
-            }
-            
-            nav ul {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                padding: 0 1rem;
-                height: auto;
-                padding-top: 120px;
-                padding-bottom: 80px;
-            }
-            
-            .restaurant-name {
-                font-size: 2.8rem;
-                letter-spacing: 5px;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .features {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-            
-            .section {
-                padding: 4rem 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .video-placeholder {
-                height: 300px;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .restaurant-name {
-                font-size: 2.2rem;
-                letter-spacing: 3px;
-            }
-            
-            .hero-logo {
-                height: 80px;
-            }
-            
-            .tagline {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100vh;
-            background-color: #0a0a0a;
-            z-index: 2000;
-            transition: right 0.3s ease;
-            padding: 2rem;
-            border-left: 1px solid #333;
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .mobile-menu-logo {
-            height: 40px;
-            width: auto;
-        }
-        
-        .close-menu-btn {
-            background: none;
-            border: none;
-            color: #f5f5f5;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .mobile-nav ul {
-            list-style: none;
-        }
-        
-        .mobile-nav ul li {
-            margin-bottom: 1.5rem;
-        }
-        
-        .mobile-nav ul li a {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        
-        .mobile-nav ul li a:hover {
-            color: #d4af37;
-        }
-        
-        .menu-overlay {
+        /* Premium Loading Animation */
+        .loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1500;
-            display: none;
+            background: linear-gradient(135deg, #1F3D2B 0%, #2D5A42 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
         
-        .menu-overlay.active {
-            display: block;
+        .loader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: white;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+        
+        .loader-spinner {
+            width: 70px;
+            height: 70px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #D6273B;
+            border-radius: 50%;
+            animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Premium Overlay Effect */
+        .premium-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(31, 61, 43, 0.4) 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                rgba(214, 39, 59, 0.4) 100%);
+            pointer-events: none;
+        }
+        
+        /* Dish Photos in Menu */
+        .dish-photo {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Menu tab active state */
+        .menu-tab.active {
+            background: linear-gradient(135deg, #D6273B, #b81e30);
+            color: white !important;
+        }
+        
+        /* Fix for social icons */
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: #D6273B;
+        }
+        
+        .social-icon.facebook:hover {
+            background: #1877F2;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #FFDC80);
+        }
+        
+        .social-icon.tripadvisor:hover {
+            background: #34E0A1;
+        }
+        
+        .social-icon.whatsapp:hover {
+            background: #25D366;
+        }
+        
+        /* FIXES FOR ALL ISSUES */
+        
+        /* 1. Logo positioning fix */
+        .premium-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0 !important; /* Remove gap between logo and text */
+        }
+        
+        .premium-hero-logo {
+            margin-bottom: 0.5rem !important; /* Reduced space below logo */
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .premium-logo-text {
+            margin-top: 0 !important; /* Remove top margin */
+        }
+        
+        .premium-title {
+            margin-bottom: 1rem !important; /* Reduced margin */
+        }
+        
+        /* 2. Mobile image improvements */
+        @media (max-width: 768px) {
+            .premium-about-grid {
+                gap: 30px !important;
+            }
+            
+            .premium-content {
+                order: 2;
+            }
+            
+            .premium-about-image {
+                order: 1;
+            }
+            
+            .image-frame img,
+            .image-frame video {
+                height: 250px !important;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px;
+            }
+            
+            .gallery-item img {
+                height: 180px !important;
+            }
+            
+            /* Header logo/text swap for mobile */
+            .nav-container .logo {
+                flex-direction: row-reverse;
+                gap: 10px;
+            }
+            
+            .nav-logo {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            
+            .logo-main {
+                font-size: 18px !important;
+            }
+            
+            .logo-sub {
+                font-size: 9px !important;
+            }
+            
+            .dish-photo {
+                height: 150px;
+            }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .image-frame img,
+            .image-frame video {
+                height: 200px !important;
+            }
+            
+            .premium-intro {
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+            }
+            
+            .premium-description {
+                font-size: 14px !important;
+            }
+        }
+        
+        /* 3. Video styling in about section */
+        .image-frame video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        /* 4. Header logo/text positioning */
+        .nav-container .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-text {
+            text-align: left;
+        }
+        
+        @media (min-width: 769px) {
+            .nav-logo {
+                order: 2;
+            }
+            
+            .logo-text {
+                order: 1;
+            }
+        }
+        
+        /* 5. Email notification fix */
+        .notification-box {
+            background: linear-gradient(135deg, 
+                rgba(37, 211, 102, 0.2) 0%, 
+                rgba(214, 39, 59, 0.2) 100%);
+        }
+        
+        .notification-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Additional fixes */
+        .touch-active {
+            transform: scale(0.98) !important;
+            transition: transform 0.1s ease !important;
+        }
+        
+        /* Responsive notification */
+        @media (max-width: 768px) {
+            .notification {
+                top: 80px;
+                right: 10px;
+                left: 10px;
+                max-width: calc(100% - 20px);
+            }
+        }
+        
+        /* Fix for iOS tap highlights */
+        * {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        
+        /* Fix for iOS form elements */
+        input, select, textarea {
+            font-size: 16px !important;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo-container">
-            <!-- Restaurant name as logo in header -->
-            <h1 class="header-text">L'ARTISTA</h1>
-        </div>
-        
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- Premium Loader -->
+    <div class="loader">
+        <div class="loader-logo">L'ARTISTA</div>
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Experience Italian Excellence</div>
+    </div>
+
+    <!-- Italian Flag Stripe -->
+    <div class="italian-flag-stripe top"></div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/37125722769?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Premium Navigation - UPDATED: Text first, then logo -->
+    <nav class="navbar premium-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <!-- Text first -->
+                <div class="logo-text">
+                    <span class="logo-main">L'ARTISTA</span>
+                    <span class="logo-sub">Fine Italian Dining</span>
+                </div>
+                <!-- Logo after text -->
+                <div class="custom-logo nav-logo">
+                    <img src="images/lartista-logo.png" 
+                         alt="L'ARTISTA Fine Dining Restaurant Logo"
+                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA</div></div>';">
+                </div>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link premium-nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link premium-nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link premium-nav-link">Gallery</a></li>
+                <li><a href="#menu" class="nav-link premium-nav-link">Menu</a></li>
+                <li><a href="#reservation" class="nav-link premium-nav-link">Reservation</a></li>
+                <li><a href="#contact" class="nav-link premium-nav-link">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-    
-    <!-- Mobile Menu -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
+        </div>
+    </nav>
+
+    <!-- Premium Mobile Menu -->
+    <div class="mobile-menu premium-mobile-menu">
         <div class="mobile-menu-header">
-            <!-- Logo in mobile menu -->
-            <img src="https://i.imgur.com/placeholder.png" alt="L'ARTISTA Logo" class="mobile-menu-logo">
-            <button class="close-menu-btn" id="closeMenuBtn">
+            <div class="mobile-logo">L'ARTISTA</div>
+            <button class="mobile-menu-close">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="#home" id="mobileHomeLink">Home</a></li>
-                <li><a href="#about" id="mobileAboutLink">About</a></li>
-                <li><a href="#experience" id="mobileExperienceLink">Experience</a></li>
-                <li><a href="#contact" id="mobileContactLink">Contact</a></li>
-            </ul>
-        </nav>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#menu" class="nav-link">Menu</a></li>
+            <li><a href="#reservation" class="nav-link">Reservation</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <a href="#reservation" class="btn btn-premium">RESERVE TABLE</a>
+        </div>
     </div>
-    
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-logo-container">
-            <!-- Bouncing logo above restaurant name -->
-            <img src="https://i.imgur.com/placeholder.png" alt="L'ARTISTA Logo" class="hero-logo">
-            <h1 class="restaurant-name">FINE ITALIAN DINING</h1>
+
+    <!-- Premium Hero Section - FIXED Logo Positioning -->
+    <section id="home" class="hero hero-premium">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                <source src="https://cdn.coverr.co/videos/coverr-making-pasta-close-up-1333/1080p.mp4" type="video/mp4">
+            </video>
         </div>
         
-        <h2 class="tagline">Where Culinary Art Meets Italian Excellence</h2>
+        <div class="premium-overlay"></div>
         
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-star"></i>
-                <span>Michelin-star inspired cuisine</span>
+        <div class="hero-content premium-hero-content">
+            <div class="logo-container premium-logo-container">
+                <!-- Logo with reduced bottom margin -->
+                <div class="custom-logo hero-logo premium-hero-logo" style="margin-bottom: 0.5rem;">
+                    <img src="images/lartista-logo.png" 
+                         alt="L'ARTISTA Fine Dining Restaurant"
+                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA<br><span style=\"font-size:0.7em\">FINE DINING</span></div></div>';">
+                </div>
+                <!-- Text with no top margin -->
+                <div class="logo-text premium-logo-text" style="margin-top: 0;">
+                    <h1 class="premium-title">
+                        <span class="title-line-1">L'ARTISTA</span>
+                        <span class="title-line-2">Fine Dining Restaurant</span>
+                    </h1>
+                    <div class="subtitle premium-subtitle">
+                        Where Culinary Art Meets Italian Excellence
+                    </div>
+                    <p class="hero-tagline premium-tagline">
+                        Michelin-star inspired cuisine ∙ Curated wine selection ∙ Unforgettable dining experience
+                    </p>
+                </div>
             </div>
-            <div class="feature">
-                <i class="fas fa-wine-glass-alt"></i>
-                <span>Curated wine selection</span>
-            </div>
-            <div class="feature">
-                <i class="fas fa-heart"></i>
-                <span>Unforgettable dining experience</span>
+            
+            <div class="hero-buttons premium-hero-buttons">
+                <a href="#reservation" class="btn btn-premium btn-large">
+                    <i class="fas fa-calendar-check"></i> RESERVE EXPERIENCE
+                </a>
+                <a href="#menu" class="btn btn-outline-premium btn-large">
+                    <i class="fas fa-book-open"></i> EXPLORE MENU
+                </a>
             </div>
         </div>
         
-        <div class="cta-buttons">
-            <button class="btn btn-primary" onclick="location.href='https://wa.me/1234567890?text=I would like to make a reservation'">
-                RESERVE EXPERIENCE
-            </button>
-            <button class="btn btn-secondary" onclick="location.href='#experience'">
-                EXPLORE MENU
-            </button>
+        <div class="scroll-indicator premium-scroll-indicator">
+            <div class="scroll-text">Discover Excellence</div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </section>
-    
-    <!-- About Section -->
-    <section class="section" id="about">
-        <h2 class="section-title">About L'ARTISTA</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Excellence in Italian Fine Dining</h3>
-                <p>L'ARTISTA transcends ordinary dining to deliver an unforgettable culinary journey. Our philosophy is simple: every dish is a masterpiece, every ingredient tells a story, every moment creates a memory.</p>
-                <p>Under the guidance of Executive Chef Marco Rossi, our team crafts Michelin-star inspired cuisine using only the finest ingredients sourced directly from Italy. From the sun-drenched tomatoes of Sicily to the exquisite truffles of Alba, each element is carefully selected to honor traditional Italian culinary artistry while embracing modern innovation.</p>
+
+    <!-- Premium About Section - UPDATED with Video -->
+    <section id="about" class="container fade-in premium-section">
+        <div class="section-header premium-section-header">
+            <h2 class="premium-h2">About L'ARTISTA</h2>
+            <div class="subtitle premium-subtitle">Excellence in Italian Fine Dining</div>
+            <div class="section-divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-utensils divider-icon"></i>
+                <span class="divider-line"></span>
+            </div>
+        </div>
+        
+        <div class="about-grid premium-about-grid">
+            <div class="section-content premium-content">
+                <p class="intro-text premium-intro">
+                    <span class="highlight-red">L'ARTISTA</span> transcends ordinary dining to deliver an 
+                    <span class="highlight-green">unforgettable culinary journey</span>. Our philosophy is simple: 
+                    every dish is a masterpiece, every ingredient tells a story, every moment creates a memory.
+                </p>
+                <p class="premium-description">
+                    Under the guidance of Executive Chef Marco Rossi, our team crafts Michelin-star inspired 
+                    cuisine using only the finest ingredients sourced directly from Italy. From the sun-drenched 
+                    tomatoes of Sicily to the exquisite truffles of Alba, each element is carefully selected 
+                    to honor traditional Italian culinary artistry while embracing modern innovation.
+                </p>
                 
-                <div class="about-features">
-                    <div class="about-feature">
-                        <i class="fas fa-star"></i>
+                <div class="features-grid premium-features-grid">
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
                         <h4>Michelin Inspired</h4>
                         <p>Fine dining excellence</p>
                     </div>
-                    <div class="about-feature">
-                        <i class="fas fa-seedling"></i>
+                    
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
                         <h4>Farm to Table</h4>
                         <p>Fresh seasonal ingredients</p>
                     </div>
-                    <div class="about-feature">
-                        <i class="fas fa-wine-bottle"></i>
+                    
+                    <div class="feature-card premium-feature-card">
+                        <div class="feature-icon premium-feature-icon">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
                         <h4>Sommelier Curated</h4>
                         <p>Premium wine pairings</p>
                     </div>
                 </div>
             </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1081&q=80" alt="Italian Cuisine" style="width:100%; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+            
+            <div class="about-image premium-about-image">
+                <div class="image-frame">
+                    <!-- Replaced image with video -->
+                    <video autoplay muted loop playsinline>
+                        <source src="https://cdn.coverr.co/videos/coverr-restaurant-table-setting-3999/1080p.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="image-caption">Experience Our Ambiance</div>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Video Section -->
-    <section class="video-section" id="experience">
-        <h2 class="section-title">Experience L'ARTISTA</h2>
-        <div class="video-container">
-            <!-- Video placeholder - replace with actual video -->
-            <div class="video-placeholder">
-                <i class="fas fa-play-circle"></i>
-                <h3>Our Elegant Dining Room</h3>
-                <p>Video showcasing the L'ARTISTA dining experience</p>
-                <p><small>Replace this with your uploaded video</small></p>
-            </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container fade-in">
+        <div class="section-header">
+            <h2>Gallery</h2>
+            <div class="subtitle">A Taste of Italy</div>
         </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <h2 class="section-title">Make a Reservation</h2>
-        <p style="max-width:600px; margin:0 auto 2rem; color:#cccccc; font-size:1.1rem; line-height:1.6;">Experience the artistry of Italian fine dining. Reserve your table today through WhatsApp or email.</p>
         
-        <div class="contact-info">
-            <div class="contact-method">
-                <i class="fab fa-whatsapp"></i>
-                <h3>WhatsApp Reservation</h3>
-                <a href="https://wa.me/1234567890?text=I would like to make a reservation at L'ARTISTA" target="_blank">+1 (234) 567-890</a>
-                <p style="margin-top:10px; font-size:0.9rem; color:#aaa;">Click to start your reservation</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Pizza Margherita">
+                <div class="gallery-caption">Pizza Margherita</div>
             </div>
             
-            <div class="contact-method">
-                <i class="fas fa-envelope"></i>
-                <h3>Email Reservation</h3>
-                <!-- Fixed email link -->
-                <a href="mailto:bollasanjay05@gmail.com?subject=L'ARTISTA Reservation&body=Hello, I would like to make a reservation at L'ARTISTA. Please provide available dates and times.">bollasanjay05@gmail.com</a>
-                <p style="margin-top:10px; font-size:0.9rem; color:#aaa;">Click to send an email</p>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Fresh Pasta">
+                <div class="gallery-caption">Fresh Pasta</div>
             </div>
             
-            <div class="contact-method">
-                <i class="fas fa-phone"></i>
-                <h3>Phone Reservation</h3>
-                <a href="tel:+1234567890">+1 (234) 567-891</a>
-                <p style="margin-top:10px; font-size:0.9rem; color:#aaa;">Mon-Sun: 10AM - 10PM</p>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Antipasti">
+                <div class="gallery-caption">Antipasti</div>
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <!-- Logo in footer -->
-            <img src="https://i.imgur.com/placeholder.png" alt="L'ARTISTA Logo" class="footer-logo">
-            <p class="footer-text">L'ARTISTA Fine Dining Restaurant - Where culinary artistry meets Italian excellence. Experience unforgettable moments with every dish.</p>
+
+    <!-- Menu Section with Photos -->
+    <section id="menu" class="container fade-in menu-section">
+        <div class="section-header">
+            <h2>Our Menu</h2>
+            <div class="subtitle">Italian Classics & Innovations</div>
+        </div>
+        
+        <div class="menu-tabs">
+            <button class="menu-tab active" data-tab="starters">Starters</button>
+            <button class="menu-tab" data-tab="pastas">Pastas</button>
+            <button class="menu-tab" data-tab="mains">Main Courses</button>
+            <button class="menu-tab" data-tab="pizza">Pizza</button>
+            <button class="menu-tab" data-tab="desserts">Desserts</button>
+        </div>
+        
+        <!-- Starters Menu -->
+        <div class="menu-category active" id="starters">
+            <h3><i class="fas fa-seedling"></i> Starters</h3>
             
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-tripadvisor"></i></a>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Creamy Burrata" class="dish-photo">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Creamy Burrata</h4>
+                        <span class="price">€24</span>
+                    </div>
+                    <p class="menu-desc">Fresh burrata cheese served with cherry tomatoes, grilled asparagus, and fresh basil</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Burrata cheese, cherry tomatoes, asparagus, fresh basil, extra virgin olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.8</div>
+                </div>
             </div>
             
-            <div class="copyright">
-                &copy; 2023 L'ARTISTA Fine Italian Dining. All rights reserved.
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Vitello Tonnato</h4>
+                        <span class="price">€28</span>
+                    </div>
+                    <p class="menu-desc">Sliced veal with creamy tuna sauce and toasted pine nuts</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Veal, tuna, mayonnaise, capers, pine nuts, lemon
+                    </div>
+                    <div class="allergy-info">Allergy: 1.4.7.8</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pastas Menu -->
+        <div class="menu-category" id="pastas">
+            <h3><i class="fas fa-pasta"></i> Pastas</h3>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Spaghetti Carbonara" class="dish-photo">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Spaghetti Carbonara</h4>
+                        <span class="price">€26</span>
+                    </div>
+                    <p class="menu-desc">Classic Roman pasta with guanciale and Pecorino Romano</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Spaghetti, guanciale, eggs, Pecorino Romano, black pepper
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Courses Menu -->
+        <div class="menu-category" id="mains">
+            <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Parmigiana di Melanzane" class="dish-photo">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Parmigiana di Melanzane</h4>
+                        <span class="price">€28</span>
+                    </div>
+                    <p class="menu-desc">Eggplant Parmesan with basil pesto</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Eggplant, tomato sauce, mozzarella, Parmesan, basil pesto
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.8.9</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pizza Menu -->
+        <div class="menu-category" id="pizza">
+            <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Pizza Margherita" class="dish-photo">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pizza Margherita</h4>
+                        <span class="price">€18</span>
+                    </div>
+                    <p class="menu-desc">Classic Neapolitan pizza with tomato and mozzarella</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> San Marzano tomatoes, mozzarella di bufala, fresh basil, extra virgin olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desserts Menu -->
+        <div class="menu-category" id="desserts">
+            <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Tiramisu" class="dish-photo">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Tiramisu</h4>
+                        <span class="price">€14</span>
+                    </div>
+                    <p class="menu-desc">Classic Italian dessert with mascarpone and espresso</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Mascarpone, espresso, ladyfingers, eggs, sugar, cocoa powder
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7.8</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Limoncello Cheesecake</h4>
+                        <span class="price">€16</span>
+                    </div>
+                    <p class="menu-desc">Creamy cheesecake with Italian meringue</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Cream cheese, limoncello, Italian meringue, biscuit base
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Affogato</h4>
+                        <span class="price">€12</span>
+                    </div>
+                    <p class="menu-desc">Vanilla gelato with hot espresso</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Vanilla gelato, espresso, optional amaretto
+                    </div>
+                    <div class="allergy-info">Allergy: 7</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section - FIXED Email -->
+    <section id="reservation" class="container fade-in reservation-section">
+        <div class="section-header">
+            <h2>Make a Reservation</h2>
+            <div class="subtitle">Book Your Table</div>
+        </div>
+        
+        <div class="reservation-form">
+            <form id="reservationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="+371 25 722 769" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date *</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time *</label>
+                        <select id="time" class="form-control" required>
+                            <option value="">Select time</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                            <option value="22:00">22:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Guests *</label>
+                        <select id="guests" class="form-control" required>
+                            <option value="">Select guests</option>
+                            <option value="1-2">1-2 Guests</option>
+                            <option value="3-4">3-4 Guests</option>
+                            <option value="5-6">5-6 Guests</option>
+                            <option value="7+">7+ Guests</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" class="form-control" placeholder="Any special requests or dietary requirements..." rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address (Optional)</label>
+                    <input type="email" id="email" class="form-control" placeholder="your.email@example.com">
+                </div>
+                
+                <div class="notification-box">
+                    <div class="notification-icon">
+                        <i class="fab fa-whatsapp"></i>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Instant Dual Confirmation</h4>
+                        <p>Your reservation will be sent to both WhatsApp and Email simultaneously</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-red btn-block">
+                    <i class="fab fa-whatsapp"></i> <i class="fas fa-envelope"></i> SEND RESERVATION
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container fade-in">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <div class="subtitle">Visit or Get in Touch</div>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Address</h3>
+                    <p>Vaļņu iela 25</p>
+                    <p>Riga, LV-1050</p>
+                    <p>Latvia</p>
+                    <p class="contact-note">Valet parking available</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone & WhatsApp</h3>
+                    <a href="tel:+37125722769">+371 25 722 769</a>
+                    <a href="https://wa.me/37125722769" class="whatsapp-link">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:bollasanjay05@gmail.com">bollasanjay05@gmail.com</a>
+                    <p>For reservations and inquiries</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Hours</h3>
+                    <p><strong>Mon-Fri:</strong> 5PM - 11PM</p>
+                    <p><strong>Sat-Sun:</strong> 12PM - 11PM</p>
+                    <p class="contact-note">Reservations recommended</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.8640557843444!2d24.105156315951567!3d56.94996488088995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfb8f0898f3f%3A0x8b9b5b5b5b5b5b5b!2sVa%C4%BC%C5%86u%20iela%2025%2C%20Centra%20rajons%2C%20R%C4%ABga%2C%20LV-1050%2C%20Latvia!5e0!3m2!1sen!2slv!4v1645541234567!5m2!1sen!2slv" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lartista-logo.png" 
+                             alt="L'ARTISTA Logo"
+                             onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\" style=\"font-size:0.9em\">L\'ARTISTA</div>';">
+                    </div>
+                    <h3>L'ARTISTA</h3>
+                    <p class="footer-subtitle">Fine Italian Dining Restaurant</p>
+                    <p>Experience the art of Italian fine dining in the heart of Riga.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#menu">Menu</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#reservation">Reservation</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon tripadvisor">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                        <a href="https://wa.me/37125722769" class="social-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-info-footer">
+                        <p><i class="fas fa-phone"></i> +371 25 722 769</p>
+                        <p><i class="fas fa-envelope"></i> bollasanjay05@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Visit Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Vaļņu iela 25</p>
+                    <p>Riga, LV-1050</p>
+                    <p>Latvia</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> L'ARTISTA Fine Italian Dining Restaurant. All rights reserved.</p>
+                <p class="footer-note">
+                    Celebrating Italian culinary art in the heart of Riga
+                </p>
             </div>
         </div>
     </footer>
-    
+
+    <!-- Italian Flag Stripe Bottom -->
+    <div class="italian-flag-stripe bottom"></div>
+
+    <!-- JavaScript -->
     <script>
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        // ============================================
+        // L'ARTISTA FINE DINING - OPTIMIZED
+        // ============================================
+
+        // DOM Elements
+        const loader = document.querySelector('.loader');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.premium-mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const reservationForm = document.getElementById('reservationForm');
+        const currentYear = document.getElementById('currentYear');
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuCategories = document.querySelectorAll('.menu-category');
+
+        // Restaurant Configuration
+        const RESTAURANT_CONFIG = {
+            whatsappNumber: '37125722769',
+            restaurantEmail: 'bollasanjay05@gmail.com',
+            restaurantName: "L'ARTISTA Fine Dining Restaurant",
+            restaurantAddress: "Vaļņu iela 25, Riga, LV-1050, Latvia",
+            phoneNumber: "+371 25 722 769"
+        };
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('L\'ARTISTA Restaurant Website Initialized');
+            
+            // Hide loader
+            setTimeout(() => {
+                if (loader) {
+                    loader.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }, 1500);
+
+            // Set current year in footer
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+
+            // Initialize mobile menu
+            initMobileMenu();
+
+            // Initialize menu tabs
+            initMenuTabs();
+
+            // Initialize reservation form
+            initReservationForm();
+
+            // Initialize animations
+            initScrollAnimations();
+
+            // Handle scroll events
+            window.addEventListener('scroll', handleScroll);
+
+            // Add touch event listeners for mobile
+            initTouchEvents();
         });
-        
-        closeMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-        
-        menuOverlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-        
-        // Close mobile menu when clicking on a link
-        const mobileLinks = document.querySelectorAll('.mobile-nav a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
+
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        function initMobileMenu() {
+            if (!menuToggle || !mobileMenu || !mobileMenuClose) return;
+
+            // Toggle mobile menu
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            // Close mobile menu
+            mobileMenuClose.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
                 mobileMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+
+            // Close menu when clicking links
+            document.querySelectorAll('.premium-mobile-menu .nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        }
+
+        // ============================================
+        // MENU TABS
+        // ============================================
+        function initMenuTabs() {
+            if (!menuTabs.length || !menuCategories.length) return;
+
+            menuTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    menuTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show corresponding category
+                    menuCategories.forEach(category => {
+                        category.classList.remove('active');
+                        if (category.id === tabId) {
+                            setTimeout(() => {
+                                category.classList.add('active');
+                            }, 50);
+                        }
+                    });
+                });
+            });
+        }
+
+        // ============================================
+        // RESERVATION SYSTEM - WHATSAPP & EMAIL SIMULTANEOUSLY
+        // ============================================
+        function initReservationForm() {
+            if (!reservationForm) return;
+
+            // Set minimum date to today
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                
+                // Set default date to tomorrow
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+            }
+
+            // Form submission
+            reservationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    date: document.getElementById('date').value,
+                    time: document.getElementById('time').value,
+                    guests: document.getElementById('guests').value,
+                    message: document.getElementById('message').value.trim()
+                };
+
+                // Validate form
+                const validation = validateReservationForm(formData);
+                if (!validation.isValid) {
+                    showNotification(validation.message, 'error');
+                    return;
+                }
+
+                // Show loading state
+                const submitBtn = reservationForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Send to WhatsApp AND Email simultaneously
+                    const whatsappSent = sendToWhatsApp(formData);
+                    const emailSent = sendToEmail(formData);
+
+                    if (whatsappSent || emailSent) {
+                        showNotification('Reservation sent to WhatsApp and Email! We\'ll confirm shortly.', 'success');
+                        
+                        // Reset form after delay
+                        setTimeout(() => {
+                            reservationForm.reset();
+                            if (dateInput) {
+                                const tomorrow = new Date();
+                                tomorrow.setDate(tomorrow.getDate() + 1);
+                                dateInput.value = tomorrow.toISOString().split('T')[0];
+                            }
+                        }, 2000);
+                    } else {
+                        showNotification('Please try sending again.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Reservation error:', error);
+                    showNotification('Error sending reservation. Please try again.', 'error');
+                } finally {
+                    // Restore button state
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
                 }
             });
+        }
+
+        // Form validation
+        function validateReservationForm(data) {
+            // Required fields
+            const requiredFields = ['name', 'phone', 'date', 'time', 'guests'];
+            for (const field of requiredFields) {
+                if (!data[field]) {
+                    return {
+                        isValid: false,
+                        message: `Please fill in ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`
+                    };
+                }
+            }
+
+            // Phone validation
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            const cleanedPhone = data.phone.replace(/\D/g, '');
+            if (!phoneRegex.test(cleanedPhone)) {
+                return {
+                    isValid: false,
+                    message: 'Please enter a valid phone number'
+                };
+            }
+
+            // Email validation (optional but if provided, validate)
+            if (data.email && !isValidEmail(data.email)) {
+                return {
+                    isValid: false,
+                    message: 'Please enter a valid email address'
+                };
+            }
+
+            // Date validation
+            const selectedDate = new Date(data.date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                return {
+                    isValid: false,
+                    message: 'Please select a future date'
+                };
+            }
+
+            return { isValid: true, message: 'Valid' };
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Send to WhatsApp
+        function sendToWhatsApp(formData) {
+            // Format date
+            const formattedDate = new Date(formData.date).toLocaleDateString('en-GB', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create WhatsApp message
+            const message = `*NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                           `*Guest Information*%0A` +
+                           `Name: ${formData.name}%0A` +
+                           `Phone: ${formData.phone}%0A` +
+                           `Email: ${formData.email || 'Not provided'}%0A%0A` +
+                           `*Reservation Details*%0A` +
+                           `Date: ${formattedDate}%0A` +
+                           `Time: ${formData.time}%0A` +
+                           `Guests: ${formData.guests}%0A` +
+                           `Special Requests: ${formData.message || 'None'}%0A%0A` +
+                           `*Restaurant Info*%0A` +
+                           `${RESTAURANT_CONFIG.restaurantName}%0A` +
+                           `${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                           `Phone: ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                           `_Sent via website reservation system_`;
+
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${message}`;
+
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+            
+            return true;
+        }
+
+        // Send to Email - FIXED VERSION
+        function sendToEmail(formData) {
+            // Format date
+            const formattedDate = new Date(formData.date).toLocaleDateString('en-GB', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create email subject and body
+            const subject = `New Reservation: ${formData.name} - ${formattedDate} ${formData.time}`;
+            const body = `
+NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}
+
+GUEST INFORMATION:
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email || 'Not provided'}
+
+RESERVATION DETAILS:
+Date: ${formattedDate}
+Time: ${formData.time}
+Number of Guests: ${formData.guests}
+Special Requests: ${formData.message || 'None'}
+
+RESTAURANT INFO:
+${RESTAURANT_CONFIG.restaurantName}
+${RESTAURANT_CONFIG.restaurantAddress}
+Phone: ${RESTAURANT_CONFIG.phoneNumber}
+
+This reservation was submitted via the website reservation system.
+    `.trim();
+
+            // Create mailto link
+            const mailtoLink = `mailto:${RESTAURANT_CONFIG.restaurantEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            const emailWindow = window.open(mailtoLink, '_blank');
+            
+            // Fallback if popup blocked
+            if (!emailWindow) {
+                // Create hidden link and click it
+                const link = document.createElement('a');
+                link.href = mailtoLink;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            
+            return true;
+        }
+
+        // ============================================
+        // NOTIFICATION SYSTEM
+        // ============================================
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            
+            let icon = 'info-circle';
+            let iconColor = '#1F3D2B';
+            
+            switch (type) {
+                case 'success':
+                    icon = 'check-circle';
+                    iconColor = '#25d366';
+                    break;
+                case 'error':
+                    icon = 'exclamation-circle';
+                    iconColor = '#D6273B';
+                    break;
+                case 'warning':
+                    icon = 'exclamation-triangle';
+                    iconColor = '#f0ad4e';
+                    break;
+            }
+
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-${icon}"></i>
+                    <span>${message}</span>
+                </div>
+                <button class="notification-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            // Add styles
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                z-index: 9999;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                border-left: 4px solid ${iconColor};
+                max-width: 400px;
+            `;
+
+            notification.querySelector('.notification-content').style.cssText = `
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex: 1;
+            `;
+
+            notification.querySelector('.notification-content i').style.color = iconColor;
+
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.style.cssText = `
+                background: none;
+                border: none;
+                color: #666;
+                cursor: pointer;
+                font-size: 16px;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                transition: all 0.2s ease;
+            `;
+
+            // Add to page
+            document.body.appendChild(notification);
+
+            // Show notification
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+
+            // Auto remove after 5 seconds
+            const autoRemove = setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 5000);
+
+            // Close button
+            closeBtn.addEventListener('click', () => {
+                clearTimeout(autoRemove);
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            });
+        }
+
+        // ============================================
+        // SCROLL ANIMATIONS
+        // ============================================
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function handleScroll() {
+            const navbar = document.querySelector('.premium-navbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        }
+
+        // ============================================
+        // TOUCH EVENTS FOR MOBILE
+        // ============================================
+        function initTouchEvents() {
+            // Add touch support for menu items
+            document.querySelectorAll('.menu-item, .btn, .menu-tab, .social-icon').forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.classList.add('touch-active');
+                });
+                
+                item.addEventListener('touchend', function() {
+                    this.classList.remove('touch-active');
+                });
+            });
+        }
+
+        // ============================================
+        // PERFORMANCE OPTIMIZATION
+        // ============================================
+        // Lazy load images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                // Fallback for older browsers
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                });
+            }
+        });
+
+        // ============================================
+        // ERROR HANDLING
+        // ============================================
+        window.addEventListener('error', function(e) {
+            console.error('Website error:', e.error);
         });
     </script>
 </body>
