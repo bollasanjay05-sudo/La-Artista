@@ -131,6 +131,29 @@ section {
   font-weight: 600;
 }
 
+/* Logo Fallback */
+.logo-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1F3D2B, #D6273B);
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
+}
+
+.hero-fallback {
+  font-size: 1.2em;
+  padding: 30px;
+}
+
 /* ============================================
    BUTTONS
 ============================================ */
@@ -235,6 +258,116 @@ section {
   .btn-large {
     padding: 12px 24px;
   }
+}
+
+/* ============================================
+   LOADER
+============================================ */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1F3D2B 0%, #2D5A42 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: white;
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+}
+
+.loader-spinner {
+  width: 70px;
+  height: 70px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #D6273B;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   WHATSAPP FLOAT BUTTON
+============================================ */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 28px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+  background-color: #128C7E;
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* ============================================
+   PREMIUM OVERLAY
+============================================ */
+.premium-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+      rgba(31, 61, 43, 0.4) 0%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      rgba(214, 39, 59, 0.4) 100%);
+  pointer-events: none;
 }
 
 /* ============================================
@@ -393,7 +526,7 @@ section {
   width: 100%;
   max-width: 300px;
   height: 100vh;
-  background: var(--ivory);
+  background: var(--green);
   padding: 100px 30px 30px;
   transition: var(--transition);
   z-index: 999;
@@ -410,20 +543,20 @@ section {
   align-items: center;
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(214, 39, 59, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-logo {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
-  color: var(--green);
+  color: white;
   font-weight: 600;
 }
 
 .mobile-menu-close {
   background: none;
   border: none;
-  color: var(--red);
+  color: white;
   font-size: 24px;
   cursor: pointer;
 }
@@ -438,12 +571,17 @@ section {
   font-size: 16px;
   padding: 10px 0;
   display: block;
+  color: white;
+}
+
+.premium-mobile-menu .nav-link:hover {
+  color: var(--red);
 }
 
 .mobile-menu-footer {
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(214, 39, 59, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu-footer .btn {
@@ -510,7 +648,7 @@ section {
 }
 
 /* ============================================
-   HERO SECTION - LOGO ABOVE NAME (FIXED)
+   HERO SECTION
 ============================================ */
 .hero-premium {
   min-height: 100vh;
@@ -1038,7 +1176,7 @@ section {
 }
 
 /* ============================================
-   MENU SECTION - FIXED TABS
+   MENU SECTION - COMPLETE
 ============================================ */
 .menu-section {
   background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
@@ -1193,6 +1331,11 @@ section {
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.dish-photo:hover {
+  transform: scale(1.02);
 }
 
 /* Menu Responsive */
@@ -1283,6 +1426,21 @@ section {
   .dish-photo {
     height: 150px;
   }
+}
+
+/* Scrollable menu tabs for mobile */
+.menu-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.menu-tabs::-webkit-scrollbar-track {
+  background: rgba(214, 39, 59, 0.1);
+  border-radius: 2px;
+}
+
+.menu-tabs::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border-radius: 2px;
 }
 
 /* ============================================
@@ -1547,7 +1705,66 @@ textarea.form-control {
 }
 
 /* ============================================
-   FOOTER - FIXED SOCIAL ICONS
+   SOCIAL ICONS
+============================================ */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+}
+
+.social-icon.facebook {
+  background: rgba(24, 119, 242, 0.2);
+}
+
+.social-icon.facebook:hover {
+  background: #1877F2;
+}
+
+.social-icon.instagram {
+  background: rgba(228, 64, 95, 0.2);
+}
+
+.social-icon.instagram:hover {
+  background: #E0405F;
+}
+
+.social-icon.tripadvisor {
+  background: rgba(52, 224, 161, 0.2);
+}
+
+.social-icon.tripadvisor:hover {
+  background: #34E0A1;
+}
+
+.social-icon.whatsapp {
+  background: rgba(37, 211, 102, 0.2);
+}
+
+.social-icon.whatsapp:hover {
+  background: #25D366;
+}
+
+/* ============================================
+   FOOTER
 ============================================ */
 .footer {
   background: linear-gradient(135deg, var(--green) 0%, #1a3426 100%);
@@ -1617,62 +1834,6 @@ textarea.form-control {
 .footer-column a:hover {
   color: white;
   padding-left: 5px;
-}
-
-.social-links {
-  display: flex;
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: translateY(-3px);
-}
-
-.social-icon.facebook {
-  background: rgba(24, 119, 242, 0.2);
-}
-
-.social-icon.facebook:hover {
-  background: #1877F2;
-}
-
-.social-icon.instagram {
-  background: rgba(228, 64, 95, 0.2);
-}
-
-.social-icon.instagram:hover {
-  background: #E0405F;
-}
-
-.social-icon.tripadvisor {
-  background: rgba(52, 224, 161, 0.2);
-}
-
-.social-icon.tripadvisor:hover {
-  background: #34E0A1;
-}
-
-.social-icon.whatsapp {
-  background: rgba(37, 211, 102, 0.2);
-}
-
-.social-icon.whatsapp:hover {
-  background: #25D366;
 }
 
 .contact-info-footer p {
@@ -1751,26 +1912,13 @@ textarea.form-control {
 }
 
 /* ============================================
-   LOADER RESPONSIVE
-============================================ */
-@media (max-width: 768px) {
-  .loader-logo {
-    font-size: 36px;
-  }
-  
-  .loader-spinner {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .loader-text {
-    font-size: 12px;
-  }
-}
-
-/* ============================================
    TOUCH OPTIMIZATIONS
 ============================================ */
+.touch-active {
+  transform: scale(0.98) !important;
+  transition: transform 0.1s ease !important;
+}
+
 @media (hover: none) and (pointer: coarse) {
   /* Touch devices */
   .menu-tab:hover, .social-icon:hover, .btn:hover {
@@ -1833,4 +1981,29 @@ textarea.form-control {
   .btn:active, .menu-tab:active, .social-icon:active {
     transform: scale(0.98);
   }
+}
+
+/* ============================================
+   LOADER RESPONSIVE
+============================================ */
+@media (max-width: 768px) {
+  .loader-logo {
+    font-size: 36px;
+  }
+  
+  .loader-spinner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .loader-text {
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   FIX FOR IOS TAP HIGHLIGHTS
+============================================ */
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
