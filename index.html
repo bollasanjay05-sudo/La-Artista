@@ -390,7 +390,7 @@
         }
 
         /* ============================================
-           NAVIGATION - FIXED
+           NAVIGATION - FIXED (UPDATED - THINNER)
         ============================================ */
         .premium-navbar {
           position: fixed;
@@ -400,7 +400,7 @@
           background: rgba(249, 247, 242, 0.95);
           backdrop-filter: blur(10px);
           z-index: 1000;
-          padding: 12px 0;
+          padding: 6px 0; /* Made thinner */
           border-bottom: 1px solid rgba(214, 39, 59, 0.1);
           transition: var(--transition);
         }
@@ -414,50 +414,52 @@
           padding: 0 20px;
         }
 
-        /* Logo - Bigger */
+        /* Logo - Bigger (UPDATED - REMOVED RED CIRCLE) */
         .logo {
           display: flex;
           align-items: center;
           gap: 15px;
           text-decoration: none;
+          flex-direction: row-reverse; /* Logo on right side */
         }
 
         .custom-logo {
-          border-radius: 50%;
+          border-radius: 0; /* Changed from 50% */
           overflow: hidden;
-          border: 2px solid var(--red);
-          padding: 4px;
-          background: white;
+          border: none; /* Removed red border */
+          padding: 0; /* Removed padding */
+          background: none; /* Removed background */
           transition: var(--transition);
         }
 
         .nav-logo {
-          width: 80px;
-          height: 80px;
+          width: 65px; /* Made slightly smaller */
+          height: 65px; /* Made slightly smaller */
         }
 
         .hero-logo {
           width: 200px;
           height: 200px;
-          border-width: 4px;
+          border: none; /* Removed red border */
           margin-bottom: 0;
         }
 
         .custom-logo img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain; /* Changed from cover to contain */
           display: block;
         }
 
         .logo-text {
           display: flex;
           flex-direction: column;
+          text-align: right; /* Text aligned right since logo is on right */
         }
 
         .logo-main {
           font-family: 'Playfair Display', serif;
-          font-size: 28px;
+          font-size: 22px; /* Made smaller */
           font-weight: 600;
           color: var(--green);
           letter-spacing: 1px;
@@ -465,20 +467,20 @@
         }
 
         .logo-sub {
-          font-size: 12px;
+          font-size: 10px; /* Made smaller */
           color: var(--red);
           letter-spacing: 2px;
           text-transform: uppercase;
           font-weight: 400;
-          margin-top: 4px;
+          margin-top: 2px; /* Reduced margin */
         }
 
-        /* Navigation Links - Smaller and Right Aligned */
+        /* Navigation Links - Smaller and Left Aligned */
         .nav-links {
           display: flex;
           list-style: none;
           gap: 30px;
-          margin-left: auto;
+          margin-right: auto; /* Pushed to left */
         }
 
         .nav-link {
@@ -500,7 +502,7 @@
           bottom: 0;
           left: 0;
           width: 0;
-          height: 2px;
+          height: 1px; /* Made thinner */
           background: var(--red);
           transition: var(--transition);
         }
@@ -635,16 +637,25 @@
           }
           
           .nav-logo {
-            width: 70px;
-            height: 70px;
+            width: 55px;
+            height: 55px;
           }
           
           .logo-main {
-            font-size: 24px;
+            font-size: 20px;
           }
           
           .logo-sub {
-            font-size: 10px;
+            font-size: 9px;
+          }
+          
+          /* Revert logo order on mobile */
+          .logo {
+            flex-direction: row; /* Original order on mobile */
+          }
+          
+          .logo-text {
+            text-align: left; /* Left align on mobile */
           }
         }
 
@@ -654,16 +665,16 @@
           }
           
           .nav-logo {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
           }
           
           .logo-main {
-            font-size: 20px;
+            font-size: 18px;
           }
           
           .logo-sub {
-            font-size: 9px;
+            font-size: 8px;
           }
         }
 
@@ -676,7 +687,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-top: 80px;
+          padding-top: 70px; /* Reduced for thinner header */
           overflow: hidden;
         }
 
@@ -829,7 +840,7 @@
         @media (max-width: 768px) {
           .hero-premium {
             min-height: 90vh;
-            padding-top: 70px;
+            padding-top: 60px;
           }
           
           .premium-title .title-line-1 {
@@ -1808,7 +1819,7 @@
         }
 
         /* ============================================
-           FOOTER
+           FOOTER (UPDATED - REMOVED RED BORDER)
         ============================================ */
         .footer {
           background: linear-gradient(135deg, var(--green) 0%, #1a3426 100%);
@@ -1846,14 +1857,14 @@
           height: 100px;
           border-radius: 50%;
           overflow: hidden;
-          border: 3px solid var(--red);
+          border: none; /* Removed red border */
           margin-bottom: 20px;
         }
 
         .footer-logo img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain; /* Changed from cover to contain */
           display: block;
         }
 
@@ -2141,26 +2152,7 @@
     <!-- Premium Navigation -->
     <nav class="navbar premium-navbar">
         <div class="nav-container">
-            <div class="logo">
-                <!-- Text first -->
-                <div class="logo-text">
-                    <span class="logo-main">L'ARTISTA</span>
-                    <span class="logo-sub">Fine Italian Dining</span>
-                </div>
-                <!-- Logo after text -->
-                <div class="custom-logo nav-logo">
-                    <img src="images/lartista-logo.png" 
-                         alt="L'ARTISTA Fine Dining Restaurant Logo"
-                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA</div></div>';">
-                </div>
-            </div>
-            
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
+            <!-- Navigation Links on Left -->
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link premium-nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link premium-nav-link">About</a></li>
@@ -2169,6 +2161,27 @@
                 <li><a href="#reservation" class="nav-link premium-nav-link">Reservation</a></li>
                 <li><a href="#contact" class="nav-link premium-nav-link">Contact</a></li>
             </ul>
+            
+            <!-- Logo on Right -->
+            <div class="logo">
+                <!-- Logo image -->
+                <div class="custom-logo nav-logo">
+                    <img src="images/lartista-logo.png" 
+                         alt="L'ARTISTA Fine Dining Restaurant Logo"
+                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback\"><div>L\'ARTISTA</div></div>';">
+                </div>
+                <!-- Text -->
+                <div class="logo-text">
+                    <span class="logo-main">L'ARTISTA</span>
+                    <span class="logo-sub">Fine Italian Dining</span>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -2207,13 +2220,13 @@
         
         <div class="hero-content premium-hero-content">
             <div class="logo-container premium-logo-container">
-                <!-- Logo with reduced bottom margin -->
+                <!-- Logo -->
                 <div class="custom-logo hero-logo premium-hero-logo">
                     <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Fine Dining Restaurant"
                          onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<div class=\"logo-fallback hero-fallback\"><div>L\'ARTISTA<br><span style=\"font-size:0.7em\">FINE DINING</span></div></div>';">
                 </div>
-                <!-- Text with no top margin -->
+                <!-- Text -->
                 <div class="logo-text premium-logo-text">
                     <h1 class="premium-title">
                         <span class="title-line-1">L'ARTISTA</span>
