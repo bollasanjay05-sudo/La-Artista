@@ -679,7 +679,7 @@
         }
 
         /* ============================================
-           HERO SECTION WITH YOUR IMAGE
+           HERO SECTION WITH YOUR CUSTOM IMAGE
         ============================================ */
         .hero-premium {
           min-height: 100vh;
@@ -980,7 +980,7 @@
         }
 
         /* ============================================
-           ABOUT SECTION WITH YOUR VIDEO
+           ABOUT SECTION WITH YOUR AMBIENCE VIDEO
         ============================================ */
         .premium-about-grid {
           display: grid;
@@ -1063,13 +1063,12 @@
           overflow: hidden;
           box-shadow: var(--shadow-lg);
           position: relative;
-          height: 400px;
         }
 
         .image-frame img,
         .image-frame video {
           width: 100%;
-          height: 100%;
+          height: 400px;
           object-fit: cover;
           transition: transform 0.6s ease;
         }
@@ -1091,6 +1090,28 @@
           text-align: center;
         }
 
+        /* Video Loading State */
+        .video-loading {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.7);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          z-index: 2;
+        }
+
+        .video-loading i {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          animation: spin 1s linear infinite;
+        }
+
         /* Responsive About */
         @media (max-width: 992px) {
           .premium-about-grid {
@@ -1107,7 +1128,8 @@
             order: 1;
           }
           
-          .image-frame {
+          .image-frame img,
+          .image-frame video {
             height: 300px;
           }
         }
@@ -1125,7 +1147,8 @@
             grid-template-columns: 1fr;
           }
           
-          .image-frame {
+          .image-frame img,
+          .image-frame video {
             height: 250px;
           }
         }
@@ -1135,7 +1158,8 @@
             padding: 1.5rem;
           }
           
-          .image-frame {
+          .image-frame img,
+          .image-frame video {
             height: 200px;
           }
         }
@@ -2020,11 +2044,6 @@
           input, select, textarea {
             font-size: 16px;
           }
-          
-          /* Fix for iOS video autoplay */
-          video {
-            -webkit-touch-callout: none;
-          }
         }
 
         /* ============================================
@@ -2183,12 +2202,35 @@
         </div>
     </nav>
 
-    <!-- Premium Hero Section with YOUR IMAGE -->
+    <!-- Premium Mobile Menu -->
+    <div class="mobile-menu premium-mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">L'ARTISTA</div>
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#menu" class="nav-link">Menu</a></li>
+            <li><a href="#reservation" class="nav-link">Reservation</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <a href="#reservation" class="btn btn-premium">RESERVE TABLE</a>
+        </div>
+    </div>
+
+    <!-- ============================================
+       HERO SECTION WITH YOUR CUSTOM IMAGE
+    ============================================ -->
     <section id="home" class="hero hero-premium">
         <div class="hero-image">
-            <!-- YOUR HERO IMAGE -->
-            <img src="images/hero-restaurant-image.jpg" 
-                 alt="L'ARTISTA Fine Dining Restaurant Interior"
+            <!-- YOUR CUSTOM HERO IMAGE -->
+            <img src="images/hero-restaurant.jpg" 
+                 alt="L'ARTISTA Restaurant Interior - Fine Dining Experience"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';">
         </div>
         
@@ -2235,7 +2277,9 @@
         </div>
     </section>
 
-    <!-- Premium About Section -->
+    <!-- ============================================
+       ABOUT SECTION WITH YOUR AMBIENCE VIDEO
+    ============================================ -->
     <section id="about" class="container fade-in premium-section">
         <div class="section-header premium-section-header">
             <h2 class="premium-h2">About L'ARTISTA</h2>
@@ -2290,12 +2334,28 @@
             
             <div class="about-image premium-about-image">
                 <div class="image-frame">
-                    <!-- YOUR AMBIANCE VIDEO -->
-                    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                    <!-- Video Loading State -->
+                    <div id="videoLoading" class="video-loading" style="display: none;">
+                        <i class="fas fa-spinner"></i>
+                        <p>Loading ambiance video...</p>
+                    </div>
+                    
+                    <!-- YOUR AMBIENCE VIDEO -->
+                    <video id="ambianceVideo" 
+                           autoplay 
+                           muted 
+                           loop 
+                           playsinline 
+                           style="width: 100%; height: 400px; object-fit: cover;"
+                           onloadeddata="videoLoaded()"
+                           onerror="videoError()">
+                        <!-- Your custom ambience video -->
                         <source src="videos/restaurant-ambiance.mp4" type="video/mp4">
-                        <!-- Fallback if video doesn't load -->
-                        <img src="images/ambiance-fallback.jpg" alt="Restaurant Ambiance" 
-                             style="width: 100%; height: 100%; object-fit: cover;">
+                        
+                        <!-- Fallback message -->
+                        <p style="color: white; padding: 20px; text-align: center;">
+                            Experience the elegant ambiance of L'ARTISTA
+                        </p>
                     </video>
                     <div class="image-caption">Experience Our Ambiance</div>
                 </div>
@@ -2312,26 +2372,20 @@
         
         <div class="gallery-grid">
             <div class="gallery-item">
-                <!-- YOUR GALLERY IMAGE 1 -->
-                <img src="images/gallery-pizza.jpg" 
-                     alt="Pizza Margherita"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Pizza Margherita">
                 <div class="gallery-caption">Pizza Margherita</div>
             </div>
             
             <div class="gallery-item">
-                <!-- YOUR GALLERY IMAGE 2 -->
-                <img src="images/gallery-pasta.jpg" 
-                     alt="Fresh Pasta"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Fresh Pasta">
                 <div class="gallery-caption">Fresh Pasta</div>
             </div>
             
             <div class="gallery-item">
-                <!-- YOUR GALLERY IMAGE 3 -->
-                <img src="images/gallery-antipasti.jpg" 
-                     alt="Antipasti"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
+                <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Antipasti">
                 <div class="gallery-caption">Antipasti</div>
             </div>
         </div>
@@ -2358,10 +2412,8 @@
             
             <!-- Creamy Burrata -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-burrata.jpg" 
-                     alt="Creamy Burrata" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Creamy Burrata" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Creamy Burrata</h4>
@@ -2377,10 +2429,8 @@
             
             <!-- Vitello Tonnato -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-vitello.jpg" 
-                     alt="Vitello Tonnato" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Vitello Tonnato" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Vitello Tonnato</h4>
@@ -2411,10 +2461,8 @@
             
             <!-- Caesar Salad -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-caesar.jpg" 
-                     alt="Caesar Salad" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Caesar Salad" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Caesar Salad</h4>
@@ -2445,10 +2493,8 @@
             
             <!-- Lemon Garlic Shrimps -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-shrimps.jpg" 
-                     alt="Lemon Garlic Shrimps" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Lemon Garlic Shrimps" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Lemon Garlic Shrimps</h4>
@@ -2524,10 +2570,8 @@
             
             <!-- Zuppa di Pesce -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-zuppa.jpg" 
-                     alt="Zuppa di Pesce" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Zuppa di Pesce" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Zuppa di Pesce</h4>
@@ -2548,10 +2592,8 @@
             
             <!-- Spaghetti Carbonara -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-carbonara.jpg" 
-                     alt="Spaghetti Carbonara" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Spaghetti Carbonara" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Spaghetti Carbonara</h4>
@@ -2582,10 +2624,8 @@
             
             <!-- Pasta al Pesto di Pistacchio -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-pesto.jpg" 
-                     alt="Pasta al Pesto di Pistacchio" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Pasta al Pesto di Pistacchio" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Pasta al Pesto di Pistacchio e Stracciatella</h4>
@@ -2616,10 +2656,8 @@
             
             <!-- Pasta Spaghetti Frutti di Mare -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-frutti.jpg" 
-                     alt="Pasta Frutti di Mare" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Pasta Frutti di Mare" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Pasta Spaghetti Frutti di Mare</h4>
@@ -2650,10 +2688,8 @@
             
             <!-- L'Artista Signature Pasta -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-signature.jpg" 
-                     alt="L'Artista Signature Pasta" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="L'Artista Signature Pasta" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>L'Artista Signature Pasta</h4>
@@ -2674,10 +2710,8 @@
             
             <!-- Parmigiana di Melanzane -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-parmigiana.jpg" 
-                     alt="Parmigiana di Melanzane" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Parmigiana di Melanzane" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Parmigiana di Melanzane</h4>
@@ -2708,10 +2742,8 @@
             
             <!-- Zucchini Risotto -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-risotto.jpg" 
-                     alt="Zucchini Risotto" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Zucchini Risotto" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Zucchini Risotto with Gamberi</h4>
@@ -2742,10 +2774,8 @@
             
             <!-- Seabass Fillet -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-seabass.jpg" 
-                     alt="Seabass Fillet" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Seabass Fillet" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Seabass Fillet</h4>
@@ -2776,10 +2806,8 @@
             
             <!-- Tagliata di Manzo -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-tagliata.jpg" 
-                     alt="Tagliata di Manzo" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Tagliata di Manzo" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Tagliata di Manzo</h4>
@@ -2800,10 +2828,8 @@
             
             <!-- Pizza Margherita -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-pizza-margherita.jpg" 
-                     alt="Pizza Margherita" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Pizza Margherita" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Pizza Margherita</h4>
@@ -2834,10 +2860,8 @@
             
             <!-- Quattro Formaggi -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-quattro.jpg" 
-                     alt="Quattro Formaggi" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Quattro Formaggi" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Quattro Formaggi</h4>
@@ -2868,10 +2892,8 @@
             
             <!-- Pizza Salamino -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-salamino.jpg" 
-                     alt="Pizza Salamino" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Pizza Salamino" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Pizza Salamino</h4>
@@ -2902,10 +2924,8 @@
             
             <!-- Prosciutto di Parma -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-prosciutto.jpg" 
-                     alt="Prosciutto di Parma" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Prosciutto di Parma" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Prosciutto di Parma</h4>
@@ -2926,10 +2946,8 @@
             
             <!-- Tiramisu -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-tiramisu.jpg" 
-                     alt="Tiramisu" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Tiramisu" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Tiramisu</h4>
@@ -2945,10 +2963,8 @@
             
             <!-- Limoncello Cheesecake -->
             <div class="menu-item">
-                <!-- YOUR DISH IMAGE -->
-                <img src="images/dish-cheesecake.jpg" 
-                     alt="Limoncello Cheesecake" class="dish-photo"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                     alt="Limoncello Cheesecake" class="dish-photo">
                 <div class="menu-item-content">
                     <div class="menu-item-header">
                         <h4>Limoncello Cheesecake</h4>
@@ -3200,6 +3216,8 @@
         const currentYear = document.getElementById('currentYear');
         const menuTabs = document.querySelectorAll('.menu-tab');
         const menuCategories = document.querySelectorAll('.menu-category');
+        const ambianceVideo = document.getElementById('ambianceVideo');
+        const videoLoading = document.getElementById('videoLoading');
 
         // Restaurant Configuration
         const RESTAURANT_CONFIG = {
@@ -3230,7 +3248,62 @@
             
             // Setup PWA features
             setupPWA();
+            
+            // Initialize video loading
+            initVideoLoading();
         });
+
+        // ============================================
+        // VIDEO LOADING HANDLERS
+        // ============================================
+        function initVideoLoading() {
+            if (ambianceVideo && videoLoading) {
+                // Show loading state initially
+                videoLoading.style.display = 'flex';
+                
+                // Check if video can play
+                ambianceVideo.addEventListener('canplay', function() {
+                    videoLoaded();
+                });
+                
+                ambianceVideo.addEventListener('error', function() {
+                    videoError();
+                });
+                
+                // Fallback: hide loading after 5 seconds
+                setTimeout(function() {
+                    if (videoLoading.style.display !== 'none') {
+                        videoLoading.style.display = 'none';
+                    }
+                }, 5000);
+            }
+        }
+
+        function videoLoaded() {
+            if (videoLoading) {
+                videoLoading.style.display = 'none';
+                console.log('✅ Ambiance video loaded successfully');
+            }
+        }
+
+        function videoError() {
+            if (videoLoading) {
+                videoLoading.style.display = 'none';
+                console.warn('❌ Ambiance video failed to load');
+                
+                // Optional: Show fallback image
+                if (ambianceVideo) {
+                    const fallbackImage = document.createElement('img');
+                    fallbackImage.src = 'images/ambiance-fallback.jpg';
+                    fallbackImage.alt = 'Restaurant Ambiance';
+                    fallbackImage.style.width = '100%';
+                    fallbackImage.style.height = '400px';
+                    fallbackImage.style.objectFit = 'cover';
+                    fallbackImage.style.borderRadius = '12px';
+                    ambianceVideo.parentNode.replaceChild(fallbackImage, ambianceVideo);
+                }
+            }
+        }
 
         // ============================================
         // INITIALIZE ALL COMPONENTS
@@ -3260,7 +3333,6 @@
             initReservationForm();
             initScrollAnimations();
             initImageLazyLoading();
-            initVideoOptimization();
             initFormValidation();
 
             // Handle scroll events
@@ -4025,7 +4097,6 @@ ${RESTAURANT_CONFIG.restaurantName}
         // ============================================
         function initImageLazyLoading() {
             const lazyImages = document.querySelectorAll('img[data-src]');
-            const lazyVideos = document.querySelectorAll('video[data-src]');
             
             if (!('IntersectionObserver' in window)) {
                 // Fallback for older browsers
@@ -4050,22 +4121,8 @@ ${RESTAURANT_CONFIG.restaurantName}
                 threshold: 0.1
             });
             
-            const videoObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const video = entry.target;
-                        loadVideo(video);
-                        observer.unobserve(video);
-                    }
-                });
-            }, {
-                rootMargin: '200px 0px',
-                threshold: 0.1
-            });
-            
             // Observe all lazy elements
             lazyImages.forEach(img => imageObserver.observe(img));
-            lazyVideos.forEach(video => videoObserver.observe(video));
         }
 
         function loadImage(img) {
@@ -4088,51 +4145,6 @@ ${RESTAURANT_CONFIG.restaurantName}
                 console.warn('Failed to load image:', src);
                 img.classList.add('load-error');
             };
-        }
-
-        function loadVideo(video) {
-            const src = video.getAttribute('data-src');
-            if (!src) return;
-            
-            const source = video.querySelector('source');
-            if (source) {
-                source.src = src;
-                video.load();
-                video.removeAttribute('data-src');
-            }
-        }
-
-        // ============================================
-        // VIDEO OPTIMIZATION
-        // ============================================
-        function initVideoOptimization() {
-            const videos = document.querySelectorAll('video');
-            
-            videos.forEach(video => {
-                // Add loading attribute for better performance
-                video.setAttribute('loading', 'lazy');
-                
-                // Handle video play/pause on visibility
-                if ('IntersectionObserver' in window) {
-                    const videoObserver = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                // Video is in view, try to play
-                                video.play().catch(e => {
-                                    console.log('Video autoplay prevented:', e);
-                                });
-                            } else {
-                                // Video is out of view, pause to save resources
-                                video.pause();
-                            }
-                        });
-                    }, {
-                        threshold: 0.5
-                    });
-                    
-                    videoObserver.observe(video);
-                }
-            });
         }
 
         // ============================================
@@ -4201,4 +4213,32 @@ ${RESTAURANT_CONFIG.restaurantName}
                 let errorElement = field.nextElementSibling;
                 if (!errorElement || !errorElement.classList.contains('error-message')) {
                     errorElement = document.createElement('div');
-                    errorElement.className
+                    errorElement.className = 'error-message';
+                    field.parentNode.insertBefore(errorElement, field.nextSibling);
+                }
+                
+                errorElement.textContent = errorMessage;
+                errorElement.style.cssText = `
+                    color: #D6273B;
+                    font-size: 12px;
+                    margin-top: 4px;
+                    animation: fadeIn 0.3s ease;
+                `;
+            } else {
+                field.classList.remove('invalid');
+                const errorElement = field.nextElementSibling;
+                if (errorElement && errorElement.classList.contains('error-message')) {
+                    errorElement.remove();
+                }
+            }
+            
+            return isValid;
+        }
+
+        // ============================================
+        // SCROLL ANIMATIONS - ENHANCED
+        // ============================================
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0
