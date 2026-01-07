@@ -132,6 +132,12 @@ function initMenuTabs() {
             
             // Show selected category
             showMenuCategory(categoryId);
+            
+            // Scroll menu section to top when switching tabs
+            const menuSection = document.querySelector('.menu-section');
+            if (menuSection) {
+                menuSection.scrollTop = 0;
+            }
         });
     });
 }
