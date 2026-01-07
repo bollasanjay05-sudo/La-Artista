@@ -4,11 +4,12 @@
 
 // Restaurant Configuration - UPDATED WITH YOUR INFO
 const RESTAURANT_CONFIG = {
-    whatsappNumber: '919136558275', // Your WhatsApp number
-    restaurantEmail: 'bollasanjay05@gmail.com', // Your email
+    whatsappNumber: '919136558275',
+    restaurantEmail: 'bollasanjay05@gmail.com',
     restaurantName: "L'ARTISTA Fine Italian Dining",
-    restaurantAddress: "Fine Dining District, City, Country",
-    phoneNumber: "+91 91365 58275"
+    restaurantAddress: "Elizabetes iela 123, Centra rajons, Rīga, LV-1010, Latvia",
+    phoneNumber: "+91 91365 58275",
+    adminEmail: "bollasanjay05@gmail.com"
 };
 
 // Initialize when DOM is loaded
@@ -41,6 +42,9 @@ function initComponents() {
     
     // Setup form validation
     setupFormValidation();
+    
+    // Initialize video fallback
+    initVideoFallback();
 }
 
 // ============================================
@@ -59,6 +63,30 @@ function hideLoader() {
                     pageLoader.style.display = 'none';
                 }, 800);
             }, 1000);
+        });
+    }
+}
+
+// ============================================
+// VIDEO FALLBACK HANDLER
+// ============================================
+function initVideoFallback() {
+    const video = document.querySelector('.ambiance-video');
+    if (video) {
+        video.addEventListener('error', function() {
+            // Show placeholder if video fails to load
+            const placeholder = document.createElement('div');
+            placeholder.className = 'video-placeholder';
+            placeholder.innerHTML = `
+                <i class="fas fa-play-circle"></i>
+                <p>Experience the L'ARTISTA Ambiance</p>
+                <small>Video loading...</small>
+            `;
+            
+            // Replace video with placeholder
+            const parent = video.parentElement;
+            parent.innerHTML = '';
+            parent.appendChild(placeholder);
         });
     }
 }
@@ -102,9 +130,11 @@ function initNavigation() {
     if (navbar) {
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
+                navbar.style.background = 'rgba(249, 247, 242, 0.98)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
             } else {
-                navbar.classList.remove('scrolled');
+                navbar.style.background = 'rgba(249, 247, 242, 0.95)';
+                navbar.style.boxShadow = 'none';
             }
             
             // Update active nav link
@@ -114,13 +144,22 @@ function initNavigation() {
 }
 
 // ============================================
-// MENU TABS
+// MENU TABS - UPDATED FOR NEW STRUCTURE
 // ============================================
 function initMenuTabs() {
     const menuTabs = document.querySelectorAll('.menu-tab');
     const menuCategories = document.querySelectorAll('.menu-category');
 
     if (!menuTabs.length || !menuCategories.length) return;
+
+    // Set first tab as active
+    if (menuTabs.length > 0) {
+        menuTabs[0].classList.add('active');
+    }
+    
+    if (menuCategories.length > 0) {
+        menuCategories[0].classList.add('active');
+    }
 
     menuTabs.forEach(tab => {
         tab.addEventListener('click', function() {
@@ -132,6 +171,12 @@ function initMenuTabs() {
             
             // Show selected category
             showMenuCategory(categoryId);
+            
+            // Scroll menu section to top when switching tabs
+            const menuSection = document.querySelector('.menu-section');
+            if (menuSection) {
+                menuSection.scrollTop = 0;
+            }
         });
     });
 }
@@ -152,7 +197,7 @@ function showMenuCategory(categoryId) {
 }
 
 // ============================================
-// RESERVATION FORM - UPDATED FOR WHATSAPP + EMAIL
+// RESERVATION FORM - UPDATED FOR DUAL NOTIFICATION
 // ============================================
 function initReservationForm() {
     const bookingForm = document.getElementById('bookingForm');
@@ -161,13 +206,15 @@ function initReservationForm() {
     // Set minimum date to today
     const dateInput = document.getElementById('date');
     if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.min = today;
+        const today = new Date();
+        const todayFormatted = today.toISOString().split('T')[0];
+        dateInput.min = todayFormatted;
         
         // Set default date to tomorrow
-        const tomorrow = new Date();
+        const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
-        dateInput.value = tomorrow.toISOString().split('T')[0];
+        const tomorrowFormatted = tomorrow.toISOString().split('T')[0];
+        dateInput.value = tomorrowFormatted;
     }
 
     // Form submission
@@ -186,29 +233,20 @@ function initReservationForm() {
         };
 
         // Validate form
-        if (!formData.name || !formData.phone || !formData.guests || !formData.date || !formData.time) {
-            showNotification('Please fill in all required fields', 'error');
-            return;
-        }
-
-        // Validate phone number
-        if (!isValidPhoneNumber(formData.phone)) {
-            showNotification('Please enter a valid phone number', 'error');
+        if (!validateReservationForm(formData)) {
+            showNotification('Please fill in all required fields correctly', 'error');
             return;
         }
 
         // Show loading state
         const submitBtn = bookingForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
         submitBtn.disabled = true;
 
         try {
-            // Send reservation to both WhatsApp and Email
+            // Send reservation
             await sendReservation(formData);
-            
-            // Show success message
-            showNotification('Reservation sent successfully to WhatsApp and Email!', 'success');
             
             // Reset form
             bookingForm.reset();
@@ -230,11 +268,26 @@ function initReservationForm() {
     });
 }
 
-function isValidPhoneNumber(phone) {
-    // Remove all non-digit characters
-    const cleaned = phone.replace(/\D/g, '');
-    // Check if it's between 8-15 digits
-    return cleaned.length >= 8 && cleaned.length <= 15;
+function validateReservationForm(formData) {
+    // Required fields validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.guests || !formData.date || !formData.time) {
+        return false;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+        return false;
+    }
+    
+    // Phone validation (Indian format)
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const cleanedPhone = formData.phone.replace(/\D/g, '');
+    if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 10) {
+        return false;
+    }
+    
+    return true;
 }
 
 async function sendReservation(formData) {
@@ -246,53 +299,75 @@ async function sendReservation(formData) {
         day: 'numeric'
     });
 
-    // Create WhatsApp message
+    // 1. Create WhatsApp message for customer
     const whatsappMessage = `*🎭 NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
                            `*📋 Guest Information*%0A` +
                            `👤 Name: ${formData.name}%0A` +
                            `📞 Phone: ${formData.phone}%0A` +
-                           `📧 Email: ${formData.email || 'Not provided'}%0A%0A` +
+                           `📧 Email: ${formData.email}%0A%0A` +
                            `*📅 Reservation Details*%0A` +
                            `📅 Date: ${formattedDate}%0A` +
                            `⏰ Time: ${formData.time}%0A` +
                            `👥 Guests: ${formData.guests}%0A` +
                            `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
-                           `_Sent via website reservation system_`;
+                           `📍 ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                           `📞 ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                           `_Thank you for choosing L'ARTISTA!_`;
 
-    // Create Email message
-    const emailSubject = `New Reservation - ${formData.name}`;
-    const emailBody = `
-NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}
+    // 2. Create WhatsApp message for admin
+    const adminWhatsappMessage = `*🚨 NEW RESERVATION ALERT - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                                `*📋 Guest Information*%0A` +
+                                `👤 Name: ${formData.name}%0A` +
+                                `📞 Phone: ${formData.phone}%0A` +
+                                `📧 Email: ${formData.email}%0A%0A` +
+                                `*📅 Reservation Details*%0A` +
+                                `📅 Date: ${formattedDate}%0A` +
+                                `⏰ Time: ${formData.time}%0A` +
+                                `👥 Guests: ${formData.guests}%0A` +
+                                `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
+                                `_Sent via website reservation system_`;
 
-GUEST INFORMATION:
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email || 'Not provided'}
+    // 3. Create email subject and body
+    const emailSubject = `New Reservation - ${formData.name} - ${formattedDate}`;
+    const emailBody = `New Reservation Details:\n\n` +
+                     `Guest Information:\n` +
+                     `Name: ${formData.name}\n` +
+                     `Phone: ${formData.phone}\n` +
+                     `Email: ${formData.email}\n\n` +
+                     `Reservation Details:\n` +
+                     `Date: ${formattedDate}\n` +
+                     `Time: ${formData.time}\n` +
+                     `Guests: ${formData.guests}\n` +
+                     `Special Requests: ${formData.specialRequests || 'None'}\n\n` +
+                     `Restaurant Information:\n` +
+                     `${RESTAURANT_CONFIG.restaurantName}\n` +
+                     `${RESTAURANT_CONFIG.restaurantAddress}\n` +
+                     `Phone: ${RESTAURANT_CONFIG.phoneNumber}\n\n` +
+                     `Sent via L'ARTISTA website reservation system`;
 
-RESERVATION DETAILS:
-Date: ${formattedDate}
-Time: ${formData.time}
-Guests: ${formData.guests}
-Special Requests: ${formData.specialRequests || 'None'}
-
-Sent via website reservation system
-    `.trim();
-
-    // Create WhatsApp URL
-    const whatsappURL = `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
-    
-    // Create Email URL
+    // Create URLs
+    const customerWhatsappURL = `https://wa.me/${formData.phone.replace(/\D/g, '')}?text=${whatsappMessage}`;
+    const adminWhatsappURL = `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${adminWhatsappMessage}`;
     const emailURL = `mailto:${RESTAURANT_CONFIG.restaurantEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
-    // Open both WhatsApp and Email in new tabs
-    window.open(whatsappURL, '_blank');
+    // Show success notification
+    showNotification('Reservation sent! Opening WhatsApp for confirmation...', 'success');
     
-    // Small delay before opening email
+    // Open customer WhatsApp after delay
     setTimeout(() => {
-        window.open(emailURL, '_blank');
-    }, 500);
-    
-    return Promise.resolve();
+        // Open customer WhatsApp
+        window.open(customerWhatsappURL, '_blank');
+        
+        // Open admin WhatsApp after a short delay
+        setTimeout(() => {
+            window.open(adminWhatsappURL, '_blank');
+            
+            // Open email after another short delay
+            setTimeout(() => {
+                window.open(emailURL, '_blank');
+            }, 500);
+        }, 1000);
+    }, 1500);
 }
 
 // ============================================
@@ -377,18 +452,24 @@ function updateActiveNavLink() {
     const navLinks = document.querySelectorAll('.nav-link');
     const scrollPos = window.scrollY + 100;
     
+    let currentSection = '';
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
         
         if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
+            currentSection = sectionId;
+        }
+    });
+    
+    // Update nav links
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href').replace('#', '');
+        if (href === currentSection) {
+            link.classList.add('active');
         }
     });
 }
@@ -409,13 +490,16 @@ function initSmoothScrolling() {
                 // Update active nav link
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
+                    if (link.getAttribute('href') === targetId) {
+                        link.classList.add('active');
+                    }
                 });
-                this.classList.add('active');
                 
                 // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
+                    document.getElementById('mobileMenuToggle').classList.remove('active');
                     document.body.style.overflow = 'auto';
                 }
                 
@@ -448,10 +532,6 @@ function setupFormValidation() {
             input.addEventListener('input', () => {
                 if (input.classList.contains('invalid')) {
                     input.classList.remove('invalid');
-                    const errorMsg = input.nextElementSibling;
-                    if (errorMsg && errorMsg.classList.contains('error-message')) {
-                        errorMsg.remove();
-                    }
                 }
             });
         });
@@ -460,12 +540,10 @@ function setupFormValidation() {
 
 function validateField(field) {
     let isValid = true;
-    let errorMessage = '';
     
     // Required field validation
     if (field.hasAttribute('required') && !field.value.trim()) {
         isValid = false;
-        errorMessage = 'This field is required';
     }
     
     // Email validation
@@ -473,7 +551,6 @@ function validateField(field) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(field.value)) {
             isValid = false;
-            errorMessage = 'Please enter a valid email address';
         }
     }
     
@@ -481,36 +558,16 @@ function validateField(field) {
     if (field.type === 'tel' && field.value.trim()) {
         const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
         const cleanedPhone = field.value.replace(/\D/g, '');
-        if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 8) {
+        if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 10) {
             isValid = false;
-            errorMessage = 'Please enter a valid phone number';
         }
     }
     
     // Update field state
     if (!isValid) {
         field.classList.add('invalid');
-        
-        // Remove existing error message
-        const existingError = field.nextElementSibling;
-        if (existingError && existingError.classList.contains('error-message')) {
-            existingError.remove();
-        }
-        
-        // Add error message
-        const errorMsg = document.createElement('div');
-        errorMsg.className = 'error-message';
-        errorMsg.style.color = '#D6273B';
-        errorMsg.style.fontSize = '12px';
-        errorMsg.style.marginTop = '5px';
-        errorMsg.textContent = errorMessage;
-        field.parentNode.insertBefore(errorMsg, field.nextSibling);
     } else {
         field.classList.remove('invalid');
-        const errorMsg = field.nextElementSibling;
-        if (errorMsg && errorMsg.classList.contains('error-message')) {
-            errorMsg.remove();
-        }
     }
     
     return isValid;
