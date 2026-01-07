@@ -305,7 +305,7 @@ section {
 }
 
 .custom-logo {
-  border-radius: -5;
+  border-radius: -10;
   overflow: hidden;
   border: none;
   padding: 0;
