@@ -1,115 +1,103 @@
 // ============================================
-// L'ARTISTA - SERVICE WORKER
+// L'ARTISTA SERVICE WORKER
 // ============================================
 
 const CACHE_NAME = 'lartista-v3';
-const OFFLINE_URL = '/offline.html';
-
-// Assets to cache
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/style.css',
-    '/script.js',
-    '/manifest.json',
-    // Logo
-    'lartista-logo.png',
-    // Video
-    'videos/restaurant-ambiance.mp4',
-    // Fallback images
-    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-    'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80',
-    // Menu images
-    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-    // Fonts
-    'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js',
+  '/manifest.json',
+  'lartista-logo.png',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+  'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap',
+  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
 ];
 
 // Install event
 self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache);
-            })
-            .then(() => self.skipWaiting())
-    );
+  console.log('Service Worker: Installing...');
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Service Worker: Caching files');
+        return cache.addAll(urlsToCache);
+      })
+      .then(() => self.skipWaiting())
+  );
 });
 
 // Activate event
 self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        }).then(() => self.clients.claim())
-    );
+  console.log('Service Worker: Activating...');
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            console.log('Service Worker: Clearing old cache');
+            return caches.delete(cache);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
 });
 
 // Fetch event
 self.addEventListener('fetch', event => {
-    // Skip cross-origin requests
-    if (!event.request.url.startsWith(self.location.origin)) {
-        return;
-    }
-
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Return cached version
-                if (response) {
-                    return response;
+  console.log('Service Worker: Fetching', event.request.url);
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        // Return cached version or fetch new
+        return response || fetch(event.request)
+          .then(fetchResponse => {
+            // Check if we received a valid response
+            if(!fetchResponse || fetchResponse.status !== 200 || fetchResponse.type !== 'basic') {
+              return fetchResponse;
+            }
+            
+            // Clone the response
+            const responseToCache = fetchResponse.clone();
+            
+            // Add to cache
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+            
+            return fetchResponse;
+          })
+          .catch(error => {
+            // Network request failed
+            console.log('Service Worker: Fetch failed; returning offline page', error);
+            
+            // If requesting an image, return a placeholder
+            if (event.request.headers.get('accept').includes('image')) {
+              return new Response(
+                '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="#1F3D2B"/><text x="200" y="150" text-anchor="middle" fill="white" font-family="Arial" font-size="20">L\'ARTISTA</text></svg>',
+                {
+                  headers: { 'Content-Type': 'image/svg+xml' }
                 }
-
-                // Clone the request
-                const fetchRequest = event.request.clone();
-
-                return fetch(fetchRequest)
-                    .then(response => {
-                        // Check if valid response
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clone the response
-                        const responseToCache = response.clone();
-
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-
-                        return response;
-                    })
-                    .catch(() => {
-                        // If fetch fails and request is for HTML, return offline page
-                        if (event.request.headers.get('accept').includes('text/html')) {
-                            return caches.match('/');
-                        }
-                    });
-            })
-    );
+              );
+            }
+          });
+      })
+  );
 });
 
-// Background sync for offline form submissions
+// Background sync for form submissions
 self.addEventListener('sync', event => {
-    if (event.tag === 'reservation-sync') {
-        event.waitUntil(syncReservations());
-    }
+  if (event.tag === 'submit-reservation') {
+    console.log('Service Worker: Background sync for reservation');
+    event.waitUntil(syncReservations());
+  }
 });
 
 async function syncReservations() {
-    // This would sync any pending reservations when back online
-    console.log('Syncing reservations...');
+  // Get pending reservations from IndexedDB
+  // This is where you'd implement offline form submission
+  console.log('Syncing reservations...');
 }
