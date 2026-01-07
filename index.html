@@ -390,7 +390,7 @@
         }
 
         /* ============================================
-           NAVIGATION - FIXED WITH RED CIRCLE LOGO (FIX 1)
+           NAVIGATION - FIXED (UPDATED - THINNER)
         ============================================ */
         .premium-navbar {
           position: fixed;
@@ -400,15 +400,9 @@
           background: rgba(249, 247, 242, 0.95);
           backdrop-filter: blur(10px);
           z-index: 1000;
-          padding: 6px 0;
+          padding: 6px 0; /* Made thinner */
           border-bottom: 1px solid rgba(214, 39, 59, 0.1);
           transition: var(--transition);
-        }
-
-        .premium-navbar.scrolled {
-          background: rgba(249, 247, 242, 0.98);
-          backdrop-filter: blur(20px);
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .nav-container {
@@ -420,56 +414,52 @@
           padding: 0 20px;
         }
 
-        /* Logo - Bigger with RED CIRCLE BORDER (FIX 1) */
+        /* Logo - Bigger (UPDATED - REMOVED RED CIRCLE) */
         .logo {
           display: flex;
           align-items: center;
           gap: 15px;
           text-decoration: none;
-          flex-direction: row-reverse;
+          flex-direction: row-reverse; /* Logo on right side */
         }
 
         .custom-logo {
-          border-radius: 50%;
+          border-radius: 0; /* Changed from 50% */
           overflow: hidden;
-          border: 3px solid var(--red); /* RED CIRCLE BORDER ADDED */
-          padding: 3px;
-          background: white;
+          border: none; /* Removed red border */
+          padding: 0; /* Removed padding */
+          background: none; /* Removed background */
           transition: var(--transition);
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
 
         .nav-logo {
-          width: 65px;
-          height: 65px;
+          width: 65px; /* Made slightly smaller */
+          height: 65px; /* Made slightly smaller */
         }
 
         .hero-logo {
           width: 200px;
           height: 200px;
-          border-width: 4px;
+          border: none; /* Removed red border */
           margin-bottom: 0;
         }
 
         .custom-logo img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain; /* Changed from cover to contain */
           display: block;
-          border-radius: 50%;
         }
 
         .logo-text {
           display: flex;
           flex-direction: column;
-          text-align: right;
+          text-align: right; /* Text aligned right since logo is on right */
         }
 
         .logo-main {
           font-family: 'Playfair Display', serif;
-          font-size: 22px;
+          font-size: 22px; /* Made smaller */
           font-weight: 600;
           color: var(--green);
           letter-spacing: 1px;
@@ -477,20 +467,20 @@
         }
 
         .logo-sub {
-          font-size: 10px;
+          font-size: 10px; /* Made smaller */
           color: var(--red);
           letter-spacing: 2px;
           text-transform: uppercase;
           font-weight: 400;
-          margin-top: 2px;
+          margin-top: 2px; /* Reduced margin */
         }
 
-        /* Navigation Links */
+        /* Navigation Links - Smaller and Left Aligned */
         .nav-links {
           display: flex;
           list-style: none;
           gap: 30px;
-          margin-right: auto;
+          margin-right: auto; /* Pushed to left */
         }
 
         .nav-link {
@@ -512,7 +502,7 @@
           bottom: 0;
           left: 0;
           width: 0;
-          height: 1px;
+          height: 1px; /* Made thinner */
           background: var(--red);
           transition: var(--transition);
         }
@@ -523,16 +513,6 @@
 
         .nav-link:hover::after {
           width: 100%;
-        }
-
-        .nav-link.active {
-          color: var(--red);
-          font-weight: 600;
-        }
-
-        .nav-link.active::after {
-          width: 100%;
-          background: var(--red);
         }
 
         /* Mobile Menu Toggle */
@@ -669,12 +649,13 @@
             font-size: 9px;
           }
           
+          /* Revert logo order on mobile */
           .logo {
-            flex-direction: row;
+            flex-direction: row; /* Original order on mobile */
           }
           
           .logo-text {
-            text-align: left;
+            text-align: left; /* Left align on mobile */
           }
         }
 
@@ -698,7 +679,7 @@
         }
 
         /* ============================================
-           HERO SECTION WITH RED CIRCLE LOGO
+           HERO SECTION WITH YOUR IMAGE
         ============================================ */
         .hero-premium {
           min-height: 100vh;
@@ -706,11 +687,11 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-top: 70px;
+          padding-top: 70px; /* Reduced for thinner header */
           overflow: hidden;
         }
 
-        .hero-bg {
+        .hero-image {
           position: absolute;
           top: 0;
           left: 0;
@@ -719,7 +700,7 @@
           z-index: -2;
         }
 
-        .hero-bg img {
+        .hero-image img {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -727,7 +708,8 @@
           transition: filter 0.3s ease;
         }
 
-        .hero-bg img:hover {
+        /* Enhanced Image Styling */
+        .hero-image img:hover {
           filter: brightness(0.7);
         }
 
@@ -998,7 +980,7 @@
         }
 
         /* ============================================
-           ABOUT SECTION
+           ABOUT SECTION WITH YOUR VIDEO
         ============================================ */
         .premium-about-grid {
           display: grid;
@@ -1081,15 +1063,18 @@
           overflow: hidden;
           box-shadow: var(--shadow-lg);
           position: relative;
+          height: 400px;
         }
 
+        .image-frame img,
         .image-frame video {
           width: 100%;
-          height: 400px;
+          height: 100%;
           object-fit: cover;
           transition: transform 0.6s ease;
         }
 
+        .image-frame:hover img,
         .image-frame:hover video {
           transform: scale(1.05);
         }
@@ -1122,7 +1107,7 @@
             order: 1;
           }
           
-          .image-frame video {
+          .image-frame {
             height: 300px;
           }
         }
@@ -1140,7 +1125,7 @@
             grid-template-columns: 1fr;
           }
           
-          .image-frame video {
+          .image-frame {
             height: 250px;
           }
         }
@@ -1150,259 +1135,13 @@
             padding: 1.5rem;
           }
           
-          .image-frame video {
+          .image-frame {
             height: 200px;
           }
         }
 
         /* ============================================
-           MENU SECTION - COMPLETE WITH ALL ITEMS (FIX 2)
-        ============================================ */
-        .menu-section {
-          background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
-          border-radius: 20px;
-          padding: 60px 40px;
-          margin: 60px auto;
-        }
-
-        .menu-tabs {
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          margin-bottom: 40px;
-          flex-wrap: wrap;
-          overflow-x: auto;
-          padding-bottom: 10px;
-        }
-
-        .menu-tab {
-          padding: 12px 24px;
-          background: transparent;
-          border: 2px solid rgba(214, 39, 59, 0.2);
-          color: var(--text-dark);
-          border-radius: 25px;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 500;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          transition: var(--transition);
-          white-space: nowrap;
-        }
-
-        .menu-tab:hover {
-          border-color: var(--red);
-          color: var(--red);
-        }
-
-        .menu-tab.active {
-          background: linear-gradient(135deg, var(--red), #b81e30);
-          color: white !important;
-          border-color: var(--red);
-          box-shadow: 0 4px 15px rgba(214, 39, 59, 0.3);
-        }
-
-        .menu-category {
-          display: none;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .menu-category.active {
-          display: block;
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .menu-category h3 {
-          font-family: 'Playfair Display', serif;
-          font-size: 32px;
-          color: var(--green);
-          margin-bottom: 30px;
-          text-align: center;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-        }
-
-        .menu-category h3 i {
-          color: var(--red);
-          font-size: 28px;
-        }
-
-        .menu-items-container {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 25px;
-        }
-
-        .menu-item {
-          background: white;
-          padding: 25px;
-          border-radius: 12px;
-          box-shadow: var(--shadow);
-          transition: var(--transition);
-          border: 1px solid rgba(214, 39, 59, 0.1);
-          opacity: 0;
-          transform: translateY(10px);
-          animation: menuItemFadeIn 0.5s ease forwards;
-        }
-
-        @keyframes menuItemFadeIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .menu-item:nth-child(1) { animation-delay: 0.1s; }
-        .menu-item:nth-child(2) { animation-delay: 0.2s; }
-        .menu-item:nth-child(3) { animation-delay: 0.3s; }
-        .menu-item:nth-child(4) { animation-delay: 0.4s; }
-        .menu-item:nth-child(5) { animation-delay: 0.5s; }
-        .menu-item:nth-child(6) { animation-delay: 0.6s; }
-        .menu-item:nth-child(7) { animation-delay: 0.7s; }
-        .menu-item:nth-child(8) { animation-delay: 0.8s; }
-        .menu-item:nth-child(9) { animation-delay: 0.9s; }
-        .menu-item:nth-child(10) { animation-delay: 1s; }
-
-        .menu-item:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-          border-color: var(--red);
-        }
-
-        .menu-item-content {
-          flex: 1;
-        }
-
-        .menu-item-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 12px;
-          padding-bottom: 10px;
-          border-bottom: 1px solid rgba(214, 39, 59, 0.1);
-        }
-
-        .menu-item-header h4 {
-          font-family: 'Playfair Display', serif;
-          font-size: 20px;
-          color: var(--green);
-          font-weight: 500;
-          flex: 1;
-          margin-right: 15px;
-          line-height: 1.4;
-        }
-
-        .menu-item-header .allergy {
-          font-size: 12px;
-          color: var(--red);
-          font-weight: 600;
-          white-space: nowrap;
-          background: rgba(214, 39, 59, 0.1);
-          padding: 4px 8px;
-          border-radius: 4px;
-        }
-
-        .menu-desc {
-          color: var(--text-muted);
-          font-size: 15px;
-          line-height: 1.6;
-          margin-bottom: 8px;
-          font-style: italic;
-        }
-
-        .price {
-          font-size: 18px;
-          font-weight: 600;
-          color: var(--red);
-          white-space: nowrap;
-          margin-top: 8px;
-          text-align: right;
-        }
-
-        /* Menu Responsive */
-        @media (max-width: 992px) {
-          .menu-section {
-            padding: 40px 20px;
-            margin: 40px auto;
-          }
-          
-          .menu-category h3 {
-            font-size: 28px;
-          }
-          
-          .menu-items-container {
-            grid-template-columns: 1fr;
-          }
-          
-          .menu-item-header h4 {
-            font-size: 18px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .menu-tabs {
-            justify-content: flex-start;
-            padding-bottom: 15px;
-          }
-          
-          .menu-tab {
-            flex-shrink: 0;
-            padding: 10px 20px;
-            font-size: 13px;
-          }
-          
-          .menu-category h3 {
-            font-size: 24px;
-          }
-          
-          .menu-item {
-            padding: 20px;
-          }
-          
-          .menu-item-header h4 {
-            font-size: 16px;
-          }
-          
-          .menu-desc {
-            font-size: 14px;
-          }
-          
-          .price {
-            font-size: 16px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .menu-section {
-            padding: 30px 15px;
-            margin: 30px auto;
-          }
-          
-          .menu-item {
-            padding: 18px;
-          }
-          
-          .menu-category h3 {
-            font-size: 22px;
-          }
-          
-          .menu-item-header h4 {
-            font-size: 16px;
-          }
-          
-          .menu-tab {
-            padding: 8px 16px;
-            font-size: 12px;
-          }
-        }
-
-        /* ============================================
-           GALLERY SECTION
+           GALLERY
         ============================================ */
         .gallery-grid {
           display: grid;
@@ -1478,6 +1217,286 @@
         }
 
         /* ============================================
+           MENU SECTION - COMPLETE
+        ============================================ */
+        .menu-section {
+          background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
+          border-radius: 20px;
+          padding: 60px 40px;
+          margin: 60px auto;
+        }
+
+        .menu-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 40px;
+          flex-wrap: wrap;
+        }
+
+        .menu-tab {
+          padding: 12px 24px;
+          background: transparent;
+          border: 2px solid rgba(214, 39, 59, 0.2);
+          color: var(--text-dark);
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          transition: var(--transition);
+        }
+
+        .menu-tab:hover {
+          border-color: var(--red);
+          color: var(--red);
+        }
+
+        .menu-tab.active {
+          background: linear-gradient(135deg, var(--red), #b81e30);
+          color: white !important;
+          border-color: var(--red);
+          box-shadow: 0 4px 15px rgba(214, 39, 59, 0.3);
+        }
+
+        .menu-category {
+          display: none;
+          animation: fadeIn 0.6s ease;
+        }
+
+        .menu-category.active {
+          display: block;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-category h3 {
+          font-family: 'Playfair Display', serif;
+          font-size: 32px;
+          color: var(--green);
+          margin-bottom: 30px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+        }
+
+        .menu-category h3 i {
+          color: var(--red);
+          font-size: 28px;
+        }
+
+        .menu-item {
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          margin-bottom: 30px;
+          transition: var(--transition);
+          border: 1px solid rgba(214, 39, 59, 0.1);
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          gap: 25px;
+          align-items: start;
+        }
+
+        .menu-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+          border-color: var(--red);
+        }
+
+        .menu-item-content {
+          flex: 1;
+        }
+
+        .menu-item-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 12px;
+        }
+
+        .menu-item-header h4 {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          color: var(--green);
+          font-weight: 500;
+          flex: 1;
+          margin-right: 15px;
+        }
+
+        .price {
+          font-size: 24px;
+          font-weight: 600;
+          color: var(--red);
+          white-space: nowrap;
+        }
+
+        .menu-desc {
+          color: var(--text-muted);
+          font-size: 16px;
+          line-height: 1.6;
+          margin-bottom: 15px;
+        }
+
+        .ingredients {
+          color: var(--text-light);
+          font-size: 14px;
+          line-height: 1.5;
+          margin-bottom: 10px;
+          padding-top: 10px;
+          border-top: 1px solid rgba(214, 39, 59, 0.1);
+        }
+
+        .ingredients strong {
+          color: var(--green);
+          font-weight: 500;
+        }
+
+        .allergy-info {
+          font-size: 12px;
+          color: var(--text-light);
+          font-style: italic;
+          margin-top: 8px;
+        }
+
+        .dish-photo {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 10px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+          opacity: 0;
+          animation: fadeIn 0.5s ease forwards;
+        }
+
+        .dish-photo:hover {
+          transform: scale(1.02);
+        }
+
+        /* Lazy loading for images */
+        .dish-photo[data-src] {
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .dish-photo.loaded {
+          opacity: 1;
+        }
+
+        /* Menu Responsive */
+        @media (max-width: 992px) {
+          .menu-section {
+            padding: 40px 20px;
+            margin: 40px auto;
+          }
+          
+          .menu-category h3 {
+            font-size: 28px;
+          }
+          
+          .menu-item {
+            padding: 25px;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 20px;
+          }
+          
+          .price {
+            font-size: 22px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .menu-tabs {
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .menu-tab {
+            width: 100%;
+            text-align: center;
+          }
+          
+          .menu-item {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          
+          .dish-photo {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+          }
+          
+          .menu-category h3 {
+            font-size: 24px;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 18px;
+          }
+          
+          .price {
+            font-size: 20px;
+          }
+          
+          .menu-desc {
+            font-size: 15px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .menu-section {
+            padding: 30px 15px;
+            margin: 30px auto;
+          }
+          
+          .menu-item {
+            padding: 20px;
+          }
+          
+          .menu-category h3 {
+            font-size: 22px;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 18px;
+          }
+          
+          .price {
+            font-size: 20px;
+          }
+          
+          .dish-photo {
+            height: 150px;
+          }
+        }
+
+        /* Scrollable menu tabs for mobile */
+        .menu-tabs::-webkit-scrollbar {
+          height: 4px;
+        }
+
+        .menu-tabs::-webkit-scrollbar-track {
+          background: rgba(214, 39, 59, 0.1);
+          border-radius: 2px;
+        }
+
+        .menu-tabs::-webkit-scrollbar-thumb {
+          background: var(--red);
+          border-radius: 2px;
+        }
+
+        /* ============================================
            RESERVATION SECTION
         ============================================ */
         .reservation-section {
@@ -1539,17 +1558,6 @@
           background: rgba(255, 255, 255, 0.15);
         }
 
-        .form-control.invalid {
-          border-color: #D6273B !important;
-          animation: shake 0.5s ease;
-        }
-
-        @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          25% { transform: translateX(-5px); }
-          75% { transform: translateX(5px); }
-        }
-
         textarea.form-control {
           min-height: 120px;
           resize: vertical;
@@ -1596,61 +1604,6 @@
           margin: 0;
         }
 
-        .error-message {
-          color: #D6273B;
-          font-size: 12px;
-          margin-top: 4px;
-          animation: fadeIn 0.3s ease;
-        }
-
-        /* Progress Bar Styles */
-        .progress-bar {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 3px;
-          background: linear-gradient(90deg, #25d366, #D6273B);
-          width: 0%;
-          transition: width 2s ease-in-out;
-          border-radius: 0 0 4px 4px;
-        }
-
-        /* Notification Styles */
-        .notification {
-          position: fixed;
-          top: 100px;
-          right: 20px;
-          background: white;
-          padding: 15px 20px;
-          border-radius: 12px;
-          box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          z-index: 9999;
-          transform: translateX(400px);
-          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          border-left: 4px solid;
-          max-width: 400px;
-          opacity: 0;
-        }
-
-        .notification.success {
-          border-left-color: #25d366;
-        }
-
-        .notification.error {
-          border-left-color: #D6273B;
-        }
-
-        .notification.warning {
-          border-left-color: #f0ad4e;
-        }
-
-        .notification.info {
-          border-left-color: #1F3D2B;
-        }
-
         /* Reservation Responsive */
         @media (max-width: 768px) {
           .reservation-section {
@@ -1666,11 +1619,6 @@
             flex-direction: column;
             text-align: center;
             gap: 10px;
-          }
-          
-          .notification {
-            max-width: 90%;
-            right: 5%;
           }
         }
 
@@ -1869,7 +1817,7 @@
         }
 
         /* ============================================
-           FOOTER WITH RED CIRCLE LOGO
+           FOOTER (UPDATED - REMOVED RED BORDER)
         ============================================ */
         .footer {
           background: linear-gradient(135deg, var(--green) 0%, #1a3426 100%);
@@ -1907,18 +1855,15 @@
           height: 100px;
           border-radius: 50%;
           overflow: hidden;
-          border: 3px solid var(--red); /* RED CIRCLE BORDER ADDED */
-          padding: 3px;
-          background: white;
+          border: none; /* Removed red border */
           margin-bottom: 20px;
         }
 
         .footer-logo img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain; /* Changed from cover to contain */
           display: block;
-          border-radius: 50%;
         }
 
         .footer-subtitle {
@@ -2021,6 +1966,108 @@
         }
 
         /* ============================================
+           TOUCH OPTIMIZATIONS
+        ============================================ */
+        .touch-active {
+          transform: scale(0.98) !important;
+          transition: transform 0.1s ease !important;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+          /* Touch devices */
+          .menu-tab:hover, .social-icon:hover, .btn:hover {
+            transform: none;
+          }
+          
+          .menu-tab:active, .social-icon:active, .btn:active {
+            transform: scale(0.98);
+          }
+          
+          .gallery-item:hover {
+            transform: none;
+          }
+          
+          .gallery-caption {
+            transform: translateY(0);
+            background: rgba(0, 0, 0, 0.7);
+          }
+          
+          .image-frame:hover img,
+          .image-frame:hover video {
+            transform: none;
+          }
+          
+          .image-caption {
+            transform: translateY(0);
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+
+        /* ============================================
+           IOS SPECIFIC FIXES
+        ============================================ */
+        @supports (-webkit-touch-callout: none) {
+          /* iOS specific styles */
+          .hero-premium {
+            min-height: -webkit-fill-available;
+          }
+          
+          .btn, .menu-tab, .social-icon {
+            cursor: pointer;
+          }
+          
+          /* Fix for iOS form elements */
+          input, select, textarea {
+            font-size: 16px;
+          }
+          
+          /* Fix for iOS video autoplay */
+          video {
+            -webkit-touch-callout: none;
+          }
+        }
+
+        /* ============================================
+           ANDROID SPECIFIC FIXES
+        ============================================ */
+        @media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px) {
+          /* Android specific styles */
+          .hero-image img {
+            object-fit: cover;
+          }
+          
+          /* Fix for Android touch feedback */
+          .btn:active, .menu-tab:active, .social-icon:active {
+            transform: scale(0.98);
+          }
+        }
+
+        /* ============================================
+           LOADER RESPONSIVE
+        ============================================ */
+        @media (max-width: 768px) {
+          .loader-logo {
+            font-size: 36px;
+          }
+          
+          .loader-spinner {
+            width: 60px;
+            height: 60px;
+          }
+          
+          .loader-text {
+            font-size: 12px;
+          }
+        }
+
+        /* ============================================
+           FIX FOR IOS TAP HIGHLIGHTS
+        ============================================ */
+        * {
+          -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        /* ============================================
            PERFORMANCE OPTIMIZATIONS
         ============================================ */
         /* Reduced motion support */
@@ -2045,32 +2092,35 @@
           opacity: 1;
         }
 
-        /* ============================================
-           INSTALL BUTTON
-        ============================================ */
-        .install-btn {
-          position: fixed;
-          bottom: 100px;
-          right: 30px;
-          z-index: 999;
-          background: linear-gradient(135deg, #1F3D2B, #2D5A42);
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 25px;
-          box-shadow: 0 4px 15px rgba(31, 61, 43, 0.3);
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 1px;
-          transition: all 0.3s ease;
+        /* Form Validation Styles */
+        .form-control.invalid {
+          border-color: #D6273B !important;
+          animation: shake 0.5s ease;
         }
 
-        .install-btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 6px 20px rgba(31, 61, 43, 0.4);
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-5px); }
+          75% { transform: translateX(5px); }
+        }
+
+        .error-message {
+          color: #D6273B;
+          font-size: 12px;
+          margin-top: 4px;
+          animation: fadeIn 0.3s ease;
+        }
+
+        /* Progress Bar Styles */
+        .progress-bar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #25d366, #D6273B);
+          width: 0%;
+          transition: width 2s ease-in-out;
+          border-radius: 0 0 4px 4px;
         }
     </style>
     
@@ -2110,7 +2160,7 @@
                 <li><a href="#contact" class="nav-link premium-nav-link">Contact</a></li>
             </ul>
             
-            <!-- Logo on Right with RED CIRCLE BORDER (FIX 1) -->
+            <!-- Logo on Right -->
             <div class="logo">
                 <!-- Logo image -->
                 <div class="custom-logo nav-logo">
@@ -2133,31 +2183,11 @@
         </div>
     </nav>
 
-    <!-- Premium Mobile Menu -->
-    <div class="mobile-menu premium-mobile-menu">
-        <div class="mobile-menu-header">
-            <div class="mobile-logo">L'ARTISTA</div>
-            <button class="mobile-menu-close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#gallery" class="nav-link">Gallery</a></li>
-            <li><a href="#menu" class="nav-link">Menu</a></li>
-            <li><a href="#reservation" class="nav-link">Reservation</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="mobile-menu-footer">
-            <a href="#reservation" class="btn btn-premium">RESERVE TABLE</a>
-        </div>
-    </div>
-
-    <!-- Premium Hero Section -->
+    <!-- Premium Hero Section with YOUR IMAGE -->
     <section id="home" class="hero hero-premium">
-        <div class="hero-bg">
-            <img src="images/hero-restaurant.jpg" 
+        <div class="hero-image">
+            <!-- YOUR HERO IMAGE -->
+            <img src="images/hero-restaurant-image.jpg" 
                  alt="L'ARTISTA Fine Dining Restaurant Interior"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';">
         </div>
@@ -2166,7 +2196,7 @@
         
         <div class="hero-content premium-hero-content">
             <div class="logo-container premium-logo-container">
-                <!-- Logo with RED CIRCLE BORDER (FIX 1) -->
+                <!-- Logo -->
                 <div class="custom-logo hero-logo premium-hero-logo">
                     <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Fine Dining Restaurant"
@@ -2260,11 +2290,12 @@
             
             <div class="about-image premium-about-image">
                 <div class="image-frame">
-                    <video autoplay muted loop playsinline>
+                    <!-- YOUR AMBIANCE VIDEO -->
+                    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
                         <source src="videos/restaurant-ambiance.mp4" type="video/mp4">
-                        <p style="color: white; padding: 20px; text-align: center;">
-                            Experience the elegant ambiance of L'ARTISTA
-                        </p>
+                        <!-- Fallback if video doesn't load -->
+                        <img src="images/ambiance-fallback.jpg" alt="Restaurant Ambiance" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
                     </video>
                     <div class="image-caption">Experience Our Ambiance</div>
                 </div>
@@ -2281,29 +2312,32 @@
         
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="images/gallery1.jpg" 
+                <!-- YOUR GALLERY IMAGE 1 -->
+                <img src="images/gallery-pizza.jpg" 
                      alt="Pizza Margherita"
-                     onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
                 <div class="gallery-caption">Pizza Margherita</div>
             </div>
             
             <div class="gallery-item">
-                <img src="images/gallery2.jpg" 
+                <!-- YOUR GALLERY IMAGE 2 -->
+                <img src="images/gallery-pasta.jpg" 
                      alt="Fresh Pasta"
-                     onerror="this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
                 <div class="gallery-caption">Fresh Pasta</div>
             </div>
             
             <div class="gallery-item">
-                <img src="images/gallery3.jpg" 
+                <!-- YOUR GALLERY IMAGE 3 -->
+                <img src="images/gallery-antipasti.jpg" 
                      alt="Antipasti"
-                     onerror="this.src='https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';">
                 <div class="gallery-caption">Antipasti</div>
             </div>
         </div>
     </section>
 
-    <!-- Menu Section - COMPLETE WITH ALL ITEMS (FIX 2) -->
+    <!-- Menu Section - COMPLETE WITH ALL ITEMS -->
     <section id="menu" class="container fade-in menu-section">
         <div class="section-header">
             <h2>Our Menu</h2>
@@ -2321,125 +2355,189 @@
         <!-- Starters Menu - COMPLETE -->
         <div class="menu-category active" id="starters">
             <h3><i class="fas fa-seedling"></i> Starters</h3>
-            <div class="menu-items-container">
-                <!-- Creamy Burrata -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Creamy Burrata</h4>
-                            <span class="allergy">1.8</span>
-                        </div>
-                        <p class="menu-desc">Cherry tomatoes / asparagus / basil</p>
+            
+            <!-- Creamy Burrata -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-burrata.jpg" 
+                     alt="Creamy Burrata" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Creamy Burrata</h4>
+                        <span class="price">€24</span>
                     </div>
+                    <p class="menu-desc">Fresh burrata cheese served with cherry tomatoes, grilled asparagus, and fresh basil</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Burrata cheese, cherry tomatoes, asparagus, fresh basil, extra virgin olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.8</div>
                 </div>
-                
-                <!-- Vitello Tonnato -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Vitello Tonnato</h4>
-                            <span class="allergy">1.4.7.8</span>
-                        </div>
-                        <p class="menu-desc">Pine nuts</p>
+            </div>
+            
+            <!-- Vitello Tonnato -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-vitello.jpg" 
+                     alt="Vitello Tonnato" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Vitello Tonnato</h4>
+                        <span class="price">€28</span>
                     </div>
+                    <p class="menu-desc">Sliced veal with creamy tuna sauce and toasted pine nuts</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Veal, tuna, mayonnaise, capers, pine nuts, lemon
+                    </div>
+                    <div class="allergy-info">Allergy: 1.4.7.8</div>
                 </div>
-                
-                <!-- Seasonal Insalata Mista -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Seasonal Insalata Mista</h4>
-                            <span class="allergy">1.8.9</span>
-                        </div>
+            </div>
+            
+            <!-- Seasonal Insalata Mista -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Seasonal Insalata Mista</h4>
+                        <span class="price">€16</span>
                     </div>
+                    <p class="menu-desc">Fresh mixed seasonal salad with our house vinaigrette</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Seasonal greens, cherry tomatoes, cucumber, radish, house vinaigrette
+                    </div>
+                    <div class="allergy-info">Allergy: 1.8.9</div>
                 </div>
-                
-                <!-- Caesar Salad -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Caesar Salad</h4>
-                            <span class="allergy">1.3.4.7.10</span>
-                        </div>
-                        <p class="menu-desc">Croutons / parmesan</p>
+            </div>
+            
+            <!-- Caesar Salad -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-caesar.jpg" 
+                     alt="Caesar Salad" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Caesar Salad</h4>
+                        <span class="price">€18</span>
                     </div>
+                    <p class="menu-desc">Classic Caesar salad with crisp romaine, croutons, and Parmesan cheese</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Romaine lettuce, Caesar dressing, croutons, Parmesan cheese, anchovies
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.4.7.10</div>
                 </div>
-                
-                <!-- Beef Carpaccio -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Beef Carpaccio</h4>
-                            <span class="allergy">1.7.8</span>
-                        </div>
-                        <p class="menu-desc">Truffle oil / arugula</p>
+            </div>
+            
+            <!-- Beef Carpaccio -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Beef Carpaccio</h4>
+                        <span class="price">€26</span>
                     </div>
+                    <p class="menu-desc">Thinly sliced raw beef with truffle oil and fresh arugula</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Prime beef, truffle oil, arugula, Parmesan shavings, lemon
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
                 </div>
-                
-                <!-- Lemon Garlic Shrimps -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Lemon Garlic Shrimps</h4>
-                            <span class="allergy">1.2.7</span>
-                        </div>
-                        <p class="menu-desc">Focaccia</p>
+            </div>
+            
+            <!-- Lemon Garlic Shrimps -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-shrimps.jpg" 
+                     alt="Lemon Garlic Shrimps" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Lemon Garlic Shrimps</h4>
+                        <span class="price">€22</span>
                     </div>
+                    <p class="menu-desc">Fresh shrimp sautéed in lemon garlic butter, served with focaccia</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Shrimp, garlic, lemon, butter, parsley, focaccia
+                    </div>
+                    <div class="allergy-info">Allergy: 1.2.7</div>
                 </div>
-                
-                <!-- Antipasto -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Antipasto</h4>
-                            <span class="allergy">1.6.7.8</span>
-                        </div>
-                        <p class="menu-desc">Finest Italian selection of cheeses and meats</p>
+            </div>
+            
+            <!-- Antipasto -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Antipasto</h4>
+                        <span class="price">€32</span>
                     </div>
+                    <p class="menu-desc">Finest Italian selection of cheeses and cured meats</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Selection of Italian cheeses, prosciutto, salami, olives, bread
+                    </div>
+                    <div class="allergy-info">Allergy: 1.6.7.8</div>
                 </div>
-                
-                <!-- Bruschetta with Stracciatella and Mortadella -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Bruschetta with Stracciatella and Mortadella</h4>
-                            <span class="allergy">1.7.8.</span>
-                        </div>
-                        <p class="menu-desc">Pistachios</p>
+            </div>
+            
+            <!-- Bruschetta with Stracciatella -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Bruschetta with Stracciatella and Mortadella</h4>
+                        <span class="price">€19</span>
                     </div>
+                    <p class="menu-desc">Toasted bread with creamy stracciatella, mortadella, and pistachios</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Sourdough bread, stracciatella cheese, mortadella, pistachios
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
                 </div>
-                
-                <!-- Tomato Bruschetta -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Tomato Bruschetta</h4>
-                            <span class="allergy">1.7</span>
-                        </div>
-                        <p class="menu-desc">Ciliegine / fresh herbs</p>
+            </div>
+            
+            <!-- Tomato Bruschetta -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Tomato Bruschetta with Ciliegine</h4>
+                        <span class="price">€16</span>
                     </div>
+                    <p class="menu-desc">Classic bruschetta with fresh tomatoes and ciliegine mozzarella</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Sourdough bread, tomatoes, ciliegine mozzarella, fresh herbs, olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7</div>
                 </div>
-                
-                <!-- Bruschetta with Cured Zucchini -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Bruschetta with Cured Zucchini</h4>
-                            <span class="allergy">1.8.</span>
-                        </div>
-                        <p class="menu-desc">Pine nuts pesto</p>
+            </div>
+            
+            <!-- Bruschetta with Cured Zucchini -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Bruschetta with Cured Zucchini</h4>
+                        <span class="price">€18</span>
                     </div>
+                    <p class="menu-desc">Toasted bread with cured zucchini and pine nuts pesto</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Sourdough bread, cured zucchini, pine nuts pesto, olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.8</div>
                 </div>
-                
-                <!-- Zuppa di Pesce -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Zuppa di Pesce</h4>
-                            <span class="allergy">1.2.4.7.9.13.14</span>
-                        </div>
-                        <p class="menu-desc">Variety of seafood / stracciatella</p>
+            </div>
+            
+            <!-- Zuppa di Pesce -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-zuppa.jpg" 
+                     alt="Zuppa di Pesce" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Zuppa di Pesce</h4>
+                        <span class="price">€34</span>
                     </div>
+                    <p class="menu-desc">Rich seafood soup with a variety of seafood and stracciatella</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Mixed seafood, tomatoes, garlic, white wine, stracciatella, herbs
+                    </div>
+                    <div class="allergy-info">Allergy: 1.2.4.7.9.13.14</div>
                 </div>
             </div>
         </div>
@@ -2447,79 +2545,125 @@
         <!-- Pastas Menu - COMPLETE -->
         <div class="menu-category" id="pastas">
             <h3><i class="fas fa-pasta"></i> Pastas</h3>
-            <div class="menu-items-container">
-                <!-- Spaghetti Carbonara -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Spaghetti Carbonara</h4>
-                            <span class="allergy">1.3.7</span>
-                        </div>
-                        <p class="menu-desc">Guancile / pecorino</p>
+            
+            <!-- Spaghetti Carbonara -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-carbonara.jpg" 
+                     alt="Spaghetti Carbonara" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Spaghetti Carbonara</h4>
+                        <span class="price">€26</span>
                     </div>
+                    <p class="menu-desc">Classic Roman pasta with guanciale and Pecorino Romano</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Spaghetti, guanciale, eggs, Pecorino Romano, black pepper
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
                 </div>
-                
-                <!-- Cacio e Pepe -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Cacio e Pepe</h4>
-                            <span class="allergy">1.7</span>
-                        </div>
-                        <p class="menu-desc">Black truffles</p>
+            </div>
+            
+            <!-- Cacio e Pepe -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Cacio e Pepe</h4>
+                        <span class="price">€24</span>
                     </div>
+                    <p class="menu-desc">Simple Roman pasta with cheese and black pepper, topped with black truffles</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Spaghetti, Pecorino Romano, black pepper, black truffles
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7</div>
                 </div>
-                
-                <!-- Pasta al Pesto di Pistacchio -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pasta al Pesto di Pistacchio e Stracciatella</h4>
-                            <span class="allergy">1.7.8</span>
-                        </div>
+            </div>
+            
+            <!-- Pasta al Pesto di Pistacchio -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-pesto.jpg" 
+                     alt="Pasta al Pesto di Pistacchio" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pasta al Pesto di Pistacchio e Stracciatella</h4>
+                        <span class="price">€28</span>
                     </div>
+                    <p class="menu-desc">Pasta with creamy pistachio pesto and stracciatella cheese</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pasta, pistachio pesto, stracciatella cheese, olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
                 </div>
-                
-                <!-- Pasta Penne Arrabbiata -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pasta Penne Arrabbiata</h4>
-                            <span class="allergy">1</span>
-                        </div>
+            </div>
+            
+            <!-- Pasta Penne Arrabbiata -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pasta Penne Arrabbiata</h4>
+                        <span class="price">€22</span>
                     </div>
+                    <p class="menu-desc">Spicy tomato sauce with penne pasta</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Penne pasta, tomato sauce, garlic, chili, parsley
+                    </div>
+                    <div class="allergy-info">Allergy: 1</div>
                 </div>
-                
-                <!-- Pasta Spaghetti Frutti di Mare -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pasta Spaghetti Frutti di Mare</h4>
-                            <span class="allergy">1.2.4.9.13.14</span>
-                        </div>
+            </div>
+            
+            <!-- Pasta Spaghetti Frutti di Mare -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-frutti.jpg" 
+                     alt="Pasta Frutti di Mare" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pasta Spaghetti Frutti di Mare</h4>
+                        <span class="price">€32</span>
                     </div>
+                    <p class="menu-desc">Spaghetti with mixed seafood in a light tomato sauce</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Spaghetti, mixed seafood, tomato, garlic, white wine, parsley
+                    </div>
+                    <div class="allergy-info">Allergy: 1.2.4.9.13.14</div>
                 </div>
-                
-                <!-- Kids Pasta -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Kids Pasta</h4>
-                            <span class="allergy">1.7.9.13</span>
-                        </div>
-                        <p class="menu-desc">Any pasta choice with tomato sauce or butter sauce</p>
+            </div>
+            
+            <!-- Kids Pasta -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Kids Pasta</h4>
+                        <span class="price">€14</span>
                     </div>
+                    <p class="menu-desc">Any pasta choice with tomato sauce or butter sauce</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pasta of choice, tomato sauce or butter sauce
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.9.13</div>
                 </div>
-                
-                <!-- L'Artista Pasta -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>L'Artista</h4>
-                            <span class="allergy">1.2.4.7</span>
-                        </div>
-                        <p class="menu-desc">Pasta with lobster and black caviar</p>
+            </div>
+            
+            <!-- L'Artista Signature Pasta -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-signature.jpg" 
+                     alt="L'Artista Signature Pasta" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>L'Artista Signature Pasta</h4>
+                        <span class="price">€48</span>
                     </div>
+                    <p class="menu-desc">Signature pasta with lobster and black caviar</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Fresh pasta, lobster, black caviar, cream, herbs
+                    </div>
+                    <div class="allergy-info">Allergy: 1.2.4.7</div>
                 </div>
             </div>
         </div>
@@ -2527,81 +2671,125 @@
         <!-- Main Courses Menu - COMPLETE -->
         <div class="menu-category" id="mains">
             <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
-            <div class="menu-items-container">
-                <!-- Parmigiana di Melanzane -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Parmigiana di Melanzane</h4>
-                            <span class="allergy">1.7.8.9</span>
-                        </div>
-                        <p class="menu-desc">Basil pesto</p>
+            
+            <!-- Parmigiana di Melanzane -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-parmigiana.jpg" 
+                     alt="Parmigiana di Melanzane" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Parmigiana di Melanzane</h4>
+                        <span class="price">€28</span>
                     </div>
+                    <p class="menu-desc">Eggplant Parmesan with basil pesto</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Eggplant, tomato sauce, mozzarella, Parmesan, basil pesto
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.8.9</div>
                 </div>
-                
-                <!-- Creamy Risotto -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Creamy Risotto</h4>
-                            <span class="allergy">1.7.12</span>
-                        </div>
-                        <p class="menu-desc">Black truffles</p>
+            </div>
+            
+            <!-- Creamy Risotto -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Creamy Risotto with Black Truffles</h4>
+                        <span class="price">€32</span>
                     </div>
+                    <p class="menu-desc">Creamy risotto with black truffle shavings</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Arborio rice, black truffles, Parmesan, white wine, butter
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.12</div>
                 </div>
-                
-                <!-- Zucchini Risotto -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Zucchini Risotto with Gamberi</h4>
-                            <span class="allergy">1.2.7.12</span>
-                        </div>
+            </div>
+            
+            <!-- Zucchini Risotto -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-risotto.jpg" 
+                     alt="Zucchini Risotto" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Zucchini Risotto with Gamberi</h4>
+                        <span class="price">€34</span>
                     </div>
+                    <p class="menu-desc">Zucchini risotto with fresh shrimp</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Arborio rice, zucchini, shrimp, Parmesan, white wine, herbs
+                    </div>
+                    <div class="allergy-info">Allergy: 1.2.7.12</div>
                 </div>
-                
-                <!-- Veal Scallopini -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Veal Scallopini</h4>
-                            <span class="allergy">1.3.9</span>
-                        </div>
-                        <p class="menu-desc">Lemon butter sauce / roasted potatoes or seasonal salad</p>
+            </div>
+            
+            <!-- Veal Scallopini -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Veal Scallopini</h4>
+                        <span class="price">€36</span>
                     </div>
+                    <p class="menu-desc">Veal cutlets with lemon butter sauce, served with roasted potatoes or seasonal salad</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Veal, lemon, butter, capers, parsley, potatoes or salad
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.9</div>
                 </div>
-                
-                <!-- Seabass Fillet -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Seabass Fillet</h4>
-                            <span class="allergy">1.4.6.7.9.12</span>
-                        </div>
-                        <p class="menu-desc">Spinach risotto</p>
+            </div>
+            
+            <!-- Seabass Fillet -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-seabass.jpg" 
+                     alt="Seabass Fillet" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Seabass Fillet</h4>
+                        <span class="price">€38</span>
                     </div>
+                    <p class="menu-desc">Seabass fillet with spinach risotto</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Seabass, spinach, Arborio rice, white wine, herbs
+                    </div>
+                    <div class="allergy-info">Allergy: 1.4.6.7.9.12</div>
                 </div>
-                
-                <!-- Homemade Ravioli -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Homemade Ravioli</h4>
-                            <span class="allergy">1.3.7</span>
-                        </div>
-                        <p class="menu-desc">Ricotta and spinach / gorgonzola sauce</p>
+            </div>
+            
+            <!-- Homemade Ravioli -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Homemade Ravioli</h4>
+                        <span class="price">€26</span>
                     </div>
+                    <p class="menu-desc">Ricotta and spinach ravioli with gorgonzola sauce</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Ravioli pasta, ricotta, spinach, gorgonzola, cream
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
                 </div>
-                
-                <!-- Tagliata di Manzo -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Tagliata di Manzo</h4>
-                            <span class="allergy">1.7.9.12</span>
-                        </div>
-                        <p class="menu-desc">Roasted potatoes or seasonal salad</p>
+            </div>
+            
+            <!-- Tagliata di Manzo -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-tagliata.jpg" 
+                     alt="Tagliata di Manzo" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Tagliata di Manzo</h4>
+                        <span class="price">€42</span>
                     </div>
+                    <p class="menu-desc">Sliced beef steak with roasted potatoes or seasonal salad</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Beef steak, rosemary, garlic, olive oil, potatoes or salad
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.9.12</div>
                 </div>
             </div>
         </div>
@@ -2609,87 +2797,125 @@
         <!-- Pizza Menu - COMPLETE -->
         <div class="menu-category" id="pizza">
             <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
-            <div class="menu-items-container">
-                <!-- Pizza Margherita -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pizza Margherita</h4>
-                            <span class="allergy">1.7</span>
-                        </div>
+            
+            <!-- Pizza Margherita -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-pizza-margherita.jpg" 
+                     alt="Pizza Margherita" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pizza Margherita</h4>
+                        <span class="price">€18</span>
                     </div>
+                    <p class="menu-desc">Classic Neapolitan pizza with tomato and mozzarella</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> San Marzano tomatoes, mozzarella di bufala, fresh basil, extra virgin olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7</div>
                 </div>
-                
-                <!-- Pizza Mortadella -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pizza Mortadella</h4>
-                            <span class="allergy">1.7.8</span>
-                        </div>
-                        <p class="menu-desc">With stracciatella and pistachios</p>
+            </div>
+            
+            <!-- Pizza Mortadella -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pizza Mortadella with Stracciatella and Pistachios</h4>
+                        <span class="price">€22</span>
                     </div>
+                    <p class="menu-desc">Pizza with mortadella, creamy stracciatella and pistachios</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pizza dough, tomato, mozzarella, mortadella, stracciatella, pistachios
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.8</div>
                 </div>
-                
-                <!-- Quattro Formaggi -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Quattro Formaggi</h4>
-                            <span class="allergy">1.7</span>
-                        </div>
+            </div>
+            
+            <!-- Quattro Formaggi -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-quattro.jpg" 
+                     alt="Quattro Formaggi" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Quattro Formaggi</h4>
+                        <span class="price">€21</span>
                     </div>
+                    <p class="menu-desc">Four cheese pizza with mozzarella, gorgonzola, Parmesan, and fontina</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pizza dough, mozzarella, gorgonzola, Parmesan, fontina, olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7</div>
                 </div>
-                
-                <!-- Pizza Diavola -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pizza Diavola</h4>
-                            <span class="allergy">1.7.9</span>
-                        </div>
-                        <p class="menu-desc">With chili oil</p>
+            </div>
+            
+            <!-- Pizza Diavola -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pizza Diavola with Chili Oil</h4>
+                        <span class="price">€20</span>
                     </div>
+                    <p class="menu-desc">Spicy pizza with salami and chili oil</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pizza dough, tomato, mozzarella, spicy salami, chili oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7.9</div>
                 </div>
-                
-                <!-- Pizza Salamino -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pizza Salamino</h4>
-                            <span class="allergy">1.7</span>
-                        </div>
+            </div>
+            
+            <!-- Pizza Salamino -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-salamino.jpg" 
+                     alt="Pizza Salamino" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pizza Salamino</h4>
+                        <span class="price">€19</span>
                     </div>
+                    <p class="menu-desc">Pizza with Italian salami</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pizza dough, tomato, mozzarella, Italian salami
+                    </div>
+                    <div class="allergy-info">Allergy: 1.7</div>
                 </div>
-                
-                <!-- Pizza Marinara -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pizza Marinara</h4>
-                            <span class="allergy">1.4</span>
-                        </div>
+            </div>
+            
+            <!-- Pizza Marinara -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Pizza Marinara</h4>
+                        <span class="price">€16</span>
                     </div>
+                    <p class="menu-desc">Simple pizza with tomato, garlic, oregano, and olive oil</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pizza dough, tomato, garlic, oregano, olive oil
+                    </div>
+                    <div class="allergy-info">Allergy: 1.4</div>
                 </div>
-                
-                <!-- Prosciutto di Parma -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Prosciutto di Parma</h4>
-                            <span class="allergy">1.7</span>
-                        </div>
+            </div>
+            
+            <!-- Prosciutto di Parma -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-prosciutto.jpg" 
+                     alt="Prosciutto di Parma" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Prosciutto di Parma</h4>
+                        <span class="price">€22</span>
                     </div>
-                </div>
-                
-                <!-- Kids Margherita -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Kids Margherita</h4>
-                            <span class="allergy">1.7</span>
-                        </div>
+                    <p class="menu-desc">Pizza with Parma ham and arugula</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Pizza dough, tomato, mozzarella, Parma ham, arugula
                     </div>
+                    <div class="allergy-info">Allergy: 1.7</div>
                 </div>
             </div>
         </div>
@@ -2697,36 +2923,57 @@
         <!-- Desserts Menu - COMPLETE -->
         <div class="menu-category" id="desserts">
             <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
-            <div class="menu-items-container">
-                <!-- Tiramisu -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Tiramisu</h4>
-                            <span class="allergy">1.3.7.8</span>
-                        </div>
+            
+            <!-- Tiramisu -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-tiramisu.jpg" 
+                     alt="Tiramisu" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Tiramisu</h4>
+                        <span class="price">€14</span>
                     </div>
+                    <p class="menu-desc">Classic Italian dessert with mascarpone and espresso</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Mascarpone, espresso, ladyfingers, eggs, sugar, cocoa powder
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7.8</div>
                 </div>
-                
-                <!-- Limoncello Cheesecake -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Limoncello Cheesecake</h4>
-                            <span class="allergy">1.3.7</span>
-                        </div>
-                        <p class="menu-desc">With Italian meringue</p>
+            </div>
+            
+            <!-- Limoncello Cheesecake -->
+            <div class="menu-item">
+                <!-- YOUR DISH IMAGE -->
+                <img src="images/dish-cheesecake.jpg" 
+                     alt="Limoncello Cheesecake" class="dish-photo"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80';">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Limoncello Cheesecake</h4>
+                        <span class="price">€16</span>
                     </div>
+                    <p class="menu-desc">Creamy cheesecake with Italian meringue</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Cream cheese, limoncello, Italian meringue, biscuit base
+                    </div>
+                    <div class="allergy-info">Allergy: 1.3.7</div>
                 </div>
-                
-                <!-- Affogato -->
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Affogato</h4>
-                            <span class="allergy">7</span>
-                        </div>
+            </div>
+            
+            <!-- Affogato -->
+            <div class="menu-item">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h4>Affogato</h4>
+                        <span class="price">€12</span>
                     </div>
+                    <p class="menu-desc">Vanilla gelato with hot espresso</p>
+                    <div class="ingredients">
+                        <strong>Ingredients:</strong> Vanilla gelato, espresso, optional amaretto
+                    </div>
+                    <div class="allergy-info">Allergy: 7</div>
                 </div>
             </div>
         </div>
@@ -2983,9 +3230,6 @@
             
             // Setup PWA features
             setupPWA();
-            
-            // Set default menu category
-            activateMenuCategory('starters');
         });
 
         // ============================================
@@ -3056,7 +3300,7 @@
         function cacheDOM() {
             window.cachedElements = {
                 navbar: document.querySelector('.premium-navbar'),
-                heroVideo: document.querySelector('.hero-bg img'),
+                heroImage: document.querySelector('.hero-image img'),
                 whatsappFloat: document.querySelector('.whatsapp-float')
             };
         }
@@ -3201,40 +3445,28 @@
                     tab.classList.add('active');
                     tab.style.transform = 'scale(1.05)';
                     
-                    // Activate the selected category
-                    activateMenuCategory(tabId);
+                    // Show corresponding category with fade effect
+                    menuCategories.forEach(category => {
+                        category.style.opacity = '0';
+                        category.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            category.classList.remove('active');
+                            
+                            if (category.id === tabId) {
+                                setTimeout(() => {
+                                    category.classList.add('active');
+                                    category.style.opacity = '1';
+                                    category.style.transform = 'translateY(0)';
+                                }, 50);
+                            }
+                        }, 300);
+                    });
                     
                     // Track menu tab interaction
                     trackEvent('menu_tab_click', { tab: tabId });
                 });
             });
-        }
-
-        // Function to activate menu category
-        function activateMenuCategory(categoryId) {
-            // Hide all categories first
-            menuCategories.forEach(category => {
-                category.classList.remove('active');
-                category.style.opacity = '0';
-                category.style.transform = 'translateY(20px)';
-            });
-            
-            // Show selected category
-            const selectedCategory = document.getElementById(categoryId);
-            if (selectedCategory) {
-                setTimeout(() => {
-                    selectedCategory.classList.add('active');
-                    selectedCategory.style.opacity = '1';
-                    selectedCategory.style.transform = 'translateY(0)';
-                    
-                    // Animate menu items with delay
-                    const menuItems = selectedCategory.querySelectorAll('.menu-item');
-                    menuItems.forEach((item, index) => {
-                        item.style.animationDelay = `${index * 0.1}s`;
-                        item.style.animationName = 'menuItemFadeIn';
-                    });
-                }, 50);
-            }
         }
 
         // ============================================
@@ -3969,190 +4201,4 @@ ${RESTAURANT_CONFIG.restaurantName}
                 let errorElement = field.nextElementSibling;
                 if (!errorElement || !errorElement.classList.contains('error-message')) {
                     errorElement = document.createElement('div');
-                    errorElement.className = 'error-message';
-                    field.parentNode.insertBefore(errorElement, field.nextSibling);
-                }
-                
-                errorElement.textContent = errorMessage;
-                errorElement.style.cssText = `
-                    color: #D6273B;
-                    font-size: 12px;
-                    margin-top: 4px;
-                    animation: fadeIn 0.3s ease;
-                `;
-            } else {
-                field.classList.remove('invalid');
-                const errorElement = field.nextElementSibling;
-                if (errorElement && errorElement.classList.contains('error-message')) {
-                    errorElement.remove();
-                }
-            }
-            
-            return isValid;
-        }
-
-        // ============================================
-        // SCROLL ANIMATIONS - ENHANCED
-        // ============================================
-        function initScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        
-                        // Add staggered animation for child elements
-                        const animatedChildren = entry.target.querySelectorAll('.animate-child');
-                        animatedChildren.forEach((child, index) => {
-                            setTimeout(() => {
-                                child.classList.add('animated');
-                            }, index * 100);
-                        });
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        function handleScroll() {
-            const navbar = document.querySelector('.premium-navbar');
-            if (navbar) {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                    navbar.style.backdropFilter = 'blur(20px)';
-                    navbar.style.background = 'rgba(249, 247, 242, 0.98)';
-                } else {
-                    navbar.classList.remove('scrolled');
-                    navbar.style.backdropFilter = 'blur(10px)';
-                    navbar.style.background = 'rgba(249, 247, 242, 0.95)';
-                }
-            }
-            
-            // Update active navigation link based on scroll position
-            updateActiveNavLink();
-        }
-
-        // ============================================
-        // ACTIVE NAVIGATION LINK UPDATER
-        // ============================================
-        function updateActiveNavLink() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const scrollPos = window.scrollY + 100;
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }
-
-        // ============================================
-        // ERROR HANDLING
-        // ============================================
-        window.addEventListener('error', function(e) {
-            console.error('Website error:', e.error);
-            trackEvent('javascript_error', {
-                message: e.error.message,
-                filename: e.filename,
-                lineno: e.lineno,
-                colno: e.colno
-            });
-        });
-
-        // Handle unhandled promise rejections
-        window.addEventListener('unhandledrejection', function(e) {
-            console.error('Unhandled promise rejection:', e.reason);
-            trackEvent('promise_rejection', { reason: e.reason.toString() });
-        });
-
-        // ============================================
-        // ANALYTICS & EVENT TRACKING
-        // ============================================
-        function setupAnalytics() {
-            // Track page views
-            trackEvent('page_view', {
-                page: window.location.pathname,
-                referrer: document.referrer
-            });
-            
-            // Track clicks on important elements
-            document.querySelectorAll('a, button').forEach(element => {
-                element.addEventListener('click', (e) => {
-                    const text = element.textContent.trim() || element.getAttribute('aria-label') || 'Unknown';
-                    trackEvent('element_click', {
-                        element: text,
-                        href: element.getAttribute('href') || 'none'
-                    });
-                });
-            });
-            
-            // Track form interactions
-            if (reservationForm) {
-                reservationForm.querySelectorAll('input, select, textarea').forEach(field => {
-                    field.addEventListener('focus', () => {
-                        trackEvent('form_field_focus', { field: field.id });
-                    });
-                });
-            }
-        }
-
-        function trackEvent(eventName, eventData = {}) {
-            // Simple event tracking - you can integrate with Google Analytics or other services
-            const event = {
-                name: eventName,
-                data: eventData,
-                timestamp: new Date().toISOString(),
-                url: window.location.href,
-                userAgent: navigator.userAgent
-            };
-            
-            console.log('📊 Event:', event);
-        }
-
-        // ============================================
-        // HELPER FUNCTIONS
-        // ============================================
-        function scrollToSection(sectionId) {
-            const section = document.querySelector(sectionId);
-            if (section) {
-                section.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Initialize everything
-        initComponents();
-    </script>
-</body>
-</html>
+                    errorElement.className
