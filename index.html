@@ -390,7 +390,7 @@
         }
 
         /* ============================================
-           NAVIGATION - FIXED (UPDATED - THINNER)
+           NAVIGATION - FIXED WITH RED CIRCLE LOGO (FIX 1)
         ============================================ */
         .premium-navbar {
           position: fixed;
@@ -400,7 +400,7 @@
           background: rgba(249, 247, 242, 0.95);
           backdrop-filter: blur(10px);
           z-index: 1000;
-          padding: 6px 0; /* Made thinner */
+          padding: 6px 0;
           border-bottom: 1px solid rgba(214, 39, 59, 0.1);
           transition: var(--transition);
         }
@@ -420,21 +420,21 @@
           padding: 0 20px;
         }
 
-        /* Logo - Bigger (UPDATED - PROPER CIRCLE LOGO) */
+        /* Logo - Bigger with RED CIRCLE BORDER (FIX 1) */
         .logo {
           display: flex;
           align-items: center;
           gap: 15px;
           text-decoration: none;
-          flex-direction: row-reverse; /* Logo on right side */
+          flex-direction: row-reverse;
         }
 
         .custom-logo {
-          border-radius: 50%; /* Perfect circle */
+          border-radius: 50%;
           overflow: hidden;
-          border: none; /* Removed red border */
-          padding: 0; /* Removed padding */
-          background: none; /* Removed white background */
+          border: 3px solid var(--red); /* RED CIRCLE BORDER ADDED */
+          padding: 3px;
+          background: white;
           transition: var(--transition);
           display: flex;
           align-items: center;
@@ -442,34 +442,34 @@
         }
 
         .nav-logo {
-          width: 65px; /* Made slightly smaller */
-          height: 65px; /* Made slightly smaller */
+          width: 65px;
+          height: 65px;
         }
 
         .hero-logo {
           width: 200px;
           height: 200px;
-          border: none; /* Removed red border */
+          border-width: 4px;
           margin-bottom: 0;
         }
 
         .custom-logo img {
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Changed to cover for circle */
+          object-fit: cover;
           display: block;
-          border-radius: 50%; /* Ensure image is also circle */
+          border-radius: 50%;
         }
 
         .logo-text {
           display: flex;
           flex-direction: column;
-          text-align: right; /* Text aligned right since logo is on right */
+          text-align: right;
         }
 
         .logo-main {
           font-family: 'Playfair Display', serif;
-          font-size: 22px; /* Made smaller */
+          font-size: 22px;
           font-weight: 600;
           color: var(--green);
           letter-spacing: 1px;
@@ -477,20 +477,20 @@
         }
 
         .logo-sub {
-          font-size: 10px; /* Made smaller */
+          font-size: 10px;
           color: var(--red);
           letter-spacing: 2px;
           text-transform: uppercase;
           font-weight: 400;
-          margin-top: 2px; /* Reduced margin */
+          margin-top: 2px;
         }
 
-        /* Navigation Links - Smaller and Left Aligned */
+        /* Navigation Links */
         .nav-links {
           display: flex;
           list-style: none;
           gap: 30px;
-          margin-right: auto; /* Pushed to left */
+          margin-right: auto;
         }
 
         .nav-link {
@@ -512,7 +512,7 @@
           bottom: 0;
           left: 0;
           width: 0;
-          height: 1px; /* Made thinner */
+          height: 1px;
           background: var(--red);
           transition: var(--transition);
         }
@@ -669,13 +669,12 @@
             font-size: 9px;
           }
           
-          /* Revert logo order on mobile */
           .logo {
-            flex-direction: row; /* Original order on mobile */
+            flex-direction: row;
           }
           
           .logo-text {
-            text-align: left; /* Left align on mobile */
+            text-align: left;
           }
         }
 
@@ -699,7 +698,7 @@
         }
 
         /* ============================================
-           HERO SECTION - UPDATED WITH YOUR IMAGES
+           HERO SECTION WITH RED CIRCLE LOGO
         ============================================ */
         .hero-premium {
           min-height: 100vh;
@@ -707,7 +706,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-top: 70px; /* Reduced for thinner header */
+          padding-top: 70px;
           overflow: hidden;
         }
 
@@ -728,7 +727,6 @@
           transition: filter 0.3s ease;
         }
 
-        /* Enhanced Image Styling */
         .hero-bg img:hover {
           filter: brightness(0.7);
         }
@@ -1000,7 +998,7 @@
         }
 
         /* ============================================
-           ABOUT SECTION WITH YOUR VIDEO
+           ABOUT SECTION
         ============================================ */
         .premium-about-grid {
           display: grid;
@@ -1158,7 +1156,253 @@
         }
 
         /* ============================================
-           GALLERY
+           MENU SECTION - COMPLETE WITH ALL ITEMS (FIX 2)
+        ============================================ */
+        .menu-section {
+          background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
+          border-radius: 20px;
+          padding: 60px 40px;
+          margin: 60px auto;
+        }
+
+        .menu-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 40px;
+          flex-wrap: wrap;
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+
+        .menu-tab {
+          padding: 12px 24px;
+          background: transparent;
+          border: 2px solid rgba(214, 39, 59, 0.2);
+          color: var(--text-dark);
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          transition: var(--transition);
+          white-space: nowrap;
+        }
+
+        .menu-tab:hover {
+          border-color: var(--red);
+          color: var(--red);
+        }
+
+        .menu-tab.active {
+          background: linear-gradient(135deg, var(--red), #b81e30);
+          color: white !important;
+          border-color: var(--red);
+          box-shadow: 0 4px 15px rgba(214, 39, 59, 0.3);
+        }
+
+        .menu-category {
+          display: none;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .menu-category.active {
+          display: block;
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .menu-category h3 {
+          font-family: 'Playfair Display', serif;
+          font-size: 32px;
+          color: var(--green);
+          margin-bottom: 30px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+        }
+
+        .menu-category h3 i {
+          color: var(--red);
+          font-size: 28px;
+        }
+
+        .menu-items-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 25px;
+        }
+
+        .menu-item {
+          background: white;
+          padding: 25px;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+          border: 1px solid rgba(214, 39, 59, 0.1);
+          opacity: 0;
+          transform: translateY(10px);
+          animation: menuItemFadeIn 0.5s ease forwards;
+        }
+
+        @keyframes menuItemFadeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+        .menu-item:nth-child(7) { animation-delay: 0.7s; }
+        .menu-item:nth-child(8) { animation-delay: 0.8s; }
+        .menu-item:nth-child(9) { animation-delay: 0.9s; }
+        .menu-item:nth-child(10) { animation-delay: 1s; }
+
+        .menu-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+          border-color: var(--red);
+        }
+
+        .menu-item-content {
+          flex: 1;
+        }
+
+        .menu-item-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 12px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid rgba(214, 39, 59, 0.1);
+        }
+
+        .menu-item-header h4 {
+          font-family: 'Playfair Display', serif;
+          font-size: 20px;
+          color: var(--green);
+          font-weight: 500;
+          flex: 1;
+          margin-right: 15px;
+          line-height: 1.4;
+        }
+
+        .menu-item-header .allergy {
+          font-size: 12px;
+          color: var(--red);
+          font-weight: 600;
+          white-space: nowrap;
+          background: rgba(214, 39, 59, 0.1);
+          padding: 4px 8px;
+          border-radius: 4px;
+        }
+
+        .menu-desc {
+          color: var(--text-muted);
+          font-size: 15px;
+          line-height: 1.6;
+          margin-bottom: 8px;
+          font-style: italic;
+        }
+
+        .price {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--red);
+          white-space: nowrap;
+          margin-top: 8px;
+          text-align: right;
+        }
+
+        /* Menu Responsive */
+        @media (max-width: 992px) {
+          .menu-section {
+            padding: 40px 20px;
+            margin: 40px auto;
+          }
+          
+          .menu-category h3 {
+            font-size: 28px;
+          }
+          
+          .menu-items-container {
+            grid-template-columns: 1fr;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 18px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .menu-tabs {
+            justify-content: flex-start;
+            padding-bottom: 15px;
+          }
+          
+          .menu-tab {
+            flex-shrink: 0;
+            padding: 10px 20px;
+            font-size: 13px;
+          }
+          
+          .menu-category h3 {
+            font-size: 24px;
+          }
+          
+          .menu-item {
+            padding: 20px;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 16px;
+          }
+          
+          .menu-desc {
+            font-size: 14px;
+          }
+          
+          .price {
+            font-size: 16px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .menu-section {
+            padding: 30px 15px;
+            margin: 30px auto;
+          }
+          
+          .menu-item {
+            padding: 18px;
+          }
+          
+          .menu-category h3 {
+            font-size: 22px;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 16px;
+          }
+          
+          .menu-tab {
+            padding: 8px 16px;
+            font-size: 12px;
+          }
+        }
+
+        /* ============================================
+           GALLERY SECTION
         ============================================ */
         .gallery-grid {
           display: grid;
@@ -1231,309 +1475,6 @@
           .gallery-item img {
             height: 180px;
           }
-        }
-
-        /* ============================================
-           MENU SECTION - COMPLETE (UPDATED - HIDDEN INITIALLY)
-        ============================================ */
-        .menu-section {
-          background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
-          border-radius: 20px;
-          padding: 60px 40px;
-          margin: 60px auto;
-        }
-
-        .menu-tabs {
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          margin-bottom: 40px;
-          flex-wrap: wrap;
-        }
-
-        .menu-tab {
-          padding: 12px 24px;
-          background: transparent;
-          border: 2px solid rgba(214, 39, 59, 0.2);
-          color: var(--text-dark);
-          border-radius: 25px;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 500;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          transition: var(--transition);
-        }
-
-        .menu-tab:hover {
-          border-color: var(--red);
-          color: var(--red);
-        }
-
-        .menu-tab.active {
-          background: linear-gradient(135deg, var(--red), #b81e30);
-          color: white !important;
-          border-color: var(--red);
-          box-shadow: 0 4px 15px rgba(214, 39, 59, 0.3);
-        }
-
-        .menu-category {
-          display: none; /* Initially hidden */
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .menu-category.active {
-          display: block; /* Show when active */
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .menu-category-content {
-          display: none; /* Menu items initially hidden */
-        }
-
-        .menu-category.active .menu-category-content {
-          display: block; /* Show when category is active */
-        }
-
-        .menu-category h3 {
-          font-family: 'Playfair Display', serif;
-          font-size: 32px;
-          color: var(--green);
-          margin-bottom: 30px;
-          text-align: center;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-        }
-
-        .menu-category h3 i {
-          color: var(--red);
-          font-size: 28px;
-        }
-
-        .menu-item {
-          background: white;
-          padding: 30px;
-          border-radius: 12px;
-          box-shadow: var(--shadow);
-          margin-bottom: 30px;
-          transition: var(--transition);
-          border: 1px solid rgba(214, 39, 59, 0.1);
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 25px;
-          align-items: start;
-          opacity: 0;
-          transform: translateY(10px);
-          animation: menuItemFadeIn 0.5s ease forwards;
-        }
-
-        @keyframes menuItemFadeIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .menu-item:nth-child(1) { animation-delay: 0.1s; }
-        .menu-item:nth-child(2) { animation-delay: 0.2s; }
-        .menu-item:nth-child(3) { animation-delay: 0.3s; }
-        .menu-item:nth-child(4) { animation-delay: 0.4s; }
-        .menu-item:nth-child(5) { animation-delay: 0.5s; }
-
-        .menu-item:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-          border-color: var(--red);
-        }
-
-        .menu-item-content {
-          flex: 1;
-        }
-
-        .menu-item-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 12px;
-        }
-
-        .menu-item-header h4 {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          color: var(--green);
-          font-weight: 500;
-          flex: 1;
-          margin-right: 15px;
-        }
-
-        .price {
-          font-size: 24px;
-          font-weight: 600;
-          color: var(--red);
-          white-space: nowrap;
-        }
-
-        .menu-desc {
-          color: var(--text-muted);
-          font-size: 16px;
-          line-height: 1.6;
-          margin-bottom: 15px;
-        }
-
-        .ingredients {
-          color: var(--text-light);
-          font-size: 14px;
-          line-height: 1.5;
-          margin-bottom: 10px;
-          padding-top: 10px;
-          border-top: 1px solid rgba(214, 39, 59, 0.1);
-        }
-
-        .ingredients strong {
-          color: var(--green);
-          font-weight: 500;
-        }
-
-        .allergy-info {
-          font-size: 12px;
-          color: var(--text-light);
-          font-style: italic;
-          margin-top: 8px;
-        }
-
-        .dish-photo {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-          border-radius: 10px;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          transition: transform 0.3s ease;
-          opacity: 0;
-          animation: fadeIn 0.5s ease forwards;
-        }
-
-        .dish-photo:hover {
-          transform: scale(1.02);
-        }
-
-        /* Lazy loading for images */
-        .dish-photo[data-src] {
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .dish-photo.loaded {
-          opacity: 1;
-        }
-
-        /* Menu Responsive */
-        @media (max-width: 992px) {
-          .menu-section {
-            padding: 40px 20px;
-            margin: 40px auto;
-          }
-          
-          .menu-category h3 {
-            font-size: 28px;
-          }
-          
-          .menu-item {
-            padding: 25px;
-          }
-          
-          .menu-item-header h4 {
-            font-size: 20px;
-          }
-          
-          .price {
-            font-size: 22px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .menu-tabs {
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          .menu-tab {
-            width: 100%;
-            text-align: center;
-          }
-          
-          .menu-item {
-            grid-template-columns: 1fr;
-            gap: 20px;
-          }
-          
-          .dish-photo {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-          }
-          
-          .menu-category h3 {
-            font-size: 24px;
-          }
-          
-          .menu-item-header h4 {
-            font-size: 18px;
-          }
-          
-          .price {
-            font-size: 20px;
-          }
-          
-          .menu-desc {
-            font-size: 15px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .menu-section {
-            padding: 30px 15px;
-            margin: 30px auto;
-          }
-          
-          .menu-item {
-            padding: 20px;
-          }
-          
-          .menu-category h3 {
-            font-size: 22px;
-          }
-          
-          .menu-item-header h4 {
-            font-size: 18px;
-          }
-          
-          .price {
-            font-size: 20px;
-          }
-          
-          .dish-photo {
-            height: 150px;
-          }
-        }
-
-        /* Scrollable menu tabs for mobile */
-        .menu-tabs::-webkit-scrollbar {
-          height: 4px;
-        }
-
-        .menu-tabs::-webkit-scrollbar-track {
-          background: rgba(214, 39, 59, 0.1);
-          border-radius: 2px;
-        }
-
-        .menu-tabs::-webkit-scrollbar-thumb {
-          background: var(--red);
-          border-radius: 2px;
         }
 
         /* ============================================
@@ -1708,64 +1649,6 @@
 
         .notification.info {
           border-left-color: #1F3D2B;
-        }
-
-        .notification-content {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          flex: 1;
-        }
-
-        .notification-icon {
-          font-size: 20px;
-          flex-shrink: 0;
-        }
-
-        .notification.success .notification-icon {
-          color: #25d366;
-        }
-
-        .notification.error .notification-icon {
-          color: #D6273B;
-        }
-
-        .notification-text {
-          flex: 1;
-          min-width: 0;
-        }
-
-        .notification-progress {
-          height: 3px;
-          background: currentColor;
-          width: 100%;
-          transform: scaleX(1);
-          transform-origin: left;
-          transition: transform linear;
-          margin-top: 8px;
-          border-radius: 2px;
-        }
-
-        .notification-close {
-          background: none;
-          border: none;
-          color: #666;
-          cursor: pointer;
-          font-size: 16px;
-          padding: 4px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          transition: all 0.2s ease;
-          flex-shrink: 0;
-        }
-
-        .notification-close:hover {
-          background: rgba(0,0,0,0.05);
-          color: #333;
         }
 
         /* Reservation Responsive */
@@ -1986,7 +1869,7 @@
         }
 
         /* ============================================
-           FOOTER (UPDATED - REMOVED RED BORDER)
+           FOOTER WITH RED CIRCLE LOGO
         ============================================ */
         .footer {
           background: linear-gradient(135deg, var(--green) 0%, #1a3426 100%);
@@ -2024,16 +1907,18 @@
           height: 100px;
           border-radius: 50%;
           overflow: hidden;
-          border: none; /* Removed red border */
+          border: 3px solid var(--red); /* RED CIRCLE BORDER ADDED */
+          padding: 3px;
+          background: white;
           margin-bottom: 20px;
         }
 
         .footer-logo img {
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Changed to cover for circle */
+          object-fit: cover;
           display: block;
-          border-radius: 50%; /* Ensure image is also circle */
+          border-radius: 50%;
         }
 
         .footer-subtitle {
@@ -2136,102 +2021,6 @@
         }
 
         /* ============================================
-           TOUCH OPTIMIZATIONS
-        ============================================ */
-        .touch-active {
-          transform: scale(0.98) !important;
-          transition: transform 0.1s ease !important;
-        }
-
-        @media (hover: none) and (pointer: coarse) {
-          /* Touch devices */
-          .menu-tab:hover, .social-icon:hover, .btn:hover {
-            transform: none;
-          }
-          
-          .menu-tab:active, .social-icon:active, .btn:active {
-            transform: scale(0.98);
-          }
-          
-          .gallery-item:hover {
-            transform: none;
-          }
-          
-          .gallery-caption {
-            transform: translateY(0);
-            background: rgba(0, 0, 0, 0.7);
-          }
-          
-          .image-frame:hover video {
-            transform: none;
-          }
-          
-          .image-caption {
-            transform: translateY(0);
-            background: rgba(0, 0, 0, 0.7);
-          }
-        }
-
-        /* ============================================
-           IOS SPECIFIC FIXES
-        ============================================ */
-        @supports (-webkit-touch-callout: none) {
-          /* iOS specific styles */
-          .hero-premium {
-            min-height: -webkit-fill-available;
-          }
-          
-          .btn, .menu-tab, .social-icon {
-            cursor: pointer;
-          }
-          
-          /* Fix for iOS form elements */
-          input, select, textarea {
-            font-size: 16px;
-          }
-        }
-
-        /* ============================================
-           ANDROID SPECIFIC FIXES
-        ============================================ */
-        @media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px) {
-          /* Android specific styles */
-          .hero-bg img {
-            object-fit: cover;
-          }
-          
-          /* Fix for Android touch feedback */
-          .btn:active, .menu-tab:active, .social-icon:active {
-            transform: scale(0.98);
-          }
-        }
-
-        /* ============================================
-           LOADER RESPONSIVE
-        ============================================ */
-        @media (max-width: 768px) {
-          .loader-logo {
-            font-size: 36px;
-          }
-          
-          .loader-spinner {
-            width: 60px;
-            height: 60px;
-          }
-          
-          .loader-text {
-            font-size: 12px;
-          }
-        }
-
-        /* ============================================
-           FIX FOR IOS TAP HIGHLIGHTS
-        ============================================ */
-        * {
-          -webkit-tap-highlight-color: rgba(0,0,0,0);
-        }
-
-        /* ============================================
            PERFORMANCE OPTIMIZATIONS
         ============================================ */
         /* Reduced motion support */
@@ -2321,7 +2110,7 @@
                 <li><a href="#contact" class="nav-link premium-nav-link">Contact</a></li>
             </ul>
             
-            <!-- Logo on Right -->
+            <!-- Logo on Right with RED CIRCLE BORDER (FIX 1) -->
             <div class="logo">
                 <!-- Logo image -->
                 <div class="custom-logo nav-logo">
@@ -2365,10 +2154,9 @@
         </div>
     </div>
 
-    <!-- Premium Hero Section with YOUR IMAGES -->
+    <!-- Premium Hero Section -->
     <section id="home" class="hero hero-premium">
         <div class="hero-bg">
-            <!-- Replace with YOUR restaurant images -->
             <img src="images/hero-restaurant.jpg" 
                  alt="L'ARTISTA Fine Dining Restaurant Interior"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';">
@@ -2378,7 +2166,7 @@
         
         <div class="hero-content premium-hero-content">
             <div class="logo-container premium-logo-container">
-                <!-- Logo -->
+                <!-- Logo with RED CIRCLE BORDER (FIX 1) -->
                 <div class="custom-logo hero-logo premium-hero-logo">
                     <img src="images/lartista-logo.png" 
                          alt="L'ARTISTA Fine Dining Restaurant"
@@ -2472,10 +2260,8 @@
             
             <div class="about-image premium-about-image">
                 <div class="image-frame">
-                    <!-- YOUR restaurant ambiance video -->
                     <video autoplay muted loop playsinline>
                         <source src="videos/restaurant-ambiance.mp4" type="video/mp4">
-                        <!-- Fallback text if video doesn't load -->
                         <p style="color: white; padding: 20px; text-align: center;">
                             Experience the elegant ambiance of L'ARTISTA
                         </p>
@@ -2517,7 +2303,7 @@
         </div>
     </section>
 
-    <!-- Menu Section - COMPLETE WITH ALL ITEMS (UPDATED - HIDDEN INITIALLY) -->
+    <!-- Menu Section - COMPLETE WITH ALL ITEMS (FIX 2) -->
     <section id="menu" class="container fade-in menu-section">
         <div class="section-header">
             <h2>Our Menu</h2>
@@ -2535,38 +2321,26 @@
         <!-- Starters Menu - COMPLETE -->
         <div class="menu-category active" id="starters">
             <h3><i class="fas fa-seedling"></i> Starters</h3>
-            <div class="menu-category-content">
+            <div class="menu-items-container">
                 <!-- Creamy Burrata -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Creamy Burrata" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Creamy Burrata</h4>
-                            <span class="price">€24</span>
+                            <span class="allergy">1.8</span>
                         </div>
-                        <p class="menu-desc">Fresh burrata cheese served with cherry tomatoes, grilled asparagus, and fresh basil</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Burrata cheese, cherry tomatoes, asparagus, fresh basil, extra virgin olive oil
-                        </div>
-                        <div class="allergy-info">Allergy: 1.8</div>
+                        <p class="menu-desc">Cherry tomatoes / asparagus / basil</p>
                     </div>
                 </div>
                 
                 <!-- Vitello Tonnato -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Vitello Tonnato" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Vitello Tonnato</h4>
-                            <span class="price">€28</span>
+                            <span class="allergy">1.4.7.8</span>
                         </div>
-                        <p class="menu-desc">Sliced veal with creamy tuna sauce and toasted pine nuts</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Veal, tuna, mayonnaise, capers, pine nuts, lemon
-                        </div>
-                        <div class="allergy-info">Allergy: 1.4.7.8</div>
+                        <p class="menu-desc">Pine nuts</p>
                     </div>
                 </div>
                 
@@ -2575,30 +2349,96 @@
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Seasonal Insalata Mista</h4>
-                            <span class="price">€16</span>
+                            <span class="allergy">1.8.9</span>
                         </div>
-                        <p class="menu-desc">Fresh mixed seasonal salad with our house vinaigrette</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Seasonal greens, cherry tomatoes, cucumber, radish, house vinaigrette
-                        </div>
-                        <div class="allergy-info">Allergy: 1.8.9</div>
                     </div>
                 </div>
                 
                 <!-- Caesar Salad -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Caesar Salad" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Caesar Salad</h4>
-                            <span class="price">€18</span>
+                            <span class="allergy">1.3.4.7.10</span>
                         </div>
-                        <p class="menu-desc">Classic Caesar salad with crisp romaine, croutons, and Parmesan cheese</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Romaine lettuce, Caesar dressing, croutons, Parmesan cheese, anchovies
+                        <p class="menu-desc">Croutons / parmesan</p>
+                    </div>
+                </div>
+                
+                <!-- Beef Carpaccio -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Beef Carpaccio</h4>
+                            <span class="allergy">1.7.8</span>
                         </div>
-                        <div class="allergy-info">Allergy: 1.3.4.7.10</div>
+                        <p class="menu-desc">Truffle oil / arugula</p>
+                    </div>
+                </div>
+                
+                <!-- Lemon Garlic Shrimps -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Lemon Garlic Shrimps</h4>
+                            <span class="allergy">1.2.7</span>
+                        </div>
+                        <p class="menu-desc">Focaccia</p>
+                    </div>
+                </div>
+                
+                <!-- Antipasto -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Antipasto</h4>
+                            <span class="allergy">1.6.7.8</span>
+                        </div>
+                        <p class="menu-desc">Finest Italian selection of cheeses and meats</p>
+                    </div>
+                </div>
+                
+                <!-- Bruschetta with Stracciatella and Mortadella -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Bruschetta with Stracciatella and Mortadella</h4>
+                            <span class="allergy">1.7.8.</span>
+                        </div>
+                        <p class="menu-desc">Pistachios</p>
+                    </div>
+                </div>
+                
+                <!-- Tomato Bruschetta -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Tomato Bruschetta</h4>
+                            <span class="allergy">1.7</span>
+                        </div>
+                        <p class="menu-desc">Ciliegine / fresh herbs</p>
+                    </div>
+                </div>
+                
+                <!-- Bruschetta with Cured Zucchini -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Bruschetta with Cured Zucchini</h4>
+                            <span class="allergy">1.8.</span>
+                        </div>
+                        <p class="menu-desc">Pine nuts pesto</p>
+                    </div>
+                </div>
+                
+                <!-- Zuppa di Pesce -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Zuppa di Pesce</h4>
+                            <span class="allergy">1.2.4.7.9.13.14</span>
+                        </div>
+                        <p class="menu-desc">Variety of seafood / stracciatella</p>
                     </div>
                 </div>
             </div>
@@ -2607,21 +2447,15 @@
         <!-- Pastas Menu - COMPLETE -->
         <div class="menu-category" id="pastas">
             <h3><i class="fas fa-pasta"></i> Pastas</h3>
-            <div class="menu-category-content">
+            <div class="menu-items-container">
                 <!-- Spaghetti Carbonara -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Spaghetti Carbonara" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Spaghetti Carbonara</h4>
-                            <span class="price">€26</span>
+                            <span class="allergy">1.3.7</span>
                         </div>
-                        <p class="menu-desc">Classic Roman pasta with guanciale and Pecorino Romano</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Spaghetti, guanciale, eggs, Pecorino Romano, black pepper
-                        </div>
-                        <div class="allergy-info">Allergy: 1.3.7</div>
+                        <p class="menu-desc">Guancile / pecorino</p>
                     </div>
                 </div>
                 
@@ -2630,30 +2464,61 @@
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Cacio e Pepe</h4>
-                            <span class="price">€24</span>
+                            <span class="allergy">1.7</span>
                         </div>
-                        <p class="menu-desc">Simple Roman pasta with cheese and black pepper, topped with black truffles</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Spaghetti, Pecorino Romano, black pepper, black truffles
-                        </div>
-                        <div class="allergy-info">Allergy: 1.7</div>
+                        <p class="menu-desc">Black truffles</p>
                     </div>
                 </div>
                 
                 <!-- Pasta al Pesto di Pistacchio -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Pasta al Pesto di Pistacchio" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Pasta al Pesto di Pistacchio e Stracciatella</h4>
-                            <span class="price">€28</span>
+                            <span class="allergy">1.7.8</span>
                         </div>
-                        <p class="menu-desc">Pasta with creamy pistachio pesto and stracciatella cheese</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Pasta, pistachio pesto, stracciatella cheese, olive oil
+                    </div>
+                </div>
+                
+                <!-- Pasta Penne Arrabbiata -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pasta Penne Arrabbiata</h4>
+                            <span class="allergy">1</span>
                         </div>
-                        <div class="allergy-info">Allergy: 1.7.8</div>
+                    </div>
+                </div>
+                
+                <!-- Pasta Spaghetti Frutti di Mare -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pasta Spaghetti Frutti di Mare</h4>
+                            <span class="allergy">1.2.4.9.13.14</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kids Pasta -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Kids Pasta</h4>
+                            <span class="allergy">1.7.9.13</span>
+                        </div>
+                        <p class="menu-desc">Any pasta choice with tomato sauce or butter sauce</p>
+                    </div>
+                </div>
+                
+                <!-- L'Artista Pasta -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>L'Artista</h4>
+                            <span class="allergy">1.2.4.7</span>
+                        </div>
+                        <p class="menu-desc">Pasta with lobster and black caviar</p>
                     </div>
                 </div>
             </div>
@@ -2662,21 +2527,15 @@
         <!-- Main Courses Menu - COMPLETE -->
         <div class="menu-category" id="mains">
             <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
-            <div class="menu-category-content">
+            <div class="menu-items-container">
                 <!-- Parmigiana di Melanzane -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Parmigiana di Melanzane" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Parmigiana di Melanzane</h4>
-                            <span class="price">€28</span>
+                            <span class="allergy">1.7.8.9</span>
                         </div>
-                        <p class="menu-desc">Eggplant Parmesan with basil pesto</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Eggplant, tomato sauce, mozzarella, Parmesan, basil pesto
-                        </div>
-                        <div class="allergy-info">Allergy: 1.7.8.9</div>
+                        <p class="menu-desc">Basil pesto</p>
                     </div>
                 </div>
                 
@@ -2684,31 +2543,64 @@
                 <div class="menu-item">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Creamy Risotto with Black Truffles</h4>
-                            <span class="price">€32</span>
+                            <h4>Creamy Risotto</h4>
+                            <span class="allergy">1.7.12</span>
                         </div>
-                        <p class="menu-desc">Creamy risotto with black truffle shavings</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Arborio rice, black truffles, Parmesan, white wine, butter
-                        </div>
-                        <div class="allergy-info">Allergy: 1.7.12</div>
+                        <p class="menu-desc">Black truffles</p>
                     </div>
                 </div>
                 
                 <!-- Zucchini Risotto -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Zucchini Risotto" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Zucchini Risotto with Gamberi</h4>
-                            <span class="price">€34</span>
+                            <span class="allergy">1.2.7.12</span>
                         </div>
-                        <p class="menu-desc">Zucchini risotto with fresh shrimp</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Arborio rice, zucchini, shrimp, Parmesan, white wine, herbs
+                    </div>
+                </div>
+                
+                <!-- Veal Scallopini -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Veal Scallopini</h4>
+                            <span class="allergy">1.3.9</span>
                         </div>
-                        <div class="allergy-info">Allergy: 1.2.7.12</div>
+                        <p class="menu-desc">Lemon butter sauce / roasted potatoes or seasonal salad</p>
+                    </div>
+                </div>
+                
+                <!-- Seabass Fillet -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Seabass Fillet</h4>
+                            <span class="allergy">1.4.6.7.9.12</span>
+                        </div>
+                        <p class="menu-desc">Spinach risotto</p>
+                    </div>
+                </div>
+                
+                <!-- Homemade Ravioli -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Homemade Ravioli</h4>
+                            <span class="allergy">1.3.7</span>
+                        </div>
+                        <p class="menu-desc">Ricotta and spinach / gorgonzola sauce</p>
+                    </div>
+                </div>
+                
+                <!-- Tagliata di Manzo -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Tagliata di Manzo</h4>
+                            <span class="allergy">1.7.9.12</span>
+                        </div>
+                        <p class="menu-desc">Roasted potatoes or seasonal salad</p>
                     </div>
                 </div>
             </div>
@@ -2717,21 +2609,14 @@
         <!-- Pizza Menu - COMPLETE -->
         <div class="menu-category" id="pizza">
             <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
-            <div class="menu-category-content">
+            <div class="menu-items-container">
                 <!-- Pizza Margherita -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Pizza Margherita" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Pizza Margherita</h4>
-                            <span class="price">€18</span>
+                            <span class="allergy">1.7</span>
                         </div>
-                        <p class="menu-desc">Classic Neapolitan pizza with tomato and mozzarella</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> San Marzano tomatoes, mozzarella di bufala, fresh basil, extra virgin olive oil
-                        </div>
-                        <div class="allergy-info">Allergy: 1.7</div>
                     </div>
                 </div>
                 
@@ -2739,31 +2624,71 @@
                 <div class="menu-item">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pizza Mortadella with Stracciatella and Pistachios</h4>
-                            <span class="price">€22</span>
+                            <h4>Pizza Mortadella</h4>
+                            <span class="allergy">1.7.8</span>
                         </div>
-                        <p class="menu-desc">Pizza with mortadella, creamy stracciatella and pistachios</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Pizza dough, tomato, mozzarella, mortadella, stracciatella, pistachios
-                        </div>
-                        <div class="allergy-info">Allergy: 1.7.8</div>
+                        <p class="menu-desc">With stracciatella and pistachios</p>
                     </div>
                 </div>
                 
                 <!-- Quattro Formaggi -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Quattro Formaggi" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Quattro Formaggi</h4>
-                            <span class="price">€21</span>
+                            <span class="allergy">1.7</span>
                         </div>
-                        <p class="menu-desc">Four cheese pizza with mozzarella, gorgonzola, Parmesan, and fontina</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Pizza dough, mozzarella, gorgonzola, Parmesan, fontina, olive oil
+                    </div>
+                </div>
+                
+                <!-- Pizza Diavola -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Diavola</h4>
+                            <span class="allergy">1.7.9</span>
                         </div>
-                        <div class="allergy-info">Allergy: 1.7</div>
+                        <p class="menu-desc">With chili oil</p>
+                    </div>
+                </div>
+                
+                <!-- Pizza Salamino -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Salamino</h4>
+                            <span class="allergy">1.7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pizza Marinara -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Marinara</h4>
+                            <span class="allergy">1.4</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prosciutto di Parma -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Prosciutto di Parma</h4>
+                            <span class="allergy">1.7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kids Margherita -->
+                <div class="menu-item">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Kids Margherita</h4>
+                            <span class="allergy">1.7</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2772,38 +2697,25 @@
         <!-- Desserts Menu - COMPLETE -->
         <div class="menu-category" id="desserts">
             <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
-            <div class="menu-category-content">
+            <div class="menu-items-container">
                 <!-- Tiramisu -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Tiramisu" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Tiramisu</h4>
-                            <span class="price">€14</span>
+                            <span class="allergy">1.3.7.8</span>
                         </div>
-                        <p class="menu-desc">Classic Italian dessert with mascarpone and espresso</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Mascarpone, espresso, ladyfingers, eggs, sugar, cocoa powder
-                        </div>
-                        <div class="allergy-info">Allergy: 1.3.7.8</div>
                     </div>
                 </div>
                 
                 <!-- Limoncello Cheesecake -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Limoncello Cheesecake" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Limoncello Cheesecake</h4>
-                            <span class="price">€16</span>
+                            <span class="allergy">1.3.7</span>
                         </div>
-                        <p class="menu-desc">Creamy cheesecake with Italian meringue</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Cream cheese, limoncello, Italian meringue, biscuit base
-                        </div>
-                        <div class="allergy-info">Allergy: 1.3.7</div>
+                        <p class="menu-desc">With Italian meringue</p>
                     </div>
                 </div>
                 
@@ -2812,13 +2724,8 @@
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Affogato</h4>
-                            <span class="price">€12</span>
+                            <span class="allergy">7</span>
                         </div>
-                        <p class="menu-desc">Vanilla gelato with hot espresso</p>
-                        <div class="ingredients">
-                            <strong>Ingredients:</strong> Vanilla gelato, espresso, optional amaretto
-                        </div>
-                        <div class="allergy-info">Allergy: 7</div>
                     </div>
                 </div>
             </div>
@@ -3273,7 +3180,7 @@
         }
 
         // ============================================
-        // MENU TABS - ENHANCED (UPDATED - HIDDEN INITIALLY)
+        // MENU TABS - ENHANCED
         // ============================================
         function initMenuTabs() {
             if (!menuTabs.length || !menuCategories.length) return;
@@ -4157,88 +4064,23 @@ ${RESTAURANT_CONFIG.restaurantName}
         }
 
         // ============================================
-        // TOUCH EVENTS FOR MOBILE - ENHANCED
+        // ERROR HANDLING
         // ============================================
-        function initTouchEvents() {
-            // Add touch support for interactive elements
-            const touchElements = document.querySelectorAll('.menu-item, .btn, .menu-tab, .social-icon, .gallery-item');
-            
-            touchElements.forEach(item => {
-                // Touch start
-                item.addEventListener('touchstart', function(e) {
-                    this.classList.add('touch-active');
-                    
-                    // Prevent background scroll on touch
-                    if (this.classList.contains('menu-item') || 
-                        this.classList.contains('gallery-item')) {
-                        e.preventDefault();
-                    }
-                }, { passive: false });
-                
-                // Touch end
-                item.addEventListener('touchend', function() {
-                    this.classList.remove('touch-active');
-                });
-                
-                // Touch cancel
-                item.addEventListener('touchcancel', function() {
-                    this.classList.remove('touch-active');
-                });
+        window.addEventListener('error', function(e) {
+            console.error('Website error:', e.error);
+            trackEvent('javascript_error', {
+                message: e.error.message,
+                filename: e.filename,
+                lineno: e.lineno,
+                colno: e.colno
             });
-            
-            // Add swipe support for mobile menu
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            document.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-            
-            document.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                const swipeDistance = touchEndX - touchStartX;
-                
-                // Swipe left to close menu (if open)
-                if (swipeDistance < -50 && mobileMenu.classList.contains('active')) {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
+        });
 
-        // ============================================
-        // KEYBOARD NAVIGATION
-        // ============================================
-        function initKeyboardNavigation() {
-            // Add keyboard navigation for menu tabs
-            document.addEventListener('keydown', (e) => {
-                // Tab navigation for menu tabs
-                if (e.target.classList.contains('menu-tab')) {
-                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        const currentTab = e.target;
-                        const nextTab = currentTab.nextElementSibling || menuTabs[0];
-                        nextTab.focus();
-                        nextTab.click();
-                    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        const currentTab = e.target;
-                        const prevTab = currentTab.previousElementSibling || menuTabs[menuTabs.length - 1];
-                        prevTab.focus();
-                        prevTab.click();
-                    }
-                }
-                
-                // Escape key to close mobile menu
-                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    menuToggle.focus();
-                }
-            });
-        }
+        // Handle unhandled promise rejections
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Unhandled promise rejection:', e.reason);
+            trackEvent('promise_rejection', { reason: e.reason.toString() });
+        });
 
         // ============================================
         // ANALYTICS & EVENT TRACKING
@@ -4282,29 +4124,7 @@ ${RESTAURANT_CONFIG.restaurantName}
             };
             
             console.log('📊 Event:', event);
-            
-            // In a production environment, you would send this to your analytics service
-            // Example: sendToAnalytics(event);
         }
-
-        // ============================================
-        // ERROR HANDLING
-        // ============================================
-        window.addEventListener('error', function(e) {
-            console.error('Website error:', e.error);
-            trackEvent('javascript_error', {
-                message: e.error.message,
-                filename: e.filename,
-                lineno: e.lineno,
-                colno: e.colno
-            });
-        });
-
-        // Handle unhandled promise rejections
-        window.addEventListener('unhandledrejection', function(e) {
-            console.error('Unhandled promise rejection:', e.reason);
-            trackEvent('promise_rejection', { reason: e.reason.toString() });
-        });
 
         // ============================================
         // HELPER FUNCTIONS
@@ -4317,10 +4137,6 @@ ${RESTAURANT_CONFIG.restaurantName}
                     block: 'start'
                 });
             }
-        }
-
-        function toggleElement(element, className = 'active') {
-            element.classList.toggle(className);
         }
 
         function debounce(func, wait) {
