@@ -16,10 +16,1934 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="lartista-logo.png">
+    <style>
+        /* ============================================
+           L'ARTISTA FINE DINING - OPTIMIZED CSS
+        ============================================ */
+
+        :root {
+          /* Italian Flag Colors */
+          --green: #1F3D2B;
+          --white: #FFFFFF;
+          --red: #D6273B;
+          --ivory: #F9F7F2;
+          --gold: #C8A951;
+          
+          /* Text Colors */
+          --text-dark: #1A1A1A;
+          --text-muted: #666666;
+          --text-light: #999999;
+          
+          /* Shadows */
+          --shadow: 0 5px 15px rgba(0,0,0,0.1);
+          --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+          
+          /* Transitions */
+          --transition: all 0.3s ease;
+          
+          /* Spacing */
+          --space-sm: 1rem;
+          --space-md: 2rem;
+          --space-lg: 3rem;
+          --space-xl: 4rem;
+        }
+
+        /* ============================================
+           RESET & BASE STYLES
+        ============================================ */
+        *, *::before, *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+          font-size: 16px;
+        }
+
+        body {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          background-color: var(--ivory);
+          color: var(--text-dark);
+          line-height: 1.6;
+          overflow-x: hidden;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============================================
+           LOADER - FIXED
+        ============================================ */
+        .loader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #1F3D2B 0%, #2D5A42 100%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 48px;
+          color: white;
+          margin-bottom: 30px;
+          letter-spacing: 3px;
+        }
+
+        .loader-spinner {
+          width: 70px;
+          height: 70px;
+          border: 4px solid rgba(255, 255, 255, 0.2);
+          border-top: 4px solid #D6273B;
+          border-radius: 50%;
+          animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+          color: rgba(255, 255, 255, 0.8);
+          margin-top: 20px;
+          font-size: 14px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        /* ============================================
+           ITALIAN FLAG STRIPES
+        ============================================ */
+        .italian-flag-stripe {
+          position: fixed;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: linear-gradient(
+            to right,
+            var(--green) 33.33%,
+            var(--white) 33.33% 66.66%,
+            var(--red) 66.66%
+          );
+          z-index: 1000;
+        }
+
+        .italian-flag-stripe.top {
+          top: 0;
+        }
+
+        .italian-flag-stripe.bottom {
+          bottom: 0;
+        }
+
+        /* ============================================
+           CONTAINERS
+        ============================================ */
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          width: 100%;
+        }
+
+        section {
+          padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+          section {
+            padding: 60px 0;
+          }
+          
+          .container {
+            padding: 0 15px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          section {
+            padding: 50px 0;
+          }
+          
+          .container {
+            padding: 0 12px;
+          }
+        }
+
+        /* ============================================
+           BUTTONS
+        ============================================ */
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 12px 30px;
+          border: 2px solid transparent;
+          font-size: 14px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          text-decoration: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: var(--transition);
+          gap: 8px;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .btn-red {
+          background-color: var(--red);
+          color: white;
+          border-color: var(--red);
+        }
+
+        .btn-red:hover {
+          background-color: #b81e30;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(214, 39, 59, 0.3);
+        }
+
+        .btn-premium {
+          background: linear-gradient(135deg, var(--red), #b81e30);
+          color: var(--white);
+          border: 2px solid var(--red);
+        }
+
+        .btn-premium:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 30px rgba(214, 39, 59, 0.3);
+          background: linear-gradient(135deg, #b81e30, var(--red));
+        }
+
+        .btn-outline-premium {
+          background: transparent;
+          color: var(--white);
+          border: 2px solid var(--white);
+          backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-premium:hover {
+          background: var(--white);
+          color: var(--red);
+          transform: translateY(-3px);
+        }
+
+        .btn-large {
+          padding: 1rem 2.5rem;
+          font-size: 1rem;
+        }
+
+        .btn-block {
+          width: 100%;
+        }
+
+        .button-group {
+          display: flex;
+          gap: 1rem;
+          margin-top: 2rem;
+          flex-wrap: wrap;
+        }
+
+        /* ============================================
+           WHATSAPP FLOAT BUTTON
+        ============================================ */
+        .whatsapp-float {
+          position: fixed;
+          width: 60px;
+          height: 60px;
+          bottom: 30px;
+          right: 30px;
+          background-color: #25d366;
+          color: white;
+          border-radius: 50%;
+          text-align: center;
+          font-size: 28px;
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          text-decoration: none;
+          animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+          background-color: #128C7E;
+          transform: scale(1.15) rotate(5deg);
+          box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+          70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* ============================================
+           NAVIGATION
+        ============================================ */
+        .premium-navbar {
+          position: fixed;
+          top: 6px;
+          left: 0;
+          right: 0;
+          background: rgba(249, 247, 242, 0.95);
+          backdrop-filter: blur(10px);
+          z-index: 1000;
+          padding: 6px 0;
+          border-bottom: 1px solid rgba(214, 39, 59, 0.1);
+          transition: var(--transition);
+        }
+
+        .premium-navbar.scrolled {
+          padding: 10px 0;
+          background: rgba(249, 247, 242, 0.98);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        /* Logo */
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          flex-direction: row-reverse;
+        }
+
+        .custom-logo {
+          border-radius: 0;
+          overflow: hidden;
+          border: none;
+          padding: 0;
+          background: none;
+          transition: var(--transition);
+        }
+
+        .nav-logo {
+          width: 65px;
+          height: 65px;
+        }
+
+        .hero-logo {
+          width: 200px;
+          height: 200px;
+          border: none;
+          margin-bottom: 0;
+        }
+
+        .custom-logo img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+        }
+
+        /* Logo Fallback */
+        .logo-fallback {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #1F3D2B, #D6273B);
+          color: white;
+          font-family: "Playfair Display", serif;
+          font-weight: bold;
+          text-align: center;
+          padding: 15px;
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          font-size: 0.8em;
+          display: none;
+        }
+
+        .hero-fallback {
+          font-size: 1.2em;
+          padding: 30px;
+        }
+
+        /* Hide fallback when logo image loads */
+        .custom-logo img:not([style*="display: none"]) + .logo-fallback {
+          display: none;
+        }
+
+        .custom-logo img[style*="display: none"] + .logo-fallback {
+          display: flex;
+        }
+
+        .logo-text {
+          display: flex;
+          flex-direction: column;
+          text-align: right;
+        }
+
+        .logo-main {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          font-weight: 600;
+          color: var(--green);
+          letter-spacing: 1px;
+          line-height: 1;
+        }
+
+        .logo-sub {
+          font-size: 10px;
+          color: var(--red);
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-weight: 400;
+          margin-top: 2px;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+          display: flex;
+          list-style: none;
+          gap: 30px;
+          margin-right: auto;
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: var(--text-dark);
+          font-weight: 500;
+          font-size: 13px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          transition: var(--transition);
+          position: relative;
+          padding: 5px 0;
+          white-space: nowrap;
+        }
+
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: var(--red);
+          transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+          color: var(--red);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          width: 30px;
+          height: 20px;
+          position: relative;
+          z-index: 1001;
+        }
+
+        .menu-toggle span {
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: var(--red);
+          position: absolute;
+          transition: var(--transition);
+        }
+
+        .menu-toggle span:nth-child(1) { top: 0; }
+        .menu-toggle span:nth-child(2) { top: 9px; }
+        .menu-toggle span:nth-child(3) { top: 18px; }
+
+        .menu-toggle.active span:nth-child(1) {
+          top: 9px;
+          transform: rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+          top: 9px;
+          transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu */
+        .premium-mobile-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          max-width: 300px;
+          height: 100vh;
+          background: var(--green);
+          padding: 100px 30px 30px;
+          transition: var(--transition);
+          z-index: 999;
+          box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .premium-mobile-menu.active {
+          right: 0;
+        }
+
+        .mobile-menu-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 40px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-logo {
+          font-family: 'Playfair Display', serif;
+          font-size: 28px;
+          color: white;
+          font-weight: 600;
+        }
+
+        .mobile-menu-close {
+          background: none;
+          border: none;
+          color: white;
+          font-size: 24px;
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transition: var(--transition);
+        }
+
+        .mobile-menu-close:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        .premium-mobile-menu .nav-links {
+          flex-direction: column;
+          gap: 25px;
+          margin-left: 0;
+          padding: 0;
+        }
+
+        .premium-mobile-menu .nav-link {
+          font-size: 16px;
+          padding: 10px 0;
+          display: block;
+          color: white;
+        }
+
+        .premium-mobile-menu .nav-link:hover,
+        .premium-mobile-menu .nav-link.active {
+          color: var(--red);
+        }
+
+        .mobile-menu-footer {
+          margin-top: 40px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero-premium {
+          min-height: 100vh;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-top: 70px;
+          overflow: hidden;
+        }
+
+        .hero-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -2;
+        }
+
+        .hero-bg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(0.6);
+          transition: filter 0.3s ease;
+        }
+
+        .premium-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, 
+              rgba(31, 61, 43, 0.4) 0%, 
+              rgba(255, 255, 255, 0.1) 50%, 
+              rgba(214, 39, 59, 0.4) 100%);
+          pointer-events: none;
+        }
+
+        .premium-hero-content {
+          text-align: center;
+          color: white;
+          padding: 40px 20px;
+          max-width: 1000px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        .premium-logo-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+          margin-bottom: 40px;
+        }
+
+        .premium-hero-logo {
+          animation: float 6s ease-in-out infinite;
+          margin-bottom: 0.5rem;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+
+        .premium-title {
+          margin-bottom: 1rem;
+        }
+
+        .premium-title .title-line-1 {
+          display: block;
+          font-family: 'Playfair Display', serif;
+          font-size: 72px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          line-height: 1;
+          margin-bottom: 0.5rem;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .premium-title .title-line-2 {
+          display: block;
+          font-size: 24px;
+          font-weight: 300;
+          letter-spacing: 6px;
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .premium-subtitle {
+          font-size: 20px;
+          color: rgba(255, 255, 255, 0.9);
+          margin-bottom: 1.5rem;
+          font-weight: 300;
+        }
+
+        .premium-tagline {
+          font-size: 18px;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 40px;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .premium-hero-buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-bottom: 40px;
+        }
+
+        .premium-scroll-indicator {
+          position: absolute;
+          bottom: 40px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: white;
+          cursor: pointer;
+          animation: bounce 2s infinite;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .scroll-text {
+          font-size: 14px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          opacity: 0.8;
+        }
+
+        .scroll-arrow {
+          font-size: 24px;
+          animation: bounceArrow 1.5s infinite;
+        }
+
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+          40% { transform: translateY(-10px) translateX(-50%); }
+          60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
+        @keyframes bounceArrow {
+          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-10px); }
+          60% { transform: translateY(-5px); }
+        }
+
+        /* ============================================
+           SECTIONS
+        ============================================ */
+        .section-header {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+          font-family: 'Playfair Display', serif;
+          font-size: 48px;
+          color: var(--green);
+          margin-bottom: 10px;
+        }
+
+        .section-header .subtitle {
+          color: var(--red);
+          font-size: 18px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        .section-divider {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          margin: 20px 0;
+        }
+
+        .divider-line {
+          width: 60px;
+          height: 1px;
+          background: linear-gradient(to right, var(--green), var(--red));
+        }
+
+        .divider-icon {
+          color: var(--red);
+          font-size: 20px;
+        }
+
+        /* ============================================
+           ABOUT SECTION
+        ============================================ */
+        .premium-about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+
+        .premium-content {
+          padding-right: 30px;
+        }
+
+        .premium-intro {
+          font-size: 20px;
+          line-height: 1.8;
+          margin-bottom: 25px;
+          color: var(--text-dark);
+        }
+
+        .premium-description {
+          font-size: 16px;
+          line-height: 1.8;
+          color: var(--text-muted);
+          margin-bottom: 30px;
+        }
+
+        .premium-features-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          margin-top: 2rem;
+        }
+
+        .premium-feature-card {
+          background: white;
+          padding: 2rem;
+          border-radius: 12px;
+          text-align: center;
+          box-shadow: var(--shadow);
+          transition: var(--transition);
+          border: 1px solid rgba(214, 39, 59, 0.1);
+        }
+
+        .premium-feature-card:hover {
+          transform: translateY(-10px);
+          box-shadow: var(--shadow-lg);
+          border-color: var(--red);
+        }
+
+        .premium-feature-icon {
+          font-size: 2.5rem;
+          color: var(--red);
+          margin-bottom: 1.5rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 70px;
+          height: 70px;
+          background: rgba(214, 39, 59, 0.1);
+          border-radius: 50%;
+        }
+
+        .premium-feature-card h4 {
+          font-size: 1.1rem;
+          margin-bottom: 0.75rem;
+          color: var(--green);
+        }
+
+        .premium-feature-card p {
+          font-size: 0.9rem;
+          color: var(--text-muted);
+        }
+
+        .premium-about-image {
+          position: relative;
+        }
+
+        .image-frame {
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: var(--shadow-lg);
+          position: relative;
+          height: 400px;
+        }
+
+        .image-frame img,
+        .image-frame video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
+        }
+
+        .image-frame:hover img,
+        .image-frame:hover video {
+          transform: scale(1.05);
+        }
+
+        /* Video styling */
+        .ambiance-video {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .video-placeholder {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, var(--green), var(--red));
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          text-align: center;
+          padding: 40px;
+        }
+
+        .video-placeholder i {
+          font-size: 60px;
+          margin-bottom: 20px;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .video-placeholder p {
+          font-size: 18px;
+          margin-bottom: 10px;
+          font-weight: 500;
+        }
+
+        .video-placeholder small {
+          font-size: 14px;
+          opacity: 0.8;
+        }
+
+        .image-caption {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+          color: white;
+          padding: 20px;
+          font-size: 14px;
+          text-align: center;
+        }
+
+        /* ============================================
+           MENU SECTION
+        ============================================ */
+        .menu-section {
+          background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
+          border-radius: 20px;
+          padding: 60px 40px;
+          margin: 60px auto;
+        }
+
+        .menu-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 40px;
+          flex-wrap: wrap;
+        }
+
+        .menu-tab {
+          padding: 12px 24px;
+          background: transparent;
+          border: 2px solid rgba(214, 39, 59, 0.2);
+          color: var(--text-dark);
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          transition: var(--transition);
+        }
+
+        .menu-tab:hover {
+          border-color: var(--red);
+          color: var(--red);
+        }
+
+        .menu-tab.active {
+          background: linear-gradient(135deg, var(--red), #b81e30);
+          color: white !important;
+          border-color: var(--red);
+          box-shadow: 0 4px 15px rgba(214, 39, 59, 0.3);
+        }
+
+        .menu-category {
+          display: none;
+          animation: fadeIn 0.6s ease;
+        }
+
+        .menu-category.active {
+          display: block;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-category h3 {
+          font-family: 'Playfair Display', serif;
+          font-size: 32px;
+          color: var(--green);
+          margin-bottom: 30px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+        }
+
+        .menu-category h3 i {
+          color: var(--red);
+          font-size: 28px;
+        }
+
+        .menu-item {
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          margin-bottom: 30px;
+          transition: var(--transition);
+          border: 1px solid rgba(214, 39, 59, 0.1);
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          gap: 25px;
+          align-items: start;
+        }
+
+        .menu-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+          border-color: var(--red);
+        }
+
+        .menu-item-content {
+          flex: 1;
+        }
+
+        .menu-item-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 12px;
+        }
+
+        .menu-item-header h4 {
+          font-family: 'Playfair Display', serif;
+          font-size: 22px;
+          color: var(--green);
+          font-weight: 500;
+          flex: 1;
+          margin-right: 15px;
+        }
+
+        .price {
+          font-size: 24px;
+          font-weight: 600;
+          color: var(--red);
+          white-space: nowrap;
+        }
+
+        .menu-desc {
+          color: var(--text-muted);
+          font-size: 16px;
+          line-height: 1.6;
+          margin-bottom: 15px;
+        }
+
+        .ingredients {
+          color: var(--text-light);
+          font-size: 14px;
+          line-height: 1.5;
+          margin-bottom: 10px;
+          padding-top: 10px;
+          border-top: 1px solid rgba(214, 39, 59, 0.1);
+        }
+
+        .allergy-info {
+          font-size: 12px;
+          color: var(--text-light);
+          font-style: italic;
+          margin-top: 8px;
+        }
+
+        .dish-photo {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 10px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+        }
+
+        .dish-photo:hover {
+          transform: scale(1.02);
+        }
+
+        /* ============================================
+           RESERVATION SECTION - FIXED DROPDOWN
+        ============================================ */
+        .reservation-section {
+          background: linear-gradient(135deg, var(--green) 0%, #2D5A42 100%);
+          color: white;
+          border-radius: 20px;
+          padding: 60px 40px;
+          margin: 60px auto;
+          max-width: 900px;
+        }
+
+        .reservation-section .section-header h2,
+        .reservation-section .section-header .subtitle {
+          color: white;
+        }
+
+        .reservation-form {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+          margin-bottom: 20px;
+        }
+
+        .form-group {
+          margin-bottom: 20px;
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-control {
+          width: 100%;
+          padding: 12px 15px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          border-radius: 8px;
+          font-size: 16px;
+          font-family: 'Inter', sans-serif;
+          transition: var(--transition);
+        }
+
+        .form-control::placeholder {
+          color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-control:focus {
+          outline: none;
+          border-color: white;
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Fix for dropdown white text on white background */
+        select.form-control option {
+          background: var(--green);
+          color: white;
+        }
+
+        select.form-control {
+          appearance: none;
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+          background-repeat: no-repeat;
+          background-position: right 15px center;
+          background-size: 20px;
+          padding-right: 45px;
+        }
+
+        /* Form validation styles */
+        .form-control.invalid {
+          border-color: #ff6b6b;
+          box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+        }
+
+        .form-control.valid {
+          border-color: #51cf66;
+        }
+
+        .validation-message {
+          font-size: 12px;
+          color: #ff6b6b;
+          margin-top: 5px;
+          display: none;
+        }
+
+        .form-control.invalid + .validation-message {
+          display: block;
+        }
+
+        textarea.form-control {
+          min-height: 120px;
+          resize: vertical;
+        }
+
+        .notification-box {
+          background: linear-gradient(135deg, 
+            rgba(37, 211, 102, 0.2) 0%, 
+            rgba(214, 39, 59, 0.2) 100%);
+          border: 1px solid rgba(37, 211, 102, 0.3);
+          border-radius: 12px;
+          padding: 20px;
+          margin: 25px 0;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .notification-icon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+          font-size: 28px;
+        }
+
+        .notification-icon i {
+          color: #25d366;
+        }
+
+        .notification-icon .fa-envelope {
+          color: #D6273B;
+        }
+
+        .notification-content h4 {
+          color: white;
+          margin-bottom: 5px;
+          font-size: 18px;
+        }
+
+        .notification-content p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 14px;
+          margin: 0;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+        ============================================ */
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          margin-top: 40px;
+        }
+
+        .contact-info {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 25px;
+        }
+
+        .contact-card {
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: var(--transition);
+        }
+
+        .contact-card:hover {
+          transform: translateY(-10px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .contact-icon {
+          font-size: 36px;
+          color: var(--red);
+          margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+          color: var(--green);
+          margin-bottom: 15px;
+          font-size: 20px;
+        }
+
+        .contact-card p {
+          color: var(--text-muted);
+          margin-bottom: 8px;
+          line-height: 1.6;
+        }
+
+        .contact-card a {
+          color: var(--red);
+          text-decoration: none;
+          font-weight: 500;
+          display: block;
+          margin: 10px 0;
+          transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+          color: var(--green);
+        }
+
+        .whatsapp-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: #25d366 !important;
+          font-weight: 600;
+        }
+
+        .contact-note {
+          color: var(--red) !important;
+          font-style: italic;
+          margin-top: 10px;
+          font-size: 14px;
+        }
+
+        .map-container {
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: var(--shadow-lg);
+          height: 450px;
+        }
+
+        .map-container iframe {
+          width: 100%;
+          height: 100%;
+          border: 0;
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer {
+          background: linear-gradient(135deg, var(--green) 0%, #1a3426 100%);
+          color: white;
+          padding: 60px 0 30px;
+          position: relative;
+        }
+
+        .footer::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: linear-gradient(to right, var(--green), var(--white), var(--red));
+        }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 40px;
+          margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+          color: white;
+          font-size: 22px;
+          margin-bottom: 20px;
+          font-family: 'Playfair Display', serif;
+        }
+
+        .footer-logo {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: none;
+          margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+        }
+
+        .footer-logo .logo-fallback {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #1F3D2B, #D6273B);
+          color: white;
+          font-family: "Playfair Display", serif;
+          font-weight: bold;
+          text-align: center;
+          padding: 15px;
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          font-size: 1em;
+        }
+
+        .footer-subtitle {
+          color: var(--red);
+          font-weight: 600;
+          letter-spacing: 2px;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+          font-size: 14px;
+        }
+
+        .footer-column p,
+        .footer-column a {
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 12px;
+          display: block;
+          text-decoration: none;
+          transition: var(--transition);
+          line-height: 1.6;
+        }
+
+        .footer-column a:hover {
+          color: white;
+          padding-left: 5px;
+        }
+
+        .social-links {
+          display: flex;
+          gap: 15px;
+          margin: 20px 0;
+        }
+
+        .social-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          text-decoration: none;
+          font-size: 18px;
+          transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+          background: var(--red);
+          transform: translateY(-3px);
+        }
+
+        .contact-info-footer {
+          margin-top: 20px;
+        }
+
+        .contact-info-footer p {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+          font-size: 14px;
+        }
+
+        .contact-info-footer i {
+          color: var(--red);
+          width: 20px;
+        }
+
+        .footer-bottom {
+          text-align: center;
+          padding-top: 30px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 14px;
+        }
+
+        .footer-note {
+          margin-top: 15px;
+          color: var(--red);
+          font-style: italic;
+        }
+
+        /* ============================================
+           NOTIFICATION SYSTEM
+        ============================================ */
+        .notification {
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          z-index: 9999;
+          transform: translateX(400px);
+          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+          border-left: 4px solid var(--green);
+          max-width: 400px;
+          opacity: 0;
+        }
+
+        .notification.show {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        .notification-content {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex: 1;
+          min-width: 0;
+        }
+
+        .notification-icon {
+          color: var(--green);
+          font-size: 22px;
+          flex-shrink: 0;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: rgba(31, 61, 43, 0.1);
+        }
+
+        .notification-text {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .notification-text strong {
+          display: block;
+          margin-bottom: 5px;
+          color: var(--text-dark);
+        }
+
+        .notification-text p {
+          color: var(--text-muted);
+          font-size: 14px;
+          margin: 0;
+          line-height: 1.4;
+        }
+
+        .notification-progress {
+          height: 3px;
+          background: var(--green);
+          width: 100%;
+          transform: scaleX(1);
+          transform-origin: left;
+          transition: transform 3s linear;
+          margin-top: 8px;
+          border-radius: 2px;
+        }
+
+        .notification-close {
+          background: none;
+          border: none;
+          color: var(--text-light);
+          cursor: pointer;
+          font-size: 16px;
+          padding: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          transition: all 0.2s ease;
+          flex-shrink: 0;
+        }
+
+        .notification-close:hover {
+          background: rgba(0,0,0,0.05);
+          color: var(--text-dark);
+        }
+
+        .notification-success {
+          border-left-color: #25d366;
+        }
+
+        .notification-success .notification-icon {
+          color: #25d366;
+          background: rgba(37, 211, 102, 0.1);
+        }
+
+        .notification-success .notification-progress {
+          background: #25d366;
+        }
+
+        .notification-error {
+          border-left-color: #D6273B;
+        }
+
+        .notification-error .notification-icon {
+          color: #D6273B;
+          background: rgba(214, 39, 59, 0.1);
+        }
+
+        .notification-error .notification-progress {
+          background: #D6273B;
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+        ============================================ */
+        @media (max-width: 1024px) {
+          .premium-title .title-line-1 {
+            font-size: 60px;
+          }
+          
+          .premium-title .title-line-2 {
+            font-size: 20px;
+            letter-spacing: 4px;
+          }
+        }
+
+        @media (max-width: 992px) {
+          .premium-about-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          
+          .premium-content {
+            padding-right: 0;
+            order: 2;
+          }
+          
+          .premium-about-image {
+            order: 1;
+          }
+          
+          .image-frame {
+            height: 300px;
+          }
+          
+          .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          
+          .map-container {
+            height: 400px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          /* Navigation */
+          .nav-links {
+            display: none;
+          }
+          
+          .menu-toggle {
+            display: block;
+          }
+          
+          .nav-logo {
+            width: 55px;
+            height: 55px;
+          }
+          
+          .logo-main {
+            font-size: 20px;
+          }
+          
+          .logo-sub {
+            font-size: 9px;
+          }
+          
+          .logo {
+            flex-direction: row;
+          }
+          
+          .logo-text {
+            text-align: left;
+          }
+          
+          /* Hero */
+          .hero-premium {
+            min-height: 90vh;
+            padding-top: 60px;
+          }
+          
+          .premium-title .title-line-1 {
+            font-size: 48px;
+          }
+          
+          .premium-title .title-line-2 {
+            font-size: 18px;
+            letter-spacing: 3px;
+          }
+          
+          .premium-subtitle {
+            font-size: 18px;
+          }
+          
+          .premium-tagline {
+            font-size: 16px;
+            padding: 0 10px;
+          }
+          
+          .premium-hero-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+          }
+          
+          .premium-hero-buttons .btn {
+            width: 100%;
+            max-width: 300px;
+          }
+          
+          .hero-logo {
+            width: 150px;
+            height: 150px;
+          }
+          
+          /* Sections */
+          .section-header h2 {
+            font-size: 36px;
+          }
+          
+          .section-header .subtitle {
+            font-size: 16px;
+          }
+          
+          .section-divider {
+            gap: 10px;
+          }
+          
+          .divider-line {
+            width: 40px;
+          }
+          
+          /* About */
+          .premium-intro {
+            font-size: 18px;
+          }
+          
+          .premium-description {
+            font-size: 15px;
+          }
+          
+          .premium-features-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .image-frame {
+            height: 250px;
+          }
+          
+          /* Menu */
+          .menu-section {
+            padding: 40px 20px;
+            margin: 40px auto;
+          }
+          
+          .menu-tabs {
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .menu-tab {
+            width: 100%;
+            text-align: center;
+          }
+          
+          .menu-item {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          
+          .dish-photo {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+          }
+          
+          .menu-category h3 {
+            font-size: 24px;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 18px;
+          }
+          
+          .price {
+            font-size: 20px;
+          }
+          
+          .menu-desc {
+            font-size: 15px;
+          }
+          
+          /* Reservation */
+          .reservation-section {
+            padding: 40px 20px;
+            margin: 40px auto;
+          }
+          
+          .form-row {
+            grid-template-columns: 1fr;
+          }
+          
+          .notification-box {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+          }
+          
+          /* Contact */
+          .contact-info {
+            grid-template-columns: 1fr;
+          }
+          
+          .contact-card {
+            padding: 25px;
+          }
+          
+          .map-container {
+            height: 350px;
+          }
+          
+          /* Footer */
+          .footer {
+            padding: 40px 0 20px;
+          }
+          
+          .footer-grid {
+            gap: 30px;
+          }
+          
+          .footer-column h3 {
+            font-size: 20px;
+          }
+          
+          .footer-logo {
+            width: 80px;
+            height: 80px;
+          }
+          
+          /* Notification */
+          .notification {
+            top: 80px;
+            right: 15px;
+            left: 15px;
+            max-width: none;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .premium-title .title-line-1 {
+            font-size: 36px;
+          }
+          
+          .premium-title .title-line-2 {
+            font-size: 16px;
+            letter-spacing: 2px;
+          }
+          
+          .premium-subtitle {
+            font-size: 16px;
+          }
+          
+          .premium-tagline {
+            font-size: 14px;
+          }
+          
+          .hero-logo {
+            width: 120px;
+            height: 120px;
+          }
+          
+          .premium-hero-buttons .btn {
+            max-width: 100%;
+          }
+          
+          .section-header h2 {
+            font-size: 28px;
+          }
+          
+          .section-header .subtitle {
+            font-size: 14px;
+          }
+          
+          .divider-line {
+            width: 30px;
+          }
+          
+          .premium-feature-card {
+            padding: 1.5rem;
+          }
+          
+          .image-frame {
+            height: 200px;
+          }
+          
+          .menu-section {
+            padding: 30px 15px;
+            margin: 30px auto;
+          }
+          
+          .menu-item {
+            padding: 20px;
+          }
+          
+          .menu-category h3 {
+            font-size: 22px;
+          }
+          
+          .menu-item-header h4 {
+            font-size: 18px;
+          }
+          
+          .price {
+            font-size: 20px;
+          }
+          
+          .dish-photo {
+            height: 150px;
+          }
+          
+          .reservation-section {
+            padding: 30px 15px;
+          }
+          
+          .notification-icon {
+            font-size: 24px;
+          }
+          
+          .contact-card {
+            padding: 20px;
+          }
+          
+          .map-container {
+            height: 300px;
+          }
+          
+          .footer-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .whatsapp-float {
+            width: 50px;
+            height: 50px;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+          }
+        }
+
+        /* Utility Classes */
+        .red-text { color: var(--red); }
+        .green-text { color: var(--green); }
+        .white-text { color: var(--white); }
+        .text-center { text-align: center; }
+        .highlight-red { color: var(--red); font-weight: 600; }
+        .highlight-green { color: var(--green); font-weight: 600; }
+    </style>
 </head>
 <body>
     <!-- Italian Flag Stripes -->
@@ -269,48 +2193,496 @@
                     </div>
                 </div>
                 
-                <!-- ... (rest of menu items remain the same) ... -->
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Seasonal Insalata Mista</h4>
+                            <span class="price">€16</span>
+                        </div>
+                        <p class="menu-desc">Fresh mixed seasonal salad</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.8.9
+                        </div>
+                    </div>
+                </div>
                 
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Caesar Salad</h4>
+                            <span class="price">€18</span>
+                        </div>
+                        <p class="menu-desc">Crisp romaine / croutons / parmesan</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.4.7.10
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Beef Carpaccio</h4>
+                            <span class="price">€26</span>
+                        </div>
+                        <p class="menu-desc">Thinly sliced beef / truffle oil / arugula</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Lemon Garlic Shrimps</h4>
+                            <span class="price">€22</span>
+                        </div>
+                        <p class="menu-desc">Served with focaccia bread</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Antipasto</h4>
+                            <span class="price">€32</span>
+                        </div>
+                        <p class="menu-desc">Finest Italian selection of cheeses and meats</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.6.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Bruschetta Stracciatella & Mortadella</h4>
+                            <span class="price">€19</span>
+                        </div>
+                        <p class="menu-desc">With pistachios</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Tomato Bruschetta</h4>
+                            <span class="price">€15</span>
+                        </div>
+                        <p class="menu-desc">With ciliegine / fresh herbs</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Cured Zucchini Bruschetta</h4>
+                            <span class="price">€17</span>
+                        </div>
+                        <p class="menu-desc">With pine nuts pesto</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Zuppa di Pesce</h4>
+                            <span class="price">€34</span>
+                        </div>
+                        <p class="menu-desc">Variety of seafood / stracciatella</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.4.7.9.13.14
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Pastas Menu -->
             <div class="menu-category" id="pastas">
                 <h3><i class="fas fa-pasta"></i> Pastas</h3>
                 
-                <!-- ... (pasta items remain the same) ... -->
+                <div class="menu-item" data-category="pastas">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                         alt="Spaghetti Carbonara" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Spaghetti Carbonara</h4>
+                            <span class="price">€26</span>
+                        </div>
+                        <p class="menu-desc">Classic Roman pasta with guanciale / pecorino</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.7
+                        </div>
+                    </div>
+                </div>
                 
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Cacio e Pepe</h4>
+                            <span class="price">€24</span>
+                        </div>
+                        <p class="menu-desc">Roman pasta / black truffles</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pasta al Pesto di Pistacchio e Stracciatella</h4>
+                            <span class="price">€28</span>
+                        </div>
+                        <p class="menu-desc">Pistachio pesto / stracciatella</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Penne Arrabbiata</h4>
+                            <span class="price">€22</span>
+                        </div>
+                        <p class="menu-desc">Spicy tomato sauce</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Spaghetti Frutti di Mare</h4>
+                            <span class="price">€32</span>
+                        </div>
+                        <p class="menu-desc">Seafood pasta</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.4.9.13.14
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>L'Artista Pasta</h4>
+                            <span class="price">€38</span>
+                        </div>
+                        <p class="menu-desc">Pasta with lobster and black caviar</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.4.7
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Main Courses Menu -->
             <div class="menu-category" id="main">
                 <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
                 
-                <!-- ... (main course items remain the same) ... -->
+                <div class="menu-item" data-category="main">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                         alt="Parmigiana di Melanzane" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Parmigiana di Melanzane</h4>
+                            <span class="price">€28</span>
+                        </div>
+                        <p class="menu-desc">Eggplant Parmesan / basil pesto</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8.9
+                        </div>
+                    </div>
+                </div>
                 
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Creamy Risotto</h4>
+                            <span class="price">€26</span>
+                        </div>
+                        <p class="menu-desc">With black truffles</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.12
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Zucchini Risotto with Gamberi</h4>
+                            <span class="price">€30</span>
+                        </div>
+                        <p class="menu-desc">Zucchini risotto with shrimp</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.7.12
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Veal Scallopini</h4>
+                            <span class="price">€36</span>
+                        </div>
+                        <p class="menu-desc">Lemon butter sauce / roasted potatoes or seasonal salad</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.9
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Seabass Fillet</h4>
+                            <span class="price">€34</span>
+                        </div>
+                        <p class="menu-desc">Grilled sea bass / spinach risotto</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.4.6.7.9.12
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Homemade Ravioli</h4>
+                            <span class="price">€28</span>
+                        </div>
+                        <p class="menu-desc">Ricotta and spinach / gorgonzola sauce</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Tagliata di Manzo</h4>
+                            <span class="price">€42</span>
+                        </div>
+                        <p class="menu-desc">Sliced beef / roasted potatoes or seasonal salad</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.9.12
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Pizza Menu -->
             <div class="menu-category" id="pizza">
                 <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
                 
-                <!-- ... (pizza items remain the same) ... -->
+                <div class="menu-item" data-category="pizza">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                         alt="Pizza Margherita" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Margherita</h4>
+                            <span class="price">€18</span>
+                        </div>
+                        <p class="menu-desc">Classic tomato and mozzarella</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
                 
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Mortadella with Stracciatella</h4>
+                            <span class="price">€22</span>
+                        </div>
+                        <p class="menu-desc">With pistachios</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Quattro Formaggi</h4>
+                            <span class="price">€21</span>
+                        </div>
+                        <p class="menu-desc">Four cheese pizza</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Diavola</h4>
+                            <span class="price">€20</span>
+                        </div>
+                        <p class="menu-desc">Spicy salami / chili oil</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.9
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Salamino</h4>
+                            <span class="price">€19</span>
+                        </div>
+                        <p class="menu-desc">Salami pizza</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Marinara</h4>
+                            <span class="price">€17</span>
+                        </div>
+                        <p class="menu-desc">Tomato / garlic / oregano</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.4
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Prosciutto di Parma Pizza</h4>
+                            <span class="price">€23</span>
+                        </div>
+                        <p class="menu-desc">Parma ham / mozzarella</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Desserts Menu -->
             <div class="menu-category" id="desserts">
                 <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
                 
-                <!-- ... (dessert items remain the same) ... -->
+                <div class="menu-item" data-category="desserts">
+                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                         alt="Tiramisu" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Tiramisu</h4>
+                            <span class="price">€14</span>
+                        </div>
+                        <p class="menu-desc">Classic Italian dessert</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.7.8
+                        </div>
+                    </div>
+                </div>
                 
+                <div class="menu-item" data-category="desserts">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                         alt="Limoncello Cheesecake" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Limoncello Cheesecake</h4>
+                            <span class="price">€16</span>
+                        </div>
+                        <p class="menu-desc">With Italian meringue</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Affogato</h4>
+                            <span class="price">€12</span>
+                        </div>
+                        <p class="menu-desc">Vanilla ice cream with espresso</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 7
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Drinks Menu -->
             <div class="menu-category" id="drinks">
                 <h3><i class="fas fa-wine-glass-alt"></i> Drinks</h3>
                 
-                <!-- ... (drink items remain the same) ... -->
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Italian Wines</h4>
+                            <span class="price">€8-€15/glass</span>
+                        </div>
+                        <p class="menu-desc">Selection of fine Italian wines by the glass</p>
+                    </div>
+                </div>
                 
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Classic Cocktails</h4>
+                            <span class="price">€12-€16</span>
+                        </div>
+                        <p class="menu-desc">Negroni, Aperol Spritz, Bellini, etc.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Italian Soft Drinks</h4>
+                            <span class="price">€5-€7</span>
+                        </div>
+                        <p class="menu-desc">San Pellegrino, Chinotto, Aranciata</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Coffee & Tea</h4>
+                            <span class="price">€3-€6</span>
+                        </div>
+                        <p class="menu-desc">Italian espresso, cappuccino, herbal teas</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -334,11 +2706,13 @@
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                            <div class="validation-message">Please enter your name</div>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email Address *</label>
                             <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                            <div class="validation-message">Please enter a valid email address</div>
                         </div>
                     </div>
                     
@@ -346,6 +2720,7 @@
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" class="form-control" placeholder="+91 91365 58275" required>
+                            <div class="validation-message">Please enter a valid phone number</div>
                         </div>
                         
                         <div class="form-group">
@@ -362,6 +2737,7 @@
                                 <option value="8">8 People</option>
                                 <option value="9+">9+ People</option>
                             </select>
+                            <div class="validation-message">Please select number of guests</div>
                         </div>
                     </div>
                     
@@ -369,6 +2745,7 @@
                         <div class="form-group">
                             <label for="date">Preferred Date *</label>
                             <input type="date" id="date" class="form-control" required>
+                            <div class="validation-message">Please select a date</div>
                         </div>
                         
                         <div class="form-group">
@@ -385,6 +2762,7 @@
                                 <option value="20:30">8:30 PM</option>
                                 <option value="21:00">9:00 PM</option>
                             </select>
+                            <div class="validation-message">Please select a time</div>
                         </div>
                     </div>
                     
@@ -444,7 +2822,8 @@
                         </div>
                         <h3>Phone & WhatsApp</h3>
                         <a href="tel:+919136558275">+91 91365 58275</a>
-                        <a href="https://wa.me/919136558275" class="whatsapp-link" target="_blank">
+                        <a href="https://wa.me/919136558275?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
+                           class="whatsapp-link" target="_blank">
                             <i class="fab fa-whatsapp"></i> WhatsApp Chat
                         </a>
                     </div>
@@ -543,6 +2922,573 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script>
+        // ============================================
+        // L'ARTISTA FINE DINING - ENHANCED JAVASCRIPT
+        // ============================================
+
+        // Restaurant Configuration
+        const RESTAURANT_CONFIG = {
+            whatsappNumber: '919136558275',
+            restaurantEmail: 'bollasanjay05@gmail.com',
+            customerEmail: 'customer@example.com',
+            restaurantName: "L'ARTISTA Fine Italian Dining",
+            restaurantAddress: "Elizabetes iela 123, Centra rajons, Rīga, LV-1010, Latvia",
+            phoneNumber: "+91 91365 58275"
+        };
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎭 L\'ARTISTA Restaurant Website Initialized');
+            
+            // Initialize all components
+            initComponents();
+        });
+
+        // ============================================
+        // INITIALIZE ALL COMPONENTS
+        // ============================================
+        function initComponents() {
+            // Hide loader
+            hideLoader();
+            
+            // Set current year in footer
+            const currentYear = document.getElementById('currentYear');
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+            
+            // Initialize all features
+            initNavigation();
+            initMenuTabs();
+            initReservationForm();
+            initScrollEffects();
+            initSmoothScrolling();
+            
+            // Setup form validation
+            setupFormValidation();
+        }
+
+        // ============================================
+        // LOADER
+        // ============================================
+        function hideLoader() {
+            const pageLoader = document.getElementById('pageLoader');
+            if (pageLoader) {
+                // Hide loader after page is fully loaded
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        pageLoader.style.opacity = '0';
+                        pageLoader.style.visibility = 'hidden';
+                        
+                        setTimeout(() => {
+                            pageLoader.style.display = 'none';
+                        }, 800);
+                    }, 1000);
+                });
+            }
+        }
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        function initNavigation() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+            const navbar = document.getElementById('navbar');
+
+            // Mobile Menu Toggle
+            if (mobileMenuToggle && mobileMenu && mobileMenuClose) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    const isActive = mobileMenu.classList.toggle('active');
+                    document.body.style.overflow = isActive ? 'hidden' : 'auto';
+                    
+                    // Animate hamburger icon
+                    this.classList.toggle('active');
+                });
+
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+
+                // Close menu when clicking links
+                document.querySelectorAll('.premium-mobile-menu .nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        mobileMenuToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+            }
+
+            // Navbar scroll effect
+            if (navbar) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                    
+                    // Update active nav link
+                    updateActiveNavLink();
+                });
+            }
+        }
+
+        // ============================================
+        // MENU TABS - UPDATED FOR NEW STRUCTURE
+        // ============================================
+        function initMenuTabs() {
+            const menuTabs = document.querySelectorAll('.menu-tab');
+            const menuCategories = document.querySelectorAll('.menu-category');
+
+            if (!menuTabs.length || !menuCategories.length) return;
+
+            menuTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category');
+                    
+                    // Update active tab
+                    menuTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected category
+                    showMenuCategory(categoryId);
+                });
+            });
+        }
+
+        function showMenuCategory(categoryId) {
+            const menuCategories = document.querySelectorAll('.menu-category');
+            
+            // Hide all categories first
+            menuCategories.forEach(category => {
+                category.classList.remove('active');
+            });
+            
+            // Show selected category
+            const selectedCategory = document.getElementById(categoryId);
+            if (selectedCategory) {
+                selectedCategory.classList.add('active');
+                
+                // Smooth scroll to category
+                selectedCategory.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // ============================================
+        // RESERVATION FORM
+        // ============================================
+        function initReservationForm() {
+            const bookingForm = document.getElementById('bookingForm');
+            if (!bookingForm) return;
+
+            // Set minimum date to today
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                
+                // Set default date to tomorrow
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+            }
+
+            // Form submission
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    guests: document.getElementById('guests').value,
+                    date: document.getElementById('date').value,
+                    time: document.getElementById('time').value,
+                    specialRequests: document.getElementById('special-requests').value.trim()
+                };
+
+                // Validate form
+                if (!validateForm()) {
+                    showNotification('Please fill in all required fields correctly', 'error');
+                    return;
+                }
+
+                // Send reservation
+                sendReservation(formData);
+            });
+        }
+
+        function validateForm() {
+            let isValid = true;
+            
+            // Check required fields
+            const requiredFields = ['name', 'email', 'phone', 'guests', 'date', 'time'];
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field || !field.value.trim()) {
+                    field.classList.add('invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('invalid');
+                }
+            });
+            
+            // Validate email
+            const emailField = document.getElementById('email');
+            if (emailField && emailField.value.trim()) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailField.value)) {
+                    emailField.classList.add('invalid');
+                    isValid = false;
+                }
+            }
+            
+            // Validate phone
+            const phoneField = document.getElementById('phone');
+            if (phoneField && phoneField.value.trim()) {
+                const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                const cleanedPhone = phoneField.value.replace(/\D/g, '');
+                if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 8) {
+                    phoneField.classList.add('invalid');
+                    isValid = false;
+                }
+            }
+            
+            return isValid;
+        }
+
+        function sendReservation(formData) {
+            // Format date beautifully
+            const formattedDate = new Date(formData.date).toLocaleDateString('en-GB', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create WhatsApp message for restaurant admin
+            const adminMessage = `*🎭 NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                               `*📋 Guest Information*%0A` +
+                               `👤 Name: ${formData.name}%0A` +
+                               `📞 Phone: ${formData.phone}%0A` +
+                               `📧 Email: ${formData.email || 'Not provided'}%0A%0A` +
+                               `*📅 Reservation Details*%0A` +
+                               `📅 Date: ${formattedDate}%0A` +
+                               `⏰ Time: ${formData.time}%0A` +
+                               `👥 Guests: ${formData.guests}%0A` +
+                               `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
+                               `📍 Restaurant: ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                               `📱 Phone: ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                               `_Sent via website reservation system_`;
+
+            // Create WhatsApp message for customer confirmation
+            const customerMessage = `*✅ RESERVATION CONFIRMED - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                                  `Dear ${formData.name},%0A%0A` +
+                                  `Thank you for choosing ${RESTAURANT_CONFIG.restaurantName}!%0A%0A` +
+                                  `*📋 Your Reservation Details*%0A` +
+                                  `📅 Date: ${formattedDate}%0A` +
+                                  `⏰ Time: ${formData.time}%0A` +
+                                  `👥 Guests: ${formData.guests}%0A%0A` +
+                                  `📍 Address: ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                                  `📱 Phone: ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                                  `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
+                                  `*Important Information*%0A` +
+                                  `• Please arrive 10 minutes before your reservation%0A` +
+                                  `• Dress code: Smart casual%0A` +
+                                  `• Valet parking available%0A` +
+                                  `• Contact us for any changes: ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                                  `We look forward to welcoming you!%0A%0A` +
+                                  `_L'ARTISTA Fine Italian Dining_`;
+
+            // Create WhatsApp URLs
+            const adminWhatsappURL = `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${adminMessage}`;
+            const customerWhatsappURL = `https://wa.me/${formData.phone.replace(/\D/g, '')}?text=${customerMessage}`;
+
+            // Show success notification
+            showNotification('Sending reservation...', 'info');
+
+            // Send to restaurant admin
+            setTimeout(() => {
+                window.open(adminWhatsappURL, '_blank');
+                
+                // Send confirmation to customer after delay
+                setTimeout(() => {
+                    window.open(customerWhatsappURL, '_blank');
+                    
+                    // Show final success message
+                    setTimeout(() => {
+                        showNotification('Reservation sent successfully! Confirmation sent to you via WhatsApp.', 'success');
+                        
+                        // Reset form
+                        document.getElementById('bookingForm').reset();
+                        
+                        // Reset date to tomorrow
+                        const dateInput = document.getElementById('date');
+                        if (dateInput) {
+                            const tomorrow = new Date();
+                            tomorrow.setDate(tomorrow.getDate() + 1);
+                            dateInput.value = tomorrow.toISOString().split('T')[0];
+                        }
+                    }, 1000);
+                }, 1000);
+            }, 1500);
+        }
+
+        // ============================================
+        // NOTIFICATION SYSTEM - ENHANCED
+        // ============================================
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <div class="notification-icon">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    </div>
+                    <div class="notification-text">
+                        <strong>${type === 'success' ? 'Success!' : type === 'error' ? 'Error!' : 'Notice'}</strong>
+                        <p>${message}</p>
+                        <div class="notification-progress"></div>
+                    </div>
+                </div>
+                <button class="notification-close" aria-label="Close notification">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            // Add to page
+            document.body.appendChild(notification);
+
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+                
+                // Start progress bar animation
+                setTimeout(() => {
+                    const progressBar = notification.querySelector('.notification-progress');
+                    if (progressBar) {
+                        progressBar.style.transform = 'scaleX(0)';
+                        progressBar.style.transition = 'transform 3s linear';
+                    }
+                }, 100);
+            }, 10);
+
+            // Auto remove after 4 seconds
+            const autoRemove = setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 4000);
+
+            // Close button functionality
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                clearTimeout(autoRemove);
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            });
+        }
+
+        // ============================================
+        // SCROLL EFFECTS
+        // ============================================
+        function initScrollEffects() {
+            // Update active navigation link on scroll
+            window.addEventListener('scroll', updateActiveNavLink);
+        }
+
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const scrollPos = window.scrollY + 100;
+            
+            let currentSectionId = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    currentSectionId = sectionId;
+                }
+            });
+            
+            // Update active state
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // ============================================
+        // SMOOTH SCROLLING
+        // ============================================
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        if (mobileMenu && mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                            
+                            // Reset hamburger icon
+                            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                            if (mobileMenuToggle) {
+                                mobileMenuToggle.classList.remove('active');
+                            }
+                        }
+                        
+                        // Scroll to target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ============================================
+        // FORM VALIDATION - ENHANCED
+        // ============================================
+        function setupFormValidation() {
+            const forms = document.querySelectorAll('form');
+            
+            forms.forEach(form => {
+                const inputs = form.querySelectorAll('input, select, textarea');
+                
+                inputs.forEach(input => {
+                    // Add real-time validation feedback
+                    input.addEventListener('blur', () => {
+                        validateField(input);
+                    });
+                    
+                    input.addEventListener('input', () => {
+                        // Remove error state as user types
+                        if (input.classList.contains('invalid')) {
+                            input.classList.remove('invalid');
+                            
+                            // Hide validation message
+                            const validationMsg = input.nextElementSibling;
+                            if (validationMsg && validationMsg.classList.contains('validation-message')) {
+                                validationMsg.style.display = 'none';
+                            }
+                        }
+                        
+                        // Add valid state for completed fields
+                        if (input.value.trim() && input.hasAttribute('required')) {
+                            validateField(input);
+                        }
+                    });
+                    
+                    // For select elements
+                    if (input.tagName === 'SELECT') {
+                        input.addEventListener('change', () => {
+                            validateField(input);
+                        });
+                    }
+                });
+            });
+        }
+
+        function validateField(field) {
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Required field validation
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                isValid = false;
+                errorMessage = 'This field is required';
+            }
+            
+            // Email validation
+            if (field.type === 'email' && field.value.trim()) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(field.value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid email address';
+                }
+            }
+            
+            // Phone validation
+            if (field.type === 'tel' && field.value.trim()) {
+                const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                const cleanedPhone = field.value.replace(/\D/g, '');
+                if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 8) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid phone number';
+                }
+            }
+            
+            // Update field state
+            if (!isValid) {
+                field.classList.add('invalid');
+                field.classList.remove('valid');
+                
+                // Show validation message
+                let validationMsg = field.nextElementSibling;
+                if (!validationMsg || !validationMsg.classList.contains('validation-message')) {
+                    validationMsg = document.createElement('div');
+                    validationMsg.className = 'validation-message';
+                    field.parentNode.insertBefore(validationMsg, field.nextSibling);
+                }
+                validationMsg.textContent = errorMessage;
+                validationMsg.style.display = 'block';
+            } else if (field.value.trim()) {
+                field.classList.remove('invalid');
+                field.classList.add('valid');
+                
+                // Hide validation message
+                const validationMsg = field.nextElementSibling;
+                if (validationMsg && validationMsg.classList.contains('validation-message')) {
+                    validationMsg.style.display = 'none';
+                }
+            }
+            
+            return isValid;
+        }
+
+        // Initialize everything
+        initComponents();
+    </script>
 </body>
 </html>
