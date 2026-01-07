@@ -351,6 +351,11 @@
           display: block;
         }
 
+        /* Hide fallback when logo image loads */
+        .custom-logo img + .logo-fallback {
+          display: none;
+        }
+
         .logo-text {
           display: flex;
           flex-direction: column;
@@ -796,6 +801,14 @@
         .image-frame:hover img,
         .image-frame:hover video {
           transform: scale(1.05);
+        }
+
+        /* Video styling */
+        .ambiance-video {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
 
         .image-caption {
@@ -1761,6 +1774,7 @@
             <div class="logo">
                 <!-- Logo image -->
                 <div class="custom-logo nav-logo">
+                    <img src="lartista-logo.png" alt="L'ARTISTA Fine Italian Dining Logo" onerror="this.style.display='none'">
                     <div class="logo-fallback">L'ARTISTA</div>
                 </div>
                 <!-- Text -->
@@ -1812,6 +1826,7 @@
             <div class="premium-hero-content">
                 <div class="premium-logo-container">
                     <div class="custom-logo hero-logo premium-hero-logo">
+                        <img src="lartista-logo.png" alt="L'ARTISTA Fine Italian Dining Logo" onerror="this.style.display='none'">
                         <div class="logo-fallback hero-fallback">L'ARTISTA</div>
                     </div>
                 </div>
@@ -1896,11 +1911,12 @@
                 
                 <div class="premium-about-image">
                     <div class="image-frame">
-                        <video autoplay loop muted playsinline>
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-cooking-pasta-in-a-pan-4452-large.mp4" type="video/mp4">
+                        <video autoplay loop muted playsinline class="ambiance-video">
+                            <source src="restaurant-ambiance.mp4" type="video/mp4">
+                            <source src="restaurant-ambiance.webm" type="video/webm">
                             Your browser does not support the video tag.
                         </video>
-                        <div class="image-caption">Chef Marco preparing our signature pasta dishes</div>
+                        <div class="image-caption">Experience the L'ARTISTA Ambiance</div>
                     </div>
                 </div>
             </div>
@@ -1921,19 +1937,19 @@
             </div>
             
             <div class="menu-tabs">
-                <button class="menu-tab active" data-tab="starters">Starters</button>
-                <button class="menu-tab" data-tab="pastas">Pastas</button>
-                <button class="menu-tab" data-tab="mains">Main Courses</button>
-                <button class="menu-tab" data-tab="pizza">Pizza</button>
-                <button class="menu-tab" data-tab="desserts">Desserts</button>
+                <button class="menu-tab active" data-category="starters">Starters</button>
+                <button class="menu-tab" data-category="pastas">Pastas</button>
+                <button class="menu-tab" data-category="main">Main Courses</button>
+                <button class="menu-tab" data-category="pizza">Pizza</button>
+                <button class="menu-tab" data-category="desserts">Desserts</button>
+                <button class="menu-tab" data-category="drinks">Drinks</button>
             </div>
             
             <!-- Starters Menu -->
             <div class="menu-category active" id="starters">
                 <h3><i class="fas fa-seedling"></i> Starters</h3>
                 
-                <!-- Creamy Burrata -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="starters">
                     <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
                          alt="Creamy Burrata" class="dish-photo">
                     <div class="menu-item-content">
@@ -1941,16 +1957,14 @@
                             <h4>Creamy Burrata</h4>
                             <span class="price">€24</span>
                         </div>
-                        <p class="menu-desc">Fresh burrata cheese served with cherry tomatoes, grilled asparagus, and fresh basil</p>
+                        <p class="menu-desc">Cherry tomatoes / asparagus / basil</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Burrata cheese, cherry tomatoes, asparagus, fresh basil, extra virgin olive oil
+                            <strong>Allergy:</strong> 1.8
                         </div>
-                        <div class="allergy-info">Allergy: 1.8</div>
                     </div>
                 </div>
                 
-                <!-- Vitello Tonnato -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="starters">
                     <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
                          alt="Vitello Tonnato" class="dish-photo">
                     <div class="menu-item-content">
@@ -1958,26 +1972,127 @@
                             <h4>Vitello Tonnato</h4>
                             <span class="price">€28</span>
                         </div>
-                        <p class="menu-desc">Sliced veal with creamy tuna sauce and toasted pine nuts</p>
+                        <p class="menu-desc">Veal with creamy tuna sauce / pine nuts</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Veal, tuna, mayonnaise, capers, pine nuts, lemon
+                            <strong>Allergy:</strong> 1.4.7.8
                         </div>
-                        <div class="allergy-info">Allergy: 1.4.7.8</div>
                     </div>
                 </div>
                 
-                <!-- Seasonal Insalata Mista -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="starters">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Seasonal Insalata Mista</h4>
                             <span class="price">€16</span>
                         </div>
-                        <p class="menu-desc">Fresh mixed seasonal salad with our house vinaigrette</p>
+                        <p class="menu-desc">Fresh mixed seasonal salad</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Seasonal greens, cherry tomatoes, cucumber, radish, house vinaigrette
+                            <strong>Allergy:</strong> 1.8.9
                         </div>
-                        <div class="allergy-info">Allergy: 1.8.9</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Caesar Salad</h4>
+                            <span class="price">€18</span>
+                        </div>
+                        <p class="menu-desc">Crisp romaine / croutons / parmesan</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.4.7.10
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Beef Carpaccio</h4>
+                            <span class="price">€26</span>
+                        </div>
+                        <p class="menu-desc">Thinly sliced beef / truffle oil / arugula</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Lemon Garlic Shrimps</h4>
+                            <span class="price">€22</span>
+                        </div>
+                        <p class="menu-desc">Served with focaccia bread</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Antipasto</h4>
+                            <span class="price">€32</span>
+                        </div>
+                        <p class="menu-desc">Finest Italian selection of cheeses and meats</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.6.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Bruschetta Stracciatella & Mortadella</h4>
+                            <span class="price">€19</span>
+                        </div>
+                        <p class="menu-desc">With pistachios</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Tomato Bruschetta</h4>
+                            <span class="price">€15</span>
+                        </div>
+                        <p class="menu-desc">With ciliegine / fresh herbs</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Cured Zucchini Bruschetta</h4>
+                            <span class="price">€17</span>
+                        </div>
+                        <p class="menu-desc">With pine nuts pesto</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Zuppa di Pesce</h4>
+                            <span class="price">€34</span>
+                        </div>
+                        <p class="menu-desc">Variety of seafood / stracciatella</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.4.7.9.13.14
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1986,8 +2101,7 @@
             <div class="menu-category" id="pastas">
                 <h3><i class="fas fa-pasta"></i> Pastas</h3>
                 
-                <!-- Spaghetti Carbonara -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="pastas">
                     <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
                          alt="Spaghetti Carbonara" class="dish-photo">
                     <div class="menu-item-content">
@@ -1995,36 +2109,84 @@
                             <h4>Spaghetti Carbonara</h4>
                             <span class="price">€26</span>
                         </div>
-                        <p class="menu-desc">Classic Roman pasta with guanciale and Pecorino Romano</p>
+                        <p class="menu-desc">Classic Roman pasta with guanciale / pecorino</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Spaghetti, guanciale, eggs, Pecorino Romano, black pepper
+                            <strong>Allergy:</strong> 1.3.7
                         </div>
-                        <div class="allergy-info">Allergy: 1.3.7</div>
                     </div>
                 </div>
                 
-                <!-- Cacio e Pepe -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="pastas">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Cacio e Pepe</h4>
                             <span class="price">€24</span>
                         </div>
-                        <p class="menu-desc">Simple Roman pasta with cheese and black pepper, topped with black truffles</p>
+                        <p class="menu-desc">Roman pasta / black truffles</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Spaghetti, Pecorino Romano, black pepper, black truffles
+                            <strong>Allergy:</strong> 1.7
                         </div>
-                        <div class="allergy-info">Allergy: 1.7</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pasta al Pesto di Pistacchio e Stracciatella</h4>
+                            <span class="price">€28</span>
+                        </div>
+                        <p class="menu-desc">Pistachio pesto / stracciatella</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Penne Arrabbiata</h4>
+                            <span class="price">€22</span>
+                        </div>
+                        <p class="menu-desc">Spicy tomato sauce</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Spaghetti Frutti di Mare</h4>
+                            <span class="price">€32</span>
+                        </div>
+                        <p class="menu-desc">Seafood pasta</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.4.9.13.14
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pastas">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>L'Artista Pasta</h4>
+                            <span class="price">€38</span>
+                        </div>
+                        <p class="menu-desc">Pasta with lobster and black caviar</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.4.7
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Main Courses Menu -->
-            <div class="menu-category" id="mains">
+            <div class="menu-category" id="main">
                 <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
                 
-                <!-- Parmigiana di Melanzane -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="main">
                     <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
                          alt="Parmigiana di Melanzane" class="dish-photo">
                     <div class="menu-item-content">
@@ -2032,26 +2194,88 @@
                             <h4>Parmigiana di Melanzane</h4>
                             <span class="price">€28</span>
                         </div>
-                        <p class="menu-desc">Eggplant Parmesan with basil pesto</p>
+                        <p class="menu-desc">Eggplant Parmesan / basil pesto</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Eggplant, tomato sauce, mozzarella, Parmesan, basil pesto
+                            <strong>Allergy:</strong> 1.7.8.9
                         </div>
-                        <div class="allergy-info">Allergy: 1.7.8.9</div>
                     </div>
                 </div>
                 
-                <!-- Veal Scallopini -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Creamy Risotto</h4>
+                            <span class="price">€26</span>
+                        </div>
+                        <p class="menu-desc">With black truffles</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.12
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Zucchini Risotto with Gamberi</h4>
+                            <span class="price">€30</span>
+                        </div>
+                        <p class="menu-desc">Zucchini risotto with shrimp</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.2.7.12
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Veal Scallopini</h4>
                             <span class="price">€36</span>
                         </div>
-                        <p class="menu-desc">Veal cutlets with lemon butter sauce, served with roasted potatoes or seasonal salad</p>
+                        <p class="menu-desc">Lemon butter sauce / roasted potatoes or seasonal salad</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Veal, lemon, butter, capers, parsley, potatoes or salad
+                            <strong>Allergy:</strong> 1.3.9
                         </div>
-                        <div class="allergy-info">Allergy: 1.3.9</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Seabass Fillet</h4>
+                            <span class="price">€34</span>
+                        </div>
+                        <p class="menu-desc">Grilled sea bass / spinach risotto</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.4.6.7.9.12
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Homemade Ravioli</h4>
+                            <span class="price">€28</span>
+                        </div>
+                        <p class="menu-desc">Ricotta and spinach / gorgonzola sauce</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.3.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Tagliata di Manzo</h4>
+                            <span class="price">€42</span>
+                        </div>
+                        <p class="menu-desc">Sliced beef / roasted potatoes or seasonal salad</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.9.12
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2060,8 +2284,7 @@
             <div class="menu-category" id="pizza">
                 <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
                 
-                <!-- Pizza Margherita -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="pizza">
                     <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
                          alt="Pizza Margherita" class="dish-photo">
                     <div class="menu-item-content">
@@ -2069,28 +2292,88 @@
                             <h4>Pizza Margherita</h4>
                             <span class="price">€18</span>
                         </div>
-                        <p class="menu-desc">Classic Neapolitan pizza with tomato and mozzarella</p>
+                        <p class="menu-desc">Classic tomato and mozzarella</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> San Marzano tomatoes, mozzarella di bufala, fresh basil, extra virgin olive oil
+                            <strong>Allergy:</strong> 1.7
                         </div>
-                        <div class="allergy-info">Allergy: 1.7</div>
                     </div>
                 </div>
                 
-                <!-- Quattro Formaggi -->
-                <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Quattro Formaggi" class="dish-photo">
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Mortadella with Stracciatella</h4>
+                            <span class="price">€22</span>
+                        </div>
+                        <p class="menu-desc">With pistachios</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.8
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Quattro Formaggi</h4>
                             <span class="price">€21</span>
                         </div>
-                        <p class="menu-desc">Four cheese pizza with mozzarella, gorgonzola, Parmesan, and fontina</p>
+                        <p class="menu-desc">Four cheese pizza</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Pizza dough, mozzarella, gorgonzola, Parmesan, fontina, olive oil
+                            <strong>Allergy:</strong> 1.7
                         </div>
-                        <div class="allergy-info">Allergy: 1.7</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Diavola</h4>
+                            <span class="price">€20</span>
+                        </div>
+                        <p class="menu-desc">Spicy salami / chili oil</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7.9
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Salamino</h4>
+                            <span class="price">€19</span>
+                        </div>
+                        <p class="menu-desc">Salami pizza</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pizza Marinara</h4>
+                            <span class="price">€17</span>
+                        </div>
+                        <p class="menu-desc">Tomato / garlic / oregano</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.4
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Prosciutto di Parma Pizza</h4>
+                            <span class="price">€23</span>
+                        </div>
+                        <p class="menu-desc">Parma ham / mozzarella</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 1.7
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2099,8 +2382,7 @@
             <div class="menu-category" id="desserts">
                 <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
                 
-                <!-- Tiramisu -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="desserts">
                     <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
                          alt="Tiramisu" class="dish-photo">
                     <div class="menu-item-content">
@@ -2108,16 +2390,14 @@
                             <h4>Tiramisu</h4>
                             <span class="price">€14</span>
                         </div>
-                        <p class="menu-desc">Classic Italian dessert with mascarpone and espresso</p>
+                        <p class="menu-desc">Classic Italian dessert</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Mascarpone, espresso, ladyfingers, eggs, sugar, cocoa powder
+                            <strong>Allergy:</strong> 1.3.7.8
                         </div>
-                        <div class="allergy-info">Allergy: 1.3.7.8</div>
                     </div>
                 </div>
                 
-                <!-- Limoncello Cheesecake -->
-                <div class="menu-item">
+                <div class="menu-item" data-category="desserts">
                     <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
                          alt="Limoncello Cheesecake" class="dish-photo">
                     <div class="menu-item-content">
@@ -2125,11 +2405,68 @@
                             <h4>Limoncello Cheesecake</h4>
                             <span class="price">€16</span>
                         </div>
-                        <p class="menu-desc">Creamy cheesecake with Italian meringue</p>
+                        <p class="menu-desc">With Italian meringue</p>
                         <div class="ingredients">
-                            <strong>Ingredients:</strong> Cream cheese, limoncello, Italian meringue, biscuit base
+                            <strong>Allergy:</strong> 1.3.7
                         </div>
-                        <div class="allergy-info">Allergy: 1.3.7</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Affogato</h4>
+                            <span class="price">€12</span>
+                        </div>
+                        <p class="menu-desc">Vanilla ice cream with espresso</p>
+                        <div class="ingredients">
+                            <strong>Allergy:</strong> 7
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Drinks Menu -->
+            <div class="menu-category" id="drinks">
+                <h3><i class="fas fa-wine-glass-alt"></i> Drinks</h3>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Italian Wines</h4>
+                            <span class="price">€8-€15/glass</span>
+                        </div>
+                        <p class="menu-desc">Selection of fine Italian wines by the glass</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Classic Cocktails</h4>
+                            <span class="price">€12-€16</span>
+                        </div>
+                        <p class="menu-desc">Negroni, Aperol Spritz, Bellini, etc.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Italian Soft Drinks</h4>
+                            <span class="price">€5-€7</span>
+                        </div>
+                        <p class="menu-desc">San Pellegrino, Chinotto, Aranciata</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Coffee & Tea</h4>
+                            <span class="price">€3-€6</span>
+                        </div>
+                        <p class="menu-desc">Italian espresso, cappuccino, herbal teas</p>
                     </div>
                 </div>
             </div>
@@ -2309,6 +2646,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <div class="footer-logo">
+                        <img src="lartista-logo.png" alt="L'ARTISTA Logo" onerror="this.style.display='none'">
                         <div class="logo-fallback">L'ARTISTA</div>
                     </div>
                     <h3>L'ARTISTA</h3>
@@ -2478,7 +2816,7 @@
         }
 
         // ============================================
-        // MENU TABS
+        // MENU TABS - UPDATED FOR NEW STRUCTURE
         // ============================================
         function initMenuTabs() {
             const menuTabs = document.querySelectorAll('.menu-tab');
@@ -2488,14 +2826,14 @@
 
             menuTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
+                    const categoryId = this.getAttribute('data-category');
                     
                     // Update active tab
                     menuTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
                     
                     // Show selected category
-                    showMenuCategory(tabId);
+                    showMenuCategory(categoryId);
                 });
             });
         }
