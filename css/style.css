@@ -1,5 +1,5 @@
 /* ============================================
-   L'ARTISTA FINE DINING - FIXED CSS
+   L'ARTISTA FINE DINING - OPTIMIZED CSS
 ============================================ */
 
 :root {
@@ -515,7 +515,6 @@ section {
   z-index: -2;
 }
 
-.hero-bg video,
 .hero-bg img {
   width: 100%;
   height: 100%;
@@ -794,6 +793,31 @@ section {
   object-fit: cover;
 }
 
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--green), var(--red));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.video-placeholder i {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.video-placeholder p {
+  font-size: 16px;
+  max-width: 300px;
+  line-height: 1.4;
+}
+
 .image-caption {
   position: absolute;
   bottom: 0;
@@ -807,31 +831,58 @@ section {
 }
 
 /* ============================================
-   MENU SECTION
+   MENU SECTION - COMPACT VERSION
 ============================================ */
 .menu-section {
   background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
   border-radius: 20px;
-  padding: 60px 40px;
-  margin: 60px auto;
+  padding: 40px 30px;
+  margin: 40px auto;
+  max-height: 700px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--red) var(--ivory);
+}
+
+.menu-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.menu-section::-webkit-scrollbar-track {
+  background: var(--ivory);
+  border-radius: 10px;
+}
+
+.menu-section::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border-radius: 10px;
+}
+
+.menu-section::-webkit-scrollbar-thumb:hover {
+  background: #b81e30;
 }
 
 .menu-tabs {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  background: var(--ivory);
+  z-index: 10;
+  padding: 15px 0;
 }
 
 .menu-tab {
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: transparent;
   border: 2px solid rgba(214, 39, 59, 0.2);
   color: var(--text-dark);
   border-radius: 25px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -866,9 +917,9 @@ section {
 
 .menu-category h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-size: 28px;
   color: var(--green);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -878,26 +929,27 @@ section {
 
 .menu-category h3 i {
   color: var(--red);
-  font-size: 28px;
+  font-size: 24px;
 }
 
+/* Compact menu items */
 .menu-item {
   background: white;
-  padding: 30px;
-  border-radius: 12px;
+  padding: 15px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   transition: var(--transition);
   border: 1px solid rgba(214, 39, 59, 0.1);
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 25px;
+  grid-template-columns: 100px 1fr;
+  gap: 15px;
   align-items: start;
 }
 
 .menu-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
   border-color: var(--red);
 }
 
@@ -909,20 +961,21 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .menu-item-header h4 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 18px;
   color: var(--green);
   font-weight: 500;
   flex: 1;
   margin-right: 15px;
+  line-height: 1.3;
 }
 
 .price {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--red);
   white-space: nowrap;
@@ -930,33 +983,33 @@ section {
 
 .menu-desc {
   color: var(--text-muted);
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
 }
 
 .ingredients {
   color: var(--text-light);
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  padding-top: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 5px;
+  padding-top: 8px;
   border-top: 1px solid rgba(214, 39, 59, 0.1);
 }
 
 .allergy-info {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-light);
   font-style: italic;
-  margin-top: 8px;
+  margin-top: 5px;
 }
 
 .dish-photo {
   width: 100%;
-  height: 200px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
@@ -965,7 +1018,7 @@ section {
 }
 
 /* ============================================
-   RESERVATION SECTION - FIXED SELECT DROPDOWN
+   RESERVATION SECTION - FIXED DROPDOWNS
 ============================================ */
 .reservation-section {
   background: linear-gradient(135deg, var(--green) 0%, #2D5A42 100%);
@@ -995,6 +1048,7 @@ section {
 
 .form-group {
   margin-bottom: 20px;
+  position: relative;
 }
 
 .form-group label {
@@ -1016,34 +1070,6 @@ section {
   transition: var(--transition);
 }
 
-/* FIX: Make select dropdown options visible */
-.form-control option {
-  background: var(--green);
-  color: white;
-  padding: 10px;
-}
-
-/* FIX: Style for select dropdown */
-select.form-control {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 15px center;
-  background-size: 16px;
-  padding-right: 40px;
-}
-
-/* FIX: Date input calendar icon color */
-input[type="date"].form-control::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  opacity: 0.7;
-  cursor: pointer;
-}
-
-input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
-  opacity: 1;
-}
-
 .form-control::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -1052,6 +1078,35 @@ input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
   outline: none;
   border-color: white;
   background: rgba(255, 255, 255, 0.15);
+}
+
+/* FIX: Dropdown styling for dark background */
+select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+  padding-right: 45px;
+  cursor: pointer;
+}
+
+select.form-control option {
+  background-color: var(--green);
+  color: white;
+  padding: 10px;
+}
+
+select.form-control:focus option:checked {
+  background: var(--red);
+}
+
+/* Style for dropdown options */
+select.form-control option {
+  background: var(--green);
+  color: white;
 }
 
 textarea.form-control {
@@ -1276,32 +1331,6 @@ textarea.form-control {
   width: 20px;
 }
 
-/* Social Links */
-.social-links {
-  display: flex;
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  background: var(--red);
-  transform: translateY(-3px);
-}
-
 .footer-bottom {
   text-align: center;
   padding-top: 30px;
@@ -1466,45 +1495,50 @@ textarea.form-control {
   
   /* Menu */
   .menu-section {
-    padding: 40px 20px;
-    margin: 40px auto;
+    padding: 30px 20px;
+    margin: 30px auto;
+    max-height: 600px;
   }
   
   .menu-tabs {
     flex-direction: column;
     align-items: center;
+    gap: 8px;
   }
   
   .menu-tab {
     width: 100%;
     text-align: center;
+    padding: 8px 15px;
+    font-size: 12px;
   }
   
   .menu-item {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 12px;
+    padding: 12px;
   }
   
   .dish-photo {
-    height: 200px;
+    height: 120px;
     width: 100%;
     object-fit: cover;
   }
   
   .menu-category h3 {
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .menu-item-header h4 {
-    font-size: 18px;
+    font-size: 16px;
   }
   
   .price {
-    font-size: 20px;
+    font-size: 16px;
   }
   
   .menu-desc {
-    font-size: 15px;
+    font-size: 13px;
   }
   
   /* Reservation */
@@ -1515,6 +1549,12 @@ textarea.form-control {
   
   .form-row {
     grid-template-columns: 1fr;
+  }
+  
+  select.form-control {
+    background-size: 16px;
+    background-position: right 12px center;
+    padding-right: 40px;
   }
   
   .notification-box {
@@ -1603,28 +1643,29 @@ textarea.form-control {
   }
   
   .menu-section {
-    padding: 30px 15px;
-    margin: 30px auto;
+    padding: 20px 15px;
+    margin: 20px auto;
+    max-height: 500px;
   }
   
   .menu-item {
-    padding: 20px;
+    padding: 10px;
   }
   
   .menu-category h3 {
-    font-size: 22px;
-  }
-  
-  .menu-item-header h4 {
-    font-size: 18px;
-  }
-  
-  .price {
     font-size: 20px;
   }
   
+  .menu-item-header h4 {
+    font-size: 15px;
+  }
+  
+  .price {
+    font-size: 15px;
+  }
+  
   .dish-photo {
-    height: 150px;
+    height: 100px;
   }
   
   .reservation-section {
@@ -1772,4 +1813,49 @@ textarea.form-control {
 
 .notification-error .notification-progress {
   background: #D6273B;
+}
+
+/* Form validation styles */
+.invalid {
+  border-color: #ff3860 !important;
+}
+
+.invalid:focus {
+  box-shadow: 0 0 0 0.125em rgba(255, 56, 96, 0.25);
+}
+
+/* Mobile menu toggle animation */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+/* Custom logo styling for better display */
+.custom-logo:hover img {
+  transform: scale(1.05);
+}
+
+/* Form dropdown improvements */
+.form-group::after {
+  content: none;
+}
+
+/* Ensure dropdown text is visible */
+select option {
+  color: #1A1A1A;
+  background-color: white;
+}
+
+select option:checked {
+  background-color: var(--red);
+  color: white;
 }
