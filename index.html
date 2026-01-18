@@ -121,6 +121,83 @@
         }
 
         /* ============================================
+           LANGUAGE SELECTOR - NEW
+        ============================================ */
+        .language-selector {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1001;
+          display: flex;
+          gap: 5px;
+          background: rgba(249, 247, 242, 0.95);
+          backdrop-filter: blur(10px);
+          border-radius: 25px;
+          padding: 5px;
+          box-shadow: var(--shadow);
+          border: 1px solid rgba(214, 39, 59, 0.1);
+        }
+
+        .language-btn {
+          background: none;
+          border: none;
+          padding: 8px 15px;
+          border-radius: 20px;
+          font-family: 'Inter', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: var(--transition);
+          color: var(--text-muted);
+          min-width: 40px;
+          text-align: center;
+        }
+
+        .language-btn:hover {
+          color: var(--red);
+          background: rgba(214, 39, 59, 0.1);
+        }
+
+        .language-btn.active {
+          background: var(--red);
+          color: white;
+          box-shadow: 0 4px 10px rgba(214, 39, 59, 0.2);
+        }
+
+        .mobile-language-selector {
+          display: none;
+          margin: 20px 0;
+          text-align: center;
+        }
+
+        @media (max-width: 768px) {
+          .language-selector {
+            top: 15px;
+            right: 15px;
+            padding: 4px;
+          }
+          
+          .language-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+            min-width: 35px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .language-selector {
+            top: 10px;
+            right: 10px;
+          }
+          
+          .language-btn {
+            padding: 5px 10px;
+            font-size: 11px;
+            min-width: 30px;
+          }
+        }
+
+        /* ============================================
            ITALIAN FLAG STRIPES
         ============================================ */
         .italian-flag-stripe {
@@ -411,6 +488,7 @@
           list-style: none;
           gap: 30px;
           margin-left: auto;
+          margin-right: 20px;
         }
 
         .nav-link {
@@ -460,7 +538,6 @@
           flex-direction: column;
           justify-content: space-between;
           padding: 0;
-          margin-left: 20px;
         }
 
         .menu-toggle span {
@@ -571,6 +648,34 @@
           margin-top: 40px;
           padding-top: 20px;
           border-top: 1px solid rgba(255, 255, 255, 0.1);
+          text-align: center;
+        }
+
+        .mobile-language-selector-inner {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin: 20px 0;
+        }
+
+        .mobile-language-btn {
+          background: none;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          color: white;
+          padding: 8px 15px;
+          border-radius: 20px;
+          font-size: 14px;
+          cursor: pointer;
+          transition: var(--transition);
+        }
+
+        .mobile-language-btn:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-language-btn.active {
+          background: var(--red);
+          border-color: var(--red);
         }
 
         /* Menu overlay to close when clicking outside */
@@ -1720,6 +1825,13 @@
     <div class="italian-flag-stripe top"></div>
     <div class="italian-flag-stripe bottom"></div>
 
+    <!-- Language Selector -->
+    <div class="language-selector" id="languageSelector">
+        <button class="language-btn active" data-lang="en">EN</button>
+        <button class="language-btn" data-lang="lv">LV</button>
+        <button class="language-btn" data-lang="ru">RU</button>
+    </div>
+
     <!-- Loader -->
     <div class="loader" id="pageLoader">
         <div class="loader-logo">L'ARTISTA</div>
@@ -1749,17 +1861,17 @@
                 <!-- Text -->
                 <div class="logo-text">
                     <span class="logo-main">L'ARTISTA</span>
-                    <span class="logo-sub">Italian Restaurant</span>
+                    <span class="logo-sub" data-translate="restaurant">Italian Restaurant</span>
                 </div>
             </div>
             
             <!-- Desktop Navigation Links -->
             <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#menu" class="nav-link">Menu</a></li>
-                <li><a href="#reservation" class="nav-link">Reservation</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link" data-translate="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-translate="about">About</a></li>
+                <li><a href="#menu" class="nav-link" data-translate="menu">Menu</a></li>
+                <li><a href="#reservation" class="nav-link" data-translate="reservation">Reservation</a></li>
+                <li><a href="#contact" class="nav-link" data-translate="contact">Contact</a></li>
             </ul>
             
             <!-- Mobile Menu Toggle -->
@@ -1783,15 +1895,22 @@
             </button>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="#home" class="mobile-nav-link">Home</a></li>
-            <li><a href="#about" class="mobile-nav-link">About</a></li>
-            <li><a href="#menu" class="mobile-nav-link">Menu</a></li>
-            <li><a href="#reservation" class="mobile-nav-link">Reservation</a></li>
-            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="#home" class="mobile-nav-link" data-translate="home">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link" data-translate="about">About</a></li>
+            <li><a href="#menu" class="mobile-nav-link" data-translate="menu">Menu</a></li>
+            <li><a href="#reservation" class="mobile-nav-link" data-translate="reservation">Reservation</a></li>
+            <li><a href="#contact" class="mobile-nav-link" data-translate="contact">Contact</a></li>
         </ul>
+        
+        <div class="mobile-language-selector-inner">
+            <button class="mobile-language-btn active" data-lang="en">EN</button>
+            <button class="mobile-language-btn" data-lang="lv">LV</button>
+            <button class="mobile-language-btn" data-lang="ru">RU</button>
+        </div>
+        
         <div class="mobile-menu-footer">
             <a href="tel:+919136558275" class="btn btn-red btn-block">
-                <i class="fas fa-phone-alt"></i> Call Us
+                <i class="fas fa-phone-alt"></i> <span data-translate="call_us">Call Us</span>
             </a>
         </div>
     </div>
@@ -1816,22 +1935,22 @@
                 
                 <div class="premium-title">
                     <span class="title-line-1">L'ARTISTA</span>
-                    <span class="title-line-2">Italian Restaurant</span>
+                    <span class="title-line-2" data-translate="restaurant">Italian Restaurant</span>
                 </div>
                 
-                <p class="premium-subtitle">Authentic Italian Cuisine in the Heart of Riga</p>
+                <p class="premium-subtitle" data-translate="hero_subtitle">Authentic Italian Cuisine in the Heart of Riga</p>
                 
                 <div class="premium-hero-buttons">
                     <a href="#reservation" class="btn btn-premium btn-large">
-                        <i class="fas fa-calendar-check"></i> BOOK A TABLE
+                        <i class="fas fa-calendar-check"></i> <span data-translate="book_table">BOOK A TABLE</span>
                     </a>
                     <a href="#menu" class="btn btn-outline-premium btn-large">
-                        <i class="fas fa-book-open"></i> VIEW MENU
+                        <i class="fas fa-book-open"></i> <span data-translate="view_menu">VIEW MENU</span>
                     </a>
                 </div>
                 
                 <div class="premium-scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-                    <span class="scroll-text">Explore</span>
+                    <span class="scroll-text" data-translate="explore">Explore</span>
                     <i class="fas fa-chevron-down scroll-arrow"></i>
                 </div>
             </div>
@@ -1842,8 +1961,8 @@
     <section class="about-section" id="about">
         <div class="container">
             <div class="section-header">
-                <h2>Our Story</h2>
-                <div class="subtitle">Authentic Italian Excellence</div>
+                <h2 data-translate="our_story">Our Story</h2>
+                <div class="subtitle" data-translate="authentic_excellence">Authentic Italian Excellence</div>
                 <div class="section-divider">
                     <div class="divider-line"></div>
                     <i class="fas fa-utensils divider-icon"></i>
@@ -1853,11 +1972,11 @@
             
             <div class="premium-about-grid">
                 <div class="premium-content">
-                    <p class="premium-intro">
+                    <p class="premium-intro" data-translate="about_intro">
                         Established in 2015, <span class="highlight-red">L'ARTISTA</span> brings the authentic taste of Italy to the heart of Riga. Our restaurant is a celebration of Italy's rich culinary heritage.
                     </p>
                     
-                    <p class="premium-description">
+                    <p class="premium-description" data-translate="about_description">
                         Our philosophy is simple: to create unforgettable dining experiences using only the finest ingredients, traditional techniques, and a genuine love for Italian cuisine.
                     </p>
                     
@@ -1866,24 +1985,24 @@
                             <div class="premium-feature-icon">
                                 <i class="fas fa-seedling"></i>
                             </div>
-                            <h4>Fresh Ingredients</h4>
-                            <p>Locally sourced produce and imported Italian specialties</p>
+                            <h4 data-translate="fresh_ingredients">Fresh Ingredients</h4>
+                            <p data-translate="fresh_desc">Locally sourced produce and imported Italian specialties</p>
                         </div>
                         
                         <div class="premium-feature-card">
                             <div class="premium-feature-icon">
                                 <i class="fas fa-wine-glass-alt"></i>
                             </div>
-                            <h4>Fine Wine Selection</h4>
-                            <p>Curated Italian wines to complement every dish</p>
+                            <h4 data-translate="wine_selection">Fine Wine Selection</h4>
+                            <p data-translate="wine_desc">Curated Italian wines to complement every dish</p>
                         </div>
                         
                         <div class="premium-feature-card">
                             <div class="premium-feature-icon">
                                 <i class="fas fa-award"></i>
                             </div>
-                            <h4>Award-Winning</h4>
-                            <p>Recognized for culinary excellence and service</p>
+                            <h4 data-translate="award_winning">Award-Winning</h4>
+                            <p data-translate="award_desc">Recognized for culinary excellence and service</p>
                         </div>
                     </div>
                 </div>
@@ -1902,8 +2021,8 @@
     <section class="menu-section" id="menu">
         <div class="container">
             <div class="section-header">
-                <h2>Our Menu</h2>
-                <div class="subtitle">Culinary Masterpieces</div>
+                <h2 data-translate="our_menu">Our Menu</h2>
+                <div class="subtitle" data-translate="culinary_masterpieces">Culinary Masterpieces</div>
                 <div class="section-divider">
                     <div class="divider-line"></div>
                     <i class="fas fa-pepper-hot divider-icon"></i>
@@ -1912,19 +2031,19 @@
             </div>
             
             <div class="menu-tabs">
-                <button class="menu-tab active" data-category="wine">Wine List</button>
-                <button class="menu-tab" data-category="starters">Starters</button>
-                <button class="menu-tab" data-category="main">Main Courses</button>
-                <button class="menu-tab" data-category="pizza">Pizza</button>
-                <button class="menu-tab" data-category="desserts">Desserts</button>
-                <button class="menu-tab" data-category="drinks">Drinks</button>
+                <button class="menu-tab active" data-category="wine" data-translate="wine_list">Wine List</button>
+                <button class="menu-tab" data-category="starters" data-translate="starters">Starters</button>
+                <button class="menu-tab" data-category="main" data-translate="main_courses">Main Courses</button>
+                <button class="menu-tab" data-category="pizza" data-translate="pizza">Pizza</button>
+                <button class="menu-tab" data-category="desserts" data-translate="desserts">Desserts</button>
+                <button class="menu-tab" data-category="drinks" data-translate="drinks">Drinks</button>
             </div>
             
             <!-- Wine List Menu -->
             <div class="menu-category active" id="wine">
-                <h3><i class="fas fa-wine-glass-alt"></i> Wine List</h3>
+                <h3><i class="fas fa-wine-glass-alt"></i> <span data-translate="wine_list">Wine List</span></h3>
                 
-                <h4>SPARKLINGS</h4>
+                <h4 data-translate="sparklings">SPARKLINGS</h4>
                 <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
@@ -1943,16 +2062,7 @@
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="wine">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Bellavista Alma Assemblage Franciacorta Extra Brut</h4>
-                            <span class="price">€62</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>ROSÉ</h4>
+                <h4 data-translate="rose">ROSÉ</h4>
                 <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
@@ -1962,16 +2072,7 @@
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="wine">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Zenato Bardolino Chiaretto</h4>
-                            <span class="price">€8 / €36</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>WHITE WINES</h4>
+                <h4 data-translate="white_wines">WHITE WINES</h4>
                 <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
@@ -1981,34 +2082,7 @@
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="wine">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Argiolas Costamolino Vermentino di Sardegna</h4>
-                            <span class="price">€49</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="wine">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pieropan Soave Classico (Veneto, Italy)</h4>
-                            <span class="price">€49</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="wine">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>House wine (mezzo)</h4>
-                            <span class="price">€18</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>RED WINES</h4>
+                <h4 data-translate="red_wines">RED WINES</h4>
                 <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
@@ -2021,26 +2095,8 @@
                 <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Vigneti del Salento "I Muri" Primitivo (Puglia)</h4>
-                            <span class="price">€9 / €35</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="wine">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
                             <h4>Bertani Amarone della Valpolicella "Legacy"</h4>
                             <span class="price">€89</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="wine">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>House wine (mezzo)</h4>
-                            <span class="price">€18</span>
                         </div>
                     </div>
                 </div>
@@ -2048,17 +2104,17 @@
             
             <!-- Starters Menu -->
             <div class="menu-category" id="starters">
-                <h3><i class="fas fa-seedling"></i> Starters</h3>
+                <h3><i class="fas fa-seedling"></i> <span data-translate="starters">Starters</span></h3>
                 
                 <div class="menu-item" data-category="starters">
                     <img src="LARTISTA DISHES/CAESAR SALAD.jpg" 
                          alt="Caesar Salad" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Caesar Salad</h4>
+                            <h4 data-translate="caesar_salad">Caesar Salad</h4>
                             <span class="price">€12</span>
                         </div>
-                        <p class="menu-desc">Parmesan cheese, toast</p>
+                        <p class="menu-desc" data-translate="caesar_desc">Parmesan cheese, toast</p>
                     </div>
                 </div>
                 
@@ -2067,46 +2123,10 @@
                          alt="Creamy Burrata" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Creamy Burrata</h4>
+                            <h4 data-translate="creamy_burrata">Creamy Burrata</h4>
                             <span class="price">€15</span>
                         </div>
-                        <p class="menu-desc">Sweet cherry tomatoes, basil oil, pistachios</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <img src="LARTISTA DISHES/LEMON GARLIC SHRIMPS.jpg" 
-                         alt="Lemon-Garlic Prawns" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Lemon-Garlic Prawns</h4>
-                            <span class="price">€15</span>
-                        </div>
-                        <p class="menu-desc">Served with homemade focaccia</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <img src="LARTISTA DISHES/VITELLO TONNATO.jpg" 
-                         alt="Vitello Tonnato" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Vitello Tonnato</h4>
-                            <span class="price">€17</span>
-                        </div>
-                        <p class="menu-desc">Thinly sliced veal with creamy tuna foam</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <img src="LARTISTA DISHES/ANTIPASTO.jpg" 
-                         alt="Antipasto" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Antipasto</h4>
-                            <span class="price">€25</span>
-                        </div>
-                        <p class="menu-desc">Italian cured meats & cheeses with jam and grissini</p>
+                        <p class="menu-desc" data-translate="burrata_desc">Sweet cherry tomatoes, basil oil, pistachios</p>
                     </div>
                 </div>
                 
@@ -2115,10 +2135,10 @@
                          alt="Beef Carpaccio" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Beef Carpaccio</h4>
+                            <h4 data-translate="beef_carpaccio">Beef Carpaccio</h4>
                             <span class="price">€16</span>
                         </div>
-                        <p class="menu-desc">Parmesan, arugula, truffle oil</p>
+                        <p class="menu-desc" data-translate="carpaccio_desc">Parmesan, arugula, truffle oil</p>
                     </div>
                 </div>
                 
@@ -2127,75 +2147,27 @@
                          alt="Bruschettas" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Bruschettas</h4>
+                            <h4 data-translate="bruschettas">Bruschettas</h4>
                             <span class="price">€8.50</span>
                         </div>
-                        <p class="menu-desc">Stracciatella, mortadella, pistachio</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <img src="LARTISTA DISHES/PARMIGIANA.jpg" 
-                         alt="Eggplant Parmesan" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Eggplant Parmesan</h4>
-                            <span class="price">€14</span>
-                        </div>
-                        <p class="menu-desc">Tomato sauce, fresh mozzarella</p>
+                        <p class="menu-desc" data-translate="bruschetta_desc">Stracciatella, mortadella, pistachio</p>
                     </div>
                 </div>
             </div>
             
             <!-- Main Courses Menu -->
             <div class="menu-category" id="main">
-                <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
+                <h3><i class="fas fa-drumstick-bite"></i> <span data-translate="main_courses">Main Courses</span></h3>
                 
                 <div class="menu-item" data-category="main">
                     <img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" 
                          alt="Truffle Risotto" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Truffle Risotto</h4>
+                            <h4 data-translate="truffle_risotto">Truffle Risotto</h4>
                             <span class="price">€25</span>
                         </div>
-                        <p class="menu-desc">Creamy risotto with fresh black truffles</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" 
-                         alt="Escalope Butter Veal" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Escalope Butter Veal</h4>
-                            <span class="price">€29</span>
-                        </div>
-                        <p class="menu-desc">Tender veal in a juicy sauce, fried potatoes or salad</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <img src="LARTISTA DISHES/ZUPA DI PESCA.jpg" 
-                         alt="Zuppa di Pesce" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Zuppa di Pesce</h4>
-                            <span class="price">€17</span>
-                        </div>
-                        <p class="menu-desc">Richly flavored fish soup with shellfish and herbs</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <img src="LARTISTA DISHES/SEA BASS FILLET.jpg" 
-                         alt="Sea Bass Fillet" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Sea Bass Fillet</h4>
-                            <span class="price">€23</span>
-                        </div>
-                        <p class="menu-desc">Delicate sea bass with fresh herbs</p>
+                        <p class="menu-desc" data-translate="risotto_desc">Creamy risotto with fresh black truffles</p>
                     </div>
                 </div>
                 
@@ -2204,75 +2176,37 @@
                          alt="Fillet Mignon" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Fillet Mignon</h4>
+                            <h4 data-translate="fillet_mignon">Fillet Mignon</h4>
                             <span class="price">€39</span>
                         </div>
-                        <p class="menu-desc">Argentine Black Angus (200 g), bourbon sauce</p>
-                    </div>
-                </div>
-                
-                <h4>Additives</h4>
-                <div class="menu-item" data-category="main">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Baked rosemary-garlic potatoes</h4>
-                            <span class="price">€6</span>
-                        </div>
+                        <p class="menu-desc" data-translate="mignon_desc">Argentine Black Angus (200 g), bourbon sauce</p>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="main">
+                    <img src="LARTISTA DISHES/SEA BASS FILLET.jpg" 
+                         alt="Sea Bass Fillet" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Mixed seasonal salad</h4>
-                            <span class="price">€9</span>
+                            <h4 data-translate="sea_bass">Sea Bass Fillet</h4>
+                            <span class="price">€23</span>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Bread basket</h4>
-                            <span class="price">€4.50</span>
-                        </div>
+                        <p class="menu-desc" data-translate="bass_desc">Delicate sea bass with fresh herbs</p>
                     </div>
                 </div>
             </div>
             
             <!-- Pizza Menu -->
             <div class="menu-category" id="pizza">
-                <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
+                <h3><i class="fas fa-pizza-slice"></i> <span data-translate="pizza">Pizza</span></h3>
                 
                 <div class="menu-item" data-category="pizza">
-                    <img src="LARTISTA DISHES/PIZZA BURATA.jpg" 
+                    <img src="LARTISTA DISHES/PIZZA BURRATA.jpg" 
                          alt="Pizza Margherita" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Margherita</h4>
+                            <h4 data-translate="margherita">Margherita</h4>
                             <span class="price">€10</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="pizza">
-                    <img src="LARTISTA DISHES/PIZZA MARINARA.jpg" 
-                         alt="Pizza Marinara" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Marinara</h4>
-                            <span class="price">€10</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="pizza">
-                    <img src="LARTISTA DISHES/NAPOLI SALAMI.jpg" 
-                         alt="Pizza Salami" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Salami</h4>
-                            <span class="price">€14</span>
                         </div>
                     </div>
                 </div>
@@ -2282,41 +2216,19 @@
                          alt="Pizza Quattro Formaggi" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Quattro Formaggi</h4>
+                            <h4 data-translate="quattro_formaggi">Quattro Formaggi</h4>
                             <span class="price">€15</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="pizza">
-                    <img src="LARTISTA DISHES/DIAVOLA.jpg" 
-                         alt="Pizza Diavola" class="dish-photo">
+                    <img src="LARTISTA DISHES/PIZZA BURRATA.jpg" 
+                         alt="Pizza Burrata" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Diavola 🌶</h4>
-                            <span class="price">€15</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="pizza">
-                    <img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" 
-                         alt="Pizza Prosciutto" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Prosciutto</h4>
-                            <span class="price">€15</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="pizza">
-                    <img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" 
-                         alt="Pizza Mortadella & Stracciatella" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Mortadella & Stracciatella</h4>
-                            <span class="price">€18</span>
+                            <h4 data-translate="burrata_pizza">Burrata Pizza</h4>
+                            <span class="price">€16</span>
                         </div>
                     </div>
                 </div>
@@ -2326,7 +2238,7 @@
                          alt="Pizza Pistachio Pesto" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pistachio Pesto</h4>
+                            <h4 data-translate="pistachio_pesto">Pistachio Pesto</h4>
                             <span class="price">€18</span>
                         </div>
                     </div>
@@ -2335,25 +2247,14 @@
             
             <!-- Desserts Menu -->
             <div class="menu-category" id="desserts">
-                <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
+                <h3><i class="fas fa-ice-cream"></i> <span data-translate="desserts">Desserts</span></h3>
                 
                 <div class="menu-item" data-category="desserts">
                     <img src="LARTISTA DISHES/TIRAMISU.jpg" 
                          alt="Classic Tiramisù" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Classic Tiramisù</h4>
-                            <span class="price">€8</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="desserts">
-                    <img src="LARTISTA DISHES/LEMON POSETTA.jpg" 
-                         alt="Lemon Posset" class="dish-photo">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Lemon Posset in white chocolate</h4>
+                            <h4 data-translate="tiramisu">Classic Tiramisù</h4>
                             <span class="price">€8</span>
                         </div>
                     </div>
@@ -2362,18 +2263,9 @@
             
             <!-- Drinks Menu -->
             <div class="menu-category" id="drinks">
-                <h3><i class="fas fa-cocktail"></i> Drinks Menu</h3>
+                <h3><i class="fas fa-cocktail"></i> <span data-translate="drinks">Drinks Menu</span></h3>
                 
-                <h4>Aperitivo</h4>
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Pilla Select</h4>
-                            <span class="price">€5</span>
-                        </div>
-                    </div>
-                </div>
-                
+                <h4 data-translate="aperitivo">Aperitivo</h4>
                 <div class="menu-item" data-category="drinks">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
@@ -2383,70 +2275,12 @@
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Margarita</h4>
-                            <span class="price">€10</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>L'ARTISTA COCKTAILS</h4>
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Alberto Sordi</h4>
-                            <span class="price">€12</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>DIGESTIVO</h4>
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Limoncello</h4>
-                            <span class="price">€6</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>WHISKEY</h4>
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Jameson</h4>
-                            <span class="price">€7</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>BEER (ALUS)</h4>
+                <h4 data-translate="beer">BEER (ALUS)</h4>
                 <div class="menu-item" data-category="drinks">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Kronenbourg 1664 Blanc 5%</h4>
                             <span class="price">€4.5 / €6</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h4>NON-ALCOHOLIC</h4>
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Espresso</h4>
-                            <span class="price">€2</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Cola / Fanta / Sprite</h4>
-                            <span class="price">€4</span>
                         </div>
                     </div>
                 </div>
@@ -2458,8 +2292,8 @@
     <section class="reservation-section" id="reservation">
         <div class="container reservation-container">
             <div class="section-header">
-                <h2>Reserve Your Table</h2>
-                <div class="subtitle">Experience Culinary Excellence</div>
+                <h2 data-translate="reserve_table">Reserve Your Table</h2>
+                <div class="subtitle" data-translate="experience_excellence">Experience Culinary Excellence</div>
                 <div class="section-divider">
                     <div class="divider-line"></div>
                     <i class="fas fa-calendar-alt divider-icon"></i>
@@ -2471,49 +2305,49 @@
                 <form id="bookingForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Full Name *</label>
+                            <label for="name" data-translate="full_name">Full Name *</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
+                            <label for="email" data-translate="email_address">Email Address *</label>
                             <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="phone">Phone Number *</label>
+                            <label for="phone" data-translate="phone_number">Phone Number *</label>
                             <input type="tel" id="phone" class="form-control" placeholder="+91 91365 58275" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="guests">Number of Guests *</label>
+                            <label for="guests" data-translate="number_of_guests">Number of Guests *</label>
                             <select id="guests" class="form-control" required>
-                                <option value="" disabled selected>Select number of guests...</option>
-                                <option value="1">1 Person</option>
-                                <option value="2">2 People</option>
-                                <option value="3">3 People</option>
-                                <option value="4">4 People</option>
-                                <option value="5">5 People</option>
-                                <option value="6">6 People</option>
-                                <option value="7">7 People</option>
-                                <option value="8">8 People</option>
-                                <option value="9+">9+ People</option>
+                                <option value="" disabled selected data-translate="select_guests">Select number of guests...</option>
+                                <option value="1">1 <span data-translate="person">Person</span></option>
+                                <option value="2">2 <span data-translate="people">People</span></option>
+                                <option value="3">3 <span data-translate="people">People</span></option>
+                                <option value="4">4 <span data-translate="people">People</span></option>
+                                <option value="5">5 <span data-translate="people">People</span></option>
+                                <option value="6">6 <span data-translate="people">People</span></option>
+                                <option value="7">7 <span data-translate="people">People</span></option>
+                                <option value="8">8 <span data-translate="people">People</span></option>
+                                <option value="9+">9+ <span data-translate="people">People</span></option>
                             </select>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="date">Preferred Date *</label>
+                            <label for="date" data-translate="preferred_date">Preferred Date *</label>
                             <input type="date" id="date" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="time">Preferred Time *</label>
+                            <label for="time" data-translate="preferred_time">Preferred Time *</label>
                             <select id="time" class="form-control" required>
-                                <option value="" disabled selected>Select preferred time...</option>
+                                <option value="" disabled selected data-translate="select_time">Select preferred time...</option>
                                 <option value="17:00">5:00 PM</option>
                                 <option value="17:30">5:30 PM</option>
                                 <option value="18:00">6:00 PM</option>
@@ -2528,7 +2362,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="special-requests">Special Requests</label>
+                        <label for="special-requests" data-translate="special_requests">Special Requests</label>
                         <textarea id="special-requests" class="form-control" rows="4" placeholder="Dietary restrictions, allergies, celebrations, etc."></textarea>
                     </div>
                     
@@ -2537,13 +2371,13 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="notification-content">
-                            <h4>Instant Confirmation</h4>
-                            <p>Your reservation will be confirmed via WhatsApp</p>
+                            <h4 data-translate="instant_confirmation">Instant Confirmation</h4>
+                            <p data-translate="whatsapp_confirmation">Your reservation will be confirmed via WhatsApp</p>
                         </div>
                     </div>
                     
                     <button type="submit" class="btn btn-red btn-block">
-                        <i class="fas fa-paper-plane"></i> Make Reservation
+                        <i class="fas fa-paper-plane"></i> <span data-translate="make_reservation">Make Reservation</span>
                     </button>
                 </form>
             </div>
@@ -2554,8 +2388,8 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contact Us</h2>
-                <div class="subtitle">Visit Our Restaurant</div>
+                <h2 data-translate="contact_us">Contact Us</h2>
+                <div class="subtitle" data-translate="visit_restaurant">Visit Our Restaurant</div>
                 <div class="section-divider">
                     <div class="divider-line"></div>
                     <i class="fas fa-map-marker-alt divider-icon"></i>
@@ -2569,22 +2403,22 @@
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h3>Address</h3>
+                        <h3 data-translate="address">Address</h3>
                         <p>Elizabetes iela 123</p>
                         <p>Centra rajons, Rīga</p>
                         <p>LV-1010, Latvia</p>
-                        <p class="contact-note">Valet parking available</p>
+                        <p class="contact-note" data-translate="parking_available">Valet parking available</p>
                     </div>
                     
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <h3>Phone & WhatsApp</h3>
+                        <h3 data-translate="phone_whatsapp">Phone & WhatsApp</h3>
                         <a href="tel:+919136558275">+91 91365 58275</a>
                         <a href="https://wa.me/919136558275?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
                            class="whatsapp-link" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                            <i class="fab fa-whatsapp"></i> <span data-translate="whatsapp_chat">WhatsApp Chat</span>
                         </a>
                     </div>
                     
@@ -2592,18 +2426,18 @@
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <h3>Email</h3>
+                        <h3 data-translate="email">Email</h3>
                         <a href="mailto:bollasanjay05@gmail.com">bollasanjay05@gmail.com</a>
-                        <p>For reservations and inquiries</p>
+                        <p data-translate="email_purpose">For reservations and inquiries</p>
                     </div>
                     
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <h3>Hours</h3>
-                        <p><strong>Mon-Sun:</strong> 5PM - 11PM</p>
-                        <p class="contact-note">Reservations recommended</p>
+                        <h3 data-translate="hours">Hours</h3>
+                        <p><strong data-translate="mon_sun">Mon-Sun:</strong> 5PM - 11PM</p>
+                        <p class="contact-note" data-translate="reservations_recommended">Reservations recommended</p>
                     </div>
                 </div>
                 
@@ -2633,19 +2467,19 @@
                         <div class="logo-fallback">L'ARTISTA</div>
                     </div>
                     <h3>L'ARTISTA</h3>
-                    <p class="footer-subtitle">Italian Restaurant</p>
-                    <p>Authentic Italian cuisine in the heart of Riga.</p>
+                    <p class="footer-subtitle" data-translate="restaurant">Italian Restaurant</p>
+                    <p data-translate="footer_description">Authentic Italian cuisine in the heart of Riga.</p>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <a href="#menu">Menu</a>
-                    <a href="#reservation">Reservation</a>
-                    <a href="#contact">Contact</a>
+                    <h3 data-translate="quick_links">Quick Links</h3>
+                    <a href="#menu" data-translate="menu">Menu</a>
+                    <a href="#reservation" data-translate="reservation">Reservation</a>
+                    <a href="#contact" data-translate="contact">Contact</a>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Connect With Us</h3>
+                    <h3 data-translate="connect_with_us">Connect With Us</h3>
                     <div class="social-links">
                         <a href="#" class="social-icon" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
@@ -2665,7 +2499,7 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Visit Us</h3>
+                    <h3 data-translate="visit_us">Visit Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Elizabetes iela 123</p>
                     <p>Centra rajons, Rīga</p>
                     <p>LV-1010, Latvia</p>
@@ -2673,8 +2507,8 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> L'ARTISTA Italian Restaurant. All rights reserved.</p>
-                <p class="footer-note">
+                <p>&copy; <span id="currentYear"></span> L'ARTISTA Italian Restaurant. <span data-translate="all_rights">All rights reserved.</span></p>
+                <p class="footer-note" data-translate="footer_note">
                     Celebrating Italian culinary art in the heart of Riga
                 </p>
             </div>
@@ -2684,8 +2518,329 @@
     <!-- JavaScript -->
     <script>
         // ============================================
-        // L'ARTISTA ITALIAN RESTAURANT - UPDATED JAVASCRIPT
+        // L'ARTISTA ITALIAN RESTAURANT - MULTI-LANGUAGE VERSION
         // ============================================
+
+        // Language Translations
+        const TRANSLATIONS = {
+            en: {
+                // Navigation
+                'home': 'Home',
+                'about': 'About',
+                'menu': 'Menu',
+                'reservation': 'Reservation',
+                'contact': 'Contact',
+                'restaurant': 'Italian Restaurant',
+                'call_us': 'Call Us',
+                
+                // Hero Section
+                'hero_subtitle': 'Authentic Italian Cuisine in the Heart of Riga',
+                'book_table': 'BOOK A TABLE',
+                'view_menu': 'VIEW MENU',
+                'explore': 'Explore',
+                
+                // About Section
+                'our_story': 'Our Story',
+                'authentic_excellence': 'Authentic Italian Excellence',
+                'about_intro': 'Established in 2015, L\'ARTISTA brings the authentic taste of Italy to the heart of Riga. Our restaurant is a celebration of Italy\'s rich culinary heritage.',
+                'about_description': 'Our philosophy is simple: to create unforgettable dining experiences using only the finest ingredients, traditional techniques, and a genuine love for Italian cuisine.',
+                'fresh_ingredients': 'Fresh Ingredients',
+                'fresh_desc': 'Locally sourced produce and imported Italian specialties',
+                'wine_selection': 'Fine Wine Selection',
+                'wine_desc': 'Curated Italian wines to complement every dish',
+                'award_winning': 'Award-Winning',
+                'award_desc': 'Recognized for culinary excellence and service',
+                
+                // Menu Section
+                'our_menu': 'Our Menu',
+                'culinary_masterpieces': 'Culinary Masterpieces',
+                'wine_list': 'Wine List',
+                'starters': 'Starters',
+                'main_courses': 'Main Courses',
+                'pizza': 'Pizza',
+                'desserts': 'Desserts',
+                'drinks': 'Drinks',
+                'sparklings': 'SPARKLINGS',
+                'rose': 'ROSÉ',
+                'white_wines': 'WHITE WINES',
+                'red_wines': 'RED WINES',
+                
+                // Menu Items
+                'caesar_salad': 'Caesar Salad',
+                'caesar_desc': 'Parmesan cheese, toast',
+                'creamy_burrata': 'Creamy Burrata',
+                'burrata_desc': 'Sweet cherry tomatoes, basil oil, pistachios',
+                'beef_carpaccio': 'Beef Carpaccio',
+                'carpaccio_desc': 'Parmesan, arugula, truffle oil',
+                'bruschettas': 'Bruschettas',
+                'bruschetta_desc': 'Stracciatella, mortadella, pistachio',
+                'truffle_risotto': 'Truffle Risotto',
+                'risotto_desc': 'Creamy risotto with fresh black truffles',
+                'fillet_mignon': 'Fillet Mignon',
+                'mignon_desc': 'Argentine Black Angus (200 g), bourbon sauce',
+                'sea_bass': 'Sea Bass Fillet',
+                'bass_desc': 'Delicate sea bass with fresh herbs',
+                'margherita': 'Margherita',
+                'quattro_formaggi': 'Quattro Formaggi',
+                'burrata_pizza': 'Burrata Pizza',
+                'pistachio_pesto': 'Pistachio Pesto',
+                'tiramisu': 'Classic Tiramisù',
+                'aperitivo': 'Aperitivo',
+                'beer': 'BEER (ALUS)',
+                
+                // Reservation Section
+                'reserve_table': 'Reserve Your Table',
+                'experience_excellence': 'Experience Culinary Excellence',
+                'full_name': 'Full Name *',
+                'email_address': 'Email Address *',
+                'phone_number': 'Phone Number *',
+                'number_of_guests': 'Number of Guests *',
+                'select_guests': 'Select number of guests...',
+                'person': 'Person',
+                'people': 'People',
+                'preferred_date': 'Preferred Date *',
+                'preferred_time': 'Preferred Time *',
+                'select_time': 'Select preferred time...',
+                'special_requests': 'Special Requests',
+                'instant_confirmation': 'Instant Confirmation',
+                'whatsapp_confirmation': 'Your reservation will be confirmed via WhatsApp',
+                'make_reservation': 'Make Reservation',
+                
+                // Contact Section
+                'contact_us': 'Contact Us',
+                'visit_restaurant': 'Visit Our Restaurant',
+                'address': 'Address',
+                'parking_available': 'Valet parking available',
+                'phone_whatsapp': 'Phone & WhatsApp',
+                'whatsapp_chat': 'WhatsApp Chat',
+                'email': 'Email',
+                'email_purpose': 'For reservations and inquiries',
+                'hours': 'Hours',
+                'mon_sun': 'Mon-Sun:',
+                'reservations_recommended': 'Reservations recommended',
+                
+                // Footer
+                'quick_links': 'Quick Links',
+                'connect_with_us': 'Connect With Us',
+                'visit_us': 'Visit Us',
+                'footer_description': 'Authentic Italian cuisine in the heart of Riga.',
+                'all_rights': 'All rights reserved.',
+                'footer_note': 'Celebrating Italian culinary art in the heart of Riga'
+            },
+            
+            lv: {
+                // Navigation
+                'home': 'Sākums',
+                'about': 'Par mums',
+                'menu': 'Ēdienkarte',
+                'reservation': 'Rezervācija',
+                'contact': 'Kontakti',
+                'restaurant': 'Itāļu Restorāns',
+                'call_us': 'Zvaniet mums',
+                
+                // Hero Section
+                'hero_subtitle': 'Autentiska itāļu virtuve Rīgas sirdī',
+                'book_table': 'REZERVĒT GALDU',
+                'view_menu': 'SKATĪT ĒDIENKARTI',
+                'explore': 'Izpētīt',
+                
+                // About Section
+                'our_story': 'Mūsu Stāsts',
+                'authentic_excellence': 'Autentiska Itāļu Pārākums',
+                'about_intro': 'Dibināts 2015. gadā, L\'ARTISTA atnes itāļu garšu Rīgas sirdī. Mūsu restorāns ir Itālijas bagātās kulinārijas mantojuma svinības.',
+                'about_description': 'Mūsu filozofija ir vienkārša: radīt neaizmirstamus ēšanas pieredzes, izmantojot tikai labākās sastāvdaļas, tradicionālās metodes un īstu mīlestību pret itāļu virtuvi.',
+                'fresh_ingredients': 'Svaigas Sastāvdaļas',
+                'fresh_desc': 'Vietējie produkti un importētie itāļu specialitātes',
+                'wine_selection': 'Izsmalcināts Vīna Izlase',
+                'wine_desc': 'Izraudzīti itāļu vīni, lai papildinātu katru ēdienu',
+                'award_winning': 'Balvu Laureāts',
+                'award_desc': 'Atzīts par kulonārisko pārākumu un servisu',
+                
+                // Menu Section
+                'our_menu': 'Mūsu Ēdienkarte',
+                'culinary_masterpieces': 'Kulinārie Meistardarbi',
+                'wine_list': 'Vīnu Saraksts',
+                'starters': 'Uzkodas',
+                'main_courses': 'Galvenie Ēdieni',
+                'pizza': 'Pica',
+                'desserts': 'Deserti',
+                'drinks': 'Dzērieni',
+                'sparklings': 'DZIDRIE VĪNI',
+                'rose': 'ROZĒ VĪNI',
+                'white_wines': 'BALTAIS VĪNS',
+                'red_wines': 'SARKANAIS VĪNS',
+                
+                // Menu Items
+                'caesar_salad': 'Caesar Salāti',
+                'caesar_desc': 'Parmezāna siers, grauzdiņi',
+                'creamy_burrata': 'Krēmīga Burrata',
+                'burrata_desc': 'Saldi ķiršu tomāti, bazilikas eļļa, pistāces',
+                'beef_carpaccio': 'Liellopa Carpaccio',
+                'carpaccio_desc': 'Parmezāns, rukola, trifeļu eļļa',
+                'bruschettas': 'Brusketas',
+                'bruschetta_desc': 'Stračiatella, mortadella, pistāces',
+                'truffle_risotto': 'Trifeļu Risoto',
+                'risotto_desc': 'Krēmīgs risoto ar svaigām melnajām trifeļēm',
+                'fillet_mignon': 'Fillet Mignon',
+                'mignon_desc': 'Argentīnas Melnais Angus (200 g), burbonu mērce',
+                'sea_bass': 'Jūrasasas Fileja',
+                'bass_desc': 'Smalks jūrasasas ar svaigām garšaugām',
+                'margherita': 'Margherita',
+                'quattro_formaggi': 'Četri Sieri',
+                'burrata_pizza': 'Burrata Pica',
+                'pistachio_pesto': 'Pistāču Pesto',
+                'tiramisu': 'Klasiskais Tiramisu',
+                'aperitivo': 'Aperitīvs',
+                'beer': 'ALUS',
+                
+                // Reservation Section
+                'reserve_table': 'Rezervējiet Galdu',
+                'experience_excellence': 'Piedzīvojiet Kulinārisko Pārākumu',
+                'full_name': 'Vārds, Uzvārds *',
+                'email_address': 'E-pasta adrese *',
+                'phone_number': 'Telefona numurs *',
+                'number_of_guests': 'Viesu skaits *',
+                'select_guests': 'Izvēlieties viesu skaitu...',
+                'person': 'Persona',
+                'people': 'Cilvēki',
+                'preferred_date': 'Vēlamā datums *',
+                'preferred_time': 'Vēlamais laiks *',
+                'select_time': 'Izvēlieties vēlamo laiku...',
+                'special_requests': 'Īpašas vēlmes',
+                'instant_confirmation': 'Tūlītēja Apstiprināšana',
+                'whatsapp_confirmation': 'Jūsu rezervācija tiks apstiprināta caur WhatsApp',
+                'make_reservation': 'Veikt Rezervāciju',
+                
+                // Contact Section
+                'contact_us': 'Sazināties ar mums',
+                'visit_restaurant': 'Apmeklējiet mūsu restorānu',
+                'address': 'Adrese',
+                'parking_available': 'Pieejams valets pakalpojums',
+                'phone_whatsapp': 'Telefons & WhatsApp',
+                'whatsapp_chat': 'WhatsApp Saruna',
+                'email': 'E-pasts',
+                'email_purpose': 'Rezervācijām un jautājumiem',
+                'hours': 'Darba laiks',
+                'mon_sun': 'Pirmd.-Svētd.:',
+                'reservations_recommended': 'Ieteicamas rezervācijas',
+                
+                // Footer
+                'quick_links': 'Ātrās saites',
+                'connect_with_us': 'Sazinieties ar mums',
+                'visit_us': 'Apmeklējiet mūs',
+                'footer_description': 'Autentiska itāļu virtuve Rīgas sirdī.',
+                'all_rights': 'Visas tiesības aizsargātas.',
+                'footer_note': 'Svinot itāļu kulināro mākslu Rīgas sirdī'
+            },
+            
+            ru: {
+                // Navigation
+                'home': 'Главная',
+                'about': 'О нас',
+                'menu': 'Меню',
+                'reservation': 'Бронирование',
+                'contact': 'Контакты',
+                'restaurant': 'Итальянский Ресторан',
+                'call_us': 'Позвоните нам',
+                
+                // Hero Section
+                'hero_subtitle': 'Аутентичная итальянская кухня в сердце Риги',
+                'book_table': 'ЗАБРОНИРОВАТЬ СТОЛИК',
+                'view_menu': 'ПОСМОТРЕТЬ МЕНЮ',
+                'explore': 'Исследовать',
+                
+                // About Section
+                'our_story': 'Наша История',
+                'authentic_excellence': 'Аутентичное Итальянское Совершенство',
+                'about_intro': 'Основанный в 2015 году, L\'ARTISTA приносит аутентичный вкус Италии в сердце Риги. Наш ресторан - это праздник богатого кулинарного наследия Италии.',
+                'about_description': 'Наша философия проста: создавать незабываемые гастрономические впечатления, используя только лучшие ингредиенты, традиционные техники и настоящую любовь к итальянской кухне.',
+                'fresh_ingredients': 'Свежие Ингредиенты',
+                'fresh_desc': 'Местные продукты и импортные итальянские специалитеты',
+                'wine_selection': 'Изысканная Винная Карта',
+                'wine_desc': 'Отобранные итальянские вина к каждому блюду',
+                'award_winning': 'Награжденный',
+                'award_desc': 'Признан за кулинарное мастерство и обслуживание',
+                
+                // Menu Section
+                'our_menu': 'Наше Меню',
+                'culinary_masterpieces': 'Кулинарные Шедевры',
+                'wine_list': 'Винная Карта',
+                'starters': 'Закуски',
+                'main_courses': 'Основные Блюда',
+                'pizza': 'Пицца',
+                'desserts': 'Десерты',
+                'drinks': 'Напитки',
+                'sparklings': 'ИГРИСТЫЕ ВИНА',
+                'rose': 'РОЗОВЫЕ ВИНА',
+                'white_wines': 'БЕЛЫЕ ВИНА',
+                'red_wines': 'КРАСНЫЕ ВИНА',
+                
+                // Menu Items
+                'caesar_salad': 'Салат Цезарь',
+                'caesar_desc': 'Сыр пармезан, гренки',
+                'creamy_burrata': 'Сливочная Буратта',
+                'burrata_desc': 'Сладкие черри, масло базилика, фисташки',
+                'beef_carpaccio': 'Карпаччо из Говядины',
+                'carpaccio_desc': 'Пармезан, руккола, трюфельное масло',
+                'bruschettas': 'Брускетты',
+                'bruschetta_desc': 'Страчателла, мортаделла, фисташки',
+                'truffle_risotto': 'Трюфельное Ризотто',
+                'risotto_desc': 'Сливочное ризотто со свежими черными трюфелями',
+                'fillet_mignon': 'Филе Миньон',
+                'mignon_desc': 'Аргентинский Блэк Ангус (200 г), соус бурбон',
+                'sea_bass': 'Филе Морского Окуня',
+                'bass_desc': 'Нежный морской окунь со свежими травами',
+                'margherita': 'Маргарита',
+                'quattro_formaggi': 'Четыре Сыра',
+                'burrata_pizza': 'Пицца с Буратой',
+                'pistachio_pesto': 'Фисташковое Песто',
+                'tiramisu': 'Классический Тирамису',
+                'aperitivo': 'Аперитив',
+                'beer': 'ПИВО',
+                
+                // Reservation Section
+                'reserve_table': 'Забронировать Столик',
+                'experience_excellence': 'Испытайте Кулинарное Совершенство',
+                'full_name': 'ФИО *',
+                'email_address': 'Электронная почта *',
+                'phone_number': 'Номер телефона *',
+                'number_of_guests': 'Количество гостей *',
+                'select_guests': 'Выберите количество гостей...',
+                'person': 'Человек',
+                'people': 'Человека',
+                'preferred_date': 'Предпочтительная дата *',
+                'preferred_time': 'Предпочтительное время *',
+                'select_time': 'Выберите время...',
+                'special_requests': 'Особые пожелания',
+                'instant_confirmation': 'Мгновенное Подтверждение',
+                'whatsapp_confirmation': 'Ваше бронирование будет подтверждено через WhatsApp',
+                'make_reservation': 'Забронировать',
+                
+                // Contact Section
+                'contact_us': 'Свяжитесь с нами',
+                'visit_restaurant': 'Посетите наш ресторан',
+                'address': 'Адрес',
+                'parking_available': 'Доступен паркинг с валетом',
+                'phone_whatsapp': 'Телефон & WhatsApp',
+                'whatsapp_chat': 'Чат в WhatsApp',
+                'email': 'Электронная почта',
+                'email_purpose': 'Для бронирования и вопросов',
+                'hours': 'Часы работы',
+                'mon_sun': 'Пн-Вс:',
+                'reservations_recommended': 'Бронирование рекомендуется',
+                
+                // Footer
+                'quick_links': 'Быстрые ссылки',
+                'connect_with_us': 'Свяжитесь с нами',
+                'visit_us': 'Посетите нас',
+                'footer_description': 'Аутентичная итальянская кухня в сердце Риги.',
+                'all_rights': 'Все права защищены.',
+                'footer_note': 'Празднуя итальянское кулинарное искусство в сердце Риги'
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
 
         // Restaurant Configuration
         const RESTAURANT_CONFIG = {
@@ -2718,6 +2873,7 @@
             }
             
             // Initialize all features
+            initLanguageSelector();
             initNavigation();
             initMenuTabs();
             initReservationForm();
@@ -2729,6 +2885,153 @@
             
             // Set tomorrow's date as default
             setDefaultDate();
+            
+            // Load saved language preference
+            loadLanguagePreference();
+        }
+
+        // ============================================
+        // LANGUAGE SELECTOR
+        // ============================================
+        function initLanguageSelector() {
+            const languageBtns = document.querySelectorAll('.language-btn');
+            const mobileLanguageBtns = document.querySelectorAll('.mobile-language-btn');
+            
+            // Desktop language buttons
+            languageBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+            
+            // Mobile language buttons
+            mobileLanguageBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                    closeMobileMenu();
+                });
+            });
+        }
+
+        function switchLanguage(lang) {
+            if (currentLang === lang) return;
+            
+            currentLang = lang;
+            
+            // Update active buttons
+            updateLanguageButtons(lang);
+            
+            // Translate all elements
+            translatePage(lang);
+            
+            // Save preference to localStorage
+            saveLanguagePreference(lang);
+        }
+
+        function updateLanguageButtons(lang) {
+            // Update desktop buttons
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Update mobile buttons
+            document.querySelectorAll('.mobile-language-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        function translatePage(lang) {
+            // Get translation object for selected language
+            const translations = TRANSLATIONS[lang];
+            
+            if (!translations) {
+                console.error(`Translations not found for language: ${lang}`);
+                return;
+            }
+            
+            // Find all elements with data-translate attribute
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                
+                if (translations[key]) {
+                    // Special handling for select options
+                    if (element.tagName === 'OPTION' && element.parentElement.id === 'guests') {
+                        const parts = translations[key].split(' ');
+                        if (parts.length > 1) {
+                            // Update number and text separately
+                            const currentValue = element.value;
+                            if (currentValue.includes('+')) {
+                                element.innerHTML = `9+ ${translations[key]}`;
+                            } else {
+                                element.innerHTML = `${currentValue} ${translations[key]}`;
+                            }
+                        } else {
+                            element.textContent = translations[key];
+                        }
+                    } else if (element.tagName === 'OPTION' && element.parentElement.id === 'time') {
+                        // Don't translate time values
+                        return;
+                    } else {
+                        // Regular text elements
+                        element.textContent = translations[key];
+                    }
+                }
+            });
+            
+            // Update menu tabs
+            const menuTabs = document.querySelectorAll('.menu-tab');
+            menuTabs.forEach(tab => {
+                const key = tab.getAttribute('data-translate');
+                if (translations[key]) {
+                    tab.textContent = translations[key];
+                }
+            });
+            
+            // Update placeholders
+            updateFormPlaceholders(translations);
+        }
+
+        function updateFormPlaceholders(translations) {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const specialRequests = document.getElementById('special-requests');
+            
+            if (nameInput) nameInput.placeholder = translations['full_name'] || 'Enter your full name';
+            if (emailInput) emailInput.placeholder = translations['email_address'] || 'your@email.com';
+            if (phoneInput) phoneInput.placeholder = translations['phone_number'] || '+91 91365 58275';
+            if (specialRequests) specialRequests.placeholder = translations['special_requests'] || 'Dietary restrictions, allergies, celebrations, etc.';
+        }
+
+        function saveLanguagePreference(lang) {
+            try {
+                localStorage.setItem('lartista_language', lang);
+            } catch (e) {
+                console.warn('Could not save language preference:', e);
+            }
+        }
+
+        function loadLanguagePreference() {
+            try {
+                const savedLang = localStorage.getItem('lartista_language');
+                if (savedLang && TRANSLATIONS[savedLang]) {
+                    switchLanguage(savedLang);
+                }
+            } catch (e) {
+                console.warn('Could not load language preference:', e);
+            }
         }
 
         // ============================================
@@ -2950,14 +3253,19 @@
 
                 // Validate form
                 if (!validateReservationForm(formData)) {
-                    alert('Please fill in all required fields correctly.');
+                    alert(currentLang === 'en' ? 'Please fill in all required fields correctly.' :
+                          currentLang === 'lv' ? 'Lūdzu, aizpildiet visus obligātos laukus pareizi.' :
+                          'Пожалуйста, заполните все обязательные поля правильно.');
                     return;
                 }
 
                 // Show loading state
                 const submitBtn = bookingForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + 
+                    (currentLang === 'en' ? 'Processing...' :
+                     currentLang === 'lv' ? 'Apstrāde...' :
+                     'Обработка...');
                 submitBtn.disabled = true;
 
                 try {
@@ -2971,10 +3279,14 @@
                     setDefaultDate();
                     
                     // Show success message
-                    alert('Reservation sent successfully! You will receive a confirmation via WhatsApp.');
+                    alert(currentLang === 'en' ? 'Reservation sent successfully! You will receive a confirmation via WhatsApp.' :
+                          currentLang === 'lv' ? 'Rezervācija nosūtīta veiksmīgi! Jūs saņemsit apstiprinājumu caur WhatsApp.' :
+                          'Бронирование успешно отправлено! Вы получите подтверждение через WhatsApp.');
                     
                 } catch (error) {
-                    alert('Error sending reservation. Please try again or call us directly.');
+                    alert(currentLang === 'en' ? 'Error sending reservation. Please try again or call us directly.' :
+                          currentLang === 'lv' ? 'Kļūda, nosūtot rezervāciju. Lūdzu, mēģiniet vēlreiz vai zvaniet mums tieši.' :
+                          'Ошибка при отправке бронирования. Пожалуйста, попробуйте еще раз или позвоните нам напрямую.');
                 } finally {
                     // Reset button state
                     submitBtn.innerHTML = originalText;
@@ -3014,20 +3326,52 @@
                 day: 'numeric'
             });
 
-            // Create WhatsApp message
-            const whatsappMessage = `*🎭 NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
-                                   `*📋 Guest Information*%0A` +
-                                   `👤 Name: ${formData.name}%0A` +
-                                   `📞 Phone: ${formData.phone}%0A` +
-                                   `📧 Email: ${formData.email}%0A%0A` +
-                                   `*📅 Reservation Details*%0A` +
-                                   `📅 Date: ${formattedDate}%0A` +
-                                   `⏰ Time: ${formData.time}%0A` +
-                                   `👥 Guests: ${formData.guests}%0A` +
-                                   `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
-                                   `📍 ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
-                                   `📞 ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
-                                   `_Thank you for choosing L'ARTISTA!_`;
+            // Create WhatsApp message based on language
+            let whatsappMessage = '';
+            
+            if (currentLang === 'en') {
+                whatsappMessage = `*🎭 NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                                 `*📋 Guest Information*%0A` +
+                                 `👤 Name: ${formData.name}%0A` +
+                                 `📞 Phone: ${formData.phone}%0A` +
+                                 `📧 Email: ${formData.email}%0A%0A` +
+                                 `*📅 Reservation Details*%0A` +
+                                 `📅 Date: ${formattedDate}%0A` +
+                                 `⏰ Time: ${formData.time}%0A` +
+                                 `👥 Guests: ${formData.guests}%0A` +
+                                 `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
+                                 `📍 ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                                 `📞 ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                                 `_Thank you for choosing L'ARTISTA!_`;
+            } else if (currentLang === 'lv') {
+                whatsappMessage = `*🎭 JAUNA REZERVĀCIJA - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                                 `*📋 Viesu Informācija*%0A` +
+                                 `👤 Vārds: ${formData.name}%0A` +
+                                 `📞 Telefons: ${formData.phone}%0A` +
+                                 `📧 E-pasts: ${formData.email}%0A%0A` +
+                                 `*📅 Rezervācijas Detalizēti*%0A` +
+                                 `📅 Datums: ${formattedDate}%0A` +
+                                 `⏰ Laiks: ${formData.time}%0A` +
+                                 `👥 Viesi: ${formData.guests}%0A` +
+                                 `💭 Īpašas vēlmes: ${formData.specialRequests || 'Nav'}%0A%0A` +
+                                 `📍 ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                                 `📞 ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                                 `_Paldies, ka izvēlējāties L'ARTISTA!_`;
+            } else if (currentLang === 'ru') {
+                whatsappMessage = `*🎭 НОВОЕ БРОНИРОВАНИЕ - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                                 `*📋 Информация о госте*%0A` +
+                                 `👤 Имя: ${formData.name}%0A` +
+                                 `📞 Телефон: ${formData.phone}%0A` +
+                                 `📧 Email: ${formData.email}%0A%0A` +
+                                 `*📅 Детали бронирования*%0A` +
+                                 `📅 Дата: ${formattedDate}%0A` +
+                                 `⏰ Время: ${formData.time}%0A` +
+                                 `👥 Гости: ${formData.guests}%0A` +
+                                 `💭 Особые пожелания: ${formData.specialRequests || 'Нет'}%0A%0A` +
+                                 `📍 ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                                 `📞 ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                                 `_Спасибо, что выбрали L'ARTISTA!_`;
+            }
 
             // Create WhatsApp URL
             const whatsappURL = `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
