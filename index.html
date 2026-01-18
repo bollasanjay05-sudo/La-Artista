@@ -18,7 +18,7 @@
     <!-- CSS -->
     <style>
         /* ============================================
-           L'ARTISTA ITALIAN RESTAURANT - UPDATED CSS
+           L'ARTISTA FINE DINING - OPTIMIZED CSS
         ============================================ */
 
         :root {
@@ -121,7 +121,66 @@
         }
 
         /* ============================================
-           LANGUAGE SELECTOR - NEW
+           ITALIAN FLAG STRIPES
+        ============================================ */
+        .italian-flag-stripe {
+          position: fixed;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: linear-gradient(
+            to right,
+            var(--green) 33.33%,
+            var(--white) 33.33% 66.66%,
+            var(--red) 66.66%
+          );
+          z-index: 1000;
+        }
+
+        .italian-flag-stripe.top {
+          top: 0;
+        }
+
+        .italian-flag-stripe.bottom {
+          bottom: 0;
+        }
+
+        /* ============================================
+           CONTAINERS
+        ============================================ */
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          width: 100%;
+        }
+
+        section {
+          padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+          section {
+            padding: 60px 0;
+          }
+          
+          .container {
+            padding: 0 15px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          section {
+            padding: 50px 0;
+          }
+          
+          .container {
+            padding: 0 12px;
+          }
+        }
+
+        /* ============================================
+           LANGUAGE SELECTOR - VERTICAL FOR MOBILE/IPAD
         ============================================ */
         .language-selector {
           position: fixed;
@@ -164,43 +223,36 @@
           box-shadow: 0 4px 10px rgba(214, 39, 59, 0.2);
         }
 
-        /* ============================================
-           ITALIAN FLAG STRIPES
-        ============================================ */
-        .italian-flag-stripe {
-          position: fixed;
-          left: 0;
-          right: 0;
-          height: 6px;
-          background: linear-gradient(
-            to right,
-            var(--green) 33.33%,
-            var(--white) 33.33% 66.66%,
-            var(--red) 66.66%
-          );
-          z-index: 1000;
+        /* Vertical layout for mobile */
+        @media (max-width: 768px) {
+          .language-selector {
+            flex-direction: column;
+            padding: 8px 5px;
+            top: 70px;
+            right: 10px;
+          }
+          
+          .language-btn {
+            padding: 8px 10px;
+            min-width: 35px;
+            font-size: 12px;
+          }
         }
 
-        .italian-flag-stripe.top {
-          top: 0;
-        }
-
-        .italian-flag-stripe.bottom {
-          bottom: 0;
-        }
-
-        /* ============================================
-           CONTAINERS
-        ============================================ */
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
-          width: 100%;
-        }
-
-        section {
-          padding: 80px 0;
+        /* Vertical layout for iPad */
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .language-selector {
+            flex-direction: column;
+            padding: 8px 5px;
+            top: 15px;
+            right: 15px;
+          }
+          
+          .language-btn {
+            padding: 10px 12px;
+            min-width: 40px;
+            font-size: 13px;
+          }
         }
 
         /* ============================================
@@ -314,17 +366,17 @@
         }
 
         /* ============================================
-           NAVIGATION - FIXED FOR MOBILE
+           NAVIGATION
         ============================================ */
         .premium-navbar {
           position: fixed;
           top: 6px;
           left: 0;
           right: 0;
-          background: rgba(249, 247, 242, 0.98);
+          background: rgba(249, 247, 242, 0.95);
           backdrop-filter: blur(10px);
           z-index: 1000;
-          padding: 10px 0;
+          padding: 6px 0;
           border-bottom: 1px solid rgba(214, 39, 59, 0.1);
           transition: var(--transition);
         }
@@ -833,7 +885,7 @@
         }
 
         /* ============================================
-           ABOUT SECTION - UPDATED FOR NEW RESTAURANT
+           ABOUT SECTION
         ============================================ */
         .premium-about-grid {
           display: grid;
@@ -1047,6 +1099,7 @@
           font-size: 28px;
         }
 
+        /* Menu Items with Images */
         .menu-item {
           background: white;
           padding: 25px;
@@ -1119,7 +1172,115 @@
         }
 
         /* ============================================
-           RESERVATION SECTION - WITH WHATSAPP & EMAIL OPTIONS
+           GALLERY SECTION FOR AMBIANCE
+        ============================================ */
+        .gallery-section {
+          background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
+          padding: 80px 0;
+        }
+
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 20px;
+          margin-top: 40px;
+        }
+
+        .gallery-item {
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          transition: all 0.3s ease;
+          border: 3px solid var(--gold);
+          height: 250px;
+          cursor: pointer;
+        }
+
+        .gallery-item:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+          border-color: var(--red);
+        }
+
+        .gallery-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+          transform: scale(1.05);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.9);
+          z-index: 1100;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .lightbox-content {
+          position: relative;
+          max-width: 90%;
+          max-height: 90%;
+        }
+
+        .lightbox-image {
+          max-width: 100%;
+          max-height: 80vh;
+          border-radius: 8px;
+        }
+
+        .close-lightbox {
+          position: absolute;
+          top: -40px;
+          right: 0;
+          color: white;
+          font-size: 30px;
+          cursor: pointer;
+          background: var(--red);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .lightbox-nav {
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          transform: translateY(-50%);
+        }
+
+        .prev-btn, .next-btn {
+          background: var(--red);
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          cursor: pointer;
+          font-size: 20px;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* ============================================
+           RESERVATION SECTION
         ============================================ */
         .reservation-section {
           background: linear-gradient(135deg, var(--green) 0%, #2D5A42 100%);
@@ -1263,7 +1424,7 @@
         }
 
         /* ============================================
-           CONTACT SECTION - WITH BOTH OPTIONS
+           CONTACT SECTION
         ============================================ */
         .contact-grid {
           display: grid;
@@ -1511,8 +1672,103 @@
         }
 
         /* ============================================
-           RESPONSIVE STYLES - FOR PHONE & IPAD
+           RESPONSIVE STYLES - FOR PERFECT FIT
         ============================================ */
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 15px;
+          }
+          
+          .hero-premium {
+            padding-top: 60px;
+          }
+          
+          .menu-section, .reservation-section {
+            margin: 20px;
+            padding: 25px 15px;
+          }
+          
+          .menu-item {
+            grid-template-columns: 1fr;
+            padding: 15px;
+          }
+          
+          .dish-photo {
+            height: 180px;
+          }
+          
+          .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+          }
+          
+          .gallery-item {
+            height: 220px;
+          }
+          
+          /* Prevent zoom on iOS input focus */
+          .form-control {
+            font-size: 16px;
+          }
+          
+          /* Fix for mobile viewport */
+          @supports (-webkit-touch-callout: none) {
+            .hero-premium {
+              min-height: -webkit-fill-available;
+            }
+          }
+        }
+
+        /* iPad specific improvements */
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .container {
+            padding: 0 30px;
+          }
+          
+          .premium-about-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .menu-section {
+            margin: 40px;
+          }
+          
+          .menu-categories-container {
+            max-height: 700px;
+          }
+          
+          .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        /* Android/Phone specific adjustments */
+        @media (max-width: 767px) {
+          body {
+            font-size: 14px;
+          }
+          
+          .premium-title .title-line-1 {
+            font-size: 2.5rem;
+          }
+          
+          .premium-subtitle {
+            font-size: 1rem;
+            padding: 0 10px;
+          }
+          
+          .menu-tabs {
+            justify-content: flex-start;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+          }
+          
+          .menu-tab {
+            padding: 10px 20px;
+            font-size: 13px;
+          }
+        }
+
         @media (max-width: 1024px) {
           .premium-title .title-line-1 {
             font-size: 60px;
@@ -1525,6 +1781,10 @@
           
           .menu-categories-container {
             max-height: 500px;
+          }
+          
+          .lightbox-nav {
+            display: none;
           }
         }
 
@@ -1632,28 +1892,6 @@
           .menu-section {
             padding: 40px 20px;
             margin: 40px auto;
-          }
-          
-          .menu-tabs {
-            justify-content: flex-start;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-          }
-          
-          .menu-tab {
-            padding: 10px 20px;
-            font-size: 13px;
-          }
-          
-          .menu-item {
-            grid-template-columns: 1fr;
-            gap: 20px;
-            padding: 20px;
-          }
-          
-          .dish-photo {
-            height: 200px;
-            width: 100%;
           }
           
           .menu-category h3 {
@@ -1861,7 +2099,7 @@
     <div class="italian-flag-stripe top"></div>
     <div class="italian-flag-stripe bottom"></div>
 
-    <!-- Language Selector -->
+    <!-- Language Selector - Vertical for Mobile/iPad -->
     <div class="language-selector" id="languageSelector">
         <button class="language-btn active" data-lang="en">EN</button>
         <button class="language-btn" data-lang="lv">LV</button>
@@ -1906,6 +2144,7 @@
                 <li><a href="#home" class="nav-link" data-translate="home">Home</a></li>
                 <li><a href="#about" class="nav-link" data-translate="about">About</a></li>
                 <li><a href="#menu" class="nav-link" data-translate="menu">Menu</a></li>
+                <li><a href="#ambience" class="nav-link" data-translate="ambience">Ambience</a></li>
                 <li><a href="#reservation" class="nav-link" data-translate="reservation">Reservation</a></li>
                 <li><a href="#contact" class="nav-link" data-translate="contact">Contact</a></li>
             </ul>
@@ -1934,6 +2173,7 @@
             <li><a href="#home" class="mobile-nav-link" data-translate="home">Home</a></li>
             <li><a href="#about" class="mobile-nav-link" data-translate="about">About</a></li>
             <li><a href="#menu" class="mobile-nav-link" data-translate="menu">Menu</a></li>
+            <li><a href="#ambience" class="mobile-nav-link" data-translate="ambience">Ambience</a></li>
             <li><a href="#reservation" class="mobile-nav-link" data-translate="reservation">Reservation</a></li>
             <li><a href="#contact" class="mobile-nav-link" data-translate="contact">Contact</a></li>
         </ul>
@@ -2081,37 +2321,61 @@
             <!-- Menu Categories Container with Scroll -->
             <div class="menu-categories-container">
                 
-                <!-- Starters Menu -->
+                <!-- Starters Menu - COMPLETE WITH ALL DISHES -->
                 <div class="menu-category active" id="starters">
                     <h3><i class="fas fa-seedling"></i> <span data-translate="starters">Starters</span></h3>
                     
+                    <!-- Caesar Salad -->
                     <div class="menu-item" data-category="starters">
-                        <img src="LARTISTA DISHES/CAESAR SALAD.jpg" 
-                             alt="Caesar Salad" class="dish-photo">
+                        <img src="LARTISTA DISHES/CAESAR SALAD.jpg" alt="Caesar Salad" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="caesar_salad">Caesar Salad</h4>
+                                <h4>Caesar Salad</h4>
                                 <span class="price">€12</span>
                             </div>
-                            <p class="menu-desc" data-translate="caesar_desc">Parmesan cheese, toast</p>
+                            <p class="menu-desc">Parmesan cheese, toast</p>
                         </div>
                     </div>
                     
+                    <!-- Creamy Burrata -->
                     <div class="menu-item" data-category="starters">
-                        <img src="LARTISTA DISHES/CREAMY BURATA.jpg" 
-                             alt="Creamy Burrata" class="dish-photo">
+                        <img src="LARTISTA DISHES/CREAMY BURATA.jpg" alt="Creamy Burrata" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="creamy_burrata">Creamy Burrata</h4>
+                                <h4>Creamy Burrata</h4>
                                 <span class="price">€15</span>
                             </div>
-                            <p class="menu-desc" data-translate="burrata_desc">Sweet cherry tomatoes, basil oil, pistachios</p>
+                            <p class="menu-desc">Sweet cherry tomatoes, basil oil, pistachios</p>
                         </div>
                     </div>
                     
+                    <!-- Lemon-Garlic Prawns -->
                     <div class="menu-item" data-category="starters">
-                        <img src="LARTISTA DISHES/ANTIPASTO.jpg" 
-                             alt="Antipasto" class="dish-photo">
+                        <img src="LARTISTA DISHES/LEMON GARLIC SHRIMPS.jpg" alt="Lemon-Garlic Prawns" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Lemon-Garlic Prawns</h4>
+                                <span class="price">€15</span>
+                            </div>
+                            <p class="menu-desc">Served with homemade focaccia</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vitello Tonnato -->
+                    <div class="menu-item" data-category="starters">
+                        <img src="LARTISTA DISHES/VITELLO TONNATO.jpg" alt="Vitello Tonnato" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Vitello Tonnato</h4>
+                                <span class="price">€17</span>
+                            </div>
+                            <p class="menu-desc">Thinly sliced veal with creamy tuna foam</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Antipasto -->
+                    <div class="menu-item" data-category="starters">
+                        <img src="LARTISTA DISHES/ANTIPASTO.jpg" alt="Antipasto" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Antipasto</h4>
@@ -2121,117 +2385,207 @@
                         </div>
                     </div>
                     
+                    <!-- Beef Carpaccio -->
                     <div class="menu-item" data-category="starters">
-                        <img src="LARTISTA DISHES/BEEF CARPACCIO.jpg" 
-                             alt="Beef Carpaccio" class="dish-photo">
+                        <img src="LARTISTA DISHES/BEEF CARPACCIO.jpg" alt="Beef Carpaccio" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="beef_carpaccio">Beef Carpaccio</h4>
+                                <h4>Beef Carpaccio</h4>
                                 <span class="price">€16</span>
                             </div>
-                            <p class="menu-desc" data-translate="carpaccio_desc">Parmesan, arugula, truffle oil</p>
+                            <p class="menu-desc">Parmesan, arugula, truffle oil</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bruschettas -->
+                    <div class="menu-item" data-category="starters">
+                        <img src="LARTISTA DISHES/BRUSCHETTA CLASSIC.jpg" alt="Bruschettas" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Bruschettas</h4>
+                                <span class="price">€8.50</span>
+                            </div>
+                            <p class="menu-desc">Choice of: Stracciatella, mortadella, pistachio or Smoked zucchini, cream cheese, pine nuts or cherry tomatoes and fresh herbs</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Eggplant Parmesan -->
+                    <div class="menu-item" data-category="starters">
+                        <img src="LARTISTA DISHES/PARMIGIANA.jpg" alt="Eggplant Parmesan" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Eggplant Parmesan</h4>
+                                <span class="price">€14</span>
+                            </div>
+                            <p class="menu-desc">Tomato sauce, fresh mozzarella</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Main Courses Menu -->
+                <!-- Main Courses Menu - COMPLETE WITH ALL DISHES -->
                 <div class="menu-category" id="main">
                     <h3><i class="fas fa-drumstick-bite"></i> <span data-translate="main_courses">Main Courses</span></h3>
                     
+                    <!-- Truffle Risotto -->
                     <div class="menu-item" data-category="main">
-                        <img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" 
-                             alt="Truffle Risotto" class="dish-photo">
+                        <img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" alt="Truffle Risotto" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="truffle_risotto">Truffle Risotto</h4>
+                                <h4>Truffle Risotto</h4>
                                 <span class="price">€25</span>
                             </div>
-                            <p class="menu-desc" data-translate="risotto_desc">Creamy risotto with fresh black truffles</p>
+                            <p class="menu-desc">Creamy risotto with fresh black truffles</p>
                         </div>
                     </div>
                     
+                    <!-- Escalope Butter Veal -->
                     <div class="menu-item" data-category="main">
-                        <img src="LARTISTA DISHES/FILLET MIGNON.jpg" 
-                             alt="Fillet Mignon" class="dish-photo">
+                        <img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" alt="Escalope Butter Veal" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="fillet_mignon">Fillet Mignon</h4>
-                                <span class="price">€39</span>
+                                <h4>Escalope Butter Veal</h4>
+                                <span class="price">€29</span>
                             </div>
-                            <p class="menu-desc" data-translate="mignon_desc">Argentine Black Angus (200 g), bourbon sauce</p>
+                            <p class="menu-desc">Tender veal in a juicy sauce, fried potatoes or salad</p>
                         </div>
                     </div>
                     
-                    <!-- PISTACHIO PESTO MOVED TO MAIN COURSES -->
+                    <!-- Zuppa di Pesce -->
                     <div class="menu-item" data-category="main">
-                        <img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" 
-                             alt="Pistachio Pesto" class="dish-photo">
+                        <img src="LARTISTA DISHES/ZUPA DI PESCA.jpg" alt="Zuppa di Pesce" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Pistachio Pesto Stracciatella</h4>
-                                <span class="price">€18</span>
+                                <h4>Zuppa di Pesce</h4>
+                                <span class="price">€17</span>
                             </div>
-                            <p class="menu-desc">Creamy stracciatella cheese with pistachio pesto</p>
+                            <p class="menu-desc">Richly flavored fish soup with shellfish and herbs</p>
                         </div>
                     </div>
                     
+                    <!-- Sea Bass Fillet -->
                     <div class="menu-item" data-category="main">
-                        <img src="LARTISTA DISHES/SEA BASS FILLET.jpg" 
-                             alt="Sea Bass Fillet" class="dish-photo">
+                        <img src="LARTISTA DISHES/SEA BASS FILLET.jpg" alt="Sea Bass Fillet" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="sea_bass">Sea Bass Fillet</h4>
+                                <h4>Sea Bass Fillet</h4>
                                 <span class="price">€23</span>
                             </div>
-                            <p class="menu-desc" data-translate="bass_desc">Delicate sea bass with fresh herbs</p>
+                            <p class="menu-desc">Delicate sea bass with fresh herbs</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fillet Mignon -->
+                    <div class="menu-item" data-category="main">
+                        <img src="LARTISTA DISHES/FILLET MIGNON.jpg" alt="Fillet Mignon" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Fillet Mignon</h4>
+                                <span class="price">€39</span>
+                            </div>
+                            <p class="menu-desc">Argentine Black Angus (200 g), bourbon sauce</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Pizza Menu -->
+                <!-- Pizza Menu - COMPLETE WITH ALL PIZZAS -->
                 <div class="menu-category" id="pizza">
                     <h3><i class="fas fa-pizza-slice"></i> <span data-translate="pizza">Pizza</span></h3>
                     
+                    <!-- Margherita -->
                     <div class="menu-item" data-category="pizza">
-                        <img src="LARTISTA DISHES/Margherita.jpg" 
-                             alt="Pizza Margherita" class="dish-photo">
+                        <img src="LARTISTA DISHES/Margherita.jpg" alt="Margherita Pizza" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="margherita">Margherita</h4>
+                                <h4>Margherita</h4>
                                 <span class="price">€10</span>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- Marinara -->
                     <div class="menu-item" data-category="pizza">
-                        <img src="LARTISTA DISHES/4FORMAGGI.jpg" 
-                             alt="Pizza Quattro Formaggi" class="dish-photo">
+                        <img src="LARTISTA DISHES/PIZZA MARINARA.jpg" alt="Marinara Pizza" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="quattro_formaggi">Quattro Formaggi</h4>
+                                <h4>Marinara</h4>
+                                <span class="price">€10</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Salami -->
+                    <div class="menu-item" data-category="pizza">
+                        <img src="LARTISTA DISHES/NAPOLI SALAMI.jpg" alt="Salami Pizza" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Salami</h4>
+                                <span class="price">€14</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quattro Formaggi -->
+                    <div class="menu-item" data-category="pizza">
+                        <img src="LARTISTA DISHES/4FORMAGGI.jpg" alt="Quattro Formaggi Pizza" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Quattro Formaggi</h4>
                                 <span class="price">€15</span>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- Diavola -->
                     <div class="menu-item" data-category="pizza">
-                        <img src="LARTISTA DISHES/PIZZA BURRATA.jpg" 
-                             alt="Pizza Burrata" class="dish-photo">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h4 data-translate="burrata_pizza">Burrata Pizza</h4>
-                                <span class="price">€16</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item" data-category="pizza">
-                        <img src="LARTISTA DISHES/DIAVOLA.jpg" 
-                             alt="Pizza Diavola" class="dish-photo">
+                        <img src="LARTISTA DISHES/DIAVOLA.jpg" alt="Diavola Pizza" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Diavola 🌶</h4>
                                 <span class="price">€15</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Prosciutto -->
+                    <div class="menu-item" data-category="pizza">
+                        <img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" alt="Prosciutto Pizza" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Prosciutto</h4>
+                                <span class="price">€15</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mortadella & Stracciatella -->
+                    <div class="menu-item" data-category="pizza">
+                        <img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" alt="Mortadella & Stracciatella Pizza" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Mortadella & Stracciatella</h4>
+                                <span class="price">€18</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pistachio Pesto -->
+                    <div class="menu-item" data-category="pizza">
+                        <img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" alt="Pistachio Pesto Pizza" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Pistachio Pesto</h4>
+                                <span class="price">€18</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Burrata Pizza -->
+                    <div class="menu-item" data-category="pizza">
+                        <img src="LARTISTA DISHES/Burrata.jpg" alt="Burrata Pizza" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Burrata</h4>
+                                <span class="price">€16</span>
                             </div>
                         </div>
                     </div>
@@ -2242,19 +2596,17 @@
                     <h3><i class="fas fa-ice-cream"></i> <span data-translate="dessert">Dessert</span></h3>
                     
                     <div class="menu-item" data-category="dessert">
-                        <img src="LARTISTA DISHES/TIRAMISU.jpg" 
-                             alt="Classic Tiramisù" class="dish-photo">
+                        <img src="LARTISTA DISHES/TIRAMISU.jpg" alt="Classic Tiramisù" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4 data-translate="tiramisu">Classic Tiramisù</h4>
+                                <h4>Classic Tiramisù</h4>
                                 <span class="price">€8</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="menu-item" data-category="dessert">
-                        <img src="LARTISTA DISHES/LEMON POSETTA.jpg" 
-                             alt="Lemon Posset" class="dish-photo">
+                        <img src="LARTISTA DISHES/LEMON POSETTA.jpg" alt="Lemon Posset" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Lemon Posset in white chocolate</h4>
@@ -2268,7 +2620,6 @@
                 <div class="menu-category" id="drinks">
                     <h3><i class="fas fa-cocktail"></i> <span data-translate="drinks">Drinks Menu</span></h3>
                     
-                    <h4 data-translate="aperitivo">Aperitivo</h4>
                     <div class="menu-item" data-category="drinks">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -2287,7 +2638,6 @@
                         </div>
                     </div>
                     
-                    <h4 data-translate="beer">BEER (ALUS)</h4>
                     <div class="menu-item" data-category="drinks">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -2311,7 +2661,6 @@
                 <div class="menu-category" id="wine">
                     <h3><i class="fas fa-wine-glass-alt"></i> <span data-translate="wine_list">Wine List</span></h3>
                     
-                    <h4 data-translate="sparklings">SPARKLINGS</h4>
                     <div class="menu-item" data-category="wine">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -2330,7 +2679,6 @@
                         </div>
                     </div>
                     
-                    <h4 data-translate="rose">ROSÉ</h4>
                     <div class="menu-item" data-category="wine">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -2340,42 +2688,61 @@
                         </div>
                     </div>
                     
-                    <h4 data-translate="white_wines">WHITE WINES</h4>
                     <div class="menu-item" data-category="wine">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>La Solca Gavi di Gavi – White Label (Piemonte, Italy)</h4>
+                                <h4>La Solca Gavi di Gavi – White Label</h4>
                                 <span class="price">€69</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="menu-item" data-category="wine">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h4>Bertani Pinot Grigio Friuli (Veneto, Italy)</h4>
-                                <span class="price">€13 / €59</span>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambience Gallery Section -->
+    <section class="gallery-section" id="ambience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Restaurant Ambience</h2>
+                <div class="subtitle">Experience Our Atmosphere</div>
+                <div class="section-divider">
+                    <div class="divider-line"></div>
+                    <i class="fas fa-camera divider-icon"></i>
+                    <div class="divider-line"></div>
+                </div>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt="L'ARTISTA Restaurant Interior" 
+                             class="gallery-image" loading="lazy">
                     </div>
-                    
-                    <h4 data-translate="red_wines">RED WINES</h4>
-                    <div class="menu-item" data-category="wine">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h4>Casteltorre Montepulciano d'Abruzzo</h4>
-                                <span class="price">€25</span>
-                            </div>
-                        </div>
+                    <div class="gallery-item">
+                        <img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="L'ARTISTA Dining Area" 
+                             class="gallery-image" loading="lazy">
                     </div>
-                    
-                    <div class="menu-item" data-category="wine">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h4>Bertani Amarone della Valpolicella "Legacy"</h4>
-                                <span class="price">€89</span>
-                            </div>
-                        </div>
+                    <div class="gallery-item">
+                        <img src="LARTISTA AMBIANCE/R6II7523.jpg" alt="L'ARTISTA Bar Area" 
+                             class="gallery-image" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'ARTISTA Ambience" 
+                             class="gallery-image" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="LARTISTA AMBIANCE/R6II7601.jpg" alt="L'ARTISTA Seating" 
+                             class="gallery-image" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="LARTISTA AMBIANCE/R6II7614.jpg" alt="L'ARTISTA Details" 
+                             class="gallery-image" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="LARTISTA AMBIANCE/R6II7633.jpg" alt="L'ARTISTA Atmosphere" 
+                             class="gallery-image" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -2583,6 +2950,7 @@
                 <div class="footer-column">
                     <h3 data-translate="quick_links">Quick Links</h3>
                     <a href="#menu" data-translate="menu">Menu</a>
+                    <a href="#ambience" data-translate="ambience">Ambience</a>
                     <a href="#reservation" data-translate="reservation">Reservation</a>
                     <a href="#contact" data-translate="contact">Contact</a>
                 </div>
@@ -2627,7 +2995,7 @@
     <!-- JavaScript -->
     <script>
         // ============================================
-        // L'ARTISTA ITALIAN RESTAURANT - UPDATED VERSION
+        // L'ARTISTA ITALIAN RESTAURANT - COMPLETE VERSION
         // ============================================
 
         // Language Translations
@@ -2637,6 +3005,7 @@
                 'home': 'Home',
                 'about': 'About',
                 'menu': 'Menu',
+                'ambience': 'Ambience',
                 'reservation': 'Reservation',
                 'contact': 'Contact',
                 'restaurant': 'Italian Restaurant',
@@ -2648,7 +3017,7 @@
                 'view_menu': 'VIEW MENU',
                 'explore': 'Explore',
                 
-                // About Section - UPDATED FOR NEW RESTAURANT
+                // About Section
                 'our_story': 'Our Story',
                 'authentic_excellence': 'Authentic Italian Excellence',
                 'about_intro': 'Welcome to L\'ARTISTA, Riga\'s newest destination for authentic Italian cuisine. We\'re excited to bring the flavors of Italy to your table.',
@@ -2667,35 +3036,8 @@
                 'starters': 'Starters',
                 'main_courses': 'Main Courses',
                 'pizza': 'Pizza',
-                'dessert': 'Dessert',  // CHANGED FROM Desserts
+                'dessert': 'Dessert',
                 'drinks': 'Drinks',
-                'sparklings': 'SPARKLINGS',
-                'rose': 'ROSÉ',
-                'white_wines': 'WHITE WINES',
-                'red_wines': 'RED WINES',
-                
-                // Menu Items
-                'caesar_salad': 'Caesar Salad',
-                'caesar_desc': 'Parmesan cheese, toast',
-                'creamy_burrata': 'Creamy Burrata',
-                'burrata_desc': 'Sweet cherry tomatoes, basil oil, pistachios',
-                'beef_carpaccio': 'Beef Carpaccio',
-                'carpaccio_desc': 'Parmesan, arugula, truffle oil',
-                'bruschettas': 'Bruschettas',
-                'bruschetta_desc': 'Stracciatella, mortadella, pistachio',
-                'truffle_risotto': 'Truffle Risotto',
-                'risotto_desc': 'Creamy risotto with fresh black truffles',
-                'fillet_mignon': 'Fillet Mignon',
-                'mignon_desc': 'Argentine Black Angus (200 g), bourbon sauce',
-                'sea_bass': 'Sea Bass Fillet',
-                'bass_desc': 'Delicate sea bass with fresh herbs',
-                'margherita': 'Margherita',
-                'quattro_formaggi': 'Quattro Formaggi',
-                'burrata_pizza': 'Burrata Pizza',
-                'pistachio_pesto': 'Pistachio Pesto',
-                'tiramisu': 'Classic Tiramisù',
-                'aperitivo': 'Aperitivo',
-                'beer': 'BEER (ALUS)',
                 
                 // Reservation Section
                 'reserve_table': 'Reserve Your Table',
@@ -2740,6 +3082,7 @@
                 'home': 'Sākums',
                 'about': 'Par mums',
                 'menu': 'Ēdienkarte',
+                'ambience': 'Atmosfēra',
                 'reservation': 'Rezervācija',
                 'contact': 'Kontakti',
                 'restaurant': 'Itāļu Restorāns',
@@ -2751,7 +3094,7 @@
                 'view_menu': 'SKATĪT ĒDIENKARTI',
                 'explore': 'Izpētīt',
                 
-                // About Section - UPDATED FOR NEW RESTAURANT
+                // About Section
                 'our_story': 'Mūsu Stāsts',
                 'authentic_excellence': 'Autentiska Itāļu Pārākums',
                 'about_intro': 'Laipni lūgti L\'ARTISTA, Rīgas jaunākajā itāļu ēdināšanas vietā. Mēs ar prieku piedāvājam Itālijas garšas jūsu galdam.',
@@ -2770,35 +3113,8 @@
                 'starters': 'Uzkodas',
                 'main_courses': 'Galvenie Ēdieni',
                 'pizza': 'Pica',
-                'dessert': 'Deserts',  // CHANGED
+                'dessert': 'Deserts',
                 'drinks': 'Dzērieni',
-                'sparklings': 'DZIDRIE VĪNI',
-                'rose': 'ROZĒ VĪNI',
-                'white_wines': 'BALTAIS VĪNS',
-                'red_wines': 'SARKANAIS VĪNS',
-                
-                // Menu Items
-                'caesar_salad': 'Caesar Salāti',
-                'caesar_desc': 'Parmezāna siers, grauzdiņi',
-                'creamy_burrata': 'Krēmīga Burrata',
-                'burrata_desc': 'Saldi ķiršu tomāti, bazilikas eļļa, pistāces',
-                'beef_carpaccio': 'Liellopa Carpaccio',
-                'carpaccio_desc': 'Parmezāns, rukola, trifeļu eļļa',
-                'bruschettas': 'Brusketas',
-                'bruschetta_desc': 'Stračiatella, mortadella, pistāces',
-                'truffle_risotto': 'Trifeļu Risoto',
-                'risotto_desc': 'Krēmīgs risoto ar svaigām melnajām trifeļēm',
-                'fillet_mignon': 'Fillet Mignon',
-                'mignon_desc': 'Argentīnas Melnais Angus (200 g), burbonu mērce',
-                'sea_bass': 'Jūrasasas Fileja',
-                'bass_desc': 'Smalks jūrasasas ar svaigām garšaugām',
-                'margherita': 'Margherita',
-                'quattro_formaggi': 'Četri Sieri',
-                'burrata_pizza': 'Burrata Pica',
-                'pistachio_pesto': 'Pistāču Pesto',
-                'tiramisu': 'Klasiskais Tiramisu',
-                'aperitivo': 'Aperitīvs',
-                'beer': 'ALUS',
                 
                 // Reservation Section
                 'reserve_table': 'Rezervējiet Galdu',
@@ -2843,6 +3159,7 @@
                 'home': 'Главная',
                 'about': 'О нас',
                 'menu': 'Меню',
+                'ambience': 'Атмосфера',
                 'reservation': 'Бронирование',
                 'contact': 'Контакты',
                 'restaurant': 'Итальянский Ресторан',
@@ -2854,7 +3171,7 @@
                 'view_menu': 'ПОСМОТРЕТЬ МЕНЮ',
                 'explore': 'Исследовать',
                 
-                // About Section - UPDATED FOR NEW RESTAURANT
+                // About Section
                 'our_story': 'Наша История',
                 'authentic_excellence': 'Аутентичное Итальянское Совершенство',
                 'about_intro': 'Добро пожаловать в L\'ARTISTA, новейшее место аутентичной итальянской кухни в Риге. Мы рады принести вкусы Италии к вашему столу.',
@@ -2873,35 +3190,8 @@
                 'starters': 'Закуски',
                 'main_courses': 'Основные Блюда',
                 'pizza': 'Пицца',
-                'dessert': 'Десерт',  // CHANGED
+                'dessert': 'Десерт',
                 'drinks': 'Напитки',
-                'sparklings': 'ИГРИСТЫЕ ВИНА',
-                'rose': 'РОЗОВЫЕ ВИНА',
-                'white_wines': 'БЕЛЫЕ ВИНА',
-                'red_wines': 'КРАСНЫЕ ВИНА',
-                
-                // Menu Items
-                'caesar_salad': 'Салат Цезарь',
-                'caesar_desc': 'Сыр пармезан, гренки',
-                'creamy_burrata': 'Сливочная Буратта',
-                'burrata_desc': 'Сладкие черри, масло базилика, фисташки',
-                'beef_carpaccio': 'Карпаччо из Говядины',
-                'carpaccio_desc': 'Пармезан, руккола, трюфельное масло',
-                'bruschettas': 'Брускетты',
-                'bruschetta_desc': 'Страчателла, мортаделла, фисташки',
-                'truffle_risotto': 'Трюфельное Ризотто',
-                'risotto_desc': 'Сливочное ризотто со свежими черными трюфелями',
-                'fillet_mignon': 'Филе Миньон',
-                'mignon_desc': 'Аргентинский Блэк Ангус (200 г), соус бурбон',
-                'sea_bass': 'Филе Морского Окуня',
-                'bass_desc': 'Нежный морской окунь со свежими травами',
-                'margherita': 'Маргарита',
-                'quattro_formaggi': 'Четыре Сыра',
-                'burrata_pizza': 'Пицца с Буратой',
-                'pistachio_pesto': 'Фисташковое Песто',
-                'tiramisu': 'Классический Тирамису',
-                'aperitivo': 'Аперитив',
-                'beer': 'ПИВО',
                 
                 // Reservation Section
                 'reserve_table': 'Забронировать Столик',
@@ -2986,6 +3276,8 @@
             initReservationForm();
             initScrollEffects();
             initSmoothScrolling();
+            initGallery();
+            optimizeImageLoading();
             
             // Setup form validation
             setupFormValidation();
@@ -2998,7 +3290,7 @@
         }
 
         // ============================================
-        // LANGUAGE SELECTOR
+        // LANGUAGE SELECTOR - VERTICAL FOR MOBILE/IPAD
         // ============================================
         function initLanguageSelector() {
             const languageBtns = document.querySelectorAll('.language-btn');
@@ -3330,7 +3622,7 @@
         }
 
         // ============================================
-        // MENU TABS - WITH MINIMIZED SCROLLING
+        // MENU TABS
         // ============================================
         function initMenuTabs() {
             const menuTabs = document.querySelectorAll('.menu-tab');
@@ -3421,7 +3713,7 @@
 
                 // Validate form
                 if (!validateReservationForm(formData)) {
-                    alert(currentLang === 'en' ? 'Please fill in all required fields correctly.' :
+                    showNotification(currentLang === 'en' ? 'Please fill in all required fields correctly.' :
                           currentLang === 'lv' ? 'Lūdzu, aizpildiet visus obligātos laukus pareizi.' :
                           'Пожалуйста, заполните все обязательные поля правильно.');
                     return;
@@ -3459,13 +3751,13 @@
                            currentLang === 'lv' ? 'Rezervācija nosūtīta veiksmīgi! Jūs saņemsit apstiprinājumu pa e-pastu 24 stundu laikā.' :
                            'Бронирование успешно отправлено! Вы получите подтверждение по электронной почте в течение 24 часов.');
                     
-                    alert(successMessage);
+                    showNotification(successMessage, 'success');
                     
                 } catch (error) {
                     console.error('Reservation error:', error);
-                    alert(currentLang === 'en' ? 'Error sending reservation. Please try again or call us directly.' :
+                    showNotification(currentLang === 'en' ? 'Error sending reservation. Please try again or call us directly.' :
                           currentLang === 'lv' ? 'Kļūda, nosūtot rezervāciju. Lūdzu, mēģiniet vēlreiz vai zvaniet mums tieši.' :
-                          'Ошибка при отправке бронирования. Пожалуйста, попробуйте еще раз или позвоните нам напрямую.');
+                          'Ошибка при отправке бронирования. Пожалуйста, попробуйте еще раз или позвоните нам напрямую.', 'error');
                 } finally {
                     // Reset button state
                     submitBtn.innerHTML = originalText;
@@ -3647,6 +3939,311 @@ ${RESTAURANT_CONFIG.phoneNumber}
             return new Promise((resolve) => {
                 setTimeout(resolve, 1000);
             });
+        }
+
+        // ============================================
+        // GALLERY SYSTEM
+        // ============================================
+        function initGallery() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            // Create lightbox element
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
+                <div class="lightbox-content">
+                    <span class="close-lightbox">&times;</span>
+                    <img src="" alt="" class="lightbox-image">
+                    <div class="lightbox-nav">
+                        <button class="prev-btn">‹</button>
+                        <button class="next-btn">›</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+            
+            let currentIndex = 0;
+            const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
+            
+            // Add click event to each gallery item
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    currentIndex = index;
+                    openLightbox(images[currentIndex]);
+                });
+                
+                // Add keyboard accessibility
+                item.setAttribute('tabindex', '0');
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        currentIndex = index;
+                        openLightbox(images[currentIndex]);
+                    }
+                });
+            });
+            
+            function openLightbox(src) {
+                lightbox.style.display = 'flex';
+                const lightboxImage = lightbox.querySelector('.lightbox-image');
+                lightboxImage.src = src;
+                lightboxImage.alt = 'Restaurant Ambience Image';
+                document.body.style.overflow = 'hidden';
+                
+                // Focus management for accessibility
+                lightbox.querySelector('.close-lightbox').focus();
+            }
+            
+            function closeLightbox() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Return focus to the gallery item that was clicked
+                galleryItems[currentIndex].focus();
+            }
+            
+            function navigateLightbox(direction) {
+                currentIndex = (currentIndex + direction + images.length) % images.length;
+                lightbox.querySelector('.lightbox-image').src = images[currentIndex];
+            }
+            
+            // Event listeners for lightbox controls
+            lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+            lightbox.querySelector('.prev-btn').addEventListener('click', () => navigateLightbox(-1));
+            lightbox.querySelector('.next-btn').addEventListener('click', () => navigateLightbox(1));
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    } else if (e.key === 'ArrowLeft') {
+                        navigateLightbox(-1);
+                    } else if (e.key === 'ArrowRight') {
+                        navigateLightbox(1);
+                    }
+                }
+            });
+        }
+
+        // ============================================
+        // IMAGE LOADING OPTIMIZATION
+        // ============================================
+        function optimizeImageLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            // Add intersection observer for lazy loading
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+            
+            images.forEach(img => {
+                // Store original src in data-src if not already
+                if (!img.dataset.src && img.src) {
+                    img.dataset.src = img.src;
+                }
+                imageObserver.observe(img);
+            });
+            
+            // Add error handling for images
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    console.warn('Failed to load image:', this.src);
+                    // You could add a placeholder image here
+                    this.style.backgroundColor = '#f5f5f5';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.innerHTML = '<span style="color: #666; font-size: 12px;">Image not available</span>';
+                });
+            });
+        }
+
+        // ============================================
+        // NOTIFICATION SYSTEM
+        // ============================================
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'} notification-icon"></i>
+                    <div class="notification-text">
+                        <span>${message}</span>
+                        <div class="notification-progress"></div>
+                    </div>
+                </div>
+                <button class="notification-close" aria-label="Close notification">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            // Add to page
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+
+            // Start progress bar
+            setTimeout(() => {
+                const progressBar = notification.querySelector('.notification-progress');
+                if (progressBar) {
+                    progressBar.style.transform = 'scaleX(0)';
+                }
+            }, 100);
+
+            // Auto remove after 5 seconds
+            const autoRemove = setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 400);
+            }, 5000);
+
+            // Close button functionality
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                clearTimeout(autoRemove);
+                notification.style.transform = 'translateX(400px)';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 400);
+            });
+            
+            // Add notification styles if not already present
+            if (!document.querySelector('#notification-styles')) {
+                const styles = document.createElement('style');
+                styles.id = 'notification-styles';
+                styles.textContent = `
+                    .notification {
+                        position: fixed;
+                        top: 100px;
+                        right: 20px;
+                        background: white;
+                        padding: 15px 20px;
+                        border-radius: 12px;
+                        box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        z-index: 9999;
+                        transform: translateX(400px);
+                        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        border-left: 4px solid #1F3D2B;
+                        max-width: 400px;
+                        opacity: 0;
+                    }
+                    
+                    .notification-content {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        flex: 1;
+                    }
+                    
+                    .notification-icon {
+                        color: #1F3D2B;
+                        font-size: 20px;
+                        flex-shrink: 0;
+                    }
+                    
+                    .notification-text {
+                        flex: 1;
+                        min-width: 0;
+                    }
+                    
+                    .notification-progress {
+                        height: 3px;
+                        background: #1F3D2B;
+                        width: 100%;
+                        transform: scaleX(1);
+                        transform-origin: left;
+                        transition: transform 5000ms linear;
+                        margin-top: 8px;
+                        border-radius: 2px;
+                    }
+                    
+                    .notification-close {
+                        background: none;
+                        border: none;
+                        color: #666;
+                        cursor: pointer;
+                        font-size: 16px;
+                        padding: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 50%;
+                        transition: all 0.2s ease;
+                        flex-shrink: 0;
+                    }
+                    
+                    .notification-close:hover {
+                        background: rgba(0,0,0,0.05);
+                        color: #333;
+                    }
+                    
+                    .notification-success {
+                        border-left-color: #25d366;
+                    }
+                    
+                    .notification-success .notification-icon {
+                        color: #25d366;
+                    }
+                    
+                    .notification-success .notification-progress {
+                        background: #25d366;
+                    }
+                    
+                    .notification-error {
+                        border-left-color: #D6273B;
+                    }
+                    
+                    .notification-error .notification-icon {
+                        color: #D6273B;
+                    }
+                    
+                    .notification-error .notification-progress {
+                        background: #D6273B;
+                    }
+                `;
+                document.head.appendChild(styles);
+            }
         }
 
         // ============================================
