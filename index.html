@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'ARTISTA | Fine Italian Dining Restaurant</title>
-    <meta name="description" content="Premium fine dining Italian restaurant experience at L'ARTISTA in Riga, Latvia">
+    <title>L'ARTISTA | Italian Restaurant</title>
+    <meta name="description" content="Authentic Italian restaurant experience at L'ARTISTA in Riga, Latvia">
     <meta name="robots" content="index, follow">
     
     <!-- Fonts -->
@@ -18,7 +18,7 @@
     <!-- CSS -->
     <style>
         /* ============================================
-           L'ARTISTA FINE DINING - OPTIMIZED CSS
+           L'ARTISTA ITALIAN RESTAURANT - UPDATED CSS
         ============================================ */
 
         :root {
@@ -96,11 +96,6 @@
           color: white;
           margin-bottom: 30px;
           letter-spacing: 3px;
-          border: 3px solid rgba(255, 255, 255, 0.3);
-          padding: 20px 40px;
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
         }
 
         .loader-spinner {
@@ -280,14 +275,12 @@
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           text-decoration: none;
           animation: pulse 2s infinite;
-          border: 2px solid white;
         }
 
         .whatsapp-float:hover {
           background-color: #128C7E;
           transform: scale(1.15) rotate(5deg);
           box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-          border-color: var(--red);
         }
 
         @keyframes pulse {
@@ -297,25 +290,19 @@
         }
 
         /* ============================================
-           NAVIGATION
+           NAVIGATION - FIXED FOR MOBILE
         ============================================ */
         .premium-navbar {
           position: fixed;
           top: 6px;
           left: 0;
           right: 0;
-          background: rgba(249, 247, 242, 0.95);
+          background: rgba(249, 247, 242, 0.98);
           backdrop-filter: blur(10px);
           z-index: 1000;
-          padding: 6px 0;
+          padding: 10px 0;
           border-bottom: 1px solid rgba(214, 39, 59, 0.1);
           transition: var(--transition);
-        }
-
-        .premium-navbar.scrolled {
-          padding: 10px 0;
-          background: rgba(249, 247, 242, 0.98);
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -333,7 +320,6 @@
           align-items: center;
           gap: 15px;
           text-decoration: none;
-          flex-direction: row-reverse;
         }
 
         .custom-logo {
@@ -343,26 +329,18 @@
           padding: 3px;
           background: var(--white);
           transition: var(--transition);
-          box-shadow: var(--shadow);
-        }
-
-        .custom-logo:hover {
-          transform: scale(1.05);
-          border-color: var(--red);
-          box-shadow: var(--shadow-lg);
         }
 
         .nav-logo {
-          width: 65px;
-          height: 65px;
+          width: 60px;
+          height: 60px;
         }
 
         .hero-logo {
-          width: 200px;
-          height: 200px;
+          width: 180px;
+          height: 180px;
           border-width: 4px;
           padding: 5px;
-          margin-bottom: 0;
         }
 
         .custom-logo img {
@@ -384,17 +362,17 @@
           font-family: "Playfair Display", serif;
           font-weight: bold;
           text-align: center;
-          padding: 15px;
+          padding: 10px;
           border-radius: 50%;
           width: 100%;
           height: 100%;
-          font-size: 0.8em;
+          font-size: 0.7em;
           border: 2px solid var(--gold);
         }
 
         .hero-fallback {
-          font-size: 1.2em;
-          padding: 30px;
+          font-size: 1em;
+          padding: 20px;
           border-width: 3px;
         }
 
@@ -403,14 +381,10 @@
           display: none;
         }
 
-        .custom-logo img[style*="display: none"] + .logo-fallback {
-          display: flex;
-        }
-
         .logo-text {
           display: flex;
           flex-direction: column;
-          text-align: right;
+          text-align: left;
         }
 
         .logo-main {
@@ -431,12 +405,12 @@
           margin-top: 2px;
         }
 
-        /* Navigation Links */
+        /* Desktop Navigation Links - HIDDEN ON MOBILE */
         .nav-links {
           display: flex;
           list-style: none;
           gap: 30px;
-          margin-right: auto;
+          margin-left: auto;
         }
 
         .nav-link {
@@ -473,7 +447,7 @@
           width: 100%;
         }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - VISIBLE ONLY ON MOBILE */
         .menu-toggle {
           display: none;
           background: none;
@@ -483,9 +457,10 @@
           height: 20px;
           position: relative;
           z-index: 1001;
-          border: 1px solid rgba(214, 39, 59, 0.3);
-          border-radius: 4px;
-          padding: 4px;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 0;
+          margin-left: 20px;
         }
 
         .menu-toggle span {
@@ -493,17 +468,12 @@
           width: 100%;
           height: 2px;
           background: var(--red);
-          position: absolute;
           transition: var(--transition);
+          transform-origin: center;
         }
 
-        .menu-toggle span:nth-child(1) { top: 4px; }
-        .menu-toggle span:nth-child(2) { top: 9px; }
-        .menu-toggle span:nth-child(3) { top: 14px; }
-
         .menu-toggle.active span:nth-child(1) {
-          top: 9px;
-          transform: rotate(45deg);
+          transform: translateY(9px) rotate(45deg);
         }
 
         .menu-toggle.active span:nth-child(2) {
@@ -511,8 +481,7 @@
         }
 
         .menu-toggle.active span:nth-child(3) {
-          top: 9px;
-          transform: rotate(-45deg);
+          transform: translateY(-9px) rotate(-45deg);
         }
 
         /* Mobile Menu */
@@ -524,11 +493,11 @@
           max-width: 300px;
           height: 100vh;
           background: var(--green);
-          padding: 100px 30px 30px;
+          padding: 80px 30px 30px;
           transition: var(--transition);
           z-index: 999;
           box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-          border-left: 2px solid var(--red);
+          overflow-y: auto;
         }
 
         .premium-mobile-menu.active {
@@ -546,13 +515,9 @@
 
         .mobile-logo {
           font-family: 'Playfair Display', serif;
-          font-size: 28px;
+          font-size: 24px;
           color: white;
           font-weight: 600;
-          padding: 10px 20px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.1);
         }
 
         .mobile-menu-close {
@@ -568,33 +533,38 @@
           justify-content: center;
           border-radius: 50%;
           transition: var(--transition);
-          border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .mobile-menu-close:hover {
           background: rgba(255, 255, 255, 0.1);
-          border-color: var(--red);
         }
 
-        .premium-mobile-menu .nav-links {
-          flex-direction: column;
-          gap: 25px;
-          margin-left: 0;
+        .mobile-nav-links {
+          list-style: none;
           padding: 0;
+          margin: 0;
         }
 
-        .premium-mobile-menu .nav-link {
-          font-size: 16px;
-          padding: 10px 0;
+        .mobile-nav-links li {
+          margin-bottom: 15px;
+        }
+
+        .mobile-nav-link {
           display: block;
+          text-decoration: none;
           color: white;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          font-size: 16px;
+          padding: 12px 15px;
+          border-radius: 8px;
+          transition: var(--transition);
+          border: 1px solid transparent;
         }
 
-        .premium-mobile-menu .nav-link:hover,
-        .premium-mobile-menu .nav-link.active {
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+          background: rgba(255, 255, 255, 0.1);
           color: var(--red);
-          border-bottom-color: var(--red);
+          border-color: rgba(214, 39, 59, 0.3);
         }
 
         .mobile-menu-footer {
@@ -603,8 +573,27 @@
           border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Menu overlay to close when clicking outside */
+        .menu-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 998;
+          opacity: 0;
+          visibility: hidden;
+          transition: var(--transition);
+        }
+
+        .menu-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+
         /* ============================================
-           HERO SECTION
+           HERO SECTION - UPDATED
         ============================================ */
         .hero-premium {
           min-height: 100vh;
@@ -612,7 +601,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-top: 70px;
+          padding-top: 80px;
           overflow: hidden;
         }
 
@@ -630,7 +619,6 @@
           height: 100%;
           object-fit: cover;
           filter: brightness(0.6);
-          transition: filter 0.3s ease;
         }
 
         .premium-overlay {
@@ -649,7 +637,7 @@
         .premium-hero-content {
           text-align: center;
           color: white;
-          padding: 40px 20px;
+          padding: 20px;
           max-width: 1000px;
           margin: 0 auto;
           position: relative;
@@ -661,29 +649,21 @@
           flex-direction: column;
           align-items: center;
           gap: 0;
-          margin-bottom: 40px;
+          margin-bottom: 30px;
         }
 
         .premium-hero-logo {
           animation: float 6s ease-in-out infinite;
-          margin-bottom: 0.5rem;
-          border: 4px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+          margin-bottom: 1rem;
         }
 
         @keyframes float {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+          50% { transform: translateY(-15px); }
         }
 
         .premium-title {
-          margin-bottom: 1rem;
-          border: 2px solid rgba(255, 255, 255, 0.2);
-          padding: 20px 40px;
-          border-radius: 10px;
-          background: rgba(0, 0, 0, 0.3);
-          backdrop-filter: blur(10px);
-          display: inline-block;
+          margin-bottom: 1.5rem;
         }
 
         .premium-title .title-line-1 {
@@ -701,34 +681,19 @@
           display: block;
           font-size: 24px;
           font-weight: 300;
-          letter-spacing: 6px;
+          letter-spacing: 4px;
           text-transform: uppercase;
           color: rgba(255, 255, 255, 0.9);
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
-          padding-top: 10px;
         }
 
         .premium-subtitle {
           font-size: 20px;
           color: rgba(255, 255, 255, 0.9);
-          margin-bottom: 1.5rem;
+          margin-bottom: 2rem;
           font-weight: 300;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-          padding-bottom: 10px;
-          display: inline-block;
-        }
-
-        .premium-tagline {
-          font-size: 18px;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 40px;
-          max-width: 800px;
+          max-width: 600px;
           margin-left: auto;
           margin-right: auto;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 15px 25px;
-          border-radius: 8px;
-          background: rgba(0, 0, 0, 0.2);
         }
 
         .premium-hero-buttons {
@@ -751,10 +716,6 @@
           flex-direction: column;
           align-items: center;
           gap: 10px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          padding: 10px 20px;
-          border-radius: 25px;
-          background: rgba(0, 0, 0, 0.2);
         }
 
         .scroll-text {
@@ -793,10 +754,7 @@
           font-family: 'Playfair Display', serif;
           font-size: 48px;
           color: var(--green);
-          margin-bottom: 10px;
-          display: inline-block;
-          border-bottom: 3px solid var(--red);
-          padding-bottom: 10px;
+          margin-bottom: 15px;
         }
 
         .section-header .subtitle {
@@ -804,11 +762,10 @@
           font-size: 18px;
           letter-spacing: 2px;
           text-transform: uppercase;
-          border: 1px solid var(--red);
-          padding: 5px 15px;
-          border-radius: 20px;
           display: inline-block;
-          margin-top: 10px;
+          padding: 8px 20px;
+          border: 2px solid var(--red);
+          border-radius: 30px;
           background: rgba(214, 39, 59, 0.1);
         }
 
@@ -829,10 +786,6 @@
         .divider-icon {
           color: var(--red);
           font-size: 20px;
-          border: 1px solid rgba(214, 39, 59, 0.3);
-          padding: 8px;
-          border-radius: 50%;
-          background: white;
         }
 
         /* ============================================
@@ -863,10 +816,6 @@
           line-height: 1.8;
           color: var(--text-muted);
           margin-bottom: 30px;
-          border: 1px solid rgba(214, 39, 59, 0.1);
-          padding: 20px;
-          border-radius: 8px;
-          background: white;
         }
 
         .premium-features-grid {
@@ -930,81 +879,19 @@
           border: 3px solid var(--gold);
         }
 
-        .image-frame img,
-        .image-frame video {
+        .image-frame img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           transition: transform 0.6s ease;
         }
 
-        .image-frame:hover img,
-        .image-frame:hover video {
+        .image-frame:hover img {
           transform: scale(1.05);
         }
 
-        /* Video styling */
-        .ambiance-video {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .video-placeholder {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, var(--green), var(--red));
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          text-align: center;
-          padding: 40px;
-          border: 2px solid var(--gold);
-        }
-
-        .video-placeholder i {
-          font-size: 60px;
-          margin-bottom: 20px;
-          color: rgba(255, 255, 255, 0.9);
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          padding: 15px;
-          border-radius: 50%;
-        }
-
-        .video-placeholder p {
-          font-size: 18px;
-          margin-bottom: 10px;
-          font-weight: 500;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-          padding-bottom: 10px;
-        }
-
-        .video-placeholder small {
-          font-size: 14px;
-          opacity: 0.8;
-        }
-
-        .image-caption {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-          color: white;
-          padding: 20px;
-          font-size: 14px;
-          text-align: center;
-          border-top: 2px solid var(--red);
-        }
-
         /* ============================================
-           MENU SECTION
+           MENU SECTION - UPDATED FOR MOBILE TABS
         ============================================ */
         .menu-section {
           background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
@@ -1015,12 +902,21 @@
           box-shadow: var(--shadow-lg);
         }
 
+        /* Menu Tabs - Fixed for Mobile */
         .menu-tabs {
           display: flex;
           justify-content: center;
           gap: 10px;
           margin-bottom: 40px;
           flex-wrap: wrap;
+          overflow-x: auto;
+          padding-bottom: 10px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .menu-tabs::-webkit-scrollbar {
+          display: none;
         }
 
         .menu-tab {
@@ -1035,6 +931,8 @@
           letter-spacing: 1px;
           text-transform: uppercase;
           transition: var(--transition);
+          white-space: nowrap;
+          flex-shrink: 0;
         }
 
         .menu-tab:hover {
@@ -1080,21 +978,18 @@
         .menu-category h3 i {
           color: var(--red);
           font-size: 28px;
-          border: 2px solid rgba(214, 39, 59, 0.3);
-          padding: 10px;
-          border-radius: 50%;
         }
 
         .menu-item {
           background: white;
-          padding: 30px;
+          padding: 25px;
           border-radius: 12px;
           box-shadow: var(--shadow);
-          margin-bottom: 30px;
+          margin-bottom: 25px;
           transition: var(--transition);
           border: 2px solid rgba(214, 39, 59, 0.1);
           display: grid;
-          grid-template-columns: 1fr 2fr;
+          grid-template-columns: 150px 1fr;
           gap: 25px;
           align-items: start;
         }
@@ -1132,10 +1027,6 @@
           font-weight: 600;
           color: var(--red);
           white-space: nowrap;
-          border: 2px solid rgba(214, 39, 59, 0.2);
-          padding: 5px 15px;
-          border-radius: 20px;
-          background: rgba(214, 39, 59, 0.05);
         }
 
         .menu-desc {
@@ -1143,34 +1034,11 @@
           font-size: 16px;
           line-height: 1.6;
           margin-bottom: 15px;
-          padding: 10px;
-          border-radius: 6px;
-          background: rgba(31, 61, 43, 0.02);
-        }
-
-        .ingredients {
-          color: var(--text-light);
-          font-size: 14px;
-          line-height: 1.5;
-          margin-bottom: 10px;
-          padding-top: 10px;
-          border-top: 1px solid rgba(214, 39, 59, 0.1);
-        }
-
-        .allergy-info {
-          font-size: 12px;
-          color: var(--text-light);
-          font-style: italic;
-          margin-top: 8px;
-          border: 1px dashed rgba(214, 39, 59, 0.3);
-          padding: 5px 10px;
-          border-radius: 4px;
-          display: inline-block;
         }
 
         .dish-photo {
           width: 100%;
-          height: 200px;
+          height: 150px;
           object-fit: cover;
           border-radius: 10px;
           box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -1184,7 +1052,7 @@
         }
 
         /* ============================================
-           RESERVATION SECTION - FIXED DROPDOWN
+           RESERVATION SECTION
         ============================================ */
         .reservation-section {
           background: linear-gradient(135deg, var(--green) 0%, #2D5A42 100%);
@@ -1248,12 +1116,6 @@
           box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
         }
 
-        /* Fix for dropdown white text on white background */
-        select.form-control option {
-          background: var(--green);
-          color: white;
-        }
-
         select.form-control {
           appearance: none;
           background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
@@ -1263,28 +1125,9 @@
           padding-right: 45px;
         }
 
-        /* Form validation styles */
-        .form-control.invalid {
-          border-color: #ff6b6b;
-          box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
-        }
-
-        .form-control.valid {
-          border-color: #51cf66;
-          box-shadow: 0 0 0 2px rgba(81, 207, 102, 0.2);
-        }
-
-        .validation-message {
-          font-size: 12px;
-          color: #ff6b6b;
-          margin-top: 5px;
-          display: none;
-          border-left: 2px solid #ff6b6b;
-          padding-left: 10px;
-        }
-
-        .form-control.invalid + .validation-message {
-          display: block;
+        select.form-control option {
+          background: var(--green);
+          color: white;
         }
 
         textarea.form-control {
@@ -1306,23 +1149,11 @@
         }
 
         .notification-icon {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 5px;
           font-size: 28px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          padding: 10px;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.1);
         }
 
         .notification-icon i {
           color: #25d366;
-        }
-
-        .notification-icon .fa-envelope {
-          color: #D6273B;
         }
 
         .notification-content h4 {
@@ -1388,8 +1219,6 @@
           color: var(--green);
           margin-bottom: 15px;
           font-size: 20px;
-          border-bottom: 2px solid rgba(214, 39, 59, 0.2);
-          padding-bottom: 10px;
         }
 
         .contact-card p {
@@ -1405,15 +1234,10 @@
           display: block;
           margin: 10px 0;
           transition: var(--transition);
-          border: 1px solid transparent;
-          padding: 5px 10px;
-          border-radius: 4px;
         }
 
         .contact-card a:hover {
           color: var(--green);
-          background: rgba(31, 61, 43, 0.05);
-          border-color: rgba(31, 61, 43, 0.2);
         }
 
         .whatsapp-link {
@@ -1422,15 +1246,6 @@
           gap: 8px;
           color: #25d366 !important;
           font-weight: 600;
-          border: 1px solid rgba(37, 211, 102, 0.3) !important;
-          padding: 8px 15px !important;
-          border-radius: 20px !important;
-          background: rgba(37, 211, 102, 0.1) !important;
-        }
-
-        .whatsapp-link:hover {
-          background: rgba(37, 211, 102, 0.2) !important;
-          border-color: #25d366 !important;
         }
 
         .contact-note {
@@ -1438,8 +1253,6 @@
           font-style: italic;
           margin-top: 10px;
           font-size: 14px;
-          border-top: 1px solid rgba(214, 39, 59, 0.2);
-          padding-top: 10px;
         }
 
         .map-container {
@@ -1512,24 +1325,6 @@
           border-radius: 50%;
         }
 
-        .footer-logo .logo-fallback {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, #1F3D2B, #D6273B);
-          color: white;
-          font-family: "Playfair Display", serif;
-          font-weight: bold;
-          text-align: center;
-          padding: 15px;
-          border-radius: 50%;
-          width: 100%;
-          height: 100%;
-          font-size: 1em;
-          border: 3px solid var(--gold);
-        }
-
         .footer-subtitle {
           color: var(--red);
           font-weight: 600;
@@ -1537,11 +1332,6 @@
           margin-bottom: 15px;
           text-transform: uppercase;
           font-size: 14px;
-          border: 1px solid var(--red);
-          padding: 3px 10px;
-          border-radius: 20px;
-          display: inline-block;
-          background: rgba(214, 39, 59, 0.1);
         }
 
         .footer-column p,
@@ -1557,7 +1347,6 @@
         .footer-column a:hover {
           color: white;
           padding-left: 10px;
-          border-left: 3px solid var(--red);
         }
 
         .social-links {
@@ -1597,10 +1386,6 @@
           gap: 10px;
           margin-bottom: 10px;
           font-size: 14px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 8px 15px;
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.05);
         }
 
         .contact-info-footer i {
@@ -1620,148 +1405,11 @@
           margin-top: 15px;
           color: var(--red);
           font-style: italic;
-          border-top: 1px solid rgba(214, 39, 59, 0.3);
-          padding-top: 10px;
           display: inline-block;
         }
 
         /* ============================================
-           NOTIFICATION SYSTEM
-        ============================================ */
-        .notification {
-          position: fixed;
-          top: 100px;
-          right: 20px;
-          background: white;
-          padding: 20px;
-          border-radius: 12px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          z-index: 9999;
-          transform: translateX(400px);
-          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-          border-left: 4px solid var(--green);
-          max-width: 400px;
-          opacity: 0;
-          border: 2px solid rgba(31, 61, 43, 0.1);
-        }
-
-        .notification.show {
-          transform: translateX(0);
-          opacity: 1;
-        }
-
-        .notification-content {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          flex: 1;
-          min-width: 0;
-        }
-
-        .notification-icon {
-          color: var(--green);
-          font-size: 22px;
-          flex-shrink: 0;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          background: rgba(31, 61, 43, 0.1);
-          border: 2px solid rgba(31, 61, 43, 0.2);
-        }
-
-        .notification-text {
-          flex: 1;
-          min-width: 0;
-        }
-
-        .notification-text strong {
-          display: block;
-          margin-bottom: 5px;
-          color: var(--text-dark);
-          border-bottom: 1px solid rgba(0,0,0,0.1);
-          padding-bottom: 5px;
-        }
-
-        .notification-text p {
-          color: var(--text-muted);
-          font-size: 14px;
-          margin: 0;
-          line-height: 1.4;
-        }
-
-        .notification-progress {
-          height: 3px;
-          background: var(--green);
-          width: 100%;
-          transform: scaleX(1);
-          transform-origin: left;
-          transition: transform 3s linear;
-          margin-top: 8px;
-          border-radius: 2px;
-        }
-
-        .notification-close {
-          background: none;
-          border: none;
-          color: var(--text-light);
-          cursor: pointer;
-          font-size: 16px;
-          padding: 4px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          transition: all 0.2s ease;
-          flex-shrink: 0;
-          border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .notification-close:hover {
-          background: rgba(0,0,0,0.05);
-          color: var(--text-dark);
-          border-color: var(--red);
-        }
-
-        .notification-success {
-          border-left-color: #25d366;
-          border-color: rgba(37, 211, 102, 0.2);
-        }
-
-        .notification-success .notification-icon {
-          color: #25d366;
-          background: rgba(37, 211, 102, 0.1);
-          border-color: rgba(37, 211, 102, 0.2);
-        }
-
-        .notification-success .notification-progress {
-          background: #25d366;
-        }
-
-        .notification-error {
-          border-left-color: #D6273B;
-          border-color: rgba(214, 39, 59, 0.2);
-        }
-
-        .notification-error .notification-icon {
-          color: #D6273B;
-          background: rgba(214, 39, 59, 0.1);
-          border-color: rgba(214, 39, 59, 0.2);
-        }
-
-        .notification-error .notification-progress {
-          background: #D6273B;
-        }
-
-        /* ============================================
-           RESPONSIVE STYLES
+           RESPONSIVE STYLES - CRITICAL MOBILE FIXES
         ============================================ */
         @media (max-width: 1024px) {
           .premium-title .title-line-1 {
@@ -1804,40 +1452,32 @@
         }
 
         @media (max-width: 768px) {
-          /* Navigation */
+          /* Navigation - FIXED FOR MOBILE */
           .nav-links {
             display: none;
           }
           
           .menu-toggle {
-            display: block;
+            display: flex;
           }
           
           .nav-logo {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
           }
           
           .logo-main {
-            font-size: 20px;
+            font-size: 18px;
           }
           
           .logo-sub {
-            font-size: 9px;
-          }
-          
-          .logo {
-            flex-direction: row;
-          }
-          
-          .logo-text {
-            text-align: left;
+            font-size: 8px;
           }
           
           /* Hero */
           .hero-premium {
             min-height: 90vh;
-            padding-top: 60px;
+            padding-top: 70px;
           }
           
           .premium-title .title-line-1 {
@@ -1851,11 +1491,6 @@
           
           .premium-subtitle {
             font-size: 18px;
-          }
-          
-          .premium-tagline {
-            font-size: 16px;
-            padding: 0 10px;
           }
           
           .premium-hero-buttons {
@@ -1883,72 +1518,44 @@
             font-size: 16px;
           }
           
-          .section-divider {
-            gap: 10px;
-          }
-          
-          .divider-line {
-            width: 40px;
-          }
-          
-          /* About */
-          .premium-intro {
-            font-size: 18px;
-          }
-          
-          .premium-description {
-            font-size: 15px;
-          }
-          
-          .premium-features-grid {
-            grid-template-columns: 1fr;
-          }
-          
-          .image-frame {
-            height: 250px;
-          }
-          
-          /* Menu */
+          /* Menu Tabs - FIXED FOR MOBILE */
           .menu-section {
             padding: 40px 20px;
             margin: 40px auto;
           }
           
           .menu-tabs {
-            flex-direction: column;
-            align-items: center;
+            justify-content: flex-start;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
           }
           
           .menu-tab {
-            width: 100%;
-            text-align: center;
+            padding: 10px 20px;
+            font-size: 13px;
           }
           
           .menu-item {
             grid-template-columns: 1fr;
             gap: 20px;
+            padding: 20px;
           }
           
           .dish-photo {
             height: 200px;
             width: 100%;
-            object-fit: cover;
           }
           
           .menu-category h3 {
-            font-size: 24px;
+            font-size: 28px;
           }
           
           .menu-item-header h4 {
-            font-size: 18px;
-          }
-          
-          .price {
             font-size: 20px;
           }
           
-          .menu-desc {
-            font-size: 15px;
+          .price {
+            font-size: 22px;
           }
           
           /* Reservation */
@@ -1997,14 +1604,6 @@
             width: 80px;
             height: 80px;
           }
-          
-          /* Notification */
-          .notification {
-            top: 80px;
-            right: 15px;
-            left: 15px;
-            max-width: none;
-          }
         }
 
         @media (max-width: 480px) {
@@ -2019,10 +1618,7 @@
           
           .premium-subtitle {
             font-size: 16px;
-          }
-          
-          .premium-tagline {
-            font-size: 14px;
+            padding: 0 10px;
           }
           
           .hero-logo {
@@ -2040,10 +1636,7 @@
           
           .section-header .subtitle {
             font-size: 14px;
-          }
-          
-          .divider-line {
-            width: 30px;
+            padding: 6px 15px;
           }
           
           .premium-feature-card {
@@ -2051,7 +1644,7 @@
           }
           
           .image-frame {
-            height: 200px;
+            height: 250px;
           }
           
           .menu-section {
@@ -2059,12 +1652,21 @@
             margin: 30px auto;
           }
           
+          .menu-tabs {
+            gap: 8px;
+          }
+          
+          .menu-tab {
+            padding: 8px 16px;
+            font-size: 12px;
+          }
+          
           .menu-item {
-            padding: 20px;
+            padding: 15px;
           }
           
           .menu-category h3 {
-            font-size: 22px;
+            font-size: 24px;
           }
           
           .menu-item-header h4 {
@@ -2081,10 +1683,6 @@
           
           .reservation-section {
             padding: 30px 15px;
-          }
-          
-          .notification-icon {
-            font-size: 24px;
           }
           
           .contact-card {
@@ -2140,7 +1738,22 @@
     <!-- Premium Navigation -->
     <nav class="premium-navbar" id="navbar">
         <div class="nav-container">
-            <!-- Navigation Links on Left -->
+            <!-- Logo -->
+            <div class="logo">
+                <!-- Logo image -->
+                <div class="custom-logo nav-logo">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\logo.png" alt="L'ARTISTA Italian Restaurant Logo" 
+                         onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback">L'ARTISTA</div>
+                </div>
+                <!-- Text -->
+                <div class="logo-text">
+                    <span class="logo-main">L'ARTISTA</span>
+                    <span class="logo-sub">Italian Restaurant</span>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation Links -->
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -2149,21 +1762,7 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             
-            <!-- Logo on Right -->
-            <div class="logo">
-                <!-- Logo image -->
-                <div class="custom-logo nav-logo">
-                    <img src="lartista-logo.png" alt="L'ARTISTA Fine Italian Dining Logo" 
-                         onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="logo-fallback">L'ARTISTA</div>
-                </div>
-                <!-- Text -->
-                <div class="logo-text">
-                    <span class="logo-main">L'ARTISTA</span>
-                    <span class="logo-sub">Fine Italian Dining</span>
-                </div>
-            </div>
-            
+            <!-- Mobile Menu Toggle -->
             <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -2171,6 +1770,9 @@
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Mobile Menu -->
     <div class="premium-mobile-menu" id="mobileMenu">
@@ -2180,12 +1782,12 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#menu" class="nav-link">Menu</a></li>
-            <li><a href="#reservation" class="nav-link">Reservation</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#menu" class="mobile-nav-link">Menu</a></li>
+            <li><a href="#reservation" class="mobile-nav-link">Reservation</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
         <div class="mobile-menu-footer">
             <a href="tel:+919136558275" class="btn btn-red btn-block">
@@ -2197,8 +1799,8 @@
     <!-- Hero Section -->
     <section class="hero-premium" id="home">
         <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                 alt="L'ARTISTA Fine Dining Restaurant Interior">
+            <img src="C:\Users\abhil\Downloads\LARTISTA AMBIANCE\restaurant-interior.jpg" 
+                 alt="L'ARTISTA Italian Restaurant Interior">
         </div>
         <div class="premium-overlay"></div>
         
@@ -2206,7 +1808,7 @@
             <div class="premium-hero-content">
                 <div class="premium-logo-container">
                     <div class="custom-logo hero-logo premium-hero-logo">
-                        <img src="lartista-logo.png" alt="L'ARTISTA Fine Italian Dining Logo" 
+                        <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\logo.png" alt="L'ARTISTA Italian Restaurant Logo" 
                              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="logo-fallback hero-fallback">L'ARTISTA</div>
                     </div>
@@ -2214,26 +1816,22 @@
                 
                 <div class="premium-title">
                     <span class="title-line-1">L'ARTISTA</span>
-                    <span class="title-line-2">Fine Dining Restaurant</span>
+                    <span class="title-line-2">Italian Restaurant</span>
                 </div>
                 
-                <p class="premium-subtitle">Where Culinary Art Meets Italian Excellence</p>
-                
-                <p class="premium-tagline">
-                    Michelin-star inspired cuisine ∙ Curated wine selection ∙ Unforgettable dining experience
-                </p>
+                <p class="premium-subtitle">Authentic Italian Cuisine in the Heart of Riga</p>
                 
                 <div class="premium-hero-buttons">
                     <a href="#reservation" class="btn btn-premium btn-large">
-                        <i class="fas fa-calendar-check"></i> RESERVE EXPERIENCE
+                        <i class="fas fa-calendar-check"></i> BOOK A TABLE
                     </a>
                     <a href="#menu" class="btn btn-outline-premium btn-large">
-                        <i class="fas fa-book-open"></i> EXPLORE MENU
+                        <i class="fas fa-book-open"></i> VIEW MENU
                     </a>
                 </div>
                 
                 <div class="premium-scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-                    <span class="scroll-text">Discover Excellence</span>
+                    <span class="scroll-text">Explore</span>
                     <i class="fas fa-chevron-down scroll-arrow"></i>
                 </div>
             </div>
@@ -2256,11 +1854,11 @@
             <div class="premium-about-grid">
                 <div class="premium-content">
                     <p class="premium-intro">
-                        Established in 2015, <span class="highlight-red">L'ARTISTA</span> brings the authentic taste of Italy to the heart of Riga. Our restaurant is a celebration of Italy's rich culinary heritage, where passion meets perfection in every dish.
+                        Established in 2015, <span class="highlight-red">L'ARTISTA</span> brings the authentic taste of Italy to the heart of Riga. Our restaurant is a celebration of Italy's rich culinary heritage.
                     </p>
                     
                     <p class="premium-description">
-                        Our philosophy is simple: to create unforgettable dining experiences using only the finest ingredients, traditional techniques, and a genuine love for Italian cuisine. From the sun-drenched hills of Tuscany to the coastal flavors of Sicily, our menu tells the story of Italy's diverse regions.
+                        Our philosophy is simple: to create unforgettable dining experiences using only the finest ingredients, traditional techniques, and a genuine love for Italian cuisine.
                     </p>
                     
                     <div class="premium-features-grid">
@@ -2292,17 +1890,8 @@
                 
                 <div class="premium-about-image">
                     <div class="image-frame">
-                        <video autoplay loop muted playsinline class="ambiance-video">
-                            <source src="videos/restaurant-ambiance.mp4" type="video/mp4">
-                            <source src="videos/restaurant-ambiance.webm" type="video/webm">
-                            <!-- Fallback if video doesn't load -->
-                            <div class="video-placeholder">
-                                <i class="fas fa-play-circle"></i>
-                                <p>Experience the L'ARTISTA Ambiance</p>
-                                <small>Video coming soon</small>
-                            </div>
-                        </video>
-                        <div class="image-caption">Experience the L'ARTISTA Ambiance</div>
+                        <img src="C:\Users\abhil\Downloads\LARTISTA AMBIANCE\restaurant-ambiance.jpg" 
+                             alt="L'ARTISTA Restaurant Ambiance">
                     </div>
                 </div>
             </div>
@@ -2323,247 +1912,237 @@
             </div>
             
             <div class="menu-tabs">
-                <button class="menu-tab active" data-category="starters">Starters</button>
-                <button class="menu-tab" data-category="pastas">Pastas</button>
+                <button class="menu-tab active" data-category="wine">Wine List</button>
+                <button class="menu-tab" data-category="starters">Starters</button>
                 <button class="menu-tab" data-category="main">Main Courses</button>
                 <button class="menu-tab" data-category="pizza">Pizza</button>
                 <button class="menu-tab" data-category="desserts">Desserts</button>
                 <button class="menu-tab" data-category="drinks">Drinks</button>
             </div>
             
-            <!-- Starters Menu -->
-            <div class="menu-category active" id="starters">
-                <h3><i class="fas fa-seedling"></i> Starters</h3>
+            <!-- Wine List Menu -->
+            <div class="menu-category active" id="wine">
+                <h3><i class="fas fa-wine-glass-alt"></i> Wine List</h3>
                 
-                <div class="menu-item" data-category="starters">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Creamy Burrata" class="dish-photo">
+                <h4>SPARKLINGS</h4>
+                <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Creamy Burrata</h4>
-                            <span class="price">€24</span>
-                        </div>
-                        <p class="menu-desc">Cherry tomatoes / asparagus / basil</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.8
+                            <h4>Valdo Prosecco Extra Dry</h4>
+                            <span class="price">€9 / €35</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="starters">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Vitello Tonnato" class="dish-photo">
+                <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Vitello Tonnato</h4>
-                            <span class="price">€28</span>
-                        </div>
-                        <p class="menu-desc">Veal with creamy tuna sauce / pine nuts</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.4.7.8
+                            <h4>Ruggeri Argeo Prosecco Treviso</h4>
+                            <span class="price">€55</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="starters">
+                <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Seasonal Insalata Mista</h4>
-                            <span class="price">€16</span>
-                        </div>
-                        <p class="menu-desc">Fresh mixed seasonal salad</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.8.9
+                            <h4>Bellavista Alma Assemblage Franciacorta Extra Brut</h4>
+                            <span class="price">€62</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="starters">
+                <h4>ROSÉ</h4>
+                <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Caesar Salad</h4>
+                            <h4>Sella & Mosca Anemone Rosato</h4>
+                            <span class="price">€39</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="wine">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Zenato Bardolino Chiaretto</h4>
+                            <span class="price">€8 / €36</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>WHITE WINES</h4>
+                <div class="menu-item" data-category="wine">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>La Solca Gavi di Gavi – White Label (Piemonte, Italy)</h4>
+                            <span class="price">€69</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="wine">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Argiolas Costamolino Vermentino di Sardegna</h4>
+                            <span class="price">€49</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="wine">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Pieropan Soave Classico (Veneto, Italy)</h4>
+                            <span class="price">€49</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="wine">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>House wine (mezzo)</h4>
                             <span class="price">€18</span>
                         </div>
-                        <p class="menu-desc">Crisp romaine / croutons / parmesan</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.3.4.7.10
+                    </div>
+                </div>
+                
+                <h4>RED WINES</h4>
+                <div class="menu-item" data-category="wine">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Casteltorre Montepulciano d'Abruzzo</h4>
+                            <span class="price">€25</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="starters">
+                <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Beef Carpaccio</h4>
-                            <span class="price">€26</span>
-                        </div>
-                        <p class="menu-desc">Thinly sliced beef / truffle oil / arugula</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.8
+                            <h4>Vigneti del Salento "I Muri" Primitivo (Puglia)</h4>
+                            <span class="price">€9 / €35</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="starters">
+                <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Lemon Garlic Shrimps</h4>
-                            <span class="price">€22</span>
-                        </div>
-                        <p class="menu-desc">Served with focaccia bread</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.2.7
+                            <h4>Bertani Amarone della Valpolicella "Legacy"</h4>
+                            <span class="price">€89</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="starters">
+                <div class="menu-item" data-category="wine">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Antipasto</h4>
-                            <span class="price">€32</span>
-                        </div>
-                        <p class="menu-desc">Finest Italian selection of cheeses and meats</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.6.7.8
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Bruschetta Stracciatella & Mortadella</h4>
-                            <span class="price">€19</span>
-                        </div>
-                        <p class="menu-desc">With pistachios</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.8
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Tomato Bruschetta</h4>
-                            <span class="price">€15</span>
-                        </div>
-                        <p class="menu-desc">With ciliegine / fresh herbs</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Cured Zucchini Bruschetta</h4>
-                            <span class="price">€17</span>
-                        </div>
-                        <p class="menu-desc">With pine nuts pesto</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.8
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="starters">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Zuppa di Pesce</h4>
-                            <span class="price">€34</span>
-                        </div>
-                        <p class="menu-desc">Variety of seafood / stracciatella</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.2.4.7.9.13.14
+                            <h4>House wine (mezzo)</h4>
+                            <span class="price">€18</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Pastas Menu -->
-            <div class="menu-category" id="pastas">
-                <h3><i class="fas fa-pasta"></i> Pastas</h3>
+            <!-- Starters Menu -->
+            <div class="menu-category" id="starters">
+                <h3><i class="fas fa-seedling"></i> Starters</h3>
                 
-                <div class="menu-item" data-category="pastas">
-                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Spaghetti Carbonara" class="dish-photo">
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\caesar-salad.jpg" 
+                         alt="Caesar Salad" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Spaghetti Carbonara</h4>
-                            <span class="price">€26</span>
+                            <h4>Caesar Salad</h4>
+                            <span class="price">€12</span>
                         </div>
-                        <p class="menu-desc">Classic Roman pasta with guanciale / pecorino</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.3.7
-                        </div>
+                        <p class="menu-desc">Parmesan cheese, toast</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="pastas">
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\burrata.jpg" 
+                         alt="Creamy Burrata" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Cacio e Pepe</h4>
-                            <span class="price">€24</span>
+                            <h4>Creamy Burrata</h4>
+                            <span class="price">€15</span>
                         </div>
-                        <p class="menu-desc">Roman pasta / black truffles</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7
-                        </div>
+                        <p class="menu-desc">Sweet cherry tomatoes, basil oil, pistachios</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="pastas">
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\prawns.jpg" 
+                         alt="Lemon-Garlic Prawns" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pasta al Pesto di Pistacchio e Stracciatella</h4>
-                            <span class="price">€28</span>
+                            <h4>Lemon-Garlic Prawns</h4>
+                            <span class="price">€15</span>
                         </div>
-                        <p class="menu-desc">Pistachio pesto / stracciatella</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.8
-                        </div>
+                        <p class="menu-desc">Served with homemade focaccia</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="pastas">
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\vitello-tonnato.jpg" 
+                         alt="Vitello Tonnato" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Penne Arrabbiata</h4>
-                            <span class="price">€22</span>
+                            <h4>Vitello Tonnato</h4>
+                            <span class="price">€17</span>
                         </div>
-                        <p class="menu-desc">Spicy tomato sauce</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1
-                        </div>
+                        <p class="menu-desc">Thinly sliced veal with creamy tuna foam</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="pastas">
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\antipasto.jpg" 
+                         alt="Antipasto" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Spaghetti Frutti di Mare</h4>
-                            <span class="price">€32</span>
+                            <h4>Antipasto</h4>
+                            <span class="price">€25</span>
                         </div>
-                        <p class="menu-desc">Seafood pasta</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.2.4.9.13.14
-                        </div>
+                        <p class="menu-desc">Italian cured meats & cheeses with jam and grissini</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="pastas">
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\beef-carpaccio.jpg" 
+                         alt="Beef Carpaccio" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>L'Artista Pasta</h4>
-                            <span class="price">€38</span>
+                            <h4>Beef Carpaccio</h4>
+                            <span class="price">€16</span>
                         </div>
-                        <p class="menu-desc">Pasta with lobster and black caviar</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.2.4.7
+                        <p class="menu-desc">Parmesan, arugula, truffle oil</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\bruschetta.jpg" 
+                         alt="Bruschettas" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Bruschettas</h4>
+                            <span class="price">€8.50</span>
                         </div>
+                        <p class="menu-desc">Stracciatella, mortadella, pistachio</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="starters">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\eggplant-parmesan.jpg" 
+                         alt="Eggplant Parmesan" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Eggplant Parmesan</h4>
+                            <span class="price">€14</span>
+                        </div>
+                        <p class="menu-desc">Tomato sauce, fresh mozzarella</p>
                     </div>
                 </div>
             </div>
@@ -2573,16 +2152,71 @@
                 <h3><i class="fas fa-drumstick-bite"></i> Main Courses</h3>
                 
                 <div class="menu-item" data-category="main">
-                    <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Parmigiana di Melanzane" class="dish-photo">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\truffle-risotto.jpg" 
+                         alt="Truffle Risotto" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Parmigiana di Melanzane</h4>
-                            <span class="price">€28</span>
+                            <h4>Truffle Risotto</h4>
+                            <span class="price">€25</span>
                         </div>
-                        <p class="menu-desc">Eggplant Parmesan / basil pesto</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.8.9
+                        <p class="menu-desc">Creamy risotto with fresh black truffles</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\veal-escalope.jpg" 
+                         alt="Escalope Butter Veal" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Escalope Butter Veal</h4>
+                            <span class="price">€29</span>
+                        </div>
+                        <p class="menu-desc">Tender veal in a juicy sauce, fried potatoes or salad</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\zuppa-di-pesce.jpg" 
+                         alt="Zuppa di Pesce" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Zuppa di Pesce</h4>
+                            <span class="price">€17</span>
+                        </div>
+                        <p class="menu-desc">Richly flavored fish soup with shellfish and herbs</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\sea-bass.jpg" 
+                         alt="Sea Bass Fillet" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Sea Bass Fillet</h4>
+                            <span class="price">€23</span>
+                        </div>
+                        <p class="menu-desc">Delicate sea bass with fresh herbs</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="main">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\fillet-mignon.jpg" 
+                         alt="Fillet Mignon" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Fillet Mignon</h4>
+                            <span class="price">€39</span>
+                        </div>
+                        <p class="menu-desc">Argentine Black Angus (200 g), bourbon sauce</p>
+                    </div>
+                </div>
+                
+                <h4>Additives</h4>
+                <div class="menu-item" data-category="main">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Baked rosemary-garlic potatoes</h4>
+                            <span class="price">€6</span>
                         </div>
                     </div>
                 </div>
@@ -2590,12 +2224,8 @@
                 <div class="menu-item" data-category="main">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Creamy Risotto</h4>
-                            <span class="price">€26</span>
-                        </div>
-                        <p class="menu-desc">With black truffles</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.12
+                            <h4>Mixed seasonal salad</h4>
+                            <span class="price">€9</span>
                         </div>
                     </div>
                 </div>
@@ -2603,64 +2233,8 @@
                 <div class="menu-item" data-category="main">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Zucchini Risotto with Gamberi</h4>
-                            <span class="price">€30</span>
-                        </div>
-                        <p class="menu-desc">Zucchini risotto with shrimp</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.2.7.12
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Veal Scallopini</h4>
-                            <span class="price">€36</span>
-                        </div>
-                        <p class="menu-desc">Lemon butter sauce / roasted potatoes or seasonal salad</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.3.9
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Seabass Fillet</h4>
-                            <span class="price">€34</span>
-                        </div>
-                        <p class="menu-desc">Grilled sea bass / spinach risotto</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.4.6.7.9.12
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Homemade Ravioli</h4>
-                            <span class="price">€28</span>
-                        </div>
-                        <p class="menu-desc">Ricotta and spinach / gorgonzola sauce</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.3.7
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="main">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Tagliata di Manzo</h4>
-                            <span class="price">€42</span>
-                        </div>
-                        <p class="menu-desc">Sliced beef / roasted potatoes or seasonal salad</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.9.12
+                            <h4>Bread basket</h4>
+                            <span class="price">€4.50</span>
                         </div>
                     </div>
                 </div>
@@ -2671,94 +2245,89 @@
                 <h3><i class="fas fa-pizza-slice"></i> Pizza</h3>
                 
                 <div class="menu-item" data-category="pizza">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\margherita.jpg" 
                          alt="Pizza Margherita" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pizza Margherita</h4>
-                            <span class="price">€18</span>
-                        </div>
-                        <p class="menu-desc">Classic tomato and mozzarella</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7
+                            <h4>Margherita</h4>
+                            <span class="price">€10</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="pizza">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\marinara.jpg" 
+                         alt="Pizza Marinara" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pizza Mortadella with Stracciatella</h4>
-                            <span class="price">€22</span>
-                        </div>
-                        <p class="menu-desc">With pistachios</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.8
+                            <h4>Marinara</h4>
+                            <span class="price">€10</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="pizza">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\salami-pizza.jpg" 
+                         alt="Pizza Salami" class="dish-photo">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Salami</h4>
+                            <span class="price">€14</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="pizza">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\quattro-formaggi.jpg" 
+                         alt="Pizza Quattro Formaggi" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h4>Quattro Formaggi</h4>
-                            <span class="price">€21</span>
-                        </div>
-                        <p class="menu-desc">Four cheese pizza</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7
+                            <span class="price">€15</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="pizza">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\diavola.jpg" 
+                         alt="Pizza Diavola" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pizza Diavola</h4>
-                            <span class="price">€20</span>
-                        </div>
-                        <p class="menu-desc">Spicy salami / chili oil</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7.9
+                            <h4>Diavola 🌶</h4>
+                            <span class="price">€15</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="pizza">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\prosciutto-pizza.jpg" 
+                         alt="Pizza Prosciutto" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pizza Salamino</h4>
-                            <span class="price">€19</span>
-                        </div>
-                        <p class="menu-desc">Salami pizza</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7
+                            <h4>Prosciutto</h4>
+                            <span class="price">€15</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="pizza">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\mortadella-pizza.jpg" 
+                         alt="Pizza Mortadella & Stracciatella" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Pizza Marinara</h4>
-                            <span class="price">€17</span>
-                        </div>
-                        <p class="menu-desc">Tomato / garlic / oregano</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.4
+                            <h4>Mortadella & Stracciatella</h4>
+                            <span class="price">€18</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="pizza">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\pistachio-pesto-pizza.jpg" 
+                         alt="Pizza Pistachio Pesto" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Prosciutto di Parma Pizza</h4>
-                            <span class="price">€23</span>
-                        </div>
-                        <p class="menu-desc">Parma ham / mozzarella</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.7
+                            <h4>Pistachio Pesto</h4>
+                            <span class="price">€18</span>
                         </div>
                     </div>
                 </div>
@@ -2769,44 +2338,23 @@
                 <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
                 
                 <div class="menu-item" data-category="desserts">
-                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Tiramisu" class="dish-photo">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\tiramisu.jpg" 
+                         alt="Classic Tiramisù" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Tiramisu</h4>
-                            <span class="price">€14</span>
-                        </div>
-                        <p class="menu-desc">Classic Italian dessert</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.3.7.8
+                            <h4>Classic Tiramisù</h4>
+                            <span class="price">€8</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="desserts">
-                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-                         alt="Limoncello Cheesecake" class="dish-photo">
+                    <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\lemon-posset.jpg" 
+                         alt="Lemon Posset" class="dish-photo">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Limoncello Cheesecake</h4>
-                            <span class="price">€16</span>
-                        </div>
-                        <p class="menu-desc">With Italian meringue</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 1.3.7
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="desserts">
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h4>Affogato</h4>
-                            <span class="price">€12</span>
-                        </div>
-                        <p class="menu-desc">Vanilla ice cream with espresso</p>
-                        <div class="ingredients">
-                            <strong>Allergy:</strong> 7
+                            <h4>Lemon Posset in white chocolate</h4>
+                            <span class="price">€8</span>
                         </div>
                     </div>
                 </div>
@@ -2814,45 +2362,92 @@
             
             <!-- Drinks Menu -->
             <div class="menu-category" id="drinks">
-                <h3><i class="fas fa-wine-glass-alt"></i> Drinks</h3>
+                <h3><i class="fas fa-cocktail"></i> Drinks Menu</h3>
                 
+                <h4>Aperitivo</h4>
                 <div class="menu-item" data-category="drinks">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Italian Wines</h4>
-                            <span class="price">€8-€15/glass</span>
+                            <h4>Pilla Select</h4>
+                            <span class="price">€5</span>
                         </div>
-                        <p class="menu-desc">Selection of fine Italian wines by the glass</p>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="drinks">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Classic Cocktails</h4>
-                            <span class="price">€12-€16</span>
+                            <h4>Aperol Spritz</h4>
+                            <span class="price">€10</span>
                         </div>
-                        <p class="menu-desc">Negroni, Aperol Spritz, Bellini, etc.</p>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="drinks">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Italian Soft Drinks</h4>
-                            <span class="price">€5-€7</span>
+                            <h4>Margarita</h4>
+                            <span class="price">€10</span>
                         </div>
-                        <p class="menu-desc">San Pellegrino, Chinotto, Aranciata</p>
+                    </div>
+                </div>
+                
+                <h4>L'ARTISTA COCKTAILS</h4>
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Alberto Sordi</h4>
+                            <span class="price">€12</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>DIGESTIVO</h4>
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Limoncello</h4>
+                            <span class="price">€6</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>WHISKEY</h4>
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Jameson</h4>
+                            <span class="price">€7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>BEER (ALUS)</h4>
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Kronenbourg 1664 Blanc 5%</h4>
+                            <span class="price">€4.5 / €6</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>NON-ALCOHOLIC</h4>
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h4>Espresso</h4>
+                            <span class="price">€2</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="menu-item" data-category="drinks">
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h4>Coffee & Tea</h4>
-                            <span class="price">€3-€6</span>
+                            <h4>Cola / Fanta / Sprite</h4>
+                            <span class="price">€4</span>
                         </div>
-                        <p class="menu-desc">Italian espresso, cappuccino, herbal teas</p>
                     </div>
                 </div>
             </div>
@@ -2878,13 +2473,11 @@
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
-                            <div class="validation-message">Please enter your name</div>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email Address *</label>
                             <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
-                            <div class="validation-message">Please enter a valid email address</div>
                         </div>
                     </div>
                     
@@ -2892,7 +2485,6 @@
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" class="form-control" placeholder="+91 91365 58275" required>
-                            <div class="validation-message">Please enter a valid phone number</div>
                         </div>
                         
                         <div class="form-group">
@@ -2909,7 +2501,6 @@
                                 <option value="8">8 People</option>
                                 <option value="9+">9+ People</option>
                             </select>
-                            <div class="validation-message">Please select number of guests</div>
                         </div>
                     </div>
                     
@@ -2917,7 +2508,6 @@
                         <div class="form-group">
                             <label for="date">Preferred Date *</label>
                             <input type="date" id="date" class="form-control" required>
-                            <div class="validation-message">Please select a date</div>
                         </div>
                         
                         <div class="form-group">
@@ -2934,7 +2524,6 @@
                                 <option value="20:30">8:30 PM</option>
                                 <option value="21:00">9:00 PM</option>
                             </select>
-                            <div class="validation-message">Please select a time</div>
                         </div>
                     </div>
                     
@@ -2946,11 +2535,10 @@
                     <div class="notification-box">
                         <div class="notification-icon">
                             <i class="fab fa-whatsapp"></i>
-                            <i class="fas fa-envelope"></i>
                         </div>
                         <div class="notification-content">
                             <h4>Instant Confirmation</h4>
-                            <p>Your reservation will be sent via WhatsApp and Email simultaneously</p>
+                            <p>Your reservation will be confirmed via WhatsApp</p>
                         </div>
                     </div>
                     
@@ -3040,13 +2628,13 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <img src="lartista-logo.png" alt="L'ARTISTA Logo" 
+                        <img src="C:\Users\abhil\Downloads\LARTISTA DISHES\logo.png" alt="L'ARTISTA Logo" 
                              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="logo-fallback">L'ARTISTA</div>
                     </div>
                     <h3>L'ARTISTA</h3>
-                    <p class="footer-subtitle">Fine Italian Dining</p>
-                    <p>Experience the art of Italian fine dining in the heart of Riga.</p>
+                    <p class="footer-subtitle">Italian Restaurant</p>
+                    <p>Authentic Italian cuisine in the heart of Riga.</p>
                 </div>
                 
                 <div class="footer-column">
@@ -3085,7 +2673,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> L'ARTISTA Fine Italian Dining. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> L'ARTISTA Italian Restaurant. All rights reserved.</p>
                 <p class="footer-note">
                     Celebrating Italian culinary art in the heart of Riga
                 </p>
@@ -3096,15 +2684,14 @@
     <!-- JavaScript -->
     <script>
         // ============================================
-        // L'ARTISTA FINE DINING - ENHANCED JAVASCRIPT
+        // L'ARTISTA ITALIAN RESTAURANT - UPDATED JAVASCRIPT
         // ============================================
 
         // Restaurant Configuration
         const RESTAURANT_CONFIG = {
             whatsappNumber: '919136558275',
             restaurantEmail: 'bollasanjay05@gmail.com',
-            customerEmail: 'customer@example.com',
-            restaurantName: "L'ARTISTA Fine Italian Dining",
+            restaurantName: "L'ARTISTA Italian Restaurant",
             restaurantAddress: "Elizabetes iela 123, Centra rajons, Rīga, LV-1010, Latvia",
             phoneNumber: "+91 91365 58275"
         };
@@ -3139,6 +2726,30 @@
             
             // Setup form validation
             setupFormValidation();
+            
+            // Set tomorrow's date as default
+            setDefaultDate();
+        }
+
+        // ============================================
+        // SET DEFAULT DATE FOR RESERVATION
+        // ============================================
+        function setDefaultDate() {
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date();
+                const tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                
+                // Format date as YYYY-MM-DD
+                const year = tomorrow.getFullYear();
+                const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+                const day = String(tomorrow.getDate()).padStart(2, '0');
+                const formattedDate = `${year}-${month}-${day}`;
+                
+                dateInput.min = formattedDate;
+                dateInput.value = formattedDate;
+            }
         }
 
         // ============================================
@@ -3162,47 +2773,64 @@
         }
 
         // ============================================
-        // NAVIGATION
+        // NAVIGATION - FIXED FOR MOBILE
         // ============================================
         function initNavigation() {
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
             const mobileMenuClose = document.getElementById('mobileMenuClose');
+            const menuOverlay = document.getElementById('menuOverlay');
             const navbar = document.getElementById('navbar');
 
             // Mobile Menu Toggle
-            if (mobileMenuToggle && mobileMenu && mobileMenuClose) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    const isActive = mobileMenu.classList.toggle('active');
-                    document.body.style.overflow = isActive ? 'hidden' : 'auto';
-                    
-                    // Animate hamburger icon
-                    this.classList.toggle('active');
+            if (mobileMenuToggle && mobileMenu && mobileMenuClose && menuOverlay) {
+                mobileMenuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleMobileMenu();
                 });
 
-                mobileMenuClose.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                    mobileMenuToggle.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+                mobileMenuClose.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeMobileMenu();
+                });
+
+                menuOverlay.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeMobileMenu();
                 });
 
                 // Close menu when clicking links
-                document.querySelectorAll('.premium-mobile-menu .nav-link').forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileMenu.classList.remove('active');
-                        mobileMenuToggle.classList.remove('active');
-                        document.body.style.overflow = 'auto';
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        closeMobileMenu();
                     });
                 });
+
+                // Close menu on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        closeMobileMenu();
+                    }
+                });
+
+                // Prevent body scroll when menu is open
+                document.addEventListener('touchmove', function(e) {
+                    if (mobileMenu.classList.contains('active')) {
+                        e.preventDefault();
+                    }
+                }, { passive: false });
             }
 
             // Navbar scroll effect
             if (navbar) {
                 window.addEventListener('scroll', function() {
                     if (window.scrollY > 50) {
-                        navbar.classList.add('scrolled');
+                        navbar.style.background = 'rgba(249, 247, 242, 0.98)';
+                        navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
                     } else {
-                        navbar.classList.remove('scrolled');
+                        navbar.style.background = 'rgba(249, 247, 242, 0.98)';
+                        navbar.style.boxShadow = 'none';
                     }
                     
                     // Update active nav link
@@ -3211,14 +2839,49 @@
             }
         }
 
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            
+            if (mobileMenu && menuOverlay && menuToggle) {
+                const isActive = mobileMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                document.body.style.overflow = isActive ? 'hidden' : 'auto';
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            
+            if (mobileMenu && menuOverlay && menuToggle) {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
         // ============================================
-        // MENU TABS - UPDATED FOR NEW STRUCTURE
+        // MENU TABS - FIXED FOR MOBILE
         // ============================================
         function initMenuTabs() {
             const menuTabs = document.querySelectorAll('.menu-tab');
             const menuCategories = document.querySelectorAll('.menu-category');
 
             if (!menuTabs.length || !menuCategories.length) return;
+
+            // Set first tab as active
+            if (menuTabs.length > 0) {
+                menuTabs[0].classList.add('active');
+            }
+            
+            if (menuCategories.length > 0) {
+                menuCategories[0].classList.add('active');
+            }
 
             menuTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -3230,6 +2893,14 @@
                     
                     // Show selected category
                     showMenuCategory(categoryId);
+                });
+            });
+            
+            // Add touch support for mobile tabs
+            menuTabs.forEach(tab => {
+                tab.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    this.click();
                 });
             });
         }
@@ -3247,8 +2918,11 @@
             if (selectedCategory) {
                 selectedCategory.classList.add('active');
                 
-                // Smooth scroll to category
-                selectedCategory.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                // Scroll to category with smooth animation
+                selectedCategory.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
             }
         }
 
@@ -3259,20 +2933,8 @@
             const bookingForm = document.getElementById('bookingForm');
             if (!bookingForm) return;
 
-            // Set minimum date to today
-            const dateInput = document.getElementById('date');
-            if (dateInput) {
-                const today = new Date().toISOString().split('T')[0];
-                dateInput.min = today;
-                
-                // Set default date to tomorrow
-                const tomorrow = new Date();
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                dateInput.value = tomorrow.toISOString().split('T')[0];
-            }
-
             // Form submission
-            bookingForm.addEventListener('submit', function(e) {
+            bookingForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 // Get form data
@@ -3287,56 +2949,63 @@
                 };
 
                 // Validate form
-                if (!validateForm()) {
-                    showNotification('Please fill in all required fields correctly', 'error');
+                if (!validateReservationForm(formData)) {
+                    alert('Please fill in all required fields correctly.');
                     return;
                 }
 
-                // Send reservation
-                sendReservation(formData);
+                // Show loading state
+                const submitBtn = bookingForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Send reservation
+                    await sendReservation(formData);
+                    
+                    // Reset form
+                    bookingForm.reset();
+                    
+                    // Reset date to tomorrow
+                    setDefaultDate();
+                    
+                    // Show success message
+                    alert('Reservation sent successfully! You will receive a confirmation via WhatsApp.');
+                    
+                } catch (error) {
+                    alert('Error sending reservation. Please try again or call us directly.');
+                } finally {
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
             });
         }
 
-        function validateForm() {
-            let isValid = true;
-            
-            // Check required fields
-            const requiredFields = ['name', 'email', 'phone', 'guests', 'date', 'time'];
-            requiredFields.forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                if (!field || !field.value.trim()) {
-                    field.classList.add('invalid');
-                    isValid = false;
-                } else {
-                    field.classList.remove('invalid');
-                }
-            });
-            
-            // Validate email
-            const emailField = document.getElementById('email');
-            if (emailField && emailField.value.trim()) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailField.value)) {
-                    emailField.classList.add('invalid');
-                    isValid = false;
-                }
+        function validateReservationForm(formData) {
+            // Required fields validation
+            if (!formData.name || !formData.email || !formData.phone || !formData.guests || !formData.date || !formData.time) {
+                return false;
             }
             
-            // Validate phone
-            const phoneField = document.getElementById('phone');
-            if (phoneField && phoneField.value.trim()) {
-                const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-                const cleanedPhone = phoneField.value.replace(/\D/g, '');
-                if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 8) {
-                    phoneField.classList.add('invalid');
-                    isValid = false;
-                }
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                return false;
             }
             
-            return isValid;
+            // Phone validation
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            const cleanedPhone = formData.phone.replace(/\D/g, '');
+            if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 8) {
+                return false;
+            }
+            
+            return true;
         }
 
-        function sendReservation(formData) {
+        async function sendReservation(formData) {
             // Format date beautifully
             const formattedDate = new Date(formData.date).toLocaleDateString('en-GB', {
                 weekday: 'long',
@@ -3345,141 +3014,30 @@
                 day: 'numeric'
             });
 
-            // Create WhatsApp message for restaurant admin
-            const adminMessage = `*🎭 NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
-                               `*📋 Guest Information*%0A` +
-                               `👤 Name: ${formData.name}%0A` +
-                               `📞 Phone: ${formData.phone}%0A` +
-                               `📧 Email: ${formData.email || 'Not provided'}%0A%0A` +
-                               `*📅 Reservation Details*%0A` +
-                               `📅 Date: ${formattedDate}%0A` +
-                               `⏰ Time: ${formData.time}%0A` +
-                               `👥 Guests: ${formData.guests}%0A` +
-                               `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
-                               `📍 Restaurant: ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
-                               `📱 Phone: ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
-                               `_Sent via website reservation system_`;
+            // Create WhatsApp message
+            const whatsappMessage = `*🎭 NEW RESERVATION - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
+                                   `*📋 Guest Information*%0A` +
+                                   `👤 Name: ${formData.name}%0A` +
+                                   `📞 Phone: ${formData.phone}%0A` +
+                                   `📧 Email: ${formData.email}%0A%0A` +
+                                   `*📅 Reservation Details*%0A` +
+                                   `📅 Date: ${formattedDate}%0A` +
+                                   `⏰ Time: ${formData.time}%0A` +
+                                   `👥 Guests: ${formData.guests}%0A` +
+                                   `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
+                                   `📍 ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
+                                   `📞 ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
+                                   `_Thank you for choosing L'ARTISTA!_`;
 
-            // Create WhatsApp message for customer confirmation
-            const customerMessage = `*✅ RESERVATION CONFIRMED - ${RESTAURANT_CONFIG.restaurantName}*%0A%0A` +
-                                  `Dear ${formData.name},%0A%0A` +
-                                  `Thank you for choosing ${RESTAURANT_CONFIG.restaurantName}!%0A%0A` +
-                                  `*📋 Your Reservation Details*%0A` +
-                                  `📅 Date: ${formattedDate}%0A` +
-                                  `⏰ Time: ${formData.time}%0A` +
-                                  `👥 Guests: ${formData.guests}%0A%0A` +
-                                  `📍 Address: ${RESTAURANT_CONFIG.restaurantAddress}%0A` +
-                                  `📱 Phone: ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
-                                  `💭 Special Requests: ${formData.specialRequests || 'None'}%0A%0A` +
-                                  `*Important Information*%0A` +
-                                  `• Please arrive 10 minutes before your reservation%0A` +
-                                  `• Dress code: Smart casual%0A` +
-                                  `• Valet parking available%0A` +
-                                  `• Contact us for any changes: ${RESTAURANT_CONFIG.phoneNumber}%0A%0A` +
-                                  `We look forward to welcoming you!%0A%0A` +
-                                  `_L'ARTISTA Fine Italian Dining_`;
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
-            // Create WhatsApp URLs
-            const adminWhatsappURL = `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${adminMessage}`;
-            const customerWhatsappURL = `https://wa.me/${formData.phone.replace(/\D/g, '')}?text=${customerMessage}`;
-
-            // Show success notification
-            showNotification('Sending reservation...', 'info');
-
-            // Send to restaurant admin
-            setTimeout(() => {
-                window.open(adminWhatsappURL, '_blank');
-                
-                // Send confirmation to customer after delay
-                setTimeout(() => {
-                    window.open(customerWhatsappURL, '_blank');
-                    
-                    // Show final success message
-                    setTimeout(() => {
-                        showNotification('Reservation sent successfully! Confirmation sent to you via WhatsApp.', 'success');
-                        
-                        // Reset form
-                        document.getElementById('bookingForm').reset();
-                        
-                        // Reset date to tomorrow
-                        const dateInput = document.getElementById('date');
-                        if (dateInput) {
-                            const tomorrow = new Date();
-                            tomorrow.setDate(tomorrow.getDate() + 1);
-                            dateInput.value = tomorrow.toISOString().split('T')[0];
-                        }
-                    }, 1000);
-                }, 1000);
-            }, 1500);
-        }
-
-        // ============================================
-        // NOTIFICATION SYSTEM - ENHANCED
-        // ============================================
-        function showNotification(message, type = 'info') {
-            // Remove existing notification
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `notification notification-${type}`;
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
             
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <div class="notification-icon">
-                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                    </div>
-                    <div class="notification-text">
-                        <strong>${type === 'success' ? 'Success!' : type === 'error' ? 'Error!' : 'Notice'}</strong>
-                        <p>${message}</p>
-                        <div class="notification-progress"></div>
-                    </div>
-                </div>
-                <button class="notification-close" aria-label="Close notification">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-
-            // Add to page
-            document.body.appendChild(notification);
-
-            // Show notification
-            setTimeout(() => {
-                notification.classList.add('show');
-                
-                // Start progress bar animation
-                setTimeout(() => {
-                    const progressBar = notification.querySelector('.notification-progress');
-                    if (progressBar) {
-                        progressBar.style.transform = 'scaleX(0)';
-                        progressBar.style.transition = 'transform 3s linear';
-                    }
-                }, 100);
-            }, 10);
-
-            // Auto remove after 4 seconds
-            const autoRemove = setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
-                }, 300);
-            }, 4000);
-
-            // Close button functionality
-            const closeBtn = notification.querySelector('.notification-close');
-            closeBtn.addEventListener('click', () => {
-                clearTimeout(autoRemove);
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
-                }, 300);
+            // Return promise for async handling
+            return new Promise((resolve) => {
+                setTimeout(resolve, 1000);
             });
         }
 
@@ -3493,10 +3051,10 @@
 
         function updateActiveNavLink() {
             const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
             const scrollPos = window.scrollY + 100;
             
-            let currentSectionId = '';
+            let currentSection = '';
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -3504,14 +3062,15 @@
                 const sectionId = section.getAttribute('id');
                 
                 if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                    currentSectionId = sectionId;
+                    currentSection = sectionId;
                 }
             });
             
-            // Update active state
+            // Update nav links
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                const href = link.getAttribute('href').replace('#', '');
+                if (href === currentSection) {
                     link.classList.add('active');
                 }
             });
@@ -3531,23 +3090,15 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         // Update active nav link
-                        document.querySelectorAll('.nav-link').forEach(link => {
+                        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
                             link.classList.remove('active');
+                            if (link.getAttribute('href') === targetId) {
+                                link.classList.add('active');
+                            }
                         });
-                        this.classList.add('active');
                         
                         // Close mobile menu if open
-                        const mobileMenu = document.getElementById('mobileMenu');
-                        if (mobileMenu && mobileMenu.classList.contains('active')) {
-                            mobileMenu.classList.remove('active');
-                            document.body.style.overflow = 'auto';
-                            
-                            // Reset hamburger icon
-                            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-                            if (mobileMenuToggle) {
-                                mobileMenuToggle.classList.remove('active');
-                            }
-                        }
+                        closeMobileMenu();
                         
                         // Scroll to target
                         window.scrollTo({
@@ -3560,7 +3111,7 @@
         }
 
         // ============================================
-        // FORM VALIDATION - ENHANCED
+        // FORM VALIDATION
         // ============================================
         function setupFormValidation() {
             const forms = document.querySelectorAll('form');
@@ -3574,42 +3125,22 @@
                         validateField(input);
                     });
                     
+                    // Remove error state on input
                     input.addEventListener('input', () => {
-                        // Remove error state as user types
                         if (input.classList.contains('invalid')) {
                             input.classList.remove('invalid');
-                            
-                            // Hide validation message
-                            const validationMsg = input.nextElementSibling;
-                            if (validationMsg && validationMsg.classList.contains('validation-message')) {
-                                validationMsg.style.display = 'none';
-                            }
-                        }
-                        
-                        // Add valid state for completed fields
-                        if (input.value.trim() && input.hasAttribute('required')) {
-                            validateField(input);
                         }
                     });
-                    
-                    // For select elements
-                    if (input.tagName === 'SELECT') {
-                        input.addEventListener('change', () => {
-                            validateField(input);
-                        });
-                    }
                 });
             });
         }
 
         function validateField(field) {
             let isValid = true;
-            let errorMessage = '';
             
             // Required field validation
             if (field.hasAttribute('required') && !field.value.trim()) {
                 isValid = false;
-                errorMessage = 'This field is required';
             }
             
             // Email validation
@@ -3617,7 +3148,6 @@
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(field.value)) {
                     isValid = false;
-                    errorMessage = 'Please enter a valid email address';
                 }
             }
             
@@ -3627,33 +3157,14 @@
                 const cleanedPhone = field.value.replace(/\D/g, '');
                 if (!phoneRegex.test(cleanedPhone) || cleanedPhone.length < 8) {
                     isValid = false;
-                    errorMessage = 'Please enter a valid phone number';
                 }
             }
             
             // Update field state
             if (!isValid) {
                 field.classList.add('invalid');
-                field.classList.remove('valid');
-                
-                // Show validation message
-                let validationMsg = field.nextElementSibling;
-                if (!validationMsg || !validationMsg.classList.contains('validation-message')) {
-                    validationMsg = document.createElement('div');
-                    validationMsg.className = 'validation-message';
-                    field.parentNode.insertBefore(validationMsg, field.nextSibling);
-                }
-                validationMsg.textContent = errorMessage;
-                validationMsg.style.display = 'block';
-            } else if (field.value.trim()) {
+            } else {
                 field.classList.remove('invalid');
-                field.classList.add('valid');
-                
-                // Hide validation message
-                const validationMsg = field.nextElementSibling;
-                if (validationMsg && validationMsg.classList.contains('validation-message')) {
-                    validationMsg.style.display = 'none';
-                }
             }
             
             return isValid;
