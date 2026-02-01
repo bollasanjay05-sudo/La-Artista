@@ -2092,6 +2092,20 @@
         .highlight-green { color: var(--green); font-weight: 600; }
         .mb-20 { margin-bottom: 20px; }
         .mt-20 { margin-top: 20px; }
+        
+        /* Mobile Language Selector - Hide initially */
+        @media (max-width: 768px) {
+            .language-selector {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+            
+            .language-selector.show {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2114,7 +2128,7 @@
     </div>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/919136558275?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
+    <a href="https://wa.me/37125455947?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
        class="whatsapp-float" 
        target="_blank"
        title="Chat with us on WhatsApp">
@@ -2185,7 +2199,7 @@
         </div>
         
         <div class="mobile-menu-footer">
-            <a href="tel:+919136558275" class="btn btn-red btn-block">
+            <a href="tel:+37125455947" class="btn btn-red btn-block">
                 <i class="fas fa-phone-alt"></i> <span data-translate="call_us">Call Us</span>
             </a>
         </div>
@@ -2485,9 +2499,21 @@
                             <p class="menu-desc">Argentine Black Angus (200 g), bourbon sauce</p>
                         </div>
                     </div>
+                    
+                    <!-- Pistachio Pesto - MOVED FROM PIZZA TO MAIN COURSES -->
+                    <div class="menu-item" data-category="main">
+                        <img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" alt="Pistachio Pesto Pasta" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Pistachio Pesto Pasta</h4>
+                                <span class="price">€18</span>
+                            </div>
+                            <p class="menu-desc">Fresh pasta with homemade pistachio pesto and stracciatella cheese</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Pizza Menu - COMPLETE WITH ALL PIZZAS -->
+                <!-- Pizza Menu - COMPLETE WITH ALL PIZZAS (Pistachio Pesto removed) -->
                 <div class="menu-category" id="pizza">
                     <h3><i class="fas fa-pizza-slice"></i> <span data-translate="pizza">Pizza</span></h3>
                     
@@ -2563,17 +2589,6 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Mortadella & Stracciatella</h4>
-                                <span class="price">€18</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Pistachio Pesto -->
-                    <div class="menu-item" data-category="pizza">
-                        <img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" alt="Pistachio Pesto Pizza" class="dish-photo">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h4>Pistachio Pesto</h4>
                                 <span class="price">€18</span>
                             </div>
                         </div>
@@ -2802,7 +2817,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone" data-translate="phone_number">Phone Number *</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="+91 91365 58275" required>
+                            <input type="tel" id="phone" class="form-control" placeholder="+371 25455947" required>
                         </div>
                         
                         <div class="form-group">
@@ -2889,8 +2904,8 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <h3 data-translate="phone_whatsapp">Phone & WhatsApp</h3>
-                        <a href="tel:+919136558275">+91 91365 58275</a>
-                        <a href="https://wa.me/919136558275?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
+                        <a href="tel:+37125455947">+371 25455947</a>
+                        <a href="https://wa.me/37125455947?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" 
                            class="whatsapp-link" target="_blank">
                             <i class="fab fa-whatsapp"></i> <span data-translate="whatsapp_chat">WhatsApp Chat</span>
                         </a>
@@ -2901,8 +2916,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h3 data-translate="email">Email</h3>
-                        <a href="mailto:bollasanjay05@gmail.com" class="email-link">
-                            <i class="fas fa-envelope"></i> <span>bollasanjay05@gmail.com</span>
+                        <a href="mailto:lartista2026@gmail.com" class="email-link">
+                            <i class="fas fa-envelope"></i> <span>lartista2026@gmail.com</span>
                         </a>
                         <p data-translate="email_purpose">For reservations and inquiries</p>
                     </div>
@@ -2958,20 +2973,23 @@
                 <div class="footer-column">
                     <h3 data-translate="connect_with_us">Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#" class="social-icon" aria-label="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=61586930476783" class="social-icon" aria-label="Facebook" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-icon" aria-label="Instagram">
+                        <a href="https://www.instagram.com/lartista2026?igsh=MjNkcWltcmkzcHo3&utm_source=qr" class="social-icon" aria-label="Instagram" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#" class="social-icon" aria-label="TripAdvisor">
                             <i class="fab fa-tripadvisor"></i>
                         </a>
+                        <a href="#" class="social-icon" aria-label="Google Reviews">
+                            <i class="fab fa-google"></i>
+                        </a>
                     </div>
                     
                     <div class="contact-info-footer">
-                        <p><i class="fas fa-phone"></i> +91 91365 58275</p>
-                        <p><i class="fas fa-envelope"></i> bollasanjay05@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +371 25455947</p>
+                        <p><i class="fas fa-envelope"></i> lartista2026@gmail.com</p>
                     </div>
                 </div>
                 
@@ -3240,11 +3258,11 @@
 
         // Restaurant Configuration
         const RESTAURANT_CONFIG = {
-            whatsappNumber: '919136558275',
-            restaurantEmail: 'bollasanjay05@gmail.com',
+            whatsappNumber: '37125455947',
+            restaurantEmail: 'lartista2026@gmail.com',
             restaurantName: "L'ARTISTA Italian Restaurant",
             restaurantAddress: "Elizabetes iela 123, Centra rajons, Rīga, LV-1010, Latvia",
-            phoneNumber: "+91 91365 58275"
+            phoneNumber: "+371 25455947"
         };
 
         // Initialize when DOM is loaded
@@ -3287,6 +3305,40 @@
             
             // Load saved language preference
             loadLanguagePreference();
+            
+            // Mobile language selector behavior
+            initMobileLanguageSelector();
+        }
+
+        // ============================================
+        // MOBILE LANGUAGE SELECTOR BEHAVIOR
+        // ============================================
+        function initMobileLanguageSelector() {
+            const languageSelector = document.getElementById('languageSelector');
+            
+            // Show language selector on touch/click for mobile
+            if (window.innerWidth <= 768) {
+                languageSelector.style.display = 'flex';
+                setTimeout(() => {
+                    languageSelector.classList.add('show');
+                    
+                    // Hide after 5 seconds
+                    setTimeout(() => {
+                        languageSelector.classList.remove('show');
+                        
+                        // Show again when user interacts with it
+                        languageSelector.addEventListener('mouseenter', showLanguageSelector);
+                        languageSelector.addEventListener('touchstart', showLanguageSelector);
+                    }, 5000);
+                }, 1000);
+            }
+            
+            function showLanguageSelector() {
+                languageSelector.classList.add('show');
+                setTimeout(() => {
+                    languageSelector.classList.remove('show');
+                }, 3000);
+            }
         }
 
         // ============================================
@@ -3413,7 +3465,7 @@
             
             if (nameInput) nameInput.placeholder = translations['full_name'] || 'Enter your full name';
             if (emailInput) emailInput.placeholder = translations['email_address'] || 'your@email.com';
-            if (phoneInput) phoneInput.placeholder = translations['phone_number'] || '+91 91365 58275';
+            if (phoneInput) phoneInput.placeholder = translations['phone_number'] || '+371 25455947';
             if (specialRequests) specialRequests.placeholder = translations['special_requests'] || 'Dietary restrictions, allergies, celebrations, etc.';
         }
 
