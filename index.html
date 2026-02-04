@@ -180,7 +180,7 @@
         }
 
         /* ============================================
-           LANGUAGE SELECTOR - VERTICAL FOR MOBILE/IPAD
+           LANGUAGE SELECTOR - IMPROVED FOR MOBILE
         ============================================ */
         .language-selector {
           position: fixed;
@@ -223,35 +223,38 @@
           box-shadow: 0 4px 10px rgba(214, 39, 59, 0.2);
         }
 
-        /* Vertical layout for mobile */
+        /* Improved mobile language selector */
         @media (max-width: 768px) {
           .language-selector {
-            flex-direction: column;
-            padding: 8px 5px;
-            top: 70px;
-            right: 10px;
+            top: 15px;
+            right: 15px;
+            flex-direction: row;
+            padding: 3px;
+            width: auto;
+            max-width: 150px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          
+          .language-selector::-webkit-scrollbar {
+            display: none;
           }
           
           .language-btn {
-            padding: 8px 10px;
-            min-width: 35px;
+            padding: 6px 12px;
             font-size: 12px;
+            min-width: 35px;
+            flex-shrink: 0;
           }
         }
 
-        /* Vertical layout for iPad */
+        /* iPad specific */
         @media (min-width: 768px) and (max-width: 1024px) {
           .language-selector {
-            flex-direction: column;
-            padding: 8px 5px;
             top: 15px;
             right: 15px;
-          }
-          
-          .language-btn {
-            padding: 10px 12px;
-            min-width: 40px;
-            font-size: 13px;
           }
         }
 
@@ -570,7 +573,7 @@
           height: 100vh;
           background: var(--green);
           padding: 80px 30px 30px;
-          transition: var(--transition);
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           z-index: 999;
           box-shadow: -5px 0 20px rgba(0,0,0,0.1);
           overflow-y: auto;
@@ -578,6 +581,7 @@
 
         .premium-mobile-menu.active {
           right: 0;
+          transform: translateX(0);
         }
 
         .mobile-menu-header {
@@ -655,6 +659,7 @@
           justify-content: center;
           gap: 10px;
           margin: 20px 0;
+          flex-wrap: wrap;
         }
 
         .mobile-language-btn {
@@ -688,7 +693,7 @@
           z-index: 998;
           opacity: 0;
           visibility: hidden;
-          transition: var(--transition);
+          transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .menu-overlay.active {
@@ -885,7 +890,7 @@
         }
 
         /* ============================================
-           ABOUT SECTION
+           ABOUT SECTION - UPDATED FOR MOBILE
         ============================================ */
         .premium-about-grid {
           display: grid;
@@ -923,12 +928,16 @@
 
         .premium-feature-card {
           background: white;
-          padding: 2rem;
+          padding: 1.5rem;
           border-radius: 12px;
           text-align: center;
           box-shadow: var(--shadow);
           transition: var(--transition);
           border: 2px solid rgba(214, 39, 59, 0.1);
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-height: 220px;
         }
 
         .premium-feature-card:hover {
@@ -938,28 +947,38 @@
         }
 
         .premium-feature-icon {
-          font-size: 2.5rem;
+          font-size: 2rem;
           color: var(--red);
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 70px;
-          height: 70px;
+          width: 60px;
+          height: 60px;
           background: rgba(214, 39, 59, 0.1);
           border-radius: 50%;
           border: 2px solid var(--red);
         }
 
         .premium-feature-card h4 {
-          font-size: 1.1rem;
-          margin-bottom: 0.75rem;
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
           color: var(--green);
+          line-height: 1.3;
+          min-height: 2.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .premium-feature-card p {
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           color: var(--text-muted);
+          line-height: 1.4;
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .premium-about-image {
@@ -1004,25 +1023,35 @@
           justify-content: center;
           gap: 10px;
           margin-bottom: 40px;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
           overflow-x: auto;
-          padding-bottom: 10px;
+          padding-bottom: 15px;
           -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
+          scrollbar-width: thin;
+          scrollbar-color: var(--red) transparent;
         }
 
         .menu-tabs::-webkit-scrollbar {
-          display: none;
+          height: 4px;
+        }
+
+        .menu-tabs::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .menu-tabs::-webkit-scrollbar-thumb {
+          background-color: var(--red);
+          border-radius: 10px;
         }
 
         .menu-tab {
-          padding: 12px 24px;
+          padding: 10px 20px;
           background: transparent;
           border: 2px solid rgba(214, 39, 59, 0.2);
           color: var(--text-dark);
           border-radius: 25px;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 500;
           letter-spacing: 1px;
           text-transform: uppercase;
@@ -1102,15 +1131,15 @@
         /* Menu Items with Images */
         .menu-item {
           background: white;
-          padding: 25px;
+          padding: 20px;
           border-radius: 12px;
           box-shadow: var(--shadow);
-          margin-bottom: 25px;
+          margin-bottom: 20px;
           transition: var(--transition);
           border: 2px solid rgba(214, 39, 59, 0.1);
           display: grid;
-          grid-template-columns: 150px 1fr;
-          gap: 25px;
+          grid-template-columns: 120px 1fr;
+          gap: 20px;
           align-items: start;
         }
 
@@ -1128,22 +1157,23 @@
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-bottom: 12px;
-          padding-bottom: 10px;
+          margin-bottom: 10px;
+          padding-bottom: 8px;
           border-bottom: 1px solid rgba(214, 39, 59, 0.1);
         }
 
         .menu-item-header h4 {
           font-family: 'Playfair Display', serif;
-          font-size: 22px;
+          font-size: 18px;
           color: var(--green);
           font-weight: 500;
           flex: 1;
-          margin-right: 15px;
+          margin-right: 10px;
+          line-height: 1.3;
         }
 
         .price {
-          font-size: 24px;
+          font-size: 20px;
           font-weight: 600;
           color: var(--red);
           white-space: nowrap;
@@ -1151,17 +1181,17 @@
 
         .menu-desc {
           color: var(--text-muted);
-          font-size: 16px;
-          line-height: 1.6;
-          margin-bottom: 15px;
+          font-size: 14px;
+          line-height: 1.5;
+          margin-bottom: 10px;
         }
 
         .dish-photo {
           width: 100%;
-          height: 150px;
+          height: 120px;
           object-fit: cover;
-          border-radius: 10px;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
           transition: transform 0.3s ease;
           border: 2px solid var(--gold);
         }
@@ -1172,33 +1202,39 @@
         }
 
         /* ============================================
-           GALLERY SECTION FOR AMBIANCE
+           GALLERY SECTION FOR AMBIANCE - IMPROVED FOR MOBILE
         ============================================ */
         .gallery-section {
           background: linear-gradient(135deg, rgba(31, 61, 43, 0.02) 0%, rgba(249, 247, 242, 1) 100%);
           padding: 80px 0;
         }
 
+        .gallery-container {
+          max-width: 100%;
+          overflow: hidden;
+        }
+
         .gallery-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 20px;
-          margin-top: 40px;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 15px;
+          margin-top: 30px;
         }
 
         .gallery-item {
-          border-radius: 12px;
+          border-radius: 10px;
           overflow: hidden;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
-          border: 3px solid var(--gold);
-          height: 250px;
+          border: 2px solid var(--gold);
+          height: 200px;
           cursor: pointer;
+          position: relative;
         }
 
         .gallery-item:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.15);
           border-color: var(--red);
         }
 
@@ -1221,27 +1257,33 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0,0,0,0.9);
+          background: rgba(0,0,0,0.95);
           z-index: 1100;
           align-items: center;
           justify-content: center;
+          padding: 20px;
+          box-sizing: border-box;
         }
 
         .lightbox-content {
           position: relative;
           max-width: 90%;
           max-height: 90%;
+          width: auto;
+          height: auto;
         }
 
         .lightbox-image {
           max-width: 100%;
           max-height: 80vh;
           border-radius: 8px;
+          display: block;
+          margin: 0 auto;
         }
 
         .close-lightbox {
           position: absolute;
-          top: -40px;
+          top: -50px;
           right: 0;
           color: white;
           font-size: 30px;
@@ -1253,6 +1295,8 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          border: none;
+          z-index: 1101;
         }
 
         .lightbox-nav {
@@ -1262,6 +1306,7 @@
           display: flex;
           justify-content: space-between;
           transform: translateY(-50%);
+          padding: 0 10px;
         }
 
         .prev-btn, .next-btn {
@@ -1277,6 +1322,12 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .prev-btn:hover, .next-btn:hover {
+          background: #b81e30;
+          transform: scale(1.1);
         }
 
         /* ============================================
@@ -1672,43 +1723,118 @@
         }
 
         /* ============================================
-           RESPONSIVE STYLES - FOR PERFECT FIT
+           RESPONSIVE STYLES - OPTIMIZED
         ============================================ */
-        @media (max-width: 480px) {
+
+        /* Mobile (up to 767px) */
+        @media (max-width: 767px) {
+          html {
+            font-size: 15px;
+          }
+          
+          body {
+            overflow-x: hidden;
+            width: 100%;
+          }
+          
           .container {
             padding: 0 15px;
           }
           
           .hero-premium {
             padding-top: 60px;
+            min-height: 90vh;
           }
           
           .menu-section, .reservation-section {
-            margin: 20px;
+            margin: 20px 10px;
             padding: 25px 15px;
+            border-radius: 15px;
           }
           
+          /* About Section - Improved feature cards */
+          .premium-features-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          
+          .premium-feature-card {
+            min-height: 180px;
+            padding: 1.2rem;
+          }
+          
+          .premium-feature-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+          }
+          
+          .premium-feature-card h4 {
+            font-size: 0.95rem;
+            min-height: 2.2rem;
+            margin-bottom: 0.5rem;
+          }
+          
+          .premium-feature-card p {
+            font-size: 0.8rem;
+            line-height: 1.3;
+          }
+          
+          /* Menu items - single column on mobile */
           .menu-item {
             grid-template-columns: 1fr;
+            gap: 15px;
             padding: 15px;
           }
           
           .dish-photo {
-            height: 180px;
+            height: 150px;
+            width: 100%;
           }
           
+          /* Gallery - single column on mobile */
           .gallery-grid {
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 10px;
           }
           
           .gallery-item {
-            height: 220px;
+            height: 180px;
+            margin: 0 5px;
+          }
+          
+          /* Language selector - scrollable */
+          .language-selector {
+            max-width: 120px;
+            padding: 2px;
+            top: 10px;
+            right: 10px;
+          }
+          
+          .language-btn {
+            padding: 5px 10px;
+            font-size: 11px;
+            min-width: 30px;
           }
           
           /* Prevent zoom on iOS input focus */
           .form-control {
             font-size: 16px;
+          }
+          
+          /* Lightbox adjustments for mobile */
+          .lightbox-content {
+            max-width: 95%;
+          }
+          
+          .close-lightbox {
+            top: -40px;
+            right: 10px;
+          }
+          
+          .lightbox-nav {
+            display: none;
           }
           
           /* Fix for mobile viewport */
@@ -1719,72 +1845,67 @@
           }
         }
 
-        /* iPad specific improvements */
+        /* iPad specific improvements (768px - 1024px) */
         @media (min-width: 768px) and (max-width: 1024px) {
           .container {
-            padding: 0 30px;
+            padding: 0 25px;
           }
           
           .premium-about-grid {
             grid-template-columns: 1fr;
+            gap: 40px;
           }
           
           .menu-section {
-            margin: 40px;
-          }
-          
-          .menu-categories-container {
-            max-height: 700px;
-          }
-          
-          .gallery-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        /* Android/Phone specific adjustments */
-        @media (max-width: 767px) {
-          body {
-            font-size: 14px;
-          }
-          
-          .premium-title .title-line-1 {
-            font-size: 2.5rem;
-          }
-          
-          .premium-subtitle {
-            font-size: 1rem;
-            padding: 0 10px;
-          }
-          
-          .menu-tabs {
-            justify-content: flex-start;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-          }
-          
-          .menu-tab {
-            padding: 10px 20px;
-            font-size: 13px;
-          }
-        }
-
-        @media (max-width: 1024px) {
-          .premium-title .title-line-1 {
-            font-size: 60px;
-          }
-          
-          .premium-title .title-line-2 {
-            font-size: 20px;
-            letter-spacing: 4px;
+            margin: 40px 25px;
           }
           
           .menu-categories-container {
             max-height: 500px;
           }
           
-          .lightbox-nav {
-            display: none;
+          .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          
+          .gallery-item {
+            height: 200px;
+          }
+          
+          .premium-features-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+          }
+          
+          .premium-feature-card {
+            min-height: 200px;
+          }
+        }
+
+        /* Desktop (1025px and above) */
+        @media (min-width: 1025px) {
+          /* Smooth scrolling enabled by default */
+          html {
+            scroll-behavior: smooth;
+          }
+        }
+
+        /* Common responsive adjustments */
+        @media (max-width: 1024px) {
+          .premium-title .title-line-1 {
+            font-size: 3.5rem;
+          }
+          
+          .premium-title .title-line-2 {
+            font-size: 1.2rem;
+          }
+          
+          .section-header h2 {
+            font-size: 2.5rem;
+          }
+          
+          .menu-categories-container {
+            max-height: 500px;
           }
         }
 
@@ -1804,7 +1925,7 @@
           }
           
           .image-frame {
-            height: 300px;
+            height: 350px;
           }
           
           .contact-grid {
@@ -1846,21 +1967,21 @@
           
           /* Hero */
           .hero-premium {
-            min-height: 90vh;
             padding-top: 70px;
           }
           
           .premium-title .title-line-1 {
-            font-size: 48px;
+            font-size: 2.5rem;
           }
           
           .premium-title .title-line-2 {
-            font-size: 18px;
-            letter-spacing: 3px;
+            font-size: 1rem;
+            letter-spacing: 2px;
           }
           
           .premium-subtitle {
-            font-size: 18px;
+            font-size: 1rem;
+            padding: 0 15px;
           }
           
           .premium-hero-buttons {
@@ -1871,39 +1992,39 @@
           
           .premium-hero-buttons .btn {
             width: 100%;
-            max-width: 300px;
+            max-width: 280px;
           }
           
           .hero-logo {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
           }
           
           /* Sections */
           .section-header h2 {
-            font-size: 36px;
+            font-size: 2rem;
           }
           
           .section-header .subtitle {
-            font-size: 16px;
+            font-size: 0.9rem;
           }
           
           /* Menu Section */
           .menu-section {
-            padding: 40px 20px;
-            margin: 40px auto;
+            padding: 30px 20px;
+            margin: 40px 15px;
           }
           
           .menu-category h3 {
-            font-size: 28px;
+            font-size: 1.5rem;
           }
           
           .menu-item-header h4 {
-            font-size: 20px;
+            font-size: 1.1rem;
           }
           
           .price {
-            font-size: 22px;
+            font-size: 1.2rem;
           }
           
           .menu-categories-container {
@@ -1913,7 +2034,7 @@
           /* Reservation */
           .reservation-section {
             padding: 40px 20px;
-            margin: 40px auto;
+            margin: 40px 15px;
           }
           
           .form-row {
@@ -1926,11 +2047,11 @@
           }
           
           .contact-card {
-            padding: 25px;
+            padding: 20px;
           }
           
           .map-container {
-            height: 350px;
+            height: 300px;
           }
           
           /* Footer */
@@ -1943,7 +2064,7 @@
           }
           
           .footer-column h3 {
-            font-size: 20px;
+            font-size: 1.2rem;
           }
           
           .footer-logo {
@@ -1956,23 +2077,22 @@
             height: 50px;
             bottom: 20px;
             right: 20px;
-            font-size: 24px;
+            font-size: 22px;
           }
         }
 
         @media (max-width: 480px) {
           .premium-title .title-line-1 {
-            font-size: 36px;
+            font-size: 2rem;
           }
           
           .premium-title .title-line-2 {
-            font-size: 16px;
-            letter-spacing: 2px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
           }
           
           .premium-subtitle {
-            font-size: 16px;
-            padding: 0 10px;
+            font-size: 0.9rem;
           }
           
           .hero-logo {
@@ -1982,19 +2102,21 @@
           
           .premium-hero-buttons .btn {
             max-width: 100%;
+            padding: 10px 20px;
+            font-size: 0.9rem;
           }
           
           .section-header h2 {
-            font-size: 28px;
+            font-size: 1.8rem;
           }
           
           .section-header .subtitle {
-            font-size: 14px;
+            font-size: 0.8rem;
             padding: 6px 15px;
           }
           
           .premium-feature-card {
-            padding: 1.5rem;
+            padding: 1rem;
           }
           
           .image-frame {
@@ -2002,8 +2124,8 @@
           }
           
           .menu-section {
-            padding: 30px 15px;
-            margin: 30px auto;
+            padding: 25px 15px;
+            margin: 30px 10px;
           }
           
           .menu-tabs {
@@ -2012,7 +2134,7 @@
           
           .menu-tab {
             padding: 8px 16px;
-            font-size: 12px;
+            font-size: 0.8rem;
           }
           
           .menu-item {
@@ -2020,19 +2142,19 @@
           }
           
           .menu-category h3 {
-            font-size: 24px;
+            font-size: 1.3rem;
           }
           
           .menu-item-header h4 {
-            font-size: 18px;
+            font-size: 1rem;
           }
           
           .price {
-            font-size: 20px;
+            font-size: 1.1rem;
           }
           
           .dish-photo {
-            height: 150px;
+            height: 140px;
           }
           
           .menu-categories-container {
@@ -2048,38 +2170,11 @@
           }
           
           .map-container {
-            height: 300px;
+            height: 250px;
           }
           
           .footer-grid {
             grid-template-columns: 1fr;
-          }
-          
-          .language-selector {
-            top: 15px;
-            right: 15px;
-            padding: 4px;
-          }
-          
-          .language-btn {
-            padding: 6px 12px;
-            font-size: 12px;
-            min-width: 35px;
-          }
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-          /* iPad specific styles */
-          .menu-section {
-            margin: 40px 20px;
-          }
-          
-          .premium-features-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          
-          .contact-info {
-            grid-template-columns: repeat(2, 1fr);
           }
         }
 
@@ -2092,20 +2187,6 @@
         .highlight-green { color: var(--green); font-weight: 600; }
         .mb-20 { margin-bottom: 20px; }
         .mt-20 { margin-top: 20px; }
-        
-        /* Mobile Language Selector - Hide initially */
-        @media (max-width: 768px) {
-            .language-selector {
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease;
-            }
-            
-            .language-selector.show {
-                opacity: 1;
-                visibility: visible;
-            }
-        }
     </style>
 </head>
 <body>
@@ -2113,7 +2194,7 @@
     <div class="italian-flag-stripe top"></div>
     <div class="italian-flag-stripe bottom"></div>
 
-    <!-- Language Selector - Vertical for Mobile/iPad -->
+    <!-- Language Selector - Scrollable for Mobile -->
     <div class="language-selector" id="languageSelector">
         <button class="language-btn active" data-lang="en">EN</button>
         <button class="language-btn" data-lang="lv">LV</button>
@@ -2278,16 +2359,16 @@
                             <div class="premium-feature-icon">
                                 <i class="fas fa-seedling"></i>
                             </div>
-                            <h4 data-translate="fresh_ingredients">Fresh & Authentic</h4>
-                            <p data-translate="fresh_desc">Daily imported ingredients from Italy combined with local produce</p>
+                            <h4 data-translate="fresh_ingredients">Fresh Ingredients</h4>
+                            <p data-translate="fresh_desc">Imported Italian ingredients & local produce</p>
                         </div>
                         
                         <div class="premium-feature-card">
                             <div class="premium-feature-icon">
                                 <i class="fas fa-wine-glass-alt"></i>
                             </div>
-                            <h4 data-translate="wine_selection">Italian Wine Collection</h4>
-                            <p data-translate="wine_desc">Carefully selected wines from Italy's finest regions</p>
+                            <h4 data-translate="wine_selection">Wine Selection</h4>
+                            <p data-translate="wine_desc">Fine wines from Italy's best regions</p>
                         </div>
                         
                         <div class="premium-feature-card">
@@ -2295,7 +2376,7 @@
                                 <i class="fas fa-award"></i>
                             </div>
                             <h4 data-translate="award_winning">Grand Opening</h4>
-                            <p data-translate="award_desc">Join us for our inaugural season with special opening offers</p>
+                            <p data-translate="award_desc">Special offers for inaugural season</p>
                         </div>
                     </div>
                 </div>
@@ -2716,7 +2797,7 @@
         </div>
     </section>
 
-    <!-- Ambience Gallery Section -->
+    <!-- Ambience Gallery Section - Updated for Mobile -->
     <section class="gallery-section" id="ambience">
         <div class="container">
             <div class="section-header">
@@ -3013,10 +3094,10 @@
     <!-- JavaScript -->
     <script>
         // ============================================
-        // L'ARTISTA ITALIAN RESTAURANT - COMPLETE VERSION
+        // L'ARTISTA ITALIAN RESTAURANT - UPDATED VERSION
         // ============================================
 
-        // Language Translations
+        // Language Translations (Updated for shorter text)
         const TRANSLATIONS = {
             en: {
                 // Navigation
@@ -3035,17 +3116,17 @@
                 'view_menu': 'VIEW MENU',
                 'explore': 'Explore',
                 
-                // About Section
+                // About Section - Updated for shorter text
                 'our_story': 'Our Story',
                 'authentic_excellence': 'Authentic Italian Excellence',
                 'about_intro': 'Welcome to L\'ARTISTA, Riga\'s newest destination for authentic Italian cuisine. We\'re excited to bring the flavors of Italy to your table.',
                 'about_description': 'Our passion for Italian culinary tradition drives us to create exceptional dining experiences. Every dish is crafted with care, using techniques passed down through generations.',
-                'fresh_ingredients': 'Fresh & Authentic',
-                'fresh_desc': 'Daily imported ingredients from Italy combined with local produce',
-                'wine_selection': 'Italian Wine Collection',
-                'wine_desc': 'Carefully selected wines from Italy\'s finest regions',
+                'fresh_ingredients': 'Fresh Ingredients',
+                'fresh_desc': 'Imported Italian ingredients & local produce',
+                'wine_selection': 'Wine Selection',
+                'wine_desc': 'Fine wines from Italy\'s best regions',
                 'award_winning': 'Grand Opening',
-                'award_desc': 'Join us for our inaugural season with special opening offers',
+                'award_desc': 'Special offers for inaugural season',
                 
                 // Menu Section
                 'our_menu': 'Our Menu',
@@ -3112,17 +3193,17 @@
                 'view_menu': 'SKATĪT ĒDIENKARTI',
                 'explore': 'Izpētīt',
                 
-                // About Section
+                // About Section - Updated for shorter text
                 'our_story': 'Mūsu Stāsts',
                 'authentic_excellence': 'Autentiska Itāļu Pārākums',
                 'about_intro': 'Laipni lūgti L\'ARTISTA, Rīgas jaunākajā itāļu ēdināšanas vietā. Mēs ar prieku piedāvājam Itālijas garšas jūsu galdam.',
                 'about_description': 'Mūsu aizraušanās ar itāļu kulinārijas tradīcijām mudina mūs radīt izcilas ēšanas pieredzes. Katrs ēdiens tiek rūpīgi pagatavots, izmantojot paaudzēm nodotās metodes.',
-                'fresh_ingredients': 'Svaigas & Autentiskas',
-                'fresh_desc': 'Katru dienu importētas Itālijas sastāvdaļas kombinētas ar vietējiem produktiem',
-                'wine_selection': 'Itāļu Vīnu Kolekcija',
-                'wine_desc': 'Rūpīgi atlasīti vīni no Itālijas labākajiem reģioniem',
+                'fresh_ingredients': 'Svaigas Sastāvdaļas',
+                'fresh_desc': 'Importētas Itālijas sastāvdaļas un vietēji produkti',
+                'wine_selection': 'Vīnu Izlase',
+                'wine_desc': 'Labi vīni no Itālijas labākajiem reģioniem',
                 'award_winning': 'Grand Opening',
-                'award_desc': 'Pievienojieties mums atklāšanas sezonā ar īpašiem piedāvājumiem',
+                'award_desc': 'Īpaši piedāvājumi atklāšanas sezonai',
                 
                 // Menu Section
                 'our_menu': 'Mūsu Ēdienkarte',
@@ -3189,17 +3270,17 @@
                 'view_menu': 'ПОСМОТРЕТЬ МЕНЮ',
                 'explore': 'Исследовать',
                 
-                // About Section
+                // About Section - Updated for shorter text
                 'our_story': 'Наша История',
                 'authentic_excellence': 'Аутентичное Итальянское Совершенство',
                 'about_intro': 'Добро пожаловать в L\'ARTISTA, новейшее место аутентичной итальянской кухни в Риге. Мы рады принести вкусы Италии к вашему столу.',
                 'about_description': 'Наша страсть к итальянским кулинарным традициям вдохновляет нас создавать исключительные гастрономические впечатления. Каждое блюдо готовится с заботой, используя методы, передаваемые из поколения в поколение.',
-                'fresh_ingredients': 'Свежие & Аутентичные',
-                'fresh_desc': 'Ежедневно импортируемые ингредиенты из Италии в сочетании с местными продуктами',
-                'wine_selection': 'Итальянская Винная Коллекция',
-                'wine_desc': 'Тщательно отобранные вина из лучших регионов Италии',
+                'fresh_ingredients': 'Свежие Ингредиенты',
+                'fresh_desc': 'Импортные итальянские ингредиенты и местные продукты',
+                'wine_selection': 'Винная Карта',
+                'wine_desc': 'Лучшие вина из лучших регионов Италии',
                 'award_winning': 'Торжественное Открытие',
-                'award_desc': 'Присоединяйтесь к нам в открывающем сезоне со специальными предложениями',
+                'award_desc': 'Специальные предложения на открывающий сезон',
                 
                 // Menu Section
                 'our_menu': 'Наше Меню',
@@ -3305,44 +3386,10 @@
             
             // Load saved language preference
             loadLanguagePreference();
-            
-            // Mobile language selector behavior
-            initMobileLanguageSelector();
         }
 
         // ============================================
-        // MOBILE LANGUAGE SELECTOR BEHAVIOR
-        // ============================================
-        function initMobileLanguageSelector() {
-            const languageSelector = document.getElementById('languageSelector');
-            
-            // Show language selector on touch/click for mobile
-            if (window.innerWidth <= 768) {
-                languageSelector.style.display = 'flex';
-                setTimeout(() => {
-                    languageSelector.classList.add('show');
-                    
-                    // Hide after 5 seconds
-                    setTimeout(() => {
-                        languageSelector.classList.remove('show');
-                        
-                        // Show again when user interacts with it
-                        languageSelector.addEventListener('mouseenter', showLanguageSelector);
-                        languageSelector.addEventListener('touchstart', showLanguageSelector);
-                    }, 5000);
-                }, 1000);
-            }
-            
-            function showLanguageSelector() {
-                languageSelector.classList.add('show');
-                setTimeout(() => {
-                    languageSelector.classList.remove('show');
-                }, 3000);
-            }
-        }
-
-        // ============================================
-        // LANGUAGE SELECTOR - VERTICAL FOR MOBILE/IPAD
+        // LANGUAGE SELECTOR - IMPROVED FOR MOBILE
         // ============================================
         function initLanguageSelector() {
             const languageBtns = document.querySelectorAll('.language-btn');
@@ -3364,6 +3411,32 @@
                     closeMobileMenu();
                 });
             });
+            
+            // Add touch support for mobile language selector
+            if (window.innerWidth <= 768) {
+                const languageSelector = document.getElementById('languageSelector');
+                let isDragging = false;
+                let startX;
+                let scrollLeft;
+                
+                languageSelector.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    startX = e.touches[0].pageX - languageSelector.offsetLeft;
+                    scrollLeft = languageSelector.scrollLeft;
+                });
+                
+                languageSelector.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    const x = e.touches[0].pageX - languageSelector.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    languageSelector.scrollLeft = scrollLeft - walk;
+                });
+                
+                languageSelector.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+            }
         }
 
         function switchLanguage(lang) {
@@ -3489,6 +3562,81 @@
         }
 
         // ============================================
+        // IMPROVED SMOOTH SCROLLING
+        // ============================================
+        function initSmoothScrolling() {
+            // Custom smooth scroll function
+            function smoothScrollTo(target, duration = 800) {
+                const targetPosition = target.offsetTop - 80;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                let startTime = null;
+                
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                }
+                
+                // Easing function
+                function easeInOutQuad(t, b, c, d) {
+                    t /= d / 2;
+                    if (t < 1) return c / 2 * t * t + b;
+                    t--;
+                    return -c / 2 * (t * (t - 2) - 1) + b;
+                }
+                
+                requestAnimationFrame(animation);
+            }
+            
+            // Handle all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === targetId) {
+                                link.classList.add('active');
+                            }
+                        });
+                        
+                        // Close mobile menu if open
+                        closeMobileMenu();
+                        
+                        // Smooth scroll to target
+                        smoothScrollTo(targetElement);
+                    }
+                });
+            });
+            
+            // Also handle the explore button
+            document.querySelectorAll('.explore-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetElement = document.getElementById('about');
+                    if (targetElement) {
+                        smoothScrollTo(targetElement);
+                    }
+                });
+            });
+            
+            // Enable native smooth scrolling for non-anchor navigation
+            if ('scrollBehavior' in document.documentElement.style) {
+                // Browser supports native smooth scrolling
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }
+        }
+
+        // ============================================
         // RESERVATION OPTIONS (WHATSAPP & EMAIL)
         // ============================================
         function initReservationOptions() {
@@ -3502,6 +3650,17 @@
                 
                 emailOption.addEventListener('click', function() {
                     setReservationMethod('email');
+                });
+                
+                // Touch support for mobile
+                whatsappOption.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    this.click();
+                });
+                
+                emailOption.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    this.click();
                 });
             }
         }
@@ -3622,6 +3781,11 @@
                     }
                 });
 
+                // Touch support for mobile menu
+                mobileMenu.addEventListener('touchstart', function(e) {
+                    e.stopPropagation();
+                });
+
                 // Prevent body scroll when menu is open
                 document.addEventListener('touchmove', function(e) {
                     if (mobileMenu.classList.contains('active')) {
@@ -3657,6 +3821,13 @@
                 menuOverlay.classList.toggle('active');
                 menuToggle.classList.toggle('active');
                 document.body.style.overflow = isActive ? 'hidden' : 'auto';
+                
+                // Add/remove touch action for iOS
+                if (isActive) {
+                    document.body.style.touchAction = 'none';
+                } else {
+                    document.body.style.touchAction = 'auto';
+                }
             }
         }
 
@@ -3670,6 +3841,7 @@
                 menuOverlay.classList.remove('active');
                 menuToggle.classList.remove('active');
                 document.body.style.overflow = 'auto';
+                document.body.style.touchAction = 'auto';
             }
         }
 
@@ -3703,20 +3875,44 @@
                     showMenuCategory(categoryId);
                     
                     // Scroll to menu section
-                    document.getElementById('menu').scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
+                    const menuSection = document.getElementById('menu');
+                    if (menuSection) {
+                        smoothScrollToElement(menuSection);
+                    }
                 });
-            });
-            
-            // Add touch support for mobile tabs
-            menuTabs.forEach(tab => {
+                
+                // Add touch support for mobile tabs
                 tab.addEventListener('touchstart', function(e) {
                     e.preventDefault();
                     this.click();
                 });
             });
+            
+            // Add horizontal scroll for mobile tabs
+            if (window.innerWidth <= 768) {
+                const tabsContainer = document.querySelector('.menu-tabs');
+                let isDragging = false;
+                let startX;
+                let scrollLeft;
+                
+                tabsContainer.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    startX = e.touches[0].pageX - tabsContainer.offsetLeft;
+                    scrollLeft = tabsContainer.scrollLeft;
+                });
+                
+                tabsContainer.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    const x = e.touches[0].pageX - tabsContainer.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    tabsContainer.scrollLeft = scrollLeft - walk;
+                });
+                
+                tabsContainer.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+            }
         }
 
         function showMenuCategory(categoryId) {
@@ -3994,7 +4190,7 @@ ${RESTAURANT_CONFIG.phoneNumber}
         }
 
         // ============================================
-        // GALLERY SYSTEM
+        // GALLERY SYSTEM - OPTIMIZED FOR MOBILE
         // ============================================
         function initGallery() {
             const galleryItems = document.querySelectorAll('.gallery-item');
@@ -4033,6 +4229,13 @@ ${RESTAURANT_CONFIG.phoneNumber}
                         openLightbox(images[currentIndex]);
                     }
                 });
+                
+                // Add touch support
+                item.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    currentIndex = index;
+                    openLightbox(images[currentIndex]);
+                });
             });
             
             function openLightbox(src) {
@@ -4041,6 +4244,7 @@ ${RESTAURANT_CONFIG.phoneNumber}
                 lightboxImage.src = src;
                 lightboxImage.alt = 'Restaurant Ambience Image';
                 document.body.style.overflow = 'hidden';
+                document.body.style.touchAction = 'none';
                 
                 // Focus management for accessibility
                 lightbox.querySelector('.close-lightbox').focus();
@@ -4049,6 +4253,7 @@ ${RESTAURANT_CONFIG.phoneNumber}
             function closeLightbox() {
                 lightbox.style.display = 'none';
                 document.body.style.overflow = 'auto';
+                document.body.style.touchAction = 'auto';
                 
                 // Return focus to the gallery item that was clicked
                 galleryItems[currentIndex].focus();
@@ -4063,6 +4268,17 @@ ${RESTAURANT_CONFIG.phoneNumber}
             lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
             lightbox.querySelector('.prev-btn').addEventListener('click', () => navigateLightbox(-1));
             lightbox.querySelector('.next-btn').addEventListener('click', () => navigateLightbox(1));
+            
+            // Touch support for lightbox navigation
+            lightbox.querySelector('.prev-btn').addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                navigateLightbox(-1);
+            });
+            
+            lightbox.querySelector('.next-btn').addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                navigateLightbox(1);
+            });
             
             // Close lightbox when clicking outside the image
             lightbox.addEventListener('click', (e) => {
@@ -4083,6 +4299,34 @@ ${RESTAURANT_CONFIG.phoneNumber}
                     }
                 }
             });
+            
+            // Touch gestures for mobile lightbox navigation
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            lightbox.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            lightbox.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const minSwipeDistance = 50;
+                const distance = touchStartX - touchEndX;
+                
+                if (Math.abs(distance) < minSwipeDistance) return;
+                
+                if (distance > 0) {
+                    // Swipe left - next image
+                    navigateLightbox(1);
+                } else {
+                    // Swipe right - previous image
+                    navigateLightbox(-1);
+                }
+            }
         }
 
         // ============================================
@@ -4293,6 +4537,20 @@ ${RESTAURANT_CONFIG.phoneNumber}
                     .notification-error .notification-progress {
                         background: #D6273B;
                     }
+                    
+                    @media (max-width: 768px) {
+                        .notification {
+                            top: 80px;
+                            right: 10px;
+                            left: 10px;
+                            max-width: none;
+                            transform: translateY(-100px);
+                        }
+                        
+                        .notification.show {
+                            transform: translateY(0);
+                        }
+                    }
                 `;
                 document.head.appendChild(styles);
             }
@@ -4334,37 +4592,32 @@ ${RESTAURANT_CONFIG.phoneNumber}
         }
 
         // ============================================
-        // SMOOTH SCROLLING
+        // CUSTOM SMOOTH SCROLL TO ELEMENT
         // ============================================
-        function initSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // Update active nav link
-                        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === targetId) {
-                                link.classList.add('active');
-                            }
-                        });
-                        
-                        // Close mobile menu if open
-                        closeMobileMenu();
-                        
-                        // Scroll to target
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        function smoothScrollToElement(element) {
+            const targetPosition = element.offsetTop - 80;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 800;
+            let startTime = null;
+            
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+            
+            // Easing function
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+            
+            requestAnimationFrame(animation);
         }
 
         // ============================================
@@ -4387,6 +4640,11 @@ ${RESTAURANT_CONFIG.phoneNumber}
                         if (input.classList.contains('invalid')) {
                             input.classList.remove('invalid');
                         }
+                    });
+                    
+                    // Touch support for mobile
+                    input.addEventListener('touchstart', (e) => {
+                        e.stopPropagation();
                     });
                 });
             });
