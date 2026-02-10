@@ -1,0 +1,35 @@
+// Cache management utilities
+const CacheManager = {
+    async clearAllCaches() {
+        const cacheNames = await caches.keys();
+        await Promise.all(
+            cacheNames.map(cacheName => caches.delete(cacheName))
+        );
+        console.log('All caches cleared');
+        return true;
+    },
+    
+    async getCacheStats() {
+        const cacheNames = await caches.keys();
+        const stats = [];
+        
+        for (const cacheName of cacheNames) {
+            const cache = await caches.open(cacheName);
+            const requests = await cache.keys();
+            stats.push({
+                name: cacheName,
+                size: requests.length,
+                urls: requests.map(req => req.url)
+            });
+        }
+        
+        return stats;
+    },
+    
+    async precacheUrls(urls) {
+        const cache = await caches.open('lartista-v3');
+        await cache.addAll(urls);
+        console.log('Precached', urls.length, 'urls');
+        return true;
+    }
+};
