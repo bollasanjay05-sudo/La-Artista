@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- SEO OPTIMIZATION FOR TOP RANKINGS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'ARTISTA | Italian Restaurant</title>
-    <meta name="description" content="Authentic Italian restaurant experience at L'ARTISTA in Riga, Latvia">
-    <meta name="robots" content="index, follow">
+    <title>Italian Restaurant in Riga – L'artista | Authentic Pasta, Pizza & Italian Wine</title>
+    
+    <!-- CRITICAL SEO META TAGS -->
+    <meta name="description" content="Best Italian restaurant in Riga – L'artista. Authentic pasta, pizza & fine Italian wine. Top-rated Italian dining experience in Latvia. Book your table now!">
+    <meta name="keywords" content="best italian restaurant, italian restaurant, pizza, pasta, fine dine, italian restaurant near me, best pasta in Riga, italian restaurant Riga, authentic italian food, wine restaurant Riga">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- SCHEMA MARKUP FOR BETTER GOOGLE RANKINGS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "L'artista Italian Restaurant",
+      "description": "Authentic Italian Restaurant in Riga offering the best pasta, pizza and fine Italian wine",
+      "url": "https://lartista.lv",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Vaļņu iela 25",
+        "addressLocality": "Riga",
+        "addressRegion": "Centra rajons",
+        "postalCode": "LV-1050",
+        "addressCountry": "LV"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "56.9496",
+        "longitude": "24.1052"
+      },
+      "priceRange": "€€",
+      "servesCuisine": "Italian",
+      "telephone": "+37125455947",
+      "email": "lartista2025@gmail.com",
+      "openingHours": [
+        "Tu-Th 12:00-23:00",
+        "Fr-Sa 12:00-23:00",
+        "Su 12:00-23:00",
+        "Mo 00:00-00:00"
+      ],
+      "menu": "https://lartista.lv/menu",
+      "acceptsReservations": "True",
+      "image": "https://lartista.lv/images/restaurant-interior.jpg",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127"
+      }
+    }
+    </script>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="lartista-logo.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -272,7 +322,6 @@
           text-transform: uppercase;
           letter-spacing: 1px;
           text-decoration: none;
-          border-radius: 4px;
           cursor: pointer;
           transition: var(--transition);
           gap: 8px;
@@ -824,16 +873,15 @@
           border: 2px solid white;
           color: white;
           padding: 12px 40px;
-          border-radius: 30px;
-          font-size: 16px;
-          font-weight: 500;
-          letter-spacing: 2px;
           cursor: pointer;
           transition: all 0.3s ease;
           text-transform: uppercase;
           display: inline-flex;
           align-items: center;
           gap: 10px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          letter-spacing: 1px;
         }
 
         .explore-btn:hover {
@@ -866,7 +914,6 @@
           display: inline-block;
           padding: 8px 20px;
           border: 2px solid var(--red);
-          border-radius: 30px;
           background: rgba(214, 39, 59, 0.1);
         }
 
@@ -929,7 +976,6 @@
         .premium-feature-card {
           background: white;
           padding: 1.5rem;
-          border-radius: 12px;
           text-align: center;
           box-shadow: var(--shadow);
           transition: var(--transition);
@@ -1049,7 +1095,6 @@
           background: transparent;
           border: 2px solid rgba(214, 39, 59, 0.2);
           color: var(--text-dark);
-          border-radius: 25px;
           cursor: pointer;
           font-size: 13px;
           font-weight: 500;
@@ -1058,6 +1103,7 @@
           transition: var(--transition);
           white-space: nowrap;
           flex-shrink: 0;
+          font-family: 'Inter', sans-serif;
         }
 
         .menu-tab:hover {
@@ -1378,7 +1424,6 @@
           border: 2px solid rgba(255, 255, 255, 0.2);
           background: rgba(255, 255, 255, 0.1);
           color: white;
-          border-radius: 8px;
           font-size: 16px;
           font-family: 'Inter', sans-serif;
           transition: var(--transition);
@@ -1749,7 +1794,6 @@
           .menu-section, .reservation-section {
             margin: 20px 10px;
             padding: 25px 15px;
-            border-radius: 15px;
           }
           
           /* About Section - Improved feature cards */
@@ -2178,6 +2222,95 @@
           }
         }
 
+        /* NEW: Click-to-Expand Gallery Style */
+        .click-expand-gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 10px;
+          margin-top: 30px;
+        }
+
+        .click-expand-thumbnail {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          border: 2px solid var(--gold);
+          border-radius: 4px;
+        }
+
+        .click-expand-thumbnail:hover {
+          transform: scale(1.02);
+          border-color: var(--red);
+        }
+
+        /* NEW: Updated Hours Display */
+        .hours-display {
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+          margin: 20px 0;
+        }
+
+        .hours-day {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0;
+          border-bottom: 1px solid rgba(214, 39, 59, 0.1);
+        }
+
+        .hours-day:last-child {
+          border-bottom: none;
+        }
+
+        .hours-day.closed {
+          color: var(--text-light);
+          font-style: italic;
+        }
+
+        /* NEW: Review Links Styling */
+        .review-links {
+          display: flex;
+          gap: 15px;
+          margin-top: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .review-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          background: white;
+          color: var(--green);
+          text-decoration: none;
+          border-radius: 25px;
+          transition: all 0.3s ease;
+          border: 2px solid rgba(31, 61, 43, 0.2);
+          font-weight: 500;
+        }
+
+        .review-link:hover {
+          background: var(--green);
+          color: white;
+          transform: translateY(-3px);
+          border-color: var(--green);
+          box-shadow: 0 5px 15px rgba(31, 61, 43, 0.2);
+        }
+
+        .review-link.tripadvisor:hover {
+          background: #34E0A1;
+          border-color: #34E0A1;
+        }
+
+        .review-link.google:hover {
+          background: #4285F4;
+          border-color: #4285F4;
+        }
+
         /* Utility Classes */
         .red-text { color: var(--red); }
         .green-text { color: var(--green); }
@@ -2305,11 +2438,27 @@
                 </div>
                 
                 <div class="premium-title">
-                    <span class="title-line-1">L'ARTISTA</span>
-                    <span class="title-line-2" data-translate="restaurant">Italian Restaurant</span>
+                    <span class="title-line-1">Italian Restaurant in Riga – L'ARTISTA</span>
+                    <span class="title-line-2" data-translate="restaurant">Authentic Pasta, Pizza & Italian Wine</span>
                 </div>
                 
-                <p class="premium-subtitle" data-translate="hero_subtitle">Authentic Italian Cuisine in the Heart of Riga</p>
+                <p class="premium-subtitle" data-translate="hero_subtitle">Experience the best Italian restaurant in Riga – authentic pasta, award-winning pizza & fine Italian wine</p>
+                
+                <!-- Review Links -->
+                <div class="review-links">
+                    <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" 
+                       class="review-link tripadvisor" target="_blank" rel="noopener">
+                        <i class="fab fa-tripadvisor"></i> TripAdvisor
+                    </a>
+                    <a href="https://tableagent.com/riga/lartista-riga/" 
+                       class="review-link" target="_blank" rel="noopener">
+                        <i class="fas fa-utensils"></i> TableAgent
+                    </a>
+                    <a href="https://share.google/NWrlK2jda9LTUFbij" 
+                       class="review-link google" target="_blank" rel="noopener">
+                        <i class="fab fa-google"></i> Google Reviews
+                    </a>
+                </div>
                 
                 <div class="premium-hero-buttons">
                     <a href="#reservation" class="btn btn-premium btn-large">
@@ -2347,11 +2496,11 @@
             <div class="premium-about-grid">
                 <div class="premium-content">
                     <p class="premium-intro" data-translate="about_intro">
-                        Welcome to <span class="highlight-red">L'ARTISTA</span>, Riga's newest destination for authentic Italian cuisine. We're excited to bring the flavors of Italy to your table.
+                        Welcome to <span class="highlight-red">L'ARTISTA</span>, Riga's premier destination for authentic Italian cuisine. Our chefs are true artists who transform the finest ingredients into culinary masterpieces.
                     </p>
                     
                     <p class="premium-description" data-translate="about_description">
-                        Our passion for Italian culinary tradition drives us to create exceptional dining experiences. Every dish is crafted with care, using techniques passed down through generations.
+                        At L'ARTISTA, we don't just serve food – we create experiences. Every dish tells a story of Italian heritage, crafted with passion and precision. Our hand-selected ingredients from Italy combined with local produce ensure an authentic taste that transports you straight to Italy.
                     </p>
                     
                     <div class="premium-features-grid">
@@ -2359,24 +2508,24 @@
                             <div class="premium-feature-icon">
                                 <i class="fas fa-seedling"></i>
                             </div>
-                            <h4 data-translate="fresh_ingredients">Fresh Ingredients</h4>
-                            <p data-translate="fresh_desc">Imported Italian ingredients & local produce</p>
+                            <h4 data-translate="fresh_ingredients">From Italy with Love</h4>
+                            <p data-translate="fresh_desc">Direct imports of Italian truffles, cheeses & olive oils</p>
                         </div>
                         
                         <div class="premium-feature-card">
                             <div class="premium-feature-icon">
                                 <i class="fas fa-wine-glass-alt"></i>
                             </div>
-                            <h4 data-translate="wine_selection">Wine Selection</h4>
-                            <p data-translate="wine_desc">Fine wines from Italy's best regions</p>
+                            <h4 data-translate="wine_selection">Wine Cellar Secrets</h4>
+                            <p data-translate="wine_desc">Curated selection from Italy's hidden vineyards</p>
                         </div>
                         
                         <div class="premium-feature-card">
                             <div class="premium-feature-icon">
                                 <i class="fas fa-award"></i>
                             </div>
-                            <h4 data-translate="award_winning">Grand Opening</h4>
-                            <p data-translate="award_desc">Special offers for inaugural season</p>
+                            <h4 data-translate="award_winning">Artistry on a Plate</h4>
+                            <p data-translate="award_desc">Every dish is a masterpiece crafted by our culinary artists</p>
                         </div>
                     </div>
                 </div>
@@ -2408,6 +2557,7 @@
                 <button class="menu-tab active" data-category="starters" data-translate="starters">Starters</button>
                 <button class="menu-tab" data-category="main" data-translate="main_courses">Main Courses</button>
                 <button class="menu-tab" data-category="pizza" data-translate="pizza">Pizza</button>
+                <button class="menu-tab" data-category="pasta" data-translate="pasta">Pasta</button>
                 <button class="menu-tab" data-category="dessert" data-translate="dessert">Dessert</button>
                 <button class="menu-tab" data-category="drinks" data-translate="drinks">Drinks</button>
                 <button class="menu-tab" data-category="wine" data-translate="wine_list">Wine List</button>
@@ -2426,7 +2576,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Caesar Salad</h4>
-                                <span class="price">€12</span>
+                                <span class="price">€12.00</span>
                             </div>
                             <p class="menu-desc">Parmesan cheese, toast</p>
                         </div>
@@ -2438,9 +2588,9 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Creamy Burrata</h4>
-                                <span class="price">€15</span>
+                                <span class="price">€15.00</span>
                             </div>
-                            <p class="menu-desc">Sweet cherry tomatoes, basil oil, pistachios</p>
+                            <p class="menu-desc">Served with sweet cherry tomatoes, basil oil and pistachio pesto</p>
                         </div>
                     </div>
                     
@@ -2450,7 +2600,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Lemon-Garlic Prawns</h4>
-                                <span class="price">€15</span>
+                                <span class="price">€15.00</span>
                             </div>
                             <p class="menu-desc">Served with homemade focaccia</p>
                         </div>
@@ -2462,9 +2612,9 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Vitello Tonnato</h4>
-                                <span class="price">€17</span>
+                                <span class="price">€17.00</span>
                             </div>
-                            <p class="menu-desc">Thinly sliced veal with creamy tuna foam</p>
+                            <p class="menu-desc">Tender, thinly sliced veal with creamy tuna foam</p>
                         </div>
                     </div>
                     
@@ -2474,9 +2624,9 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Antipasto</h4>
-                                <span class="price">€25</span>
+                                <span class="price">€25.00</span>
                             </div>
-                            <p class="menu-desc">Italian cured meats & cheeses with jam and grissini</p>
+                            <p class="menu-desc">The finest selection of Italian cured meats and cheeses, served with jam and grissini</p>
                         </div>
                     </div>
                     
@@ -2486,7 +2636,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Beef Carpaccio</h4>
-                                <span class="price">€16</span>
+                                <span class="price">€16.00</span>
                             </div>
                             <p class="menu-desc">Parmesan, arugula, truffle oil</p>
                         </div>
@@ -2500,7 +2650,7 @@
                                 <h4>Bruschettas</h4>
                                 <span class="price">€8.50</span>
                             </div>
-                            <p class="menu-desc">Choice of: Stracciatella, mortadella, pistachio or Smoked zucchini, cream cheese, pine nuts or cherry tomatoes and fresh herbs</p>
+                            <p class="menu-desc">with stracciatella, mortadella and pistachio pesto / With smoked zucchini, cream cheese, pine nuts / with cherry tomatoes and fresh herbs</p>
                         </div>
                     </div>
                     
@@ -2510,9 +2660,9 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Eggplant Parmesan</h4>
-                                <span class="price">€14</span>
+                                <span class="price">€14.00</span>
                             </div>
-                            <p class="menu-desc">Tomato sauce, fresh mozzarella</p>
+                            <p class="menu-desc">Layers of tender eggplant, rich tomato sauce, fresh mozzarella</p>
                         </div>
                     </div>
                 </div>
@@ -2527,21 +2677,21 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Truffle Risotto</h4>
-                                <span class="price">€25</span>
+                                <span class="price">€25.00</span>
                             </div>
                             <p class="menu-desc">Creamy risotto with fresh black truffles</p>
                         </div>
                     </div>
                     
-                    <!-- Escalope Butter Veal -->
+                    <!-- Lemon-Butter Veal Escalopes -->
                     <div class="menu-item" data-category="main">
-                        <img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" alt="Escalope Butter Veal" class="dish-photo">
+                        <img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" alt="Lemon-Butter Veal Escalopes" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Escalope Butter Veal</h4>
-                                <span class="price">€29</span>
+                                <h4>Lemon-Butter Veal Escalopes</h4>
+                                <span class="price">€29.00</span>
                             </div>
-                            <p class="menu-desc">Tender veal in a juicy sauce, fried potatoes or salad</p>
+                            <p class="menu-desc">Tender veal in a juicy sauce, served with fried potatoes or fresh salad</p>
                         </div>
                     </div>
                     
@@ -2551,9 +2701,9 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Zuppa di Pesce</h4>
-                                <span class="price">€17</span>
+                                <span class="price">€17.00</span>
                             </div>
-                            <p class="menu-desc">Richly flavored fish soup with shellfish and herbs</p>
+                            <p class="menu-desc">Richly flavored fish soup with a mixture of fish, shellfish and aromatic herbs</p>
                         </div>
                     </div>
                     
@@ -2563,9 +2713,9 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Sea Bass Fillet</h4>
-                                <span class="price">€23</span>
+                                <span class="price">€23.00</span>
                             </div>
-                            <p class="menu-desc">Delicate sea bass with fresh herbs</p>
+                            <p class="menu-desc">Delicate sea bass fillet, served with creamy spinach risotto</p>
                         </div>
                     </div>
                     
@@ -2575,26 +2725,42 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Fillet Mignon</h4>
-                                <span class="price">€39</span>
+                                <span class="price">€39.00</span>
                             </div>
-                            <p class="menu-desc">Argentine Black Angus (200 g), bourbon sauce</p>
+                            <p class="menu-desc">Argentinean Black Angus fillet (200 g), served with bourbon sauce</p>
                         </div>
                     </div>
                     
-                    <!-- Pistachio Pesto - MOVED FROM PIZZA TO MAIN COURSES -->
+                    <!-- Additives -->
                     <div class="menu-item" data-category="main">
-                        <img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" alt="Pistachio Pesto Pasta" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Pistachio Pesto Pasta</h4>
-                                <span class="price">€18</span>
+                                <h4>Baked Rosemary-Garlic Potatoes</h4>
+                                <span class="price">€6.00</span>
                             </div>
-                            <p class="menu-desc">Fresh pasta with homemade pistachio pesto and stracciatella cheese</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="main">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Mixed Seasonal Salad</h4>
+                                <span class="price">€9.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="main">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Bread Basket</h4>
+                                <span class="price">€4.50</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Pizza Menu - COMPLETE WITH ALL PIZZAS (Pistachio Pesto removed) -->
+                <!-- Pizza Menu - COMPLETE WITH ALL PIZZAS -->
                 <div class="menu-category" id="pizza">
                     <h3><i class="fas fa-pizza-slice"></i> <span data-translate="pizza">Pizza</span></h3>
                     
@@ -2604,7 +2770,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Margherita</h4>
-                                <span class="price">€10</span>
+                                <span class="price">€10.00</span>
                             </div>
                         </div>
                     </div>
@@ -2615,7 +2781,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Marinara</h4>
-                                <span class="price">€10</span>
+                                <span class="price">€14.00</span>
                             </div>
                         </div>
                     </div>
@@ -2626,7 +2792,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Salami</h4>
-                                <span class="price">€14</span>
+                                <span class="price">€14.00</span>
                             </div>
                         </div>
                     </div>
@@ -2637,7 +2803,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Quattro Formaggi</h4>
-                                <span class="price">€15</span>
+                                <span class="price">€16.00</span>
                             </div>
                         </div>
                     </div>
@@ -2647,8 +2813,8 @@
                         <img src="LARTISTA DISHES/DIAVOLA.jpg" alt="Diavola Pizza" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Diavola 🌶</h4>
-                                <span class="price">€15</span>
+                                <h4>Diavola</h4>
+                                <span class="price">€15.00</span>
                             </div>
                         </div>
                     </div>
@@ -2659,30 +2825,93 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Prosciutto</h4>
-                                <span class="price">€15</span>
+                                <span class="price">€18.00</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Mortadella & Stracciatella -->
+                    <!-- Mortadella and Stracciatella, Pistachio Pesto -->
                     <div class="menu-item" data-category="pizza">
-                        <img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" alt="Mortadella & Stracciatella Pizza" class="dish-photo">
+                        <img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" alt="Mortadella and Stracciatella Pizza" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Mortadella & Stracciatella</h4>
-                                <span class="price">€18</span>
+                                <h4>Mortadella & Stracciatella with Pistachio Pesto</h4>
+                                <span class="price">€18.00</span>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Pasta Menu -->
+                <div class="menu-category" id="pasta">
+                    <h3><i class="fas fa-utensils"></i> <span>Pasta</span></h3>
                     
-                    <!-- Burrata Pizza -->
-                    <div class="menu-item" data-category="pizza">
-                        <img src="LARTISTA DISHES/Burrata.jpg" alt="Burrata Pizza" class="dish-photo">
+                    <!-- Carbonara -->
+                    <div class="menu-item" data-category="pasta">
+                        <img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" alt="Carbonara" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Burrata</h4>
-                                <span class="price">€16</span>
+                                <h4>Carbonara</h4>
+                                <span class="price">€18.00</span>
                             </div>
+                            <p class="menu-desc">Cheek, pecorino cheese, egg yolk</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cacio e Pepe/Black Truffles -->
+                    <div class="menu-item" data-category="pasta">
+                        <img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" alt="Cacio e Pepe" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Cacio e Pepe / Black Truffles</h4>
+                                <span class="price">€14.00 / €24.00</span>
+                            </div>
+                            <p class="menu-desc">Pecorino cheese and black pepper, with the option to expand with black truffles</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Penne all'Arrabiata -->
+                    <div class="menu-item" data-category="pasta">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Penne all'Arrabiata</h4>
+                                <span class="price">€13.00</span>
+                            </div>
+                            <p class="menu-desc">With spicy garlic and chili tomato sauce, aromatic herbs</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pistachio Pesto and Stracciatella -->
+                    <div class="menu-item" data-category="pasta">
+                        <img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" alt="Pistachio Pesto and Stracciatella" class="dish-photo">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Pistachio Pesto and Stracciatella</h4>
+                                <span class="price">€18.00</span>
+                            </div>
+                            <p class="menu-desc">Creamy pistachio pesto with stracciatella</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Frutti di Mare -->
+                    <div class="menu-item" data-category="pasta">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>Frutti di Mare</h4>
+                                <span class="price">€21.00</span>
+                            </div>
+                            <p class="menu-desc">Fresh seafood mix in aromatic sauce</p>
+                        </div>
+                    </div>
+                    
+                    <!-- L'Artista -->
+                    <div class="menu-item" data-category="pasta">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4>L'Artista</h4>
+                                <span class="price">€32.00</span>
+                            </div>
+                            <p class="menu-desc">Our signature dish with succulent lobster and black caviar</p>
                         </div>
                     </div>
                 </div>
@@ -2695,8 +2924,8 @@
                         <img src="LARTISTA DISHES/TIRAMISU.jpg" alt="Classic Tiramisù" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Classic Tiramisù</h4>
-                                <span class="price">€8</span>
+                                <h4>Classic Tiramisu</h4>
+                                <span class="price">€8.00</span>
                             </div>
                         </div>
                     </div>
@@ -2705,8 +2934,8 @@
                         <img src="LARTISTA DISHES/LEMON POSETTA.jpg" alt="Lemon Posset" class="dish-photo">
                         <div class="menu-item-content">
                             <div class="menu-item-header">
-                                <h4>Lemon Posset in white chocolate</h4>
-                                <span class="price">€8</span>
+                                <h4>Lemon Posset in White Chocolate</h4>
+                                <span class="price">€8.00</span>
                             </div>
                         </div>
                     </div>
@@ -2720,7 +2949,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Aperol Spritz</h4>
-                                <span class="price">€10</span>
+                                <span class="price">€10.00</span>
                             </div>
                         </div>
                     </div>
@@ -2729,7 +2958,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Campari Spritz</h4>
-                                <span class="price">€10</span>
+                                <span class="price">€10.00</span>
                             </div>
                         </div>
                     </div>
@@ -2738,7 +2967,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Kronenbourg 1664 Blanc 5%</h4>
-                                <span class="price">€4.5 / €6</span>
+                                <span class="price">€4.5 / €6.00</span>
                             </div>
                         </div>
                     </div>
@@ -2747,7 +2976,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Grimbergen Blonde 6.7%</h4>
-                                <span class="price">€5</span>
+                                <span class="price">€5.00</span>
                             </div>
                         </div>
                     </div>
@@ -2761,7 +2990,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Valdo Prosecco Extra Dry</h4>
-                                <span class="price">€9 / €35</span>
+                                <span class="price">€9.00 / €35.00</span>
                             </div>
                         </div>
                     </div>
@@ -2770,7 +2999,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Ruggeri Argeo Prosecco Treviso</h4>
-                                <span class="price">€55</span>
+                                <span class="price">€55.00</span>
                             </div>
                         </div>
                     </div>
@@ -2779,7 +3008,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>Sella & Mosca Anemone Rosato</h4>
-                                <span class="price">€39</span>
+                                <span class="price">€39.00</span>
                             </div>
                         </div>
                     </div>
@@ -2788,7 +3017,7 @@
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h4>La Solca Gavi di Gavi – White Label</h4>
-                                <span class="price">€69</span>
+                                <span class="price">€69.00</span>
                             </div>
                         </div>
                     </div>
@@ -2810,37 +3039,20 @@
                 </div>
             </div>
             
-            <div class="gallery-container">
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt="L'ARTISTA Restaurant Interior" 
-                             class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="L'ARTISTA Dining Area" 
-                             class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="LARTISTA AMBIANCE/R6II7523.jpg" alt="L'ARTISTA Bar Area" 
-                             class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'ARTISTA Ambience" 
-                             class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="LARTISTA AMBIANCE/R6II7601.jpg" alt="L'ARTISTA Seating" 
-                             class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="LARTISTA AMBIANCE/R6II7614.jpg" alt="L'ARTISTA Details" 
-                             class="gallery-image" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="LARTISTA AMBIANCE/R6II7633.jpg" alt="L'ARTISTA Atmosphere" 
-                             class="gallery-image" loading="lazy">
-                    </div>
-                </div>
+            <!-- Click-to-Expand Gallery -->
+            <div class="click-expand-gallery">
+                <img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" 
+                     alt="L'ARTISTA Restaurant Interior" 
+                     class="click-expand-thumbnail">
+                <img src="LARTISTA AMBIANCE/R6II7513.jpg" 
+                     alt="L'ARTISTA Dining Area" 
+                     class="click-expand-thumbnail">
+                <img src="LARTISTA AMBIANCE/R6II7523.jpg" 
+                     alt="L'ARTISTA Bar Area" 
+                     class="click-expand-thumbnail">
+                <img src="LARTISTA AMBIANCE/R6II7575.jpg" 
+                     alt="L'ARTISTA Ambience" 
+                     class="click-expand-thumbnail">
             </div>
         </div>
     </section>
@@ -2891,7 +3103,7 @@
                         
                         <div class="form-group">
                             <label for="email" data-translate="email_address">Email Address *</label>
-                            <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                            <input type="email" id="email" class="form-control" placeholder="lartista2025@gmail.com" required>
                         </div>
                     </div>
                     
@@ -2928,15 +3140,18 @@
                             <label for="time" data-translate="preferred_time">Preferred Time *</label>
                             <select id="time" class="form-control" required>
                                 <option value="" disabled selected data-translate="select_time">Select preferred time...</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
                                 <option value="17:00">5:00 PM</option>
-                                <option value="17:30">5:30 PM</option>
                                 <option value="18:00">6:00 PM</option>
-                                <option value="18:30">6:30 PM</option>
                                 <option value="19:00">7:00 PM</option>
-                                <option value="19:30">7:30 PM</option>
                                 <option value="20:00">8:00 PM</option>
-                                <option value="20:30">8:30 PM</option>
                                 <option value="21:00">9:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                                <option value="23:00">11:00 PM</option>
                             </select>
                         </div>
                     </div>
@@ -2974,10 +3189,9 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <h3 data-translate="address">Address</h3>
-                        <p>Elizabetes iela 123</p>
+                        <p>Vaļņu iela 25</p>
                         <p>Centra rajons, Rīga</p>
-                        <p>LV-1010, Latvia</p>
-                        <p class="contact-note" data-translate="parking_available">Valet parking available</p>
+                        <p>LV-1050, Latvia</p>
                     </div>
                     
                     <div class="contact-card">
@@ -2997,8 +3211,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h3 data-translate="email">Email</h3>
-                        <a href="mailto:lartista2026@gmail.com" class="email-link">
-                            <i class="fas fa-envelope"></i> <span>lartista2026@gmail.com</span>
+                        <a href="mailto:lartista2025@gmail.com" class="email-link">
+                            <i class="fas fa-envelope"></i> <span>lartista2025@gmail.com</span>
                         </a>
                         <p data-translate="email_purpose">For reservations and inquiries</p>
                     </div>
@@ -3007,9 +3221,37 @@
                         <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <h3 data-translate="hours">Hours</h3>
-                        <p><strong data-translate="mon_sun">Mon-Sun:</strong> 5PM - 11PM</p>
-                        <p class="contact-note" data-translate="reservations_recommended">Reservations recommended</p>
+                        <h3 data-translate="hours">Opening Hours</h3>
+                        <div class="hours-display">
+                            <div class="hours-day">
+                                <span>Sunday</span>
+                                <span>12:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="hours-day closed">
+                                <span>Monday</span>
+                                <span>Closed</span>
+                            </div>
+                            <div class="hours-day">
+                                <span>Tuesday</span>
+                                <span>12:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="hours-day">
+                                <span>Wednesday</span>
+                                <span>12:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="hours-day">
+                                <span>Thursday</span>
+                                <span>12:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="hours-day">
+                                <span>Friday</span>
+                                <span>12:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="hours-day">
+                                <span>Saturday</span>
+                                <span>12:00 AM - 11:00 PM</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -3039,8 +3281,8 @@
                         <div class="logo-fallback">L'ARTISTA</div>
                     </div>
                     <h3>L'ARTISTA</h3>
-                    <p class="footer-subtitle" data-translate="restaurant">Italian Restaurant</p>
-                    <p data-translate="footer_description">Authentic Italian cuisine in the heart of Riga.</p>
+                    <p class="footer-subtitle" data-translate="restaurant">Italian Restaurant in Riga</p>
+                    <p data-translate="footer_description">Authentic pasta, pizza & fine Italian wine in the heart of Riga.</p>
                 </div>
                 
                 <div class="footer-column">
@@ -3054,36 +3296,42 @@
                 <div class="footer-column">
                     <h3 data-translate="connect_with_us">Connect With Us</h3>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61586930476783" class="social-icon" aria-label="Facebook" target="_blank">
+                        <a href="https://www.facebook.com/profile.php?id=61586930476783" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/lartista2026?igsh=MjNkcWltcmkzcHo3&utm_source=qr" class="social-icon" aria-label="Instagram" target="_blank">
+                        <a href="https://www.instagram.com/lartista2026?igsh=MjNkcWltcmkzcHo3&utm_source=qr" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-icon" aria-label="TripAdvisor">
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" 
+                           class="social-icon" aria-label="TripAdvisor" target="_blank" rel="noopener">
                             <i class="fab fa-tripadvisor"></i>
                         </a>
-                        <a href="#" class="social-icon" aria-label="Google Reviews">
+                        <a href="https://share.google/NWrlK2jda9LTUFbij" 
+                           class="social-icon" aria-label="Google Reviews" target="_blank" rel="noopener">
                             <i class="fab fa-google"></i>
                         </a>
                     </div>
                     
                     <div class="contact-info-footer">
                         <p><i class="fas fa-phone"></i> +371 25455947</p>
-                        <p><i class="fas fa-envelope"></i> lartista2026@gmail.com</p>
+                        <p><i class="fas fa-envelope"></i> lartista2025@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Vaļņu iela 25, Riga LV-1050</p>
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h3 data-translate="visit_us">Visit Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Elizabetes iela 123</p>
-                    <p>Centra rajons, Rīga</p>
-                    <p>LV-1010, Latvia</p>
+                    <h3>Best Italian Restaurant in Riga</h3>
+                    <p>Searching for:</p>
+                    <p>• "best italian restaurant Riga"</p>
+                    <p>• "italian restaurant near me"</p>
+                    <p>• "best pasta in Riga"</p>
+                    <p>• "fine dine italian Riga"</p>
+                    <p>• "authentic pizza Riga"</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> L'ARTISTA Italian Restaurant. <span data-translate="all_rights">All rights reserved.</span></p>
+                <p>&copy; <span id="currentYear"></span> L'ARTISTA Italian Restaurant – Vaļņu iela 25, Riga LV-1050. <span data-translate="all_rights">All rights reserved.</span></p>
                 <p class="footer-note" data-translate="footer_note">
                     Celebrating Italian culinary art in the heart of Riga
                 </p>
@@ -3119,14 +3367,14 @@
                 // About Section - Updated for shorter text
                 'our_story': 'Our Story',
                 'authentic_excellence': 'Authentic Italian Excellence',
-                'about_intro': 'Welcome to L\'ARTISTA, Riga\'s newest destination for authentic Italian cuisine. We\'re excited to bring the flavors of Italy to your table.',
-                'about_description': 'Our passion for Italian culinary tradition drives us to create exceptional dining experiences. Every dish is crafted with care, using techniques passed down through generations.',
-                'fresh_ingredients': 'Fresh Ingredients',
-                'fresh_desc': 'Imported Italian ingredients & local produce',
-                'wine_selection': 'Wine Selection',
-                'wine_desc': 'Fine wines from Italy\'s best regions',
-                'award_winning': 'Grand Opening',
-                'award_desc': 'Special offers for inaugural season',
+                'about_intro': 'Welcome to L\'ARTISTA, Riga\'s premier destination for authentic Italian cuisine. Our chefs are true artists who transform the finest ingredients into culinary masterpieces.',
+                'about_description': 'At L\'ARTISTA, we don\'t just serve food – we create experiences. Every dish tells a story of Italian heritage, crafted with passion and precision.',
+                'fresh_ingredients': 'From Italy with Love',
+                'fresh_desc': 'Direct imports of Italian truffles, cheeses & olive oils',
+                'wine_selection': 'Wine Cellar Secrets',
+                'wine_desc': 'Curated selection from Italy\'s hidden vineyards',
+                'award_winning': 'Artistry on a Plate',
+                'award_desc': 'Every dish is a masterpiece crafted by our culinary artists',
                 
                 // Menu Section
                 'our_menu': 'Our Menu',
@@ -3135,6 +3383,7 @@
                 'starters': 'Starters',
                 'main_courses': 'Main Courses',
                 'pizza': 'Pizza',
+                'pasta': 'Pasta',
                 'dessert': 'Dessert',
                 'drinks': 'Drinks',
                 
@@ -3196,14 +3445,14 @@
                 // About Section - Updated for shorter text
                 'our_story': 'Mūsu Stāsts',
                 'authentic_excellence': 'Autentiska Itāļu Pārākums',
-                'about_intro': 'Laipni lūgti L\'ARTISTA, Rīgas jaunākajā itāļu ēdināšanas vietā. Mēs ar prieku piedāvājam Itālijas garšas jūsu galdam.',
-                'about_description': 'Mūsu aizraušanās ar itāļu kulinārijas tradīcijām mudina mūs radīt izcilas ēšanas pieredzes. Katrs ēdiens tiek rūpīgi pagatavots, izmantojot paaudzēm nodotās metodes.',
-                'fresh_ingredients': 'Svaigas Sastāvdaļas',
-                'fresh_desc': 'Importētas Itālijas sastāvdaļas un vietēji produkti',
-                'wine_selection': 'Vīnu Izlase',
-                'wine_desc': 'Labi vīni no Itālijas labākajiem reģioniem',
-                'award_winning': 'Grand Opening',
-                'award_desc': 'Īpaši piedāvājumi atklāšanas sezonai',
+                'about_intro': 'Laipni lūgti L\'ARTISTA, Rīgas vadošajā itāļu ēdināšanas vietā. Mūsu pavāri ir īsti mākslinieki, kas pārvērš labākās sastāvdaļas kulināros meistardarbus.',
+                'about_description': 'L\'ARTISTA mēs ne tikai pasniedzam ēdienu – mēs radām pieredzes. Katrs ēdiens stāsta par itāļu mantojumu, radīts ar aizrautību un precizitāti.',
+                'fresh_ingredients': 'No Itālijas ar mīlestību',
+                'fresh_desc': 'Tiešs imports itāļu trifeļu, sieru un olīveļļu',
+                'wine_selection': 'Vīna pagraba noslēpumi',
+                'wine_desc': 'Atlasīts izlase no Itālijas slēptajiem vīna dārziem',
+                'award_winning': 'Māksla uz šķīvja',
+                'award_desc': 'Katrs ēdiens ir meistardarbs, ko radījuši mūsu kulinārie mākslinieki',
                 
                 // Menu Section
                 'our_menu': 'Mūsu Ēdienkarte',
@@ -3212,6 +3461,7 @@
                 'starters': 'Uzkodas',
                 'main_courses': 'Galvenie Ēdieni',
                 'pizza': 'Pica',
+                'pasta': 'Makaronu ēdieni',
                 'dessert': 'Deserts',
                 'drinks': 'Dzērieni',
                 
@@ -3273,14 +3523,14 @@
                 // About Section - Updated for shorter text
                 'our_story': 'Наша История',
                 'authentic_excellence': 'Аутентичное Итальянское Совершенство',
-                'about_intro': 'Добро пожаловать в L\'ARTISTA, новейшее место аутентичной итальянской кухни в Риге. Мы рады принести вкусы Италии к вашему столу.',
-                'about_description': 'Наша страсть к итальянским кулинарным традициям вдохновляет нас создавать исключительные гастрономические впечатления. Каждое блюдо готовится с заботой, используя методы, передаваемые из поколения в поколение.',
-                'fresh_ingredients': 'Свежие Ингредиенты',
-                'fresh_desc': 'Импортные итальянские ингредиенты и местные продукты',
-                'wine_selection': 'Винная Карта',
-                'wine_desc': 'Лучшие вина из лучших регионов Италии',
-                'award_winning': 'Торжественное Открытие',
-                'award_desc': 'Специальные предложения на открывающий сезон',
+                'about_intro': 'Добро пожаловать в L\'ARTISTA, ведущее место аутентичной итальянской кухни в Риге. Наши шеф-повара — настоящие художники, превращающие лучшие ингредиенты в кулинарные шедевры.',
+                'about_description': 'В L\'ARTISTA мы не просто подаем еду – мы создаем впечатления. Каждое блюдо рассказывает историю итальянского наследия, созданную со страстью и точностью.',
+                'fresh_ingredients': 'Из Италии с любовью',
+                'fresh_desc': 'Прямые поставки итальянских трюфелей, сыров и оливкового масла',
+                'wine_selection': 'Секреты винного погреба',
+                'wine_desc': 'Кураторская подборка из скрытых виноградников Италии',
+                'award_winning': 'Искусство на тарелке',
+                'award_desc': 'Каждое блюдо — шедевр, созданный нашими кулинарными художниками',
                 
                 // Menu Section
                 'our_menu': 'Наше Меню',
@@ -3289,6 +3539,7 @@
                 'starters': 'Закуски',
                 'main_courses': 'Основные Блюда',
                 'pizza': 'Пицца',
+                'pasta': 'Паста',
                 'dessert': 'Десерт',
                 'drinks': 'Напитки',
                 
@@ -3337,12 +3588,12 @@
         // Reservation method
         let reservationMethod = 'whatsapp';
 
-        // Restaurant Configuration
+        // Restaurant Configuration - UPDATED
         const RESTAURANT_CONFIG = {
             whatsappNumber: '37125455947',
-            restaurantEmail: 'lartista2026@gmail.com',
+            restaurantEmail: 'lartista2025@gmail.com',
             restaurantName: "L'ARTISTA Italian Restaurant",
-            restaurantAddress: "Elizabetes iela 123, Centra rajons, Rīga, LV-1010, Latvia",
+            restaurantAddress: "Vaļņu iela 25, Centra rajons, Rīga, LV-1050, Latvia",
             phoneNumber: "+371 25455947"
         };
 
@@ -3377,6 +3628,7 @@
             initSmoothScrolling();
             initGallery();
             optimizeImageLoading();
+            initClickExpandGallery();
             
             // Setup form validation
             setupFormValidation();
@@ -3386,6 +3638,135 @@
             
             // Load saved language preference
             loadLanguagePreference();
+            
+            // Add SEO optimization
+            addSEOOptimization();
+        }
+
+        // ============================================
+        // SEO OPTIMIZATION
+        // ============================================
+        function addSEOOptimization() {
+            // Add structured data for local business
+            const structuredData = {
+                "@context": "https://schema.org",
+                "@type": "Restaurant",
+                "name": "L'artista Italian Restaurant",
+                "description": "Best Italian restaurant in Riga offering authentic pasta, pizza and fine Italian wine",
+                "url": window.location.href,
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Vaļņu iela 25",
+                    "addressLocality": "Riga",
+                    "addressRegion": "Centra rajons",
+                    "postalCode": "LV-1050",
+                    "addressCountry": "LV"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "56.9496",
+                    "longitude": "24.1052"
+                },
+                "priceRange": "€€",
+                "servesCuisine": "Italian",
+                "telephone": "+37125455947",
+                "email": "lartista2025@gmail.com",
+                "openingHours": [
+                    "Tu-Th 12:00-23:00",
+                    "Fr-Sa 12:00-23:00",
+                    "Su 12:00-23:00"
+                ],
+                "menu": window.location.href + "#menu",
+                "acceptsReservations": "True"
+            };
+            
+            // Add schema markup to page
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(structuredData);
+            document.head.appendChild(script);
+            
+            // Track popular search terms
+            console.log('SEO Optimized for: best italian restaurant, italian restaurant near me, best pasta in Riga, italian restaurant Riga, fine dine italian Riga');
+        }
+
+        // ============================================
+        // CLICK TO EXPAND GALLERY
+        // ============================================
+        function initClickExpandGallery() {
+            const thumbnails = document.querySelectorAll('.click-expand-thumbnail');
+            const lightbox = document.getElementById('lightbox') || createLightbox();
+            
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', () => {
+                    openLightbox(thumbnail.src, index);
+                });
+            });
+            
+            function createLightbox() {
+                const lightbox = document.createElement('div');
+                lightbox.id = 'lightbox';
+                lightbox.className = 'lightbox';
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="close-lightbox">&times;</span>
+                        <img src="" alt="" class="lightbox-image">
+                        <div class="lightbox-nav">
+                            <button class="prev-btn">‹</button>
+                            <button class="next-btn">›</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(lightbox);
+                
+                // Add event listeners
+                lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+                lightbox.querySelector('.prev-btn').addEventListener('click', showPrevImage);
+                lightbox.querySelector('.next-btn').addEventListener('click', showNextImage);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
+                
+                return lightbox;
+            }
+            
+            let currentImageIndex = 0;
+            const images = Array.from(thumbnails).map(t => t.src);
+            
+            function openLightbox(src, index) {
+                currentImageIndex = index;
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImage = lightbox.querySelector('.lightbox-image');
+                lightboxImage.src = src;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeLightbox() {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                document.querySelector('.lightbox-image').src = images[currentImageIndex];
+            }
+            
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                document.querySelector('.lightbox-image').src = images[currentImageIndex];
+            }
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') showPrevImage();
+                    if (e.key === 'ArrowRight') showNextImage();
+                }
+            });
         }
 
         // ============================================
@@ -3537,7 +3918,7 @@
             const specialRequests = document.getElementById('special-requests');
             
             if (nameInput) nameInput.placeholder = translations['full_name'] || 'Enter your full name';
-            if (emailInput) emailInput.placeholder = translations['email_address'] || 'your@email.com';
+            if (emailInput) emailInput.placeholder = translations['email_address'] || 'lartista2025@gmail.com';
             if (phoneInput) phoneInput.placeholder = translations['phone_number'] || '+371 25455947';
             if (specialRequests) specialRequests.placeholder = translations['special_requests'] || 'Dietary restrictions, allergies, celebrations, etc.';
         }
@@ -4195,20 +4576,26 @@ ${RESTAURANT_CONFIG.phoneNumber}
         function initGallery() {
             const galleryItems = document.querySelectorAll('.gallery-item');
             
-            // Create lightbox element
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox';
-            lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <span class="close-lightbox">&times;</span>
-                    <img src="" alt="" class="lightbox-image">
-                    <div class="lightbox-nav">
-                        <button class="prev-btn">‹</button>
-                        <button class="next-btn">›</button>
+            if (galleryItems.length === 0) return;
+            
+            // Create lightbox element if not exists
+            let lightbox = document.getElementById('gallery-lightbox');
+            if (!lightbox) {
+                lightbox = document.createElement('div');
+                lightbox.id = 'gallery-lightbox';
+                lightbox.className = 'lightbox';
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="close-lightbox">&times;</span>
+                        <img src="" alt="" class="lightbox-image">
+                        <div class="lightbox-nav">
+                            <button class="prev-btn">‹</button>
+                            <button class="next-btn">›</button>
+                        </div>
                     </div>
-                </div>
-            `;
-            document.body.appendChild(lightbox);
+                `;
+                document.body.appendChild(lightbox);
+            }
             
             let currentIndex = 0;
             const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
@@ -4256,7 +4643,9 @@ ${RESTAURANT_CONFIG.phoneNumber}
                 document.body.style.touchAction = 'auto';
                 
                 // Return focus to the gallery item that was clicked
-                galleryItems[currentIndex].focus();
+                if (galleryItems[currentIndex]) {
+                    galleryItems[currentIndex].focus();
+                }
             }
             
             function navigateLightbox(direction) {
