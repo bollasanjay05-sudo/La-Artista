@@ -21,11 +21,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* === GLOBAL – MOBILE FIRST, ENHANCED FOR LAPTOP === */
+    /* === GLOBAL – BRIGHT & VIBRANT === */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #F9F7F2;
+      background: #fffef7; /* brighter ivory */
       color: #1A1A1A;
       line-height: 1.5;
       font-size: 15px;
@@ -34,7 +34,7 @@
     :root {
       --green: #1F3D2B;
       --red: #D6273B;
-      --ivory: #F9F7F2;
+      --ivory: #fffef7; /* bright */
       --gold: #C8A951;
       --text-dark: #1A1A1A;
       --text-muted: #5e5e5e;
@@ -60,16 +60,54 @@
     .loader-spinner { width: 56px; height: 56px; border: 4px solid rgba(255,255,255,0.2); border-top: 4px solid var(--red); border-radius: 50%; animation: spin 0.8s infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* === LANGUAGE SELECTOR – REPOSITIONED (no overlap) === */
+    /* === LANGUAGE SELECTOR – VERTICAL, SMALLER, RIGHT SIDE === */
     .language-selector {
-      position: fixed; top: 12px; right: 12px; z-index: 1200; display: flex; gap: 4px;
-      background: rgba(255,255,255,0.96); backdrop-filter: blur(4px); border-radius: 40px; padding: 4px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid rgba(214,39,59,0.15);
+      position: fixed;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 24px;
+      padding: 8px 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(214,39,59,0.2);
     }
     .language-btn {
-      background: none; border: none; padding: 8px 18px; border-radius: 40px; font-size: 14px; font-weight: 600; color: #5e5e5e; cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #5e5e5e;
+      cursor: pointer;
+      writing-mode: horizontal-tb;
+      min-width: 42px;
+      text-align: center;
+      transition: all 0.2s;
     }
-    .language-btn.active { background: var(--red); color: white; }
+    .language-btn.active {
+      background: var(--red);
+      color: white;
+    }
+    /* Laptop: slightly larger but still vertical and compact */
+    @media (min-width: 992px) {
+      .language-selector {
+        right: 16px;
+        padding: 10px 8px;
+        gap: 8px;
+      }
+      .language-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-width: 46px;
+      }
+    }
 
     /* === FLOATING WHATSAPP BUTTON – ALWAYS VISIBLE === */
     .whatsapp-float {
@@ -79,13 +117,30 @@
     }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); } 70% { box-shadow: 0 0 0 14px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
 
-    /* === STICKY NAVIGATION – FIXED LOGO (NOT FLOATING) === */
+    /* === STICKY NAVIGATION – FIXED POSITION, LOGO NOW FLOATING/POP === */
     .premium-navbar {
       position: sticky; top: 4px; left: 0; right: 0; z-index: 1050; background: var(--ivory); padding: 8px 0; border-bottom: 1px solid rgba(214,39,59,0.12);
     }
     .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .logo { display: flex; align-items: center; gap: 14px; }
-    .custom-logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--gold); padding: 2px; background: white; overflow: hidden; flex-shrink: 0; }
+    /* FLOATING / POP EFFECT FOR MAIN LOGO */
+    .custom-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      padding: 2px;
+      background: white;
+      overflow: hidden;
+      flex-shrink: 0;
+      animation: floatPop 3s ease-in-out infinite;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    @keyframes floatPop {
+      0% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 24px rgba(214,39,59,0.2); }
+      100% { transform: translateY(0px) scale(1); }
+    }
     .custom-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
     .logo-fallback { display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #1F3D2B, #D6273B); color: white; font-family: 'Playfair Display', serif; border-radius: 50%; width: 100%; height: 100%; font-size: 14px; }
     .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
@@ -105,13 +160,13 @@
     .menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1999; opacity: 0; visibility: hidden; transition: 0.2s; }
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* === HERO – FULL WIDTH, DRAMATIC === */
+    /* === HERO – FULL WIDTH, DRAMATIC, BRIGHT OVERLAY === */
     .hero-premium { min-height: 90vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 0; }
     .hero-bg { position: absolute; inset: 0; z-index: -2; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
-    .premium-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31,61,43,0.4) 0%, rgba(0,0,0,0.3) 100%); }
+    .premium-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31,61,43,0.3) 0%, rgba(0,0,0,0.2) 100%); } /* brighter */
     .premium-hero-content { text-align: center; color: white; padding: 20px; max-width: 900px; margin: 0 auto; }
-    .hero-logo { width: 120px; height: 120px; margin: 0 auto 20px; border-width: 4px; }
+    .hero-logo { width: 120px; height: 120px; margin: 0 auto 20px; border-width: 4px; animation: floatPop 3s ease-in-out infinite; }
     .premium-title .title-line-1 { font-size: 56px; font-weight: 700; font-family: 'Playfair Display', serif; line-height: 1.1; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
     .premium-title .title-line-2 { font-size: 20px; letter-spacing: 4px; text-transform: uppercase; display: block; margin-top: 16px; color: rgba(255,255,255,0.95); }
     .premium-subtitle { font-size: 18px; margin: 28px 0; max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -120,7 +175,7 @@
     .btn-outline-premium { background: transparent; border: 2px solid white; color: white; }
     .btn-large { padding: 16px 36px; }
 
-    /* === ABOUT – 2-COLUMN GRID, ICONS === */
+    /* === ABOUT – BRIGHT BACKGROUND === */
     .premium-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .premium-intro { font-size: 20px; border-left: 4px solid var(--red); padding-left: 20px; margin-bottom: 20px; }
     .premium-features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 24px; }
@@ -130,7 +185,7 @@
     .image-frame { border-radius: 24px; overflow: hidden; border: 3px solid var(--gold); height: 360px; }
     .image-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* === MENU – FULLY LOADED, TABBED, SCROLLABLE === */
+    /* === MENU – BRIGHT WHITE === */
     .menu-section { background: white; border-radius: 32px; padding: 48px 32px; margin: 0 20px; border: 1px solid rgba(214,39,59,0.1); }
     .menu-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 28px; -webkit-overflow-scrolling: touch; }
     .menu-tab { flex: 0 0 auto; padding: 12px 26px; border: 1px solid #ddd; background: white; border-radius: 60px; font-weight: 600; font-size: 15px; color: #333; cursor: pointer; }
@@ -151,38 +206,30 @@
     .gallery-item.hidden { display: none; }
     .more-photos-btn { display: inline-block; background: var(--red); color: white; padding: 14px 36px; border-radius: 60px; border: none; font-weight: 600; margin: 24px 0 8px; cursor: pointer; font-size: 16px; }
 
-    /* === RESERVATION – CLEAN, TOGGLE, SUCCESS MESSAGE === */
+    /* === RESERVATION – CLEAN TOGGLE, BRIGHT GREEN === */
     .reservation-section {
-      background: var(--green); border-radius: 32px; padding: 56px 40px; margin: 24px 20px; color: white;
+      background: #2a5a3a; /* brighter green */
+      border-radius: 32px; padding: 56px 40px; margin: 24px 20px; color: white;
     }
     .reservation-section .section-header h2 { color: white; }
     .reservation-section .subtitle { color: var(--gold); }
-    /* Simple toggle pills – no extra text */
     .reservation-options { display: flex; gap: 20px; margin-bottom: 32px; flex-wrap: wrap; }
-    .option-card { background: rgba(255,255,255,0.1); padding: 16px 28px; border-radius: 60px; display: flex; align-items: center; gap: 12px; border: 2px solid transparent; cursor: pointer; }
-    .option-card.active { border-color: #25d366; background: rgba(37,211,102,0.15); }
+    .option-card { background: rgba(255,255,255,0.15); padding: 16px 28px; border-radius: 60px; display: flex; align-items: center; gap: 12px; border: 2px solid transparent; cursor: pointer; }
+    .option-card.active { border-color: #25d366; background: rgba(37,211,102,0.2); }
     .option-icon i { font-size: 28px; }
     .option-card span { font-size: 18px; font-weight: 600; color: white; }
-    .form-control { width: 100%; padding: 16px 20px; border-radius: 60px; border: none; background: rgba(255,255,255,0.9); font-size: 16px; margin-bottom: 18px; }
-    .reservation-detail-card {
-      background: rgba(255,255,255,0.12); border-radius: 28px; padding: 28px; margin-top: 30px; border: 1px solid var(--gold);
-    }
-    .detail-row { display: flex; align-items: baseline; margin-bottom: 16px; gap: 12px; }
-    .detail-icon { width: 28px; color: var(--gold); font-size: 20px; }
-    .detail-text { color: white; font-size: 16px; font-weight: 400; }
-    .thankyou { font-size: 20px; font-family: 'Playfair Display', serif; color: var(--gold); margin-top: 24px; }
+    .form-control { width: 100%; padding: 16px 20px; border-radius: 60px; border: none; background: rgba(255,255,255,0.95); font-size: 16px; margin-bottom: 18px; }
     .success-message {
-      background: rgba(37,211,102,0.2); border: 2px solid #25d366; border-radius: 60px; padding: 16px 24px; margin-top: 24px; text-align: center; color: white; font-size: 18px; display: none;
+      background: rgba(37,211,102,0.25); border: 2px solid #25d366; border-radius: 60px; padding: 16px 24px; margin-top: 24px; text-align: center; color: white; font-size: 18px; display: none;
     }
     .success-message i { margin-right: 10px; color: #25d366; }
 
-    /* === CONTACT – WITH SOCIAL ICONS & CUSTOM LOGOS === */
+    /* === CONTACT – BRIGHT CARD === */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 24px; }
     .contact-card { background: white; padding: 36px 32px; border-radius: 32px; box-shadow: 0 12px 28px rgba(0,0,0,0.02); border: 1px solid rgba(214,39,59,0.1); }
     .contact-icon { font-size: 32px; color: var(--red); margin-bottom: 16px; }
     .hours-day { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; }
     .map-container { border-radius: 24px; overflow: hidden; height: 360px; border: 3px solid var(--gold); }
-    /* Social with custom logo images */
     .social-minimal { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 28px 0 8px; }
     .social-minimal a {
       display: inline-flex; align-items: center; gap: 10px; color: var(--text-dark); text-decoration: none; font-size: 15px; font-weight: 500;
@@ -191,15 +238,15 @@
     .social-minimal a i { font-size: 20px; color: var(--red); }
     .social-minimal a img { width: 20px; height: 20px; object-fit: contain; }
 
-    /* === FOOTER – FULL BRANDING, LOGO, REVIEW LINKS WITH IMAGES === */
-    .footer { background: var(--green); color: white; padding: 60px 0 30px; margin-top: 40px; }
+    /* === FOOTER – BRIGHT FOOTER === */
+    .footer { background: #2a5a3a; color: white; padding: 60px 0 30px; margin-top: 40px; } /* brighter green */
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .footer-column h3 { font-size: 20px; margin-bottom: 20px; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 8px; }
     .footer-logo { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--gold); overflow: hidden; margin-bottom: 18px; background: white; }
     .footer-logo img { width: 100%; height: 100%; object-fit: contain; }
     .footer-review-links { display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0; }
     .footer-review-link {
-      background: rgba(255,255,255,0.08); padding: 12px 22px; border-radius: 60px; color: white; text-decoration: none;
+      background: rgba(255,255,255,0.1); padding: 12px 22px; border-radius: 60px; color: white; text-decoration: none;
       display: inline-flex; align-items: center; gap: 10px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2);
     }
     .footer-review-link img { width: 18px; height: 18px; object-fit: contain; }
@@ -213,14 +260,14 @@
       .premium-mobile-menu, .menu-overlay { display: none; }
       .container { padding: 0 32px; }
       .gallery-grid { grid-template-columns: repeat(6, 1fr); }
-      /* Language selector moved slightly more left on desktop to avoid overlap */
-      .language-selector { right: 24px; top: 16px; }
     }
     @media (max-width: 768px) {
       .premium-about-grid, .contact-grid { grid-template-columns: 1fr; }
       .premium-title .title-line-1 { font-size: 42px; }
       .menu-section { padding: 32px 16px; margin: 0 8px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .language-selector { right: 6px; padding: 6px 4px; }
+      .language-btn { padding: 5px 8px; font-size: 11px; min-width: 38px; }
     }
   </style>
   <!-- manifest & service worker -->
@@ -231,7 +278,7 @@
   <!-- Italian flag stripe -->
   <div class="italian-flag-stripe"></div>
 
-  <!-- Language selector (non-overlapping) -->
+  <!-- LANGUAGE SELECTOR – VERTICAL, SMALL, RIGHT SIDE -->
   <div class="language-selector">
     <button class="language-btn active">EN</button>
     <button class="language-btn">LV</button>
@@ -247,7 +294,7 @@
   <!-- FLOATING WHATSAPP BUTTON -->
   <a href="https://wa.me/37125455947?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-  <!-- STICKY NAVIGATION – LOGO NOT FLOATING (FIXED) -->
+  <!-- STICKY NAVIGATION – LOGO NOW FLOATING/POPPING -->
   <nav class="premium-navbar">
     <div class="nav-container">
       <div class="logo">
@@ -292,7 +339,7 @@
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section id="home" class="hero-premium">
     <div class="hero-bg"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista interior"></div>
     <div class="premium-overlay"></div>
@@ -353,7 +400,7 @@
       <button class="menu-tab" data-cat="wine">Wine</button>
     </div>
     <div class="menu-categories-container">
-      <!-- STARTERS -->
+      <!-- STARTERS (full) -->
       <div class="menu-category active" id="cat-starters">
         <div class="menu-item"><img src="LARTISTA DISHES/CAESAR SALAD.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Caesar Salad</h4><span class="price">€12</span></div><p class="menu-desc">Parmesan cheese, toast</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/CREAMY BURATA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Creamy Burrata</h4><span class="price">€15</span></div><p class="menu-desc">Cherry tomatoes, basil oil, pistachio pesto</p></div></div>
@@ -598,10 +645,9 @@
         });
       }
 
-      // Reservation toggle (WhatsApp / Email) – update button text and icon
+      // Reservation toggle (WhatsApp / Email)
       const waOpt = document.getElementById('waOption');
       const mailOpt = document.getElementById('mailOption');
-      const submitBtn = document.getElementById('bookingForm')?.querySelector('button[type="submit"]');
       const submitIcon = document.getElementById('submitIcon');
       const submitText = document.getElementById('submitText');
       
@@ -630,7 +676,7 @@
       const timeInput = document.getElementById('resTime');
       if(timeInput) timeInput.value = '20:00';
 
-      // Booking form submission – WhatsApp or Email with clean details, then show success message
+      // Booking form submission – WhatsApp or Email
       const bookingForm = document.getElementById('bookingForm');
       const successMsg = document.getElementById('successMessage');
       
@@ -646,7 +692,6 @@
           const time = this.elements['time']?.value || '';
           const special = this.elements['special']?.value.trim() || '—';
           
-          // Format nice message
           const messageLine = 
 `Reservation - L'ARTISTA
 
@@ -676,9 +721,6 @@ Thank you for choosing L'ARTISTA!`;
           
           // Show success message
           if(successMsg) successMsg.style.display = 'block';
-          
-          // Optionally reset form? We leave it as is for editing.
-          // Smooth scroll to success message
           if(successMsg) successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
