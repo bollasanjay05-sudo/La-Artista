@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <!-- ========== MASTER WEBSITE – L'ARTISTA RIGA ========== -->
-  <!-- VALENTINE'S DAY EDITION : 14-16 FEB FULLY BOOKED + ROMANTIC TWEAKS -->
+  <!-- CLEAN CLASSIC EDITION (Valentine elements removed) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-  <title>Valentine's at L'artista | Italian Restaurant Riga</title>
+  <title>L'artista | Italian Restaurant Riga</title>
   <meta name="description" content="Best Italian restaurant in Riga – L'artista. Authentic pasta, pizza & fine Italian wine. Top-rated Italian dining in Latvia. Book your table now!">
   <meta name="keywords" content="best italian restaurant, italian restaurant, pizza, pasta, fine dine, italian restaurant near me, best pasta in Riga, italian restaurant Riga, authentic italian food, wine restaurant Riga, italian wine list, riga old town restaurant, romantic dinner riga, private dining riga, italian chef riga, fresh pasta riga, neapolitan pizza riga">
   <meta name="robots" content="index, follow">
@@ -21,51 +21,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* === GLOBAL – BRIGHT & VIBRANT + VALENTINE HEARTS === */
+    /* === GLOBAL – BRIGHT & VIBRANT (no valentine hearts) === */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #fff0f2; /* soft valentine blush */
+      background: #fcf9f7; /* warm neutral */
       color: #1A1A1A;
       line-height: 1.5;
       font-size: 15px;
       -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
       position: relative;
-    }
-    body::before {
-      content: "❤️";
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      font-size: 22px;
-      opacity: 0.15;
-      z-index: 1999;
-      pointer-events: none;
-      animation: floatHeart 5s infinite ease-in-out;
-    }
-    body::after {
-      content: "🍷";
-      position: fixed;
-      bottom: 30px;
-      left: 20px;
-      font-size: 28px;
-      opacity: 0.1;
-      z-index: 1999;
-      pointer-events: none;
-    }
-    @keyframes floatHeart {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(5deg); }
-      100% { transform: translateY(0) rotate(0deg); }
     }
     :root {
       --green: #1F3D2B;
       --red: #D6273B;
-      --ivory: #fff0f2; /* blush tint */
+      --ivory: #fcf9f7;
       --gold: #C8A951;
       --text-dark: #1A1A1A;
       --text-muted: #5e5e5e;
-      --heart-pink: #ffb6c1;
     }
     .container { padding: 0 20px; max-width: 1200px; margin: 0 auto; width: 100%; }
     section { padding: 48px 0; }
@@ -100,6 +74,7 @@
       gap: 6px;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       border-radius: 24px;
       padding: 8px 6px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
@@ -136,15 +111,7 @@
       }
     }
 
-    /* === FLOATING WHATSAPP BUTTON – ALWAYS VISIBLE === */
-    .whatsapp-float {
-      position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; background: #25d366; color: white; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 20px rgba(37,211,102,0.3);
-      z-index: 1000; animation: pulse 2s infinite; text-decoration: none;
-    }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); } 70% { box-shadow: 0 0 0 14px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
-
-    /* === STICKY NAVIGATION – FIXED POSITION, LOGO NOW FLOATING/POP === */
+    /* === STICKY NAVIGATION – LOGO FLOATING === */
     .premium-navbar {
       position: sticky; top: 4px; left: 0; right: 0; z-index: 1050; background: var(--ivory); padding: 8px 0; border-bottom: 1px solid rgba(214,39,59,0.12);
     }
@@ -186,11 +153,11 @@
     .menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1999; opacity: 0; visibility: hidden; transition: 0.2s; }
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* === HERO – FULL WIDTH, DRAMATIC, BRIGHT OVERLAY + VALENTINE CUPID === */
+    /* === HERO – FULL WIDTH, DRAMATIC, BRIGHT OVERLAY === */
     .hero-premium { min-height: 90vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 0; }
     .hero-bg { position: absolute; inset: 0; z-index: -2; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
-    .premium-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31,61,43,0.3) 0%, rgba(214,39,59,0.1) 100%); } /* red-ish tint */
+    .premium-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31,61,43,0.3) 0%, rgba(214,39,59,0.1) 100%); }
     .premium-hero-content { text-align: center; color: white; padding: 20px; max-width: 900px; margin: 0 auto; }
     .hero-logo { width: 120px; height: 120px; margin: 0 auto 20px; border-width: 4px; animation: floatPop 3s ease-in-out infinite; }
     .premium-title .title-line-1 { font-size: 56px; font-weight: 700; font-family: 'Playfair Display', serif; line-height: 1.1; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
@@ -201,7 +168,7 @@
     .btn-outline-premium { background: transparent; border: 2px solid white; color: white; }
     .btn-large { padding: 16px 36px; }
 
-    /* === ABOUT – BRIGHT BACKGROUND with tiny hearts === */
+    /* === ABOUT – BRIGHT BACKGROUND === */
     .premium-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .premium-intro { font-size: 20px; border-left: 4px solid var(--red); padding-left: 20px; margin-bottom: 20px; }
     .premium-features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 24px; }
@@ -216,7 +183,7 @@
     .menu-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 28px; -webkit-overflow-scrolling: touch; }
     .menu-tab { flex: 0 0 auto; padding: 12px 26px; border: 1px solid #ddd; background: white; border-radius: 60px; font-weight: 600; font-size: 15px; color: #333; cursor: pointer; }
     .menu-tab.active { background: var(--red); color: white; border-color: var(--red); }
-    .menu-categories-container { max-height: 680px; overflow-y: auto; padding-right: 8px; }
+    .menu-categories-container { max-height: 680px; overflow-y: auto; padding-right: 8px; -webkit-overflow-scrolling: touch; }
     .menu-category { display: none; }
     .menu-category.active { display: block; }
     .menu-item { display: flex; gap: 18px; background: #faf8f4; border-radius: 24px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(200,169,81,0.2); }
@@ -232,30 +199,21 @@
     .gallery-item.hidden { display: none; }
     .more-photos-btn { display: inline-block; background: var(--red); color: white; padding: 14px 36px; border-radius: 60px; border: none; font-weight: 600; margin: 24px 0 8px; cursor: pointer; font-size: 16px; }
 
-    /* === RESERVATION – VALENTINE FULLY BOOKED 14-16 + FUN MESSAGES === */
+    /* === RESERVATION – NOW SINGLE BUTTON TO TABLEAGENT === */
     .reservation-section {
-      background: #b3304a; /* deeper romantic red */
+      background: #b3304a; /* warm red */
       border-radius: 32px; padding: 56px 40px; margin: 24px 20px; color: white;
     }
     .reservation-section .section-header h2 { color: white; }
     .reservation-section .subtitle { color: var(--gold); }
-    .reservation-options { display: flex; gap: 20px; margin-bottom: 32px; flex-wrap: wrap; }
-    .option-card { background: rgba(255,255,255,0.15); padding: 16px 28px; border-radius: 60px; display: flex; align-items: center; gap: 12px; border: 2px solid transparent; cursor: pointer; }
-    .option-card.active { border-color: #25d366; background: rgba(37,211,102,0.2); }
-    .option-icon i { font-size: 28px; }
-    .option-card span { font-size: 18px; font-weight: 600; color: white; }
-    .form-control { width: 100%; padding: 16px 20px; border-radius: 60px; border: none; background: rgba(255,255,255,0.95); font-size: 16px; margin-bottom: 18px; }
-    .success-message {
-      background: rgba(37,211,102,0.25); border: 2px solid #25d366; border-radius: 60px; padding: 16px 24px; margin-top: 24px; text-align: center; color: white; font-size: 18px; display: none;
+    .tableagent-btn-wrap { text-align: center; margin: 24px 0; }
+    .btn-tableagent {
+      background: white; color: var(--red); padding: 20px 48px; border-radius: 60px; font-weight: 700;
+      font-size: 22px; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+      text-decoration: none; transition: 0.2s; border: 2px solid var(--gold);
     }
-    .success-message i { margin-right: 10px; color: #25d366; }
-    /* Fully booked banner */
-    .valentine-banner {
-      background: #ffddee; color: #a0324a; padding: 20px 28px; border-radius: 60px; margin-bottom: 28px;
-      font-size: 1.2rem; font-weight: 600; text-align: center; border: 2px solid white;
-      box-shadow: 0 0 0 3px #d6273b;
-    }
-    .valentine-banner i { margin: 0 6px; }
+    .btn-tableagent i { color: var(--green); font-size: 28px; }
+    .btn-tableagent:hover { background: var(--gold); color: var(--green); }
 
     /* === CONTACT – BRIGHT CARD === */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 24px; }
@@ -272,7 +230,7 @@
     .social-minimal a img { width: 20px; height: 20px; object-fit: contain; }
 
     /* === FOOTER – BRIGHT FOOTER === */
-    .footer { background: #2a5a3a; color: white; padding: 60px 0 30px; margin-top: 40px; } /* brighter green */
+    .footer { background: #2a5a3a; color: white; padding: 60px 0 30px; margin-top: 40px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .footer-column h3 { font-size: 20px; margin-bottom: 20px; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 8px; }
     .footer-logo { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--gold); overflow: hidden; margin-bottom: 18px; background: white; }
@@ -301,6 +259,10 @@
       .language-selector { right: 6px; padding: 6px 4px; }
       .language-btn { padding: 5px 8px; font-size: 11px; min-width: 38px; }
     }
+
+    /* iOS friendly tap highlights removed, momentum scrolling */
+    a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
+    .menu-categories-container { -webkit-overflow-scrolling: touch; }
   </style>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1F3D2B">
@@ -321,9 +283,6 @@
     <div class="loader-logo">L'ARTISTA</div>
     <div class="loader-spinner"></div>
   </div>
-
-  <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/37125455947?text=Hello%20L'ARTISTA%20Restaurant,%20I%20would%20like%20to%20make%20a%20reservation" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
   <!-- STICKY NAVIGATION – LOGO FLOATING -->
   <nav class="premium-navbar">
@@ -370,7 +329,7 @@
     </div>
   </div>
 
-  <!-- HERO SECTION (Valentine's subtle) -->
+  <!-- HERO SECTION (no valentine) -->
   <section id="home" class="hero-premium">
     <div class="hero-bg"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista interior"></div>
     <div class="premium-overlay"></div>
@@ -382,7 +341,7 @@
         </div>
         <div class="premium-title">
           <span class="title-line-1">Italian Restaurant in Riga</span>
-          <span class="title-line-2">❤️ Valentine's Special ❤️</span>
+          <span class="title-line-2">Authentic · Passion · Flavour</span>
         </div>
         <p class="premium-subtitle">Best Italian restaurant in Riga – authentic pasta, award‑winning pizza & fine wine</p>
         <div class="premium-hero-buttons">
@@ -398,7 +357,7 @@
     <div class="section-header">
       <h2>Our Story</h2>
       <div class="subtitle">Authentic Italian Excellence</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-heart divider-icon" style="color:var(--red);"></i><div class="divider-line"></div></div>
+      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-utensils divider-icon" style="color:var(--red);"></i><div class="divider-line"></div></div>
     </div>
     <div class="premium-about-grid">
       <div>
@@ -414,7 +373,7 @@
     </div>
   </section>
 
-  <!-- ===== FULL MENU ===== -->
+  <!-- ===== FULL MENU (UPDATED PASTA & DESSERTS) ===== -->
   <section id="menu" class="menu-section">
     <div class="section-header">
       <h2>Our Menu</h2>
@@ -431,8 +390,8 @@
       <button class="menu-tab" data-cat="wine">Wine</button>
     </div>
     <div class="menu-categories-container">
-      <!-- starters, main, pizza, pasta etc. (unchanged for brevity, same as before) -->
-      <div class="menu-category active" id="cat-starters"> <!-- all starters items kept --> 
+      <!-- Starters (unchanged, keep as before) -->
+      <div class="menu-category active" id="cat-starters">
         <div class="menu-item"><img src="LARTISTA DISHES/CAESAR SALAD.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Caesar Salad</h4><span class="price">€12</span></div><p class="menu-desc">Parmesan cheese, toast</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/CREAMY BURATA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Creamy Burrata</h4><span class="price">€15</span></div><p class="menu-desc">Cherry tomatoes, basil oil, pistachio pesto</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/LEMON GARLIC SHRIMPS.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Lemon-Garlic Prawns</h4><span class="price">€15</span></div><p class="menu-desc">Homemade focaccia</p></div></div>
@@ -442,7 +401,8 @@
         <div class="menu-item"><img src="LARTISTA DISHES/BRUSCHETTA CLASSIC.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Bruschettas</h4><span class="price">€8.50</span></div><p class="menu-desc">Stracciatella, mortadella, pistachio / zucchini / tomatoes</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/PARMIGIANA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Eggplant Parmesan</h4><span class="price">€14</span></div><p class="menu-desc">Layers of eggplant, tomato, mozzarella</p></div></div>
       </div>
-      <div class="menu-category" id="cat-main"> <!-- main dishes etc --> 
+      <!-- Main (unchanged) -->
+      <div class="menu-category" id="cat-main">
         <div class="menu-item"><img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Truffle Risotto</h4><span class="price">€25</span></div><p class="menu-desc">Fresh black truffles</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Lemon-Butter Veal Escalopes</h4><span class="price">€29</span></div><p class="menu-desc">Fried potatoes or fresh salad</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/ZUPA DI PESCA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Zuppa di Pesce</h4><span class="price">€17</span></div><p class="menu-desc">Rich fish soup with shellfish</p></div></div>
@@ -451,7 +411,8 @@
         <div class="menu-item"><div><div class="menu-item-header"><h4>Baked Rosemary-Garlic Potatoes</h4><span class="price">€6</span></div></div></div>
         <div class="menu-item"><div><div class="menu-item-header"><h4>Mixed Seasonal Salad</h4><span class="price">€9</span></div></div></div>
       </div>
-      <div class="menu-category" id="cat-pizza"> <!-- pizza --> 
+      <!-- Pizza (unchanged) -->
+      <div class="menu-category" id="cat-pizza">
         <div class="menu-item"><img src="LARTISTA DISHES/Margherita.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Margherita</h4><span class="price">€10</span></div></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/PIZZA MARINARA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Marinara</h4><span class="price">€14</span></div></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/NAPOLI SALAMI.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Salami</h4><span class="price">€14</span></div></div></div>
@@ -460,10 +421,26 @@
         <div class="menu-item"><img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Prosciutto</h4><span class="price">€18</span></div></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Mortadella & Stracciatella</h4><span class="price">€18</span></div><p class="menu-desc">Pistachio pesto</p></div></div>
       </div>
-      <div class="menu-category" id="cat-pasta"> <!-- pasta short for brevity--></div>
-      <div class="menu-category" id="cat-dessert"></div>
-      <div class="menu-category" id="cat-drinks"></div>
-      <div class="menu-category" id="cat-wine"></div>
+      <!-- PASTA – UPDATED -->
+      <div class="menu-category" id="cat-pasta">
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Carbonara</h4><span class="price">€16</span></div><p class="menu-desc">guanciale / pecorino</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Cacio e Pepe</h4><span class="price">€15</span></div><p class="menu-desc">black pepper / pecorino</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Penne all'Arrabbiata</h4><span class="price">€14</span></div><p class="menu-desc">Parmigiano Reggiano / tomato sauce / chili</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Pasta al pesto di pistachio e stracciatella</h4><span class="price">€18</span></div><p class="menu-desc">creamy pistachio pesto, stracciatella</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>L'artista signature pasta</h4><span class="price">€34</span></div><p class="menu-desc">lobster / caviar / white wine butter sauce</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Frutti di Mare</h4><span class="price">€24</span></div><p class="menu-desc">white wine-tomato sauce / herbs</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Home made ravioli</h4><span class="price">€19</span></div><p class="menu-desc">ricotta and spinach / gorgonzola sauce / basil oil</p></div></div>
+      </div>
+      <!-- DESSERT – UPDATED -->
+      <div class="menu-category" id="cat-dessert">
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Classic Tiramisu</h4><span class="price">€9</span></div></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Lemon Pussat</h4><span class="price">€8</span></div><p class="menu-desc">lemon caviar / pistachios</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Canoli</h4><span class="price">€10</span></div><p class="menu-desc">mascarpone-vanilla cream / almonds / pistachios</p></div></div>
+      </div>
+      <!-- Drinks (placeholder) -->
+      <div class="menu-category" id="cat-drinks"><div class="menu-item"><div><div class="menu-item-header"><h4>Soft drinks, water, etc.</h4></div></div></div></div>
+      <!-- Wine (placeholder) -->
+      <div class="menu-category" id="cat-wine"><div class="menu-item"><div><div class="menu-item-header"><h4>Extensive Italian wine list</h4></div></div></div></div>
     </div>
   </section>
 
@@ -475,7 +452,7 @@
       <div class="section-divider"><div class="divider-line"></div><i class="fas fa-camera divider-icon"></i><div class="divider-line"></div></div>
     </div>
     <div class="gallery-grid" id="galleryGrid">
-      <!-- first 6 visible -->
+      <!-- first 6 visible (same as original) -->
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt=""></div>
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt=""></div>
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7523.jpg" alt=""></div>
@@ -499,45 +476,22 @@
     </div>
   </section>
 
-  <!-- ===== RESERVATION – FULLY BOOKED 14-16 + VALENTINE RHYMES ===== -->
+  <!-- ===== RESERVATION – SINGLE BUTTON TO TABLEAGENT (removed WhatsApp/email) ===== -->
   <section id="reservation" class="reservation-section">
     <div class="section-header">
-      <h2>❤️ Reserve Your Table ❤️</h2>
-      <div class="subtitle">Valentine's 14-16: FULLY BOOKED (with love)</div>
-      <div class="section-divider"><div class="divider-line" style="background:var(--gold);"></div><i class="fas fa-heart divider-icon" style="color:var(--gold);"></i><div class="divider-line" style="background:var(--gold);"></div></div>
+      <h2>Reserve Your Table</h2>
+      <div class="subtitle">Book via TableAgent</div>
+      <div class="section-divider"><div class="divider-line" style="background:var(--gold);"></div><i class="fas fa-calendar-check divider-icon" style="color:var(--gold);"></i><div class="divider-line" style="background:var(--gold);"></div></div>
     </div>
-    <!-- Valentine fully booked banner with rhymes -->
-    <div class="valentine-banner">
-      <i class="fas fa-heart" style="color:#d6336c;"></i>  14, 15, 16 February – we’re fully booked, what a fling!<br>
-      Cupid shot his arrow, we’re packed with love and <i class="fas fa-wine-glass-alt"></i><br>
-      Other dates are free — come celebrate with me!  <i class="fas fa-heart" style="color:#d6336c;"></i>
+    <div class="tableagent-btn-wrap">
+      <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" class="btn-tableagent">
+        <i class="fas fa-calendar-alt"></i> BOOK NOW ON TABLEAGENT
+      </a>
     </div>
-    <div style="max-width:700px; margin:0 auto;">
-      <div class="reservation-options">
-        <div class="option-card active" id="waOption"><div class="option-icon"><i class="fab fa-whatsapp" style="color:#25d366;"></i></div><span>WhatsApp</span></div>
-        <div class="option-card" id="mailOption"><div class="option-icon"><i class="fas fa-envelope" style="color:var(--gold);"></i></div><span>Email</span></div>
-      </div>
-      <form id="bookingForm">
-        <input type="text" name="name" placeholder="Full name *" class="form-control" required>
-        <input type="email" name="email" placeholder="Email *" class="form-control" required>
-        <input type="tel" name="phone" placeholder="Phone *" class="form-control" required>
-        <select name="guests" class="form-control" required>
-          <option value="" disabled selected>Number of guests</option>
-          <option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option>
-          <option>5 guests</option><option>6 guests</option><option>7 guests</option><option>8+ guests</option>
-        </select>
-        <input type="date" name="date" class="form-control" id="resDate" required>
-        <input type="time" name="time" class="form-control" id="resTime" required>
-        <textarea name="special" placeholder="Special requests (optional)" class="form-control" rows="2"></textarea>
-        <button type="submit" class="btn btn-premium" style="width:100%; padding:18px; background:var(--red); border-radius:60px;"><i class="fab fa-whatsapp" id="submitIcon"></i> <span id="submitText">Send WhatsApp Reservation</span></button>
-      </form>
-      <div id="successMessage" class="success-message">
-        <i class="fas fa-check-circle"></i> Grazie! We'll reply within hours. (If Feb 14-16, sorry – you'll be on waitlist!)
-      </div>
-    </div>
+    <p style="text-align:center; color:white; font-size:1.1rem; margin-top:24px;">Instant confirmation · Best tables · Secure</p>
   </section>
 
-  <!-- ===== CONTACT – unchanged ===== -->
+  <!-- ===== CONTACT ===== -->
   <section id="contact" class="container">
     <div class="section-header">
       <h2>Contact Us</h2>
@@ -605,16 +559,16 @@
       </div>
     </div>
     <div class="footer-bottom" style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.1); max-width:1200px; margin:20px auto 0;">
-      <p>© 2025 L'ARTISTA – Vaļņu iela 25, Riga LV-1050. All rights reserved. ❤️</p>
+      <p>© 2025 L'ARTISTA – Vaļņu iela 25, Riga LV-1050. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- ===== JAVASCRIPT – FULL FUNCTIONALITY + DATE VALIDATION (14-16 blocked) ===== -->
+  <!-- ===== JAVASCRIPT – MENU, GALLERY, MOBILE ===== -->
   <script>
     (function(){
       setTimeout(()=>{ let l=document.getElementById('pageLoader'); if(l){ l.style.opacity='0'; l.style.visibility='hidden'; } },500);
 
-      // Mobile menu toggle
+      // Mobile menu
       const toggle = document.getElementById('mobileMenuToggle');
       const menu = document.getElementById('mobileMenu');
       const overlay = document.getElementById('menuOverlay');
@@ -646,98 +600,6 @@
           let hidden = document.querySelectorAll('.gallery-item.hidden');
           hidden.forEach(el => el.classList.remove('hidden'));
           this.style.display = 'none';
-        });
-      }
-
-      // Reservation toggle (WhatsApp / Email)
-      const waOpt = document.getElementById('waOption');
-      const mailOpt = document.getElementById('mailOption');
-      const submitIcon = document.getElementById('submitIcon');
-      const submitText = document.getElementById('submitText');
-      if(waOpt && mailOpt){
-        waOpt.addEventListener('click',()=>{ 
-          waOpt.classList.add('active'); mailOpt.classList.remove('active');
-          if(submitIcon) submitIcon.className = 'fab fa-whatsapp';
-          if(submitText) submitText.innerText = 'Send WhatsApp Reservation';
-        });
-        mailOpt.addEventListener('click',()=>{ 
-          mailOpt.classList.add('active'); waOpt.classList.remove('active');
-          if(submitIcon) submitIcon.className = 'fas fa-envelope';
-          if(submitText) submitText.innerText = 'Send Email Reservation';
-        });
-      }
-
-      // Set default date/time to tomorrow 20:00
-      const dateInput = document.getElementById('resDate');
-      if(dateInput){
-        let tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        dateInput.value = tomorrow.toISOString().split('T')[0];
-      }
-      const timeInput = document.getElementById('resTime');
-      if(timeInput) timeInput.value = '20:00';
-
-      // BOOKING FORM: add check for 14-16 Feb fully booked (with a popup message)
-      const bookingForm = document.getElementById('bookingForm');
-      const successMsg = document.getElementById('successMessage');
-      
-      if(bookingForm){
-        bookingForm.addEventListener('submit', function(e){
-          e.preventDefault();
-          
-          const selectedDate = this.elements['date']?.value;
-          let isBlocked = false;
-          if(selectedDate){
-            const d = new Date(selectedDate+'T12:00:00');
-            const month = d.getMonth()+1;
-            const day = d.getDate();
-            if(month === 2 && (day === 14 || day === 15 || day === 16)) {
-              isBlocked = true;
-            }
-          }
-
-          if(isBlocked) {
-            alert("❤️ Oh dear! February 14-16 are FULLY BOOKED (Cupid's fault!). Please choose another date, or we can add you to waitlist? ❤️");
-            // optionally we still continue? but let user know they can try waitlist
-          }
-
-          const name = this.elements['name']?.value.trim() || 'Guest';
-          const email = this.elements['email']?.value.trim() || '';
-          const phone = this.elements['phone']?.value.trim() || '';
-          const guests = this.elements['guests']?.value || '';
-          const date = this.elements['date']?.value || '';
-          const time = this.elements['time']?.value || '';
-          const special = this.elements['special']?.value.trim() || '—';
-          
-          const messageLine = 
-`Reservation - L'ARTISTA
-
-Guest Information
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-
-Reservation Details
-Date: ${date}
-Time: ${time}
-Guests: ${guests}
-Special Requests: ${special}
-
-Vaļņu iela 25, Centra rajons, Rīga, LV-1050, Latvia
-📞 +371 25455947
-
-Thank you for choosing L'ARTISTA!`;
-          
-          const isWhatsApp = waOpt.classList.contains('active');
-          
-          if(isWhatsApp){
-            window.open(`https://wa.me/37125455947?text=${encodeURIComponent(messageLine)}`, '_blank');
-          } else {
-            window.location.href = `mailto:lartista2025@gmail.com?subject=Reservation%20at%20L'ARTISTA&body=${encodeURIComponent(messageLine)}`;
-          }
-          
-          if(successMsg) successMsg.style.display = 'block';
-          if(successMsg) successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
 
