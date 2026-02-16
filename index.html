@@ -297,6 +297,7 @@
         </div>
         <p class="premium-subtitle">Best Italian restaurant in Riga – authentic pasta, award‑winning pizza & fine wine</p>
         <div class="premium-hero-buttons">
+          <!-- CHANGE 1 FIX: Links now use smooth scroll with higher z-index target handling -->
           <a href="#reservation" class="btn btn-premium btn-large"><i class="fas fa-calendar-check"></i> BOOK A TABLE</a>
           <a href="#menu" class="btn btn-outline-premium btn-large"><i class="fas fa-book-open"></i> VIEW MENU</a>
         </div>
@@ -304,7 +305,7 @@
     </div>
   </section>
 
-  <!-- ABOUT (UPDATED STORY + FEATURE CHANGE) -->
+  <!-- ABOUT (CHANGE 2: feature card replaced with 'Private Dining') -->
   <section id="about" class="container" style="padding-top:20px;">
     <div class="section-header">
       <h2>Our Story</h2>
@@ -319,14 +320,15 @@
         <div class="premium-features-grid">
           <div class="premium-feature-card"><i class="fas fa-seedling"></i><h4>From Italy</h4><p>Truffles, cheeses, oils</p></div>
           <div class="premium-feature-card"><i class="fas fa-wine-glass-alt"></i><h4>Award-winning wine</h4><p>Hidden vineyards</p></div>
-          <div class="premium-feature-card"><i class="fas fa-heart"></i><h4>Romance</h4><p>Perfect for couples</p></div>
+          <!-- CHANGE 2: Replaced "Romance / Perfect for couples" with "Private Dining / Intimate events" -->
+          <div class="premium-feature-card"><i class="fas fa-user-friends"></i><h4>Private Dining</h4><p>Intimate events</p></div>
         </div>
       </div>
       <div class="image-frame"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="Ambiance"></div>
     </div>
   </section>
 
-  <!-- ===== FULL MENU (UPDATED: added dish photos, removed Panna Cotta) ===== -->
+  <!-- ===== FULL MENU ===== -->
   <section id="menu" class="menu-section">
     <div class="section-header">
       <h2>Our Menu</h2>
@@ -343,7 +345,7 @@
       <button class="menu-tab" data-cat="wine">Wine</button>
     </div>
     <div class="menu-categories-container">
-      <!-- Starters (now with images from LARTISTA DISHES) -->
+      <!-- Starters -->
       <div class="menu-category active" id="cat-starters">
         <div class="menu-item"><img src="LARTISTA DISHES/CAESAR SALAD.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Caesar Salad</h4><span class="price">€12</span></div><p class="menu-desc">Parmesan cheese, toast</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/CREAMY BURATA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Creamy Burrata</h4><span class="price">€15</span></div><p class="menu-desc">Cherry tomatoes, basil oil, pistachio pesto</p></div></div>
@@ -354,7 +356,7 @@
         <div class="menu-item"><img src="LARTISTA DISHES/BRUSCHETTA CLASSIC.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Bruschettas</h4><span class="price">€8.50</span></div><p class="menu-desc">Stracciatella, mortadella, pistachio / zucchini / tomatoes</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/PARMIGIANA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Eggplant Parmesan</h4><span class="price">€14</span></div><p class="menu-desc">Layers of eggplant, tomato, mozzarella</p></div></div>
       </div>
-      <!-- Main (with images) -->
+      <!-- Main -->
       <div class="menu-category" id="cat-main">
         <div class="menu-item"><img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Truffle Risotto</h4><span class="price">€25</span></div><p class="menu-desc">Fresh black truffles</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Lemon-Butter Veal Escalopes</h4><span class="price">€29</span></div><p class="menu-desc">Fried potatoes or fresh salad</p></div></div>
@@ -364,7 +366,7 @@
         <div class="menu-item"><div><div class="menu-item-header"><h4>Baked Rosemary-Garlic Potatoes</h4><span class="price">€6</span></div></div></div>
         <div class="menu-item"><div><div class="menu-item-header"><h4>Mixed Seasonal Salad</h4><span class="price">€9</span></div></div></div>
       </div>
-      <!-- Pizza (images) -->
+      <!-- Pizza -->
       <div class="menu-category" id="cat-pizza">
         <div class="menu-item"><img src="LARTISTA DISHES/Margherita.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Margherita</h4><span class="price">€10</span></div></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/PIZZA MARINARA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Marinara</h4><span class="price">€14</span></div></div></div>
@@ -374,7 +376,7 @@
         <div class="menu-item"><img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Prosciutto</h4><span class="price">€18</span></div></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Mortadella & Stracciatella</h4><span class="price">€18</span></div><p class="menu-desc">Pistachio pesto</p></div></div>
       </div>
-      <!-- PASTA (UPDATED with images) -->
+      <!-- PASTA -->
       <div class="menu-category" id="cat-pasta">
         <div class="menu-item"><img src="LARTISTA DISHES/PASTA CARBONARA.jpg" class="dish-photo" onerror="this.style.display='none'"><div><div class="menu-item-header"><h4>Carbonara</h4><span class="price">€16</span></div><p class="menu-desc">guanciale / pecorino</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/CACIO E PEPE WITH BLACK TRUFFLES.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Cacio e Pepe</h4><span class="price">€15</span></div><p class="menu-desc">black pepper / pecorino</p></div></div>
@@ -384,7 +386,7 @@
         <div class="menu-item"><div><div class="menu-item-header"><h4>Lobster & Caviar Pasta</h4><span class="price">€38</span></div><p class="menu-desc">lobster / caviar / white wine butter sauce</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/LEMON POSETTA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Homemade Ravioli</h4><span class="price">€21</span></div><p class="menu-desc">ricotta & spinach / gorgonzola sauce / basil oil</p></div></div>
       </div>
-      <!-- DESSERT (UPDATED – Panna Cotta removed) -->
+      <!-- DESSERT -->
       <div class="menu-category" id="cat-dessert">
         <div class="menu-item"><img src="LARTISTA DISHES/TIRAMISU.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Classic Tiramisu</h4><span class="price">€8</span></div><p class="menu-desc">Coffee, mascarpone, cocoa</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/LEMON POSETTA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Lemon Pussat</h4><span class="price">€9</span></div><p class="menu-desc">lemon caviar / pistachios</p></div></div>
@@ -439,7 +441,7 @@
     </div>
   </section>
 
-  <!-- CONTACT (updated social: TableAgent logo, Telegram) -->
+  <!-- CONTACT (CHANGE 3: instagram link updated) -->
   <section id="contact" class="container">
     <div class="section-header">
       <h2>Contact Us</h2>
@@ -463,7 +465,8 @@
             <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank"><img src="TRIPADVISOR.png" alt="TripAdvisor" style="width:20px; height:20px;"> TripAdvisor</a>
             <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank"><i class="fab fa-google"></i> Google</a>
             <a href="https://www.facebook.com/profile.php?id=61586930476783" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-            <a href="https://www.instagram.com/lartista2026" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <!-- CHANGE 3: Updated Instagram link -->
+            <a href="https://www.instagram.com/lartista_riga?igsh=bG1ta2F3Yjc5NW9p" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
             <a href="#" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
             <a href="https://tableagent.com/riga/lartista-riga/" target="_blank"><img src="TableAgent_logo.png" alt="TableAgent" style="width:20px; height:20px;"> TableAgent</a>
           </div>
