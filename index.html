@@ -281,7 +281,7 @@
     </div>
   </div>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (CHANGE 3: subtitle updated) -->
   <section id="home" class="hero-premium">
     <div class="hero-bg"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista interior"></div>
     <div class="premium-overlay"></div>
@@ -295,9 +295,10 @@
           <span class="title-line-1">Italian Restaurant in Riga</span>
           <span class="title-line-2">Authentic • Fresh • Italian</span>
         </div>
-        <p class="premium-subtitle">Best Italian restaurant in Riga – authentic pasta, award‑winning pizza & fine wine</p>
+        <!-- CHANGE 3: Removed "award‑winning" -->
+        <p class="premium-subtitle">Best Italian restaurant in Riga – authentic pasta, pizza & fine wine</p>
         <div class="premium-hero-buttons">
-          <!-- CHANGE 1 FIX: Links now use smooth scroll with higher z-index target handling -->
+          <!-- CHANGE 1 FIX: Buttons now use the same smooth scroll as all other anchor links (they were already working, but we keep the structure) -->
           <a href="#reservation" class="btn btn-premium btn-large"><i class="fas fa-calendar-check"></i> BOOK A TABLE</a>
           <a href="#menu" class="btn btn-outline-premium btn-large"><i class="fas fa-book-open"></i> VIEW MENU</a>
         </div>
@@ -305,7 +306,7 @@
     </div>
   </section>
 
-  <!-- ABOUT (CHANGE 2: feature card replaced with 'Private Dining') -->
+  <!-- ABOUT (CHANGE 5: feature card description shortened to "events") -->
   <section id="about" class="container" style="padding-top:20px;">
     <div class="section-header">
       <h2>Our Story</h2>
@@ -320,8 +321,8 @@
         <div class="premium-features-grid">
           <div class="premium-feature-card"><i class="fas fa-seedling"></i><h4>From Italy</h4><p>Truffles, cheeses, oils</p></div>
           <div class="premium-feature-card"><i class="fas fa-wine-glass-alt"></i><h4>Award-winning wine</h4><p>Hidden vineyards</p></div>
-          <!-- CHANGE 2: Replaced "Romance / Perfect for couples" with "Private Dining / Intimate events" -->
-          <div class="premium-feature-card"><i class="fas fa-user-friends"></i><h4>Private Dining</h4><p>Intimate events</p></div>
+          <!-- CHANGE 5: Shortened description to just "events" -->
+          <div class="premium-feature-card"><i class="fas fa-user-friends"></i><h4>Private Dining</h4><p>events</p></div>
         </div>
       </div>
       <div class="image-frame"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="Ambiance"></div>
@@ -376,7 +377,7 @@
         <div class="menu-item"><img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Prosciutto</h4><span class="price">€18</span></div></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Mortadella & Stracciatella</h4><span class="price">€18</span></div><p class="menu-desc">Pistachio pesto</p></div></div>
       </div>
-      <!-- PASTA -->
+      <!-- PASTA (CHANGE 2: added Homemade Ravioli image) -->
       <div class="menu-category" id="cat-pasta">
         <div class="menu-item"><img src="LARTISTA DISHES/PASTA CARBONARA.jpg" class="dish-photo" onerror="this.style.display='none'"><div><div class="menu-item-header"><h4>Carbonara</h4><span class="price">€16</span></div><p class="menu-desc">guanciale / pecorino</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/CACIO E PEPE WITH BLACK TRUFFLES.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Cacio e Pepe</h4><span class="price">€15</span></div><p class="menu-desc">black pepper / pecorino</p></div></div>
@@ -384,13 +385,15 @@
         <div class="menu-item"><img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Pasta al Pesto di Pistacchio e Stracciatella</h4><span class="price">€19</span></div><p class="menu-desc">L'artista signature</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/FRUTTI DI MARE.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Frutti di Mare</h4><span class="price">€24</span></div><p class="menu-desc">white wine-tomato sauce / herbs</p></div></div>
         <div class="menu-item"><div><div class="menu-item-header"><h4>Lobster & Caviar Pasta</h4><span class="price">€38</span></div><p class="menu-desc">lobster / caviar / white wine butter sauce</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/LEMON POSETTA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Homemade Ravioli</h4><span class="price">€21</span></div><p class="menu-desc">ricotta & spinach / gorgonzola sauce / basil oil</p></div></div>
+        <!-- CHANGE 2: Added Homemade Ravioli image -->
+        <div class="menu-item"><img src="LARTISTA DISHES/Homemade Ravioli.jpeg" class="dish-photo" onerror="this.style.display='none'"><div><div class="menu-item-header"><h4>Homemade Ravioli</h4><span class="price">€21</span></div><p class="menu-desc">ricotta & spinach / gorgonzola sauce / basil oil</p></div></div>
       </div>
-      <!-- DESSERT -->
+      <!-- DESSERT (CHANGE 2: added Cannoli Siciliani image) -->
       <div class="menu-category" id="cat-dessert">
         <div class="menu-item"><img src="LARTISTA DISHES/TIRAMISU.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Classic Tiramisu</h4><span class="price">€8</span></div><p class="menu-desc">Coffee, mascarpone, cocoa</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/LEMON POSETTA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Lemon Pussat</h4><span class="price">€9</span></div><p class="menu-desc">lemon caviar / pistachios</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/CANNOLI.jpg" class="dish-photo" onerror="this.style.display='none'"><div><div class="menu-item-header"><h4>Cannoli Siciliani</h4><span class="price">€9</span></div><p class="menu-desc">mascarpone-vanilla cream / almonds / pistachios</p></div></div>
+        <!-- CHANGE 2: Added Cannoli image -->
+        <div class="menu-item"><img src="LARTISTA DISHES/Cannoli Siciliani.jpeg" class="dish-photo" onerror="this.style.display='none'"><div><div class="menu-item-header"><h4>Cannoli Siciliani</h4><span class="price">€9</span></div><p class="menu-desc">mascarpone-vanilla cream / almonds / pistachios</p></div></div>
       </div>
       <!-- Drinks placeholder -->
       <div class="menu-category" id="cat-drinks"><div class="menu-item"><div><div class="menu-item-header"><h4>Soft drinks, cocktails</h4></div></div></div></div>
@@ -441,7 +444,7 @@
     </div>
   </section>
 
-  <!-- CONTACT (CHANGE 3: instagram link updated) -->
+  <!-- CONTACT (Instagram link already updated) -->
   <section id="contact" class="container">
     <div class="section-header">
       <h2>Contact Us</h2>
@@ -465,7 +468,6 @@
             <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank"><img src="TRIPADVISOR.png" alt="TripAdvisor" style="width:20px; height:20px;"> TripAdvisor</a>
             <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank"><i class="fab fa-google"></i> Google</a>
             <a href="https://www.facebook.com/profile.php?id=61586930476783" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-            <!-- CHANGE 3: Updated Instagram link -->
             <a href="https://www.instagram.com/lartista_riga?igsh=bG1ta2F3Yjc5NW9p" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
             <a href="#" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
             <a href="https://tableagent.com/riga/lartista-riga/" target="_blank"><img src="TableAgent_logo.png" alt="TableAgent" style="width:20px; height:20px;"> TableAgent</a>
