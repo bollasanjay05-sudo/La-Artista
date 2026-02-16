@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ========== MASTER WEBSITE – L'ARTISTA RIGA ========== -->
-  <!-- CLEAN CLASSIC EDITION (Valentine elements removed) -->
+  <!-- MASTER WEBSITE – L'ARTISTA RIGA (Table Agent booking, updated menu, iOS friendly) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-  <title>L'artista | Italian Restaurant Riga</title>
-  <meta name="description" content="Best Italian restaurant in Riga – L'artista. Authentic pasta, pizza & fine Italian wine. Top-rated Italian dining in Latvia. Book your table now!">
+  <title>L'artista Riga | Italian Restaurant</title>
+  <meta name="description" content="Best Italian restaurant in Riga – L'artista. Authentic pasta, pizza & fine Italian wine. Book via Table Agent.">
   <meta name="keywords" content="best italian restaurant, italian restaurant, pizza, pasta, fine dine, italian restaurant near me, best pasta in Riga, italian restaurant Riga, authentic italian food, wine restaurant Riga, italian wine list, riga old town restaurant, romantic dinner riga, private dining riga, italian chef riga, fresh pasta riga, neapolitan pizza riga">
   <meta name="robots" content="index, follow">
-  <!-- Favicon 60x60 -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="60x60" href="favicon-60x60.png">
   <link rel="apple-touch-icon" sizes="60x60" href="favicon-60x60.png">
   <link rel="shortcut icon" href="favicon-60x60.png">
-  <!-- Legacy favicon -->
   <link rel="icon" type="image/x-icon" href="lartista-logo.png">
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,23 +19,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* === GLOBAL – BRIGHT & VIBRANT (no valentine hearts) === */
+    /* === GLOBAL – bright, clean, no Valentine forced theme === */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #fcf9f7; /* warm neutral */
+      background: #faf7f2; /* warm ivory */
       color: #1A1A1A;
       line-height: 1.5;
       font-size: 15px;
       -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
-      position: relative;
     }
     :root {
       --green: #1F3D2B;
       --red: #D6273B;
-      --ivory: #fcf9f7;
       --gold: #C8A951;
+      --ivory: #faf7f2;
       --text-dark: #1A1A1A;
       --text-muted: #5e5e5e;
     }
@@ -50,10 +47,10 @@
     .divider-line { width: 50px; height: 1px; background: var(--red); opacity: 0.5; }
     .divider-icon { color: var(--red); font-size: 18px; }
 
-    /* === ITALIAN FLAG STRIPE (top) – BRAND SIGNAL === */
+    /* Italian flag stripe */
     .italian-flag-stripe { position: fixed; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #1F3D2B 33.33%, white 33.33% 66.66%, #D6273B 66.66%); z-index: 1100; top: 0; }
 
-    /* === LOADER (graceful) === */
+    /* Loader */
     .loader {
       position: fixed; inset: 0; background: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
       transition: 0.3s; color: white;
@@ -62,77 +59,34 @@
     .loader-spinner { width: 56px; height: 56px; border: 4px solid rgba(255,255,255,0.2); border-top: 4px solid var(--red); border-radius: 50%; animation: spin 0.8s infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* === LANGUAGE SELECTOR – VERTICAL, SMALLER, RIGHT SIDE === */
+    /* LANGUAGE SELECTOR – VERTICAL */
     .language-selector {
-      position: fixed;
-      top: 50%;
-      right: 8px;
-      transform: translateY(-50%);
-      z-index: 1200;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-radius: 24px;
-      padding: 8px 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      border: 1px solid rgba(214,39,59,0.2);
+      position: fixed; top: 50%; right: 8px; transform: translateY(-50%); z-index: 1200;
+      display: flex; flex-direction: column; gap: 6px;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(4px);
+      border-radius: 24px; padding: 8px 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid rgba(214,39,59,0.2);
     }
     .language-btn {
-      background: none;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #5e5e5e;
-      cursor: pointer;
-      writing-mode: horizontal-tb;
-      min-width: 42px;
-      text-align: center;
-      transition: all 0.2s;
+      background: none; border: none; padding: 6px 10px; border-radius: 30px; font-size: 12px; font-weight: 600;
+      color: #5e5e5e; cursor: pointer; min-width: 42px; text-align: center; transition: all 0.2s;
     }
-    .language-btn.active {
-      background: var(--red);
-      color: white;
-    }
+    .language-btn.active { background: var(--red); color: white; }
     @media (min-width: 992px) {
-      .language-selector {
-        right: 16px;
-        padding: 10px 8px;
-        gap: 8px;
-      }
-      .language-btn {
-        padding: 8px 12px;
-        font-size: 13px;
-        min-width: 46px;
-      }
+      .language-selector { right: 16px; padding: 10px 8px; gap: 8px; }
+      .language-btn { padding: 8px 12px; font-size: 13px; min-width: 46px; }
     }
 
-    /* === STICKY NAVIGATION – LOGO FLOATING === */
+    /* STICKY NAV */
     .premium-navbar {
       position: sticky; top: 4px; left: 0; right: 0; z-index: 1050; background: var(--ivory); padding: 8px 0; border-bottom: 1px solid rgba(214,39,59,0.12);
     }
     .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .logo { display: flex; align-items: center; gap: 14px; }
     .custom-logo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      padding: 2px;
-      background: white;
-      overflow: hidden;
-      flex-shrink: 0;
-      animation: floatPop 3s ease-in-out infinite;
+      width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--gold); padding: 2px;
+      background: white; overflow: hidden; flex-shrink: 0;
       box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
-    @keyframes floatPop {
-      0% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 24px rgba(214,39,59,0.2); }
-      100% { transform: translateY(0px) scale(1); }
     }
     .custom-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
     .logo-fallback { display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #1F3D2B, #D6273B); color: white; font-family: 'Playfair Display', serif; border-radius: 50%; width: 100%; height: 100%; font-size: 14px; }
@@ -143,7 +97,7 @@
     .menu-toggle { display: flex; background: none; border: none; width: 44px; height: 44px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; cursor: pointer; }
     .menu-toggle span { display: block; width: 28px; height: 2px; background: var(--red); border-radius: 2px; transition: 0.2s; }
 
-    /* === MOBILE MENU (off-canvas) === */
+    /* MOBILE MENU */
     .premium-mobile-menu {
       position: fixed; top: 0; right: -100%; width: 85%; max-width: 320px; height: 100vh; background: var(--green); padding: 80px 28px 30px; transition: right 0.3s ease; z-index: 2000; overflow-y: auto;
       box-shadow: -5px 0 25px rgba(0,0,0,0.2);
@@ -153,22 +107,22 @@
     .menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1999; opacity: 0; visibility: hidden; transition: 0.2s; }
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* === HERO – FULL WIDTH, DRAMATIC, BRIGHT OVERLAY === */
+    /* HERO */
     .hero-premium { min-height: 90vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 0; }
     .hero-bg { position: absolute; inset: 0; z-index: -2; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
     .premium-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31,61,43,0.3) 0%, rgba(214,39,59,0.1) 100%); }
     .premium-hero-content { text-align: center; color: white; padding: 20px; max-width: 900px; margin: 0 auto; }
-    .hero-logo { width: 120px; height: 120px; margin: 0 auto 20px; border-width: 4px; animation: floatPop 3s ease-in-out infinite; }
+    .hero-logo { width: 120px; height: 120px; margin: 0 auto 20px; border-width: 4px; }
     .premium-title .title-line-1 { font-size: 56px; font-weight: 700; font-family: 'Playfair Display', serif; line-height: 1.1; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-    .premium-title .title-line-2 { font-size: 20px; letter-spacing: 4px; text-transform: uppercase; display: block; margin-top: 16px; color: #ffe5e5; }
+    .premium-title .title-line-2 { font-size: 20px; letter-spacing: 4px; text-transform: uppercase; display: block; margin-top: 16px; }
     .premium-subtitle { font-size: 18px; margin: 28px 0; max-width: 600px; margin-left: auto; margin-right: auto; }
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 60px; text-decoration: none; gap: 10px; border: none; cursor: pointer; }
     .btn-premium { background: var(--red); color: white; box-shadow: 0 8px 18px rgba(214,39,59,0.3); }
     .btn-outline-premium { background: transparent; border: 2px solid white; color: white; }
     .btn-large { padding: 16px 36px; }
 
-    /* === ABOUT – BRIGHT BACKGROUND === */
+    /* ABOUT */
     .premium-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .premium-intro { font-size: 20px; border-left: 4px solid var(--red); padding-left: 20px; margin-bottom: 20px; }
     .premium-features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 24px; }
@@ -178,12 +132,12 @@
     .image-frame { border-radius: 24px; overflow: hidden; border: 3px solid var(--gold); height: 360px; }
     .image-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* === MENU – BRIGHT WHITE === */
+    /* MENU – bright white, UPDATED categories */
     .menu-section { background: white; border-radius: 32px; padding: 48px 32px; margin: 0 20px; border: 1px solid rgba(214,39,59,0.1); }
     .menu-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 28px; -webkit-overflow-scrolling: touch; }
     .menu-tab { flex: 0 0 auto; padding: 12px 26px; border: 1px solid #ddd; background: white; border-radius: 60px; font-weight: 600; font-size: 15px; color: #333; cursor: pointer; }
     .menu-tab.active { background: var(--red); color: white; border-color: var(--red); }
-    .menu-categories-container { max-height: 680px; overflow-y: auto; padding-right: 8px; -webkit-overflow-scrolling: touch; }
+    .menu-categories-container { max-height: 680px; overflow-y: auto; padding-right: 8px; }
     .menu-category { display: none; }
     .menu-category.active { display: block; }
     .menu-item { display: flex; gap: 18px; background: #faf8f4; border-radius: 24px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(200,169,81,0.2); }
@@ -192,30 +146,28 @@
     .price { color: var(--red); font-weight: 700; font-size: 18px; }
     .menu-desc { font-size: 14px; color: #5a5a5a; }
 
-    /* === GALLERY – 6 VISIBLE + MORE PHOTOS BUTTON === */
+    /* GALLERY */
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
     .gallery-item { position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 14px; border: 1px solid rgba(214,39,59,0.2); }
     .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .gallery-item.hidden { display: none; }
     .more-photos-btn { display: inline-block; background: var(--red); color: white; padding: 14px 36px; border-radius: 60px; border: none; font-weight: 600; margin: 24px 0 8px; cursor: pointer; font-size: 16px; }
 
-    /* === RESERVATION – NOW SINGLE BUTTON TO TABLEAGENT === */
+    /* RESERVATION – TABLE AGENT IFRAME REPLACES OLD FORM */
     .reservation-section {
-      background: #b3304a; /* warm red */
-      border-radius: 32px; padding: 56px 40px; margin: 24px 20px; color: white;
+      background: white; border-radius: 32px; padding: 56px 20px; margin: 24px 20px; border: 1px solid rgba(214,39,59,0.1);
     }
-    .reservation-section .section-header h2 { color: white; }
-    .reservation-section .subtitle { color: var(--gold); }
-    .tableagent-btn-wrap { text-align: center; margin: 24px 0; }
-    .btn-tableagent {
-      background: white; color: var(--red); padding: 20px 48px; border-radius: 60px; font-weight: 700;
-      font-size: 22px; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 12px 28px rgba(0,0,0,0.3);
-      text-decoration: none; transition: 0.2s; border: 2px solid var(--gold);
+    .reservation-section .section-header h2 { color: var(--green); }
+    .reservation-section .subtitle { color: var(--red); }
+    .ta-iframe-container {
+      max-width: 800px; margin: 0 auto; background: #f9f9f9; border-radius: 32px; overflow: hidden; box-shadow: 0 12px 28px rgba(0,0,0,0.04);
     }
-    .btn-tableagent i { color: var(--green); font-size: 28px; }
-    .btn-tableagent:hover { background: var(--gold); color: var(--green); }
+    iframe.ta-frame {
+      border:0; width:100%; min-height:750px; display: block;
+      -webkit-overflow-scrolling:touch; /* smooth scroll iOS */
+    }
 
-    /* === CONTACT – BRIGHT CARD === */
+    /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 24px; }
     .contact-card { background: white; padding: 36px 32px; border-radius: 32px; box-shadow: 0 12px 28px rgba(0,0,0,0.02); border: 1px solid rgba(214,39,59,0.1); }
     .contact-icon { font-size: 32px; color: var(--red); margin-bottom: 16px; }
@@ -229,7 +181,7 @@
     .social-minimal a i { font-size: 20px; color: var(--red); }
     .social-minimal a img { width: 20px; height: 20px; object-fit: contain; }
 
-    /* === FOOTER – BRIGHT FOOTER === */
+    /* FOOTER */
     .footer { background: #2a5a3a; color: white; padding: 60px 0 30px; margin-top: 40px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .footer-column h3 { font-size: 20px; margin-bottom: 20px; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 8px; }
@@ -258,11 +210,11 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .language-selector { right: 6px; padding: 6px 4px; }
       .language-btn { padding: 5px 8px; font-size: 11px; min-width: 38px; }
+      iframe.ta-frame { min-height: 700px; } /* adjust for iOS */
     }
-
-    /* iOS friendly tap highlights removed, momentum scrolling */
-    a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
-    .menu-categories-container { -webkit-overflow-scrolling: touch; }
+    /* iOS touch improvements */
+    a, button { cursor: pointer; }
+    input, select, textarea { font-size: 16px; } /* prevents zoom on iOS */
   </style>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1F3D2B">
@@ -271,7 +223,7 @@
   <!-- Italian flag stripe -->
   <div class="italian-flag-stripe"></div>
 
-  <!-- LANGUAGE SELECTOR – VERTICAL, SMALL, RIGHT SIDE -->
+  <!-- LANGUAGE SELECTOR -->
   <div class="language-selector">
     <button class="language-btn active">EN</button>
     <button class="language-btn">LV</button>
@@ -284,7 +236,7 @@
     <div class="loader-spinner"></div>
   </div>
 
-  <!-- STICKY NAVIGATION – LOGO FLOATING -->
+  <!-- STICKY NAVIGATION -->
   <nav class="premium-navbar">
     <div class="nav-container">
       <div class="logo">
@@ -329,7 +281,7 @@
     </div>
   </div>
 
-  <!-- HERO SECTION (no valentine) -->
+  <!-- HERO SECTION -->
   <section id="home" class="hero-premium">
     <div class="hero-bg"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista interior"></div>
     <div class="premium-overlay"></div>
@@ -341,7 +293,7 @@
         </div>
         <div class="premium-title">
           <span class="title-line-1">Italian Restaurant in Riga</span>
-          <span class="title-line-2">Authentic · Passion · Flavour</span>
+          <span class="title-line-2">Authentic • Fresh • Italian</span>
         </div>
         <p class="premium-subtitle">Best Italian restaurant in Riga – authentic pasta, award‑winning pizza & fine wine</p>
         <div class="premium-hero-buttons">
@@ -357,7 +309,7 @@
     <div class="section-header">
       <h2>Our Story</h2>
       <div class="subtitle">Authentic Italian Excellence</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-utensils divider-icon" style="color:var(--red);"></i><div class="divider-line"></div></div>
+      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-star divider-icon" style="color:var(--red);"></i><div class="divider-line"></div></div>
     </div>
     <div class="premium-about-grid">
       <div>
@@ -373,12 +325,12 @@
     </div>
   </section>
 
-  <!-- ===== FULL MENU (UPDATED PASTA & DESSERTS) ===== -->
+  <!-- ===== FULL MENU (UPDATED PASTA & DESSERT) ===== -->
   <section id="menu" class="menu-section">
     <div class="section-header">
       <h2>Our Menu</h2>
       <div class="subtitle">Culinary Masterpieces</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-pepper-hot divider-icon"></i><div class="divider-line"></div></div>
+      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-utensils divider-icon"></i><div class="divider-line"></div></div>
     </div>
     <div class="menu-tabs">
       <button class="menu-tab active" data-cat="starters">Starters</button>
@@ -390,7 +342,7 @@
       <button class="menu-tab" data-cat="wine">Wine</button>
     </div>
     <div class="menu-categories-container">
-      <!-- Starters (unchanged, keep as before) -->
+      <!-- Starters (unchanged) -->
       <div class="menu-category active" id="cat-starters">
         <div class="menu-item"><img src="LARTISTA DISHES/CAESAR SALAD.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Caesar Salad</h4><span class="price">€12</span></div><p class="menu-desc">Parmesan cheese, toast</p></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/CREAMY BURATA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Creamy Burrata</h4><span class="price">€15</span></div><p class="menu-desc">Cherry tomatoes, basil oil, pistachio pesto</p></div></div>
@@ -421,45 +373,44 @@
         <div class="menu-item"><img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Prosciutto</h4><span class="price">€18</span></div></div></div>
         <div class="menu-item"><img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" class="dish-photo"><div><div class="menu-item-header"><h4>Mortadella & Stracciatella</h4><span class="price">€18</span></div><p class="menu-desc">Pistachio pesto</p></div></div>
       </div>
-      <!-- PASTA – UPDATED -->
+      <!-- PASTA (UPDATED) -->
       <div class="menu-category" id="cat-pasta">
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Carbonara</h4><span class="price">€16</span></div><p class="menu-desc">guanciale / pecorino</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/CARBONARA.jpg" class="dish-photo" onerror="this.style.display='none'"><div><div class="menu-item-header"><h4>Carbonara</h4><span class="price">€16</span></div><p class="menu-desc">guanciale / pecorino</p></div></div>
         <div class="menu-item"><div><div class="menu-item-header"><h4>Cacio e Pepe</h4><span class="price">€15</span></div><p class="menu-desc">black pepper / pecorino</p></div></div>
         <div class="menu-item"><div><div class="menu-item-header"><h4>Penne all'Arrabbiata</h4><span class="price">€14</span></div><p class="menu-desc">Parmigiano Reggiano / tomato sauce / chili</p></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Pasta al pesto di pistachio e stracciatella</h4><span class="price">€18</span></div><p class="menu-desc">creamy pistachio pesto, stracciatella</p></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>L'artista signature pasta</h4><span class="price">€34</span></div><p class="menu-desc">lobster / caviar / white wine butter sauce</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Pasta al Pesto di Pistacchio e Stracciatella</h4><span class="price">€19</span></div><p class="menu-desc">L'artista signature</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Lobster & Caviar Pasta</h4><span class="price">€38</span></div><p class="menu-desc">lobster / caviar / white wine butter sauce</p></div></div>
         <div class="menu-item"><div><div class="menu-item-header"><h4>Frutti di Mare</h4><span class="price">€24</span></div><p class="menu-desc">white wine-tomato sauce / herbs</p></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Home made ravioli</h4><span class="price">€19</span></div><p class="menu-desc">ricotta and spinach / gorgonzola sauce / basil oil</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Homemade Ravioli</h4><span class="price">€21</span></div><p class="menu-desc">ricotta & spinach / gorgonzola sauce / basil oil</p></div></div>
       </div>
-      <!-- DESSERT – UPDATED -->
+      <!-- DESSERT (UPDATED) -->
       <div class="menu-category" id="cat-dessert">
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Classic Tiramisu</h4><span class="price">€9</span></div></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Lemon Pussat</h4><span class="price">€8</span></div><p class="menu-desc">lemon caviar / pistachios</p></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Canoli</h4><span class="price">€10</span></div><p class="menu-desc">mascarpone-vanilla cream / almonds / pistachios</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Classic Tiramisu</h4><span class="price">€8</span></div><p class="menu-desc">Coffee, mascarpone, cocoa</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Lemon Pussat</h4><span class="price">€9</span></div><p class="menu-desc">lemon caviar / pistachios</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Cannoli Siciliani</h4><span class="price">€9</span></div><p class="menu-desc">mascarpone-vanilla cream / almonds / pistachios</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h4>Panna Cotta</h4><span class="price">€8</span></div><p class="menu-desc">berry coulis</p></div></div>
       </div>
-      <!-- Drinks (placeholder) -->
-      <div class="menu-category" id="cat-drinks"><div class="menu-item"><div><div class="menu-item-header"><h4>Soft drinks, water, etc.</h4></div></div></div></div>
-      <!-- Wine (placeholder) -->
+      <!-- Drinks placeholder -->
+      <div class="menu-category" id="cat-drinks"><div class="menu-item"><div><div class="menu-item-header"><h4>Soft drinks, cocktails</h4></div></div></div></div>
+      <!-- Wine placeholder -->
       <div class="menu-category" id="cat-wine"><div class="menu-item"><div><div class="menu-item-header"><h4>Extensive Italian wine list</h4></div></div></div></div>
     </div>
   </section>
 
-  <!-- ===== GALLERY ===== -->
-  <section id="gallery" class="container ambience-scroller-section">
+  <!-- GALLERY -->
+  <section id="gallery" class="container">
     <div class="section-header">
       <h2>Our photos</h2>
-      <div class="subtitle">gallery gallery gallery</div>
+      <div class="subtitle">gallery</div>
       <div class="section-divider"><div class="divider-line"></div><i class="fas fa-camera divider-icon"></i><div class="divider-line"></div></div>
     </div>
     <div class="gallery-grid" id="galleryGrid">
-      <!-- first 6 visible (same as original) -->
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt=""></div>
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt=""></div>
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7523.jpg" alt=""></div>
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt=""></div>
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II2970.jpg" alt=""></div>
       <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II3001.jpg.jpg" alt=""></div>
-      <!-- hidden items -->
       <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3005.jpg.jpg" alt=""></div>
       <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3061.jpg" alt=""></div>
       <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3109.jpg" alt=""></div>
@@ -476,22 +427,19 @@
     </div>
   </section>
 
-  <!-- ===== RESERVATION – SINGLE BUTTON TO TABLEAGENT (removed WhatsApp/email) ===== -->
+  <!-- ===== RESERVATION – TABLE AGENT IFRAME (NO WHATSAPP/EMAIL FORM) ===== -->
   <section id="reservation" class="reservation-section">
     <div class="section-header">
       <h2>Reserve Your Table</h2>
-      <div class="subtitle">Book via TableAgent</div>
-      <div class="section-divider"><div class="divider-line" style="background:var(--gold);"></div><i class="fas fa-calendar-check divider-icon" style="color:var(--gold);"></i><div class="divider-line" style="background:var(--gold);"></div></div>
+      <div class="subtitle">Book via Table Agent</div>
+      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-calendar-check divider-icon"></i><div class="divider-line"></div></div>
     </div>
-    <div class="tableagent-btn-wrap">
-      <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" class="btn-tableagent">
-        <i class="fas fa-calendar-alt"></i> BOOK NOW ON TABLEAGENT
-      </a>
+    <div class="ta-iframe-container">
+      <iframe src="https://tableagent.com/iframe/lartista-riga/v/medium/" class="ta-frame" sandbox="allow-forms allow-modals allow-same-origin allow-scripts allow-top-navigation-by-user-activation" title="Table Agent booking"></iframe>
     </div>
-    <p style="text-align:center; color:white; font-size:1.1rem; margin-top:24px;">Instant confirmation · Best tables · Secure</p>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- CONTACT -->
   <section id="contact" class="container">
     <div class="section-header">
       <h2>Contact Us</h2>
@@ -527,7 +475,7 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-column">
@@ -563,7 +511,7 @@
     </div>
   </footer>
 
-  <!-- ===== JAVASCRIPT – MENU, GALLERY, MOBILE ===== -->
+  <!-- JavaScript -->
   <script>
     (function(){
       setTimeout(()=>{ let l=document.getElementById('pageLoader'); if(l){ l.style.opacity='0'; l.style.visibility='hidden'; } },500);
@@ -580,7 +528,7 @@
         overlay.addEventListener('click',closeMobile);
       }
 
-      // Menu tabs
+      // Menu tabs (map to categories)
       const tabs = document.querySelectorAll('.menu-tab');
       const catMap = { starters:'cat-starters', main:'cat-main', pizza:'cat-pizza', pasta:'cat-pasta', dessert:'cat-dessert', drinks:'cat-drinks', wine:'cat-wine' };
       tabs.forEach(tab => {
@@ -589,11 +537,11 @@
           tabs.forEach(t=>t.classList.remove('active')); this.classList.add('active');
           document.querySelectorAll('.menu-category').forEach(c=>c.classList.remove('active'));
           let activeId = catMap[key];
-          if(activeId) document.getElementById(activeId).classList.add('active');
+          if(activeId) document.getElementById(activeId)?.classList.add('active');
         });
       });
 
-      // Gallery: More Photos button
+      // Gallery more photos
       const moreBtn = document.getElementById('morePhotosBtn');
       if(moreBtn){
         moreBtn.addEventListener('click', function(){
@@ -603,7 +551,7 @@
         });
       }
 
-      // Smooth scroll for anchor links
+      // Smooth scroll anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e){
           e.preventDefault();
@@ -615,7 +563,6 @@
       });
     })();
   </script>
-
   <script>
     if('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
