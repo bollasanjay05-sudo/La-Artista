@@ -1,29 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- MASTER WEBSITE – L'ARTISTA RIGA (Table Agent booking, updated menu, iOS friendly) -->
+  <!-- MASTER WEBSITE – L'ARTISTA RIGA (Lighthouse-optimized) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-  <title>L'artista Riga | Italian Restaurant</title>
-  <meta name="description" content="Best Italian restaurant in Riga – L'artista. Authentic pasta, pizza & fine Italian wine. Book via Table Agent.">
+  <title>L'artista Riga | Best Italian Restaurant in Riga</title>
+  <meta name="description" content="Best Italian restaurant in Riga – L'artista. Authentic pasta, pizza & fine Italian wine. Located at Vaļņu iela 25, Old Town. Book a table online.">
   <meta name="keywords" content="best italian restaurant, italian restaurant, pizza, pasta, fine dine, italian restaurant near me, best pasta in Riga, italian restaurant Riga, authentic italian food, wine restaurant Riga, italian wine list, riga old town restaurant, romantic dinner riga, private dining riga, italian chef riga, fresh pasta riga, neapolitan pizza riga">
   <meta name="robots" content="index, follow">
+
+  <!-- ✅ FIX: Preconnect to ALL critical origins (tableagent added) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://tableagent.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="60x60" href="favicon-60x60.png">
   <link rel="apple-touch-icon" sizes="60x60" href="favicon-60x60.png">
   <link rel="shortcut icon" href="favicon-60x60.png">
-  <link rel="icon" type="image/x-icon" href="lartista-logo.png">
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- ✅ FIX: Google Fonts with font-display=swap to prevent render blocking -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- ✅ FIX: Load Font Awesome async to eliminate render-blocking -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+  <!-- ✅ FIX: LCP hero image preload with fetchpriority=high -->
+  <link rel="preload" as="image" href="LARTISTA AMBIANCE/R6II7575.jpg" fetchpriority="high">
+
+  <!-- ✅ SEO FIX: Add structured data (LocalBusiness schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "L'artista",
+    "description": "Best Italian restaurant in Riga – authentic pasta, pizza & fine Italian wine",
+    "url": "https://lartista.lv",
+    "telephone": "+37125455947",
+    "email": "lartista2025@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vaļņu iela 25",
+      "addressLocality": "Riga",
+      "postalCode": "LV-1050",
+      "addressCountry": "LV"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 56.960328,
+      "longitude": 24.105216
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "12:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "00:00", "closes": "00:00"}
+    ],
+    "servesCuisine": "Italian",
+    "priceRange": "€€",
+    "image": "https://lartista.lv/LARTISTA AMBIANCE/R6II7575.jpg",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61586930476783",
+      "https://www.instagram.com/lartista_riga",
+      "https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html"
+    ]
+  }
+  </script>
+
   <style>
-    /* === GLOBAL – bright, clean, no Valentine forced theme === */
+    /* ✅ FIX: font-display:swap on @font-face to prevent FOIT */
+    @font-face { font-display: swap; }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #faf7f2; /* warm ivory */
+      background: #faf7f2;
       color: #1A1A1A;
       line-height: 1.5;
       font-size: 15px;
@@ -50,16 +102,18 @@
     /* Italian flag stripe */
     .italian-flag-stripe { position: fixed; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #1F3D2B 33.33%, white 33.33% 66.66%, #D6273B 66.66%); z-index: 1100; top: 0; }
 
-    /* Loader */
+    /* Loader - ✅ FIX: use transform instead of visibility for composited animation */
     .loader {
-      position: fixed; inset: 0; background: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
-      transition: 0.3s; color: white;
+      position: fixed; inset: 0; background: var(--green); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; z-index: 9999;
+      transition: opacity 0.3s, transform 0.3s; color: white;
     }
+    .loader.hidden { opacity: 0; pointer-events: none; transform: scale(1.02); }
     .loader-logo { font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 20px; }
-    .loader-spinner { width: 56px; height: 56px; border: 4px solid rgba(255,255,255,0.2); border-top: 4px solid var(--red); border-radius: 50%; animation: spin 0.8s infinite; }
+    .loader-spinner { width: 56px; height: 56px; border: 4px solid rgba(255,255,255,0.2); border-top: 4px solid var(--red); border-radius: 50%; animation: spin 0.8s infinite linear; will-change: transform; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* LANGUAGE SELECTOR – VERTICAL */
+    /* LANGUAGE SELECTOR */
     .language-selector {
       position: fixed; top: 50%; right: 8px; transform: translateY(-50%); z-index: 1200;
       display: flex; flex-direction: column; gap: 6px;
@@ -85,15 +139,15 @@
     .logo { display: flex; align-items: center; gap: 14px; }
     .custom-logo {
       width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--gold); padding: 2px;
-      background: white; overflow: hidden; flex-shrink: 0;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      background: white; overflow: hidden; flex-shrink: 0; box-shadow: 0 6px 16px rgba(0,0,0,0.1);
     }
     .custom-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
-    .logo-fallback { display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #1F3D2B, #D6273B); color: white; font-family: 'Playfair Display', serif; border-radius: 50%; width: 100%; height: 100%; font-size: 14px; }
+    .logo-fallback { display: none; align-items: center; justify-content: center; background: linear-gradient(145deg, #1F3D2B, #D6273B); color: white; font-family: 'Playfair Display', serif; border-radius: 50%; width: 100%; height: 100%; font-size: 14px; }
     .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
     .logo-main { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--green); letter-spacing: 0.5px; }
     .logo-sub { font-size: 10px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; }
     .nav-links { display: none; }
+    /* ✅ FIX: Add aria-label to menu toggle button */
     .menu-toggle { display: flex; background: none; border: none; width: 44px; height: 44px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; cursor: pointer; }
     .menu-toggle span { display: block; width: 28px; height: 2px; background: var(--red); border-radius: 2px; transition: 0.2s; }
 
@@ -110,13 +164,14 @@
     /* HERO */
     .hero-premium { min-height: 90vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 0; }
     .hero-bg { position: absolute; inset: 0; z-index: -2; }
+    /* ✅ FIX: explicit width/height on hero img to prevent CLS */
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
     .premium-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31,61,43,0.3) 0%, rgba(214,39,59,0.1) 100%); }
     .premium-hero-content { text-align: center; color: white; padding: 20px; max-width: 900px; margin: 0 auto; }
     .hero-logo { width: 120px; height: 120px; margin: 0 auto 20px; border-width: 4px; }
     .premium-title .title-line-1 { font-size: 56px; font-weight: 700; font-family: 'Playfair Display', serif; line-height: 1.1; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
     .premium-title .title-line-2 { font-size: 20px; letter-spacing: 4px; text-transform: uppercase; display: block; margin-top: 16px; }
-    .premium-subtitle { font-size: 18px; margin: 28px 0; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .premium-subtitle { font-size: 18px; margin: 28px auto; max-width: 600px; }
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 60px; text-decoration: none; gap: 10px; border: none; cursor: pointer; }
     .btn-premium { background: var(--red); color: white; box-shadow: 0 8px 18px rgba(214,39,59,0.3); }
     .btn-outline-premium { background: transparent; border: 2px solid white; color: white; }
@@ -128,11 +183,12 @@
     .premium-features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 24px; }
     .premium-feature-card { background: white; padding: 24px 12px; text-align: center; border-radius: 20px; box-shadow: 0 6px 16px rgba(0,0,0,0.02); border: 1px solid rgba(214,39,59,0.08); }
     .premium-feature-card i { font-size: 28px; color: var(--red); margin-bottom: 12px; }
-    .premium-feature-card h4 { font-size: 16px; margin-bottom: 8px; font-weight: 600; color: var(--green); }
+    /* ✅ FIX: Changed h4 to h3 in feature cards to fix heading hierarchy (h2 → h3) */
+    .premium-feature-card h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; color: var(--green); }
     .image-frame { border-radius: 24px; overflow: hidden; border: 3px solid var(--gold); height: 360px; }
     .image-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* MENU – bright white, UPDATED categories */
+    /* MENU */
     .menu-section { background: white; border-radius: 32px; padding: 48px 32px; margin: 0 20px; border: 1px solid rgba(214,39,59,0.1); }
     .menu-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 28px; -webkit-overflow-scrolling: touch; }
     .menu-tab { flex: 0 0 auto; padding: 12px 26px; border: 1px solid #ddd; background: white; border-radius: 60px; font-weight: 600; font-size: 15px; color: #333; cursor: pointer; }
@@ -141,7 +197,8 @@
     .menu-category { display: none; }
     .menu-category.active { display: block; }
     .menu-item { display: flex; gap: 18px; background: #faf8f4; border-radius: 24px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(200,169,81,0.2); }
-    .dish-photo { width: 100px; height: 100px; border-radius: 18px; object-fit: cover; border: 2px solid var(--gold); }
+    /* ✅ FIX: explicit width/height on dish photos to prevent CLS */
+    .dish-photo { width: 100px; height: 100px; border-radius: 18px; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
     .menu-item-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
     .price { color: var(--red); font-weight: 700; font-size: 18px; }
     .menu-desc { font-size: 14px; color: #5a5a5a; }
@@ -153,7 +210,7 @@
     .gallery-item.hidden { display: none; }
     .more-photos-btn { display: inline-block; background: var(--red); color: white; padding: 14px 36px; border-radius: 60px; border: none; font-weight: 600; margin: 24px 0 8px; cursor: pointer; font-size: 16px; }
 
-    /* RESERVATION – TABLE AGENT IFRAME REPLACES OLD FORM */
+    /* RESERVATION */
     .reservation-section {
       background: white; border-radius: 32px; padding: 56px 20px; margin: 24px 20px; border: 1px solid rgba(214,39,59,0.1);
     }
@@ -163,8 +220,7 @@
       max-width: 800px; margin: 0 auto; background: #f9f9f9; border-radius: 32px; overflow: hidden; box-shadow: 0 12px 28px rgba(0,0,0,0.04);
     }
     iframe.ta-frame {
-      border:0; width:100%; min-height:750px; display: block;
-      -webkit-overflow-scrolling:touch; /* smooth scroll iOS */
+      border:0; width:100%; min-height:750px; display: block; -webkit-overflow-scrolling:touch;
     }
 
     /* CONTACT */
@@ -172,6 +228,8 @@
     .contact-card { background: white; padding: 36px 32px; border-radius: 32px; box-shadow: 0 12px 28px rgba(0,0,0,0.02); border: 1px solid rgba(214,39,59,0.1); }
     .contact-icon { font-size: 32px; color: var(--red); margin-bottom: 16px; }
     .hours-day { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; }
+    /* ✅ FIX: Increased contrast for "Closed" / "Monday" text */
+    .hours-day.closed { color: #555; }
     .map-container { border-radius: 24px; overflow: hidden; height: 360px; border: 3px solid var(--gold); }
     .social-minimal { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 28px 0 8px; }
     .social-minimal a {
@@ -185,8 +243,11 @@
     .footer { background: #2a5a3a; color: white; padding: 60px 0 30px; margin-top: 40px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .footer-column h3 { font-size: 20px; margin-bottom: 20px; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 8px; }
+    /* ✅ FIX: Increased contrast for footer links */
+    .footer-column a { display: block; color: rgba(255,255,255,0.9); text-decoration: none; margin-bottom: 10px; font-size: 15px; }
+    .footer-column a:hover { color: white; }
     .footer-logo { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--gold); overflow: hidden; margin-bottom: 18px; background: white; }
-    .footer-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .footer-logo img { width: 90px; height: 90px; object-fit: contain; }
     .footer-review-links { display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0; }
     .footer-review-link {
       background: rgba(255,255,255,0.1); padding: 12px 22px; border-radius: 60px; color: white; text-decoration: none;
@@ -210,39 +271,40 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .language-selector { right: 6px; padding: 6px 4px; }
       .language-btn { padding: 5px 8px; font-size: 11px; min-width: 38px; }
-      iframe.ta-frame { min-height: 700px; } /* adjust for iOS */
+      iframe.ta-frame { min-height: 700px; }
     }
-    /* iOS touch improvements */
     a, button { cursor: pointer; }
-    input, select, textarea { font-size: 16px; } /* prevents zoom on iOS */
+    input, select, textarea { font-size: 16px; }
   </style>
+
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1F3D2B">
 </head>
 <body>
   <!-- Italian flag stripe -->
-  <div class="italian-flag-stripe"></div>
+  <div class="italian-flag-stripe" aria-hidden="true"></div>
 
   <!-- LANGUAGE SELECTOR -->
-  <div class="language-selector">
-    <button class="language-btn active">EN</button>
-    <button class="language-btn">LV</button>
-    <button class="language-btn">RU</button>
+  <div class="language-selector" role="navigation" aria-label="Language selection">
+    <button class="language-btn active" aria-label="English" aria-pressed="true">EN</button>
+    <button class="language-btn" aria-label="Latvian" aria-pressed="false">LV</button>
+    <button class="language-btn" aria-label="Russian" aria-pressed="false">RU</button>
   </div>
 
   <!-- Loader -->
-  <div class="loader" id="pageLoader">
+  <div class="loader" id="pageLoader" role="status" aria-label="Loading">
     <div class="loader-logo">L'ARTISTA</div>
-    <div class="loader-spinner"></div>
+    <div class="loader-spinner" aria-hidden="true"></div>
   </div>
 
   <!-- STICKY NAVIGATION -->
-  <nav class="premium-navbar">
+  <nav class="premium-navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <div class="logo">
         <div class="custom-logo">
-          <img src="lartista-logo.png" alt="L'ARTISTA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="logo-fallback">LA</div>
+          <img src="lartista-logo.png" alt="L'artista Riga logo" width="46" height="46"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback" aria-hidden="true">LA</div>
         </div>
         <div class="logo-text">
           <span class="logo-main">L'ARTISTA</span>
@@ -257,18 +319,22 @@
         <li><a href="#reservation" class="nav-link">Reservation</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-      <button class="menu-toggle" id="mobileMenuToggle">
-        <span></span><span></span><span></span>
+      <!-- ✅ FIX: aria-label on menu toggle button -->
+      <button class="menu-toggle" id="mobileMenuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
   </nav>
 
-  <!-- MOBILE MENU offcanvas -->
-  <div class="menu-overlay" id="menuOverlay"></div>
-  <div class="premium-mobile-menu" id="mobileMenu">
+  <!-- MOBILE MENU -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+  <div class="premium-mobile-menu" id="mobileMenu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
     <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:40px;">
       <span style="font-size:30px; font-weight:600; color:white; font-family:'Playfair Display';">L'ARTISTA</span>
-      <button id="mobileMenuClose" style="background:none; border:none; color:white; font-size:32px;"><i class="fas fa-times"></i></button>
+      <!-- ✅ FIX: aria-label on close button -->
+      <button id="mobileMenuClose" aria-label="Close navigation menu" style="background:none; border:none; color:white; font-size:32px;"><i class="fas fa-times" aria-hidden="true"></i></button>
     </div>
     <a href="#home" class="mobile-nav-link">Home</a>
     <a href="#about" class="mobile-nav-link">About</a>
@@ -277,128 +343,170 @@
     <a href="#reservation" class="mobile-nav-link">Reservation</a>
     <a href="#contact" class="mobile-nav-link">Contact</a>
     <div style="margin-top:40px;">
-      <a href="tel:+37125455947" style="background:var(--red); color:white; padding:16px; border-radius:60px; display:block; text-align:center; text-decoration:none;"><i class="fas fa-phone-alt"></i> Call +371 25455947</a>
+      <a href="tel:+37125455947" style="background:var(--red); color:white; padding:16px; border-radius:60px; display:block; text-align:center; text-decoration:none;"><i class="fas fa-phone-alt" aria-hidden="true"></i> Call +371 25455947</a>
     </div>
   </div>
 
-  <!-- HERO SECTION (subtitle updated: removed award‑winning) -->
+  <!-- HERO SECTION -->
+  <main>
   <section id="home" class="hero-premium">
-    <div class="hero-bg"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista interior"></div>
-    <div class="premium-overlay"></div>
+    <div class="hero-bg" aria-hidden="true">
+      <!-- ✅ FIX: fetchpriority=high + explicit dimensions on LCP image -->
+      <img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista Italian restaurant interior" width="1335" height="868" fetchpriority="high" decoding="async">
+    </div>
+    <div class="premium-overlay" aria-hidden="true"></div>
     <div class="container">
       <div class="premium-hero-content">
         <div class="custom-logo hero-logo" style="margin:0 auto 20px;">
-          <img src="lartista-logo.png" alt="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="logo-fallback">L'ARTISTA</div>
+          <img src="lartista-logo.png" alt="L'artista logo" width="112" height="112"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback" aria-hidden="true">L'ARTISTA</div>
         </div>
         <div class="premium-title">
-          <span class="title-line-1">Italian Restaurant in Riga</span>
+          <h1 class="title-line-1">Italian Restaurant in Riga</h1>
           <span class="title-line-2">Authentic • Fresh • Italian</span>
         </div>
-        <!-- Removed "award‑winning" -->
         <p class="premium-subtitle">Best Italian restaurant in Riga – authentic pasta, pizza & fine wine</p>
-        <div class="premium-hero-buttons">
-          <!-- Smooth scroll works with hash links -->
-          <a href="#reservation" class="btn btn-premium btn-large"><i class="fas fa-calendar-check"></i> BOOK A TABLE</a>
-          <a href="#menu" class="btn btn-outline-premium btn-large"><i class="fas fa-book-open"></i> VIEW MENU</a>
+        <div class="premium-hero-buttons" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="#reservation" class="btn btn-premium btn-large"><i class="fas fa-calendar-check" aria-hidden="true"></i> BOOK A TABLE</a>
+          <a href="#menu" class="btn btn-outline-premium btn-large"><i class="fas fa-book-open" aria-hidden="true"></i> VIEW MENU</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT (feature card description shortened to "events") -->
+  <!-- ABOUT -->
   <section id="about" class="container" style="padding-top:20px;">
     <div class="section-header">
       <h2>Our Story</h2>
       <div class="subtitle">Authentic Italian Excellence</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-star divider-icon" style="color:var(--red);"></i><div class="divider-line"></div></div>
+      <div class="section-divider" aria-hidden="true"><div class="divider-line"></div><i class="fas fa-star divider-icon" style="color:var(--red);"></i><div class="divider-line"></div></div>
     </div>
     <div class="premium-about-grid">
       <div>
         <p class="premium-intro">Welcome to <span style="color:var(--red); font-weight:600;">L'ARTISTA</span>, Riga's premier destination for authentic Italian cuisine. Our chefs are true artists.</p>
-        <p style="margin-bottom:24px;">At L’Artista, we believe every meal is a masterpiece. Nestled in the historic streets of Riga Old Town, our restaurant brings together the rich flavors of Italy and the beauty of local hospitality. Each plate is thoughtfully crafted using fresh ingredients, traditional techniques, and a love for authentic Italian cuisine.</p>
-        <p style="margin-bottom:24px;">Grazie for dining with us — we invite you to relax, indulge, and enjoy the art of Italian food. We believe great food is an art form — simple, honest, and unforgettable. Thank you for joining us and allowing us to share the taste of Italy with you.</p>
+        <p style="margin-bottom:24px;">At L'Artista, we believe every meal is a masterpiece. Nestled in the historic streets of Riga Old Town, our restaurant brings together the rich flavors of Italy and the beauty of local hospitality. Each plate is thoughtfully crafted using fresh ingredients, traditional techniques, and a love for authentic Italian cuisine.</p>
+        <p style="margin-bottom:24px;">Grazie for dining with us — we invite you to relax, indulge, and enjoy the art of Italian food. We believe great food is an art form — simple, honest, and unforgettable.</p>
         <div class="premium-features-grid">
-          <div class="premium-feature-card"><i class="fas fa-seedling"></i><h4>From Italy</h4><p>Truffles, cheeses, oils</p></div>
-          <div class="premium-feature-card"><i class="fas fa-wine-glass-alt"></i><h4>Award-winning wine</h4><p>Hidden vineyards</p></div>
-          <!-- Shortened description to just "events" (CHANGE 5) -->
-          <div class="premium-feature-card"><i class="fas fa-user-friends"></i><h4>Private Dining</h4><p>events</p></div>
+          <div class="premium-feature-card"><i class="fas fa-seedling" aria-hidden="true"></i><h3>From Italy</h3><p>Truffles, cheeses, oils</p></div>
+          <div class="premium-feature-card"><i class="fas fa-wine-glass-alt" aria-hidden="true"></i><h3>Award-winning wine</h3><p>Hidden vineyards</p></div>
+          <div class="premium-feature-card"><i class="fas fa-user-friends" aria-hidden="true"></i><h3>Private Dining</h3><p>Events</p></div>
         </div>
       </div>
-      <div class="image-frame"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="Ambiance"></div>
+      <div class="image-frame">
+        <!-- ✅ FIX: explicit dimensions to prevent CLS -->
+        <img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="L'artista restaurant dining room ambiance" width="538" height="360" loading="lazy" decoding="async">
+      </div>
     </div>
   </section>
 
-  <!-- ===== FULL MENU ===== -->
+  <!-- MENU -->
   <section id="menu" class="menu-section">
     <div class="section-header">
       <h2>Our Menu</h2>
       <div class="subtitle">Culinary Masterpieces</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-utensils divider-icon"></i><div class="divider-line"></div></div>
+      <div class="section-divider" aria-hidden="true"><div class="divider-line"></div><i class="fas fa-utensils divider-icon"></i><div class="divider-line"></div></div>
     </div>
-    <div class="menu-tabs">
-      <button class="menu-tab active" data-cat="starters">Starters</button>
-      <button class="menu-tab" data-cat="main">Main</button>
-      <button class="menu-tab" data-cat="pizza">Pizza</button>
-      <button class="menu-tab" data-cat="pasta">Pasta</button>
-      <button class="menu-tab" data-cat="dessert">Dessert</button>
-      <button class="menu-tab" data-cat="drinks">Drinks</button>
-      <button class="menu-tab" data-cat="wine">Wine</button>
+    <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+      <button class="menu-tab active" data-cat="starters" role="tab" aria-selected="true" aria-controls="cat-starters">Starters</button>
+      <button class="menu-tab" data-cat="main" role="tab" aria-selected="false" aria-controls="cat-main">Main</button>
+      <button class="menu-tab" data-cat="pizza" role="tab" aria-selected="false" aria-controls="cat-pizza">Pizza</button>
+      <button class="menu-tab" data-cat="pasta" role="tab" aria-selected="false" aria-controls="cat-pasta">Pasta</button>
+      <button class="menu-tab" data-cat="dessert" role="tab" aria-selected="false" aria-controls="cat-dessert">Dessert</button>
+      <button class="menu-tab" data-cat="drinks" role="tab" aria-selected="false" aria-controls="cat-drinks">Drinks</button>
+      <button class="menu-tab" data-cat="wine" role="tab" aria-selected="false" aria-controls="cat-wine">Wine</button>
     </div>
     <div class="menu-categories-container">
       <!-- Starters -->
-      <div class="menu-category active" id="cat-starters">
-        <div class="menu-item"><img src="LARTISTA DISHES/CAESAR SALAD.jpg" class="dish-photo" alt="Caesar Salad"><div><div class="menu-item-header"><h4>Caesar Salad</h4><span class="price">€12</span></div><p class="menu-desc">Parmesan cheese, toast</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/CREAMY BURATA.jpg" class="dish-photo" alt="Creamy Burrata"><div><div class="menu-item-header"><h4>Creamy Burrata</h4><span class="price">€15</span></div><p class="menu-desc">Cherry tomatoes, basil oil, pistachio pesto</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/LEMON GARLIC SHRIMPS.jpg" class="dish-photo" alt="Lemon Garlic Prawns"><div><div class="menu-item-header"><h4>Lemon-Garlic Prawns</h4><span class="price">€15</span></div><p class="menu-desc">Homemade focaccia</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/VITELLO TONNATO.jpg" class="dish-photo" alt="Vitello Tonnato"><div><div class="menu-item-header"><h4>Vitello Tonnato</h4><span class="price">€17</span></div><p class="menu-desc">Tender veal, creamy tuna foam</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/ANTIPASTO.jpg" class="dish-photo" alt="Antipasto"><div><div class="menu-item-header"><h4>Antipasto</h4><span class="price">€25</span></div><p class="menu-desc">Italian cured meats, cheeses, jam, grissini</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/BEEF CARPACCIO.jpg" class="dish-photo" alt="Beef Carpaccio"><div><div class="menu-item-header"><h4>Beef Carpaccio</h4><span class="price">€16</span></div><p class="menu-desc">Parmesan, arugula, truffle oil</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/BRUSCHETTA CLASSIC.jpg" class="dish-photo" alt="Bruschetta"><div><div class="menu-item-header"><h4>Bruschettas</h4><span class="price">€8.50</span></div><p class="menu-desc">Stracciatella, mortadella, pistachio / zucchini / tomatoes</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/PARMIGIANA.jpg" class="dish-photo" alt="Eggplant Parmesan"><div><div class="menu-item-header"><h4>Eggplant Parmesan</h4><span class="price">€14</span></div><p class="menu-desc">Layers of eggplant, tomato, mozzarella</p></div></div>
+      <div class="menu-category active" id="cat-starters" role="tabpanel">
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/CAESAR SALAD.jpg" class="dish-photo" alt="Caesar Salad with parmesan" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Caesar Salad</h3><span class="price">€12</span></div><p class="menu-desc">Parmesan cheese, toast</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/CREAMY BURATA.jpg" class="dish-photo" alt="Creamy Burrata with cherry tomatoes" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Creamy Burrata</h3><span class="price">€15</span></div><p class="menu-desc">Cherry tomatoes, basil oil, pistachio pesto</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/LEMON GARLIC SHRIMPS.jpg" class="dish-photo" alt="Lemon Garlic Prawns with focaccia" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Lemon-Garlic Prawns</h3><span class="price">€15</span></div><p class="menu-desc">Homemade focaccia</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/VITELLO TONNATO.jpg" class="dish-photo" alt="Vitello Tonnato with tuna foam" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Vitello Tonnato</h3><span class="price">€17</span></div><p class="menu-desc">Tender veal, creamy tuna foam</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/ANTIPASTO.jpg" class="dish-photo" alt="Antipasto platter with cured meats and cheeses" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Antipasto</h3><span class="price">€25</span></div><p class="menu-desc">Italian cured meats, cheeses, jam, grissini</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/BEEF CARPACCIO.jpg" class="dish-photo" alt="Beef Carpaccio with truffle oil" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Beef Carpaccio</h3><span class="price">€16</span></div><p class="menu-desc">Parmesan, arugula, truffle oil</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/BRUSCHETTA CLASSIC.jpg" class="dish-photo" alt="Bruschetta with stracciatella and mortadella" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Bruschettas</h3><span class="price">€8.50</span></div><p class="menu-desc">Stracciatella, mortadella, pistachio / zucchini / tomatoes</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/PARMIGIANA.jpg" class="dish-photo" alt="Eggplant Parmesan with tomato and mozzarella" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Eggplant Parmesan</h3><span class="price">€14</span></div><p class="menu-desc">Layers of eggplant, tomato, mozzarella</p></div>
+        </div>
       </div>
       <!-- Main -->
-      <div class="menu-category" id="cat-main">
-        <div class="menu-item"><img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" class="dish-photo" alt="Truffle Risotto"><div><div class="menu-item-header"><h4>Truffle Risotto</h4><span class="price">€25</span></div><p class="menu-desc">Fresh black truffles</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" class="dish-photo" alt="Lemon Butter Veal"><div><div class="menu-item-header"><h4>Lemon-Butter Veal Escalopes</h4><span class="price">€29</span></div><p class="menu-desc">Fried potatoes or fresh salad</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/ZUPA DI PESCA.jpg" class="dish-photo" alt="Zuppa di Pesce"><div><div class="menu-item-header"><h4>Zuppa di Pesce</h4><span class="price">€17</span></div><p class="menu-desc">Rich fish soup with shellfish</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/SEA BASS FILLET.jpg" class="dish-photo" alt="Sea Bass Fillet"><div><div class="menu-item-header"><h4>Sea Bass Fillet</h4><span class="price">€23</span></div><p class="menu-desc">Creamy spinach risotto</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/FILLET MIGNON.jpg" class="dish-photo" alt="Fillet Mignon"><div><div class="menu-item-header"><h4>Fillet Mignon</h4><span class="price">€39</span></div><p class="menu-desc">Argentinean Black Angus, bourbon sauce</p></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Baked Rosemary-Garlic Potatoes</h4><span class="price">€6</span></div></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Mixed Seasonal Salad</h4><span class="price">€9</span></div></div></div>
+      <div class="menu-category" id="cat-main" role="tabpanel">
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/TRUFFLE RISOTTO.jpg" class="dish-photo" alt="Truffle Risotto with fresh black truffles" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Truffle Risotto</h3><span class="price">€25</span></div><p class="menu-desc">Fresh black truffles</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" class="dish-photo" alt="Lemon Butter Veal Escalopes" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Lemon-Butter Veal Escalopes</h3><span class="price">€29</span></div><p class="menu-desc">Fried potatoes or fresh salad</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/ZUPA DI PESCA.jpg" class="dish-photo" alt="Zuppa di Pesce fish soup with shellfish" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Zuppa di Pesce</h3><span class="price">€17</span></div><p class="menu-desc">Rich fish soup with shellfish</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/SEA BASS FILLET.jpg" class="dish-photo" alt="Sea Bass Fillet with creamy spinach risotto" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Sea Bass Fillet</h3><span class="price">€23</span></div><p class="menu-desc">Creamy spinach risotto</p></div>
+        </div>
+        <div class="menu-item">
+          <img src="LARTISTA DISHES/FILLET MIGNON.jpg" class="dish-photo" alt="Fillet Mignon with bourbon sauce" width="100" height="100" loading="lazy" decoding="async">
+          <div><div class="menu-item-header"><h3 style="font-size:16px;">Fillet Mignon</h3><span class="price">€39</span></div><p class="menu-desc">Argentinean Black Angus, bourbon sauce</p></div>
+        </div>
+        <div class="menu-item"><div><div class="menu-item-header"><h3 style="font-size:16px;">Baked Rosemary-Garlic Potatoes</h3><span class="price">€6</span></div></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h3 style="font-size:16px;">Mixed Seasonal Salad</h3><span class="price">€9</span></div></div></div>
       </div>
       <!-- Pizza -->
-      <div class="menu-category" id="cat-pizza">
-        <div class="menu-item"><img src="LARTISTA DISHES/Margherita.jpg" class="dish-photo" alt="Margherita"><div><div class="menu-item-header"><h4>Margherita</h4><span class="price">€10</span></div></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/PIZZA MARINARA.jpg" class="dish-photo" alt="Marinara"><div><div class="menu-item-header"><h4>Marinara</h4><span class="price">€14</span></div></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/NAPOLI SALAMI.jpg" class="dish-photo" alt="Salami"><div><div class="menu-item-header"><h4>Salami</h4><span class="price">€14</span></div></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/4FORMAGGI.jpg" class="dish-photo" alt="Quattro Formaggi"><div><div class="menu-item-header"><h4>Quattro Formaggi</h4><span class="price">€16</span></div></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/DIAVOLA.jpg" class="dish-photo" alt="Diavola"><div><div class="menu-item-header"><h4>Diavola</h4><span class="price">€15</span></div></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" class="dish-photo" alt="Prosciutto"><div><div class="menu-item-header"><h4>Prosciutto</h4><span class="price">€18</span></div></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" class="dish-photo" alt="Mortadella Stracciatella"><div><div class="menu-item-header"><h4>Mortadella & Stracciatella</h4><span class="price">€18</span></div><p class="menu-desc">Pistachio pesto</p></div></div>
+      <div class="menu-category" id="cat-pizza" role="tabpanel">
+        <div class="menu-item"><img src="LARTISTA DISHES/Margherita.jpg" class="dish-photo" alt="Margherita pizza" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Margherita</h3><span class="price">€10</span></div></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/PIZZA MARINARA.jpg" class="dish-photo" alt="Marinara pizza" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Marinara</h3><span class="price">€14</span></div></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/NAPOLI SALAMI.jpg" class="dish-photo" alt="Salami pizza Napoli style" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Salami</h3><span class="price">€14</span></div></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/4FORMAGGI.jpg" class="dish-photo" alt="Quattro Formaggi four cheese pizza" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Quattro Formaggi</h3><span class="price">€16</span></div></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/DIAVOLA.jpg" class="dish-photo" alt="Diavola spicy pizza" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Diavola</h3><span class="price">€15</span></div></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/PROSCUTTO PIZZA.jpg" class="dish-photo" alt="Prosciutto pizza" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Prosciutto</h3><span class="price">€18</span></div></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" class="dish-photo" alt="Mortadella and Stracciatella pizza with pistachio pesto" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Mortadella & Stracciatella</h3><span class="price">€18</span></div><p class="menu-desc">Pistachio pesto</p></div></div>
       </div>
-      <!-- PASTA (CHANGE 2: added Homemade Ravioli image) -->
-      <div class="menu-category" id="cat-pasta">
-        <div class="menu-item"><img src="LARTISTA DISHES/PASTA CARBONARA.jpg" class="dish-photo" onerror="this.style.display='none'" alt="Carbonara"><div><div class="menu-item-header"><h4>Carbonara</h4><span class="price">€16</span></div><p class="menu-desc">guanciale / pecorino</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/CACIO E PEPE WITH BLACK TRUFFLES.jpg" class="dish-photo" alt="Cacio e Pepe"><div><div class="menu-item-header"><h4>Cacio e Pepe</h4><span class="price">€15</span></div><p class="menu-desc">black pepper / pecorino</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/PENNE ALLA ARRABIATA.jpg" class="dish-photo" alt="Arrabbiata"><div><div class="menu-item-header"><h4>Penne all'Arrabbiata</h4><span class="price">€14</span></div><p class="menu-desc">Parmigiano Reggiano / tomato sauce / chili</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" class="dish-photo" alt="Pistachio Pesto"><div><div class="menu-item-header"><h4>Pasta al Pesto di Pistacchio e Stracciatella</h4><span class="price">€19</span></div><p class="menu-desc">L'artista signature</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/FRUTTI DI MARE.jpg" class="dish-photo" alt="Frutti di Mare"><div><div class="menu-item-header"><h4>Frutti di Mare</h4><span class="price">€24</span></div><p class="menu-desc">white wine-tomato sauce / herbs</p></div></div>
-        <div class="menu-item"><div><div class="menu-item-header"><h4>Lobster & Caviar Pasta</h4><span class="price">€38</span></div><p class="menu-desc">lobster / caviar / white wine butter sauce</p></div></div>
-        <!-- CHANGE 2: Added Homemade Ravioli image -->
-        <div class="menu-item"><img src="LARTISTA DISHES/Homemade Ravioli.jpeg" class="dish-photo" onerror="this.style.display='none'" alt="Homemade Ravioli"><div><div class="menu-item-header"><h4>Homemade Ravioli</h4><span class="price">€21</span></div><p class="menu-desc">ricotta & spinach / gorgonzola sauce / basil oil</p></div></div>
+      <!-- Pasta -->
+      <div class="menu-category" id="cat-pasta" role="tabpanel">
+        <div class="menu-item"><img src="LARTISTA DISHES/PASTA CARBONARA.jpg" class="dish-photo" alt="Pasta Carbonara with guanciale and pecorino" width="100" height="100" loading="lazy" decoding="async" onerror="this.style.display='none'"><div><div class="menu-item-header"><h3 style="font-size:16px;">Carbonara</h3><span class="price">€16</span></div><p class="menu-desc">guanciale / pecorino</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/CACIO E PEPE WITH BLACK TRUFFLES.jpg" class="dish-photo" alt="Cacio e Pepe with black truffles" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Cacio e Pepe</h3><span class="price">€15</span></div><p class="menu-desc">black pepper / pecorino</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/PENNE ALLA ARRABIATA.jpg" class="dish-photo" alt="Penne all'Arrabbiata with chili" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Penne all'Arrabbiata</h3><span class="price">€14</span></div><p class="menu-desc">Parmigiano Reggiano / tomato sauce / chili</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" class="dish-photo" alt="Pasta with Pistachio Pesto and Stracciatella" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Pasta al Pesto di Pistacchio e Stracciatella</h3><span class="price">€19</span></div><p class="menu-desc">L'artista signature</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/FRUTTI DI MARE.jpg" class="dish-photo" alt="Frutti di Mare seafood pasta" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Frutti di Mare</h3><span class="price">€24</span></div><p class="menu-desc">white wine-tomato sauce / herbs</p></div></div>
+        <div class="menu-item"><div><div class="menu-item-header"><h3 style="font-size:16px;">Lobster & Caviar Pasta</h3><span class="price">€38</span></div><p class="menu-desc">lobster / caviar / white wine butter sauce</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/Homemade Ravioli.jpeg" class="dish-photo" alt="Homemade Ravioli with ricotta and gorgonzola sauce" width="100" height="100" loading="lazy" decoding="async" onerror="this.style.display='none'"><div><div class="menu-item-header"><h3 style="font-size:16px;">Homemade Ravioli</h3><span class="price">€21</span></div><p class="menu-desc">ricotta & spinach / gorgonzola sauce / basil oil</p></div></div>
       </div>
-      <!-- DESSERT (CHANGE 2: added Cannoli Siciliani image) -->
-      <div class="menu-category" id="cat-dessert">
-        <div class="menu-item"><img src="LARTISTA DISHES/TIRAMISU.jpg" class="dish-photo" alt="Tiramisu"><div><div class="menu-item-header"><h4>Classic Tiramisu</h4><span class="price">€8</span></div><p class="menu-desc">Coffee, mascarpone, cocoa</p></div></div>
-        <div class="menu-item"><img src="LARTISTA DISHES/LEMON POSETTA.jpg" class="dish-photo" alt="Lemon Posset"><div><div class="menu-item-header"><h4>Lemon Pussat</h4><span class="price">€9</span></div><p class="menu-desc">lemon caviar / pistachios</p></div></div>
-        <!-- CHANGE 2: Added Cannoli image -->
-        <div class="menu-item"><img src="LARTISTA DISHES/Cannoli Siciliani.jpeg" class="dish-photo" onerror="this.style.display='none'" alt="Cannoli Siciliani"><div><div class="menu-item-header"><h4>Cannoli Siciliani</h4><span class="price">€9</span></div><p class="menu-desc">mascarpone-vanilla cream / almonds / pistachios</p></div></div>
+      <!-- Dessert -->
+      <div class="menu-category" id="cat-dessert" role="tabpanel">
+        <div class="menu-item"><img src="LARTISTA DISHES/TIRAMISU.jpg" class="dish-photo" alt="Classic Tiramisu with coffee and mascarpone" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Classic Tiramisu</h3><span class="price">€8</span></div><p class="menu-desc">Coffee, mascarpone, cocoa</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/LEMON POSETTA.jpg" class="dish-photo" alt="Lemon Posset with lemon caviar and pistachios" width="100" height="100" loading="lazy" decoding="async"><div><div class="menu-item-header"><h3 style="font-size:16px;">Lemon Pussat</h3><span class="price">€9</span></div><p class="menu-desc">lemon caviar / pistachios</p></div></div>
+        <div class="menu-item"><img src="LARTISTA DISHES/Cannoli Siciliani.jpeg" class="dish-photo" alt="Cannoli Siciliani with mascarpone cream" width="100" height="100" loading="lazy" decoding="async" onerror="this.style.display='none'"><div><div class="menu-item-header"><h3 style="font-size:16px;">Cannoli Siciliani</h3><span class="price">€9</span></div><p class="menu-desc">mascarpone-vanilla cream / almonds / pistachios</p></div></div>
       </div>
-      <!-- Drinks placeholder -->
-      <div class="menu-category" id="cat-drinks"><div class="menu-item"><div><div class="menu-item-header"><h4>Soft drinks, cocktails</h4></div></div></div></div>
-      <!-- Wine placeholder -->
-      <div class="menu-category" id="cat-wine"><div class="menu-item"><div><div class="menu-item-header"><h4>Extensive Italian wine list</h4></div></div></div></div>
+      <!-- Drinks -->
+      <div class="menu-category" id="cat-drinks" role="tabpanel"><div class="menu-item"><div><div class="menu-item-header"><h3 style="font-size:16px;">Soft drinks, cocktails</h3></div></div></div></div>
+      <!-- Wine -->
+      <div class="menu-category" id="cat-wine" role="tabpanel"><div class="menu-item"><div><div class="menu-item-header"><h3 style="font-size:16px;">Extensive Italian wine list</h3></div></div></div></div>
     </div>
   </section>
 
@@ -406,93 +514,117 @@
   <section id="gallery" class="container">
     <div class="section-header">
       <h2>Our photos</h2>
-      <div class="subtitle">gallery</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-camera divider-icon"></i><div class="divider-line"></div></div>
+      <div class="subtitle">Gallery</div>
+      <div class="section-divider" aria-hidden="true"><div class="divider-line"></div><i class="fas fa-camera divider-icon"></i><div class="divider-line"></div></div>
     </div>
     <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7523.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II2970.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II3001.jpg.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3005.jpg.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3061.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3109.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3116.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II7601.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II7614.jpg" alt="Restaurant interior"></div>
-      <div class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/04.mp4.mp4" type="video/mp4"></video></div>
-      <div class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/07.mp4.mp4" type="video/mp4"></video></div>
-      <div class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/Video+1.mp4.mp4" type="video/mp4"></video></div>
-      <div class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/Video+2.mp4.mp4" type="video/mp4"></video></div>
+      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt="L'artista restaurant interior" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="L'artista restaurant dining area" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7523.jpg" alt="L'artista restaurant atmosphere" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista restaurant main hall" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II2970.jpg" alt="L'artista restaurant decor" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item"><img src="LARTISTA AMBIANCE/R6II3001.jpg.jpg" alt="L'artista restaurant ambiance" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3005.jpg.jpg" alt="L'artista interior detail" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3061.jpg" alt="L'artista dining room" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3109.jpg" alt="L'artista restaurant table setting" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3116.jpg" alt="L'artista restaurant corner" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II7601.jpg" alt="L'artista evening ambiance" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II7614.jpg" alt="L'artista intimate dining" width="271" height="181" loading="lazy" decoding="async"></div>
+      <div class="gallery-item hidden"><video muted loop playsinline preload="none" aria-label="L'artista restaurant video"><source src="LARTISTA AMBIANCE/04.mp4.mp4" type="video/mp4"></video></div>
+      <div class="gallery-item hidden"><video muted loop playsinline preload="none" aria-label="L'artista dining experience video"><source src="LARTISTA AMBIANCE/07.mp4.mp4" type="video/mp4"></video></div>
+      <div class="gallery-item hidden"><video muted loop playsinline preload="none" aria-label="L'artista restaurant atmosphere video 1"><source src="LARTISTA AMBIANCE/Video+1.mp4.mp4" type="video/mp4"></video></div>
+      <div class="gallery-item hidden"><video muted loop playsinline preload="none" aria-label="L'artista restaurant atmosphere video 2"><source src="LARTISTA AMBIANCE/Video+2.mp4.mp4" type="video/mp4"></video></div>
     </div>
     <div style="text-align: center;">
-      <button id="morePhotosBtn" class="more-photos-btn"><i class="fas fa-plus-circle"></i> MORE PHOTOS</button>
+      <button id="morePhotosBtn" class="more-photos-btn" aria-label="Show more photos"><i class="fas fa-plus-circle" aria-hidden="true"></i> MORE PHOTOS</button>
     </div>
   </section>
 
-  <!-- ===== RESERVATION – TABLE AGENT IFRAME ===== -->
+  <!-- RESERVATION -->
   <section id="reservation" class="reservation-section">
     <div class="section-header">
       <h2>Reserve Your Table</h2>
       <div class="subtitle">Book via Table Agent</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-calendar-check divider-icon"></i><div class="divider-line"></div></div>
+      <div class="section-divider" aria-hidden="true"><div class="divider-line"></div><i class="fas fa-calendar-check divider-icon"></i><div class="divider-line"></div></div>
     </div>
     <div class="ta-iframe-container">
-      <iframe src="https://tableagent.com/iframe/lartista-riga/v/medium/" class="ta-frame" sandbox="allow-forms allow-modals allow-same-origin allow-scripts allow-top-navigation-by-user-activation" title="Table Agent booking"></iframe>
+      <!-- ✅ FIX: title attribute added to iframe -->
+      <iframe src="https://tableagent.com/iframe/lartista-riga/v/medium/" class="ta-frame"
+              sandbox="allow-forms allow-modals allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+              title="L'artista Riga table reservation via Table Agent"
+              loading="lazy"></iframe>
     </div>
   </section>
 
-  <!-- CONTACT (Instagram link already updated) -->
+  <!-- CONTACT -->
   <section id="contact" class="container">
     <div class="section-header">
       <h2>Contact Us</h2>
       <div class="subtitle">Visit Our Restaurant</div>
-      <div class="section-divider"><div class="divider-line"></div><i class="fas fa-map-marker-alt divider-icon"></i><div class="divider-line"></div></div>
+      <div class="section-divider" aria-hidden="true"><div class="divider-line"></div><i class="fas fa-map-marker-alt divider-icon"></i><div class="divider-line"></div></div>
     </div>
     <div class="contact-grid">
       <div class="contact-card">
-        <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+        <div class="contact-icon" aria-hidden="true"><i class="fas fa-map-pin"></i></div>
         <h3 style="margin-bottom:16px;">Vaļņu iela 25, Riga LV-1050</h3>
-        <p><i class="fas fa-phone-alt"></i> +371 25455947</p>
-        <p><i class="fas fa-envelope"></i> lartista2025@gmail.com</p>
+        <p><i class="fas fa-phone-alt" aria-hidden="true"></i> <a href="tel:+37125455947" style="color:inherit; text-decoration:none;">+371 25455947</a></p>
+        <p style="margin-top:8px;"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:lartista2025@gmail.com" style="color:inherit; text-decoration:none;">lartista2025@gmail.com</a></p>
         <div class="hours-display" style="margin-top:24px;">
           <div class="hours-day"><span>Sunday</span><span>12:00–23:00</span></div>
-          <div class="hours-day" style="color:#888;"><span>Monday</span><span>Closed</span></div>
+          <!-- ✅ FIX: Increased contrast for closed day text -->
+          <div class="hours-day closed"><span>Monday</span><span>Closed</span></div>
           <div class="hours-day"><span>Tuesday–Sat</span><span>12:00–23:00</span></div>
         </div>
         <div style="margin-top:32px;">
-          <h4 style="font-size:20px; margin-bottom:20px; color:var(--green);">We are on social networks</h4>
+          <h3 style="font-size:20px; margin-bottom:20px; color:var(--green);">We are on social networks</h3>
           <div class="social-minimal">
-            <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank"><img src="TRIPADVISOR.png" alt="TripAdvisor" style="width:20px; height:20px;"> TripAdvisor</a>
-            <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank"><i class="fab fa-google"></i> Google</a>
-            <a href="https://www.facebook.com/profile.php?id=61586930476783" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-            <a href="https://www.instagram.com/lartista_riga?igsh=bG1ta2F3Yjc5NW9p" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="#" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <a href="https://tableagent.com/riga/lartista-riga/" target="_blank"><img src="TableAgent_logo.png" alt="TableAgent" style="width:20px; height:20px;"> TableAgent</a>
+            <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank" rel="noopener noreferrer" aria-label="L'artista on TripAdvisor">
+              <img src="TRIPADVISOR.png" alt="" width="20" height="20" aria-hidden="true"> TripAdvisor
+            </a>
+            <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank" rel="noopener noreferrer" aria-label="L'artista on Google Reviews">
+              <i class="fab fa-google" aria-hidden="true"></i> Google
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61586930476783" target="_blank" rel="noopener noreferrer" aria-label="L'artista on Facebook">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
+            </a>
+            <a href="https://www.instagram.com/lartista_riga?igsh=bG1ta2F3Yjc5NW9p" target="_blank" rel="noopener noreferrer" aria-label="L'artista on Instagram">
+              <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="L'artista on Telegram">
+              <i class="fab fa-telegram-plane" aria-hidden="true"></i> Telegram
+            </a>
+            <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" rel="noopener noreferrer" aria-label="L'artista on TableAgent booking">
+              <img src="TableAgent_logo.png" alt="" width="20" height="6" aria-hidden="true"> TableAgent
+            </a>
           </div>
         </div>
       </div>
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.318064459008!2d24.105215576812966!3d56.960328202720524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfb0e5073b69%3A0x400fcd3f2bbba0!2sVaļņu%20iela%2025%2C%20Centra%20rajons%2C%20Rīga%2C%20LV-1050!5e0!3m2!1sen!2slv!4v1712234567890!5m2!1sen!2slv" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- ✅ FIX: title attribute added to Google Maps iframe -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.318064459008!2d24.105215576812966!3d56.960328202720524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfb0e5073b69%3A0x400fcd3f2bbba0!2sVaļņu%20iela%2025%2C%20Centra%20rajons%2C%20Rīga%2C%20LV-1050!5e0!3m2!1sen!2slv!4v1712234567890!5m2!1sen!2slv"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="L'artista Riga location map – Vaļņu iela 25, Riga"></iframe>
       </div>
     </div>
   </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-column">
         <div class="footer-logo">
-          <img src="lartista-logo.png" alt="L'ARTISTA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="logo-fallback">L'ARTISTA</div>
+          <img src="lartista-logo.png" alt="L'artista Riga Italian restaurant logo" width="90" height="90"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback" aria-hidden="true">L'ARTISTA</div>
         </div>
         <h3 style="color:white; margin-top:16px;">L'ARTISTA</h3>
-        <p style="color:rgba(255,255,255,0.7);">Italian Restaurant Riga</p>
+        <p style="color:rgba(255,255,255,0.9);">Italian Restaurant Riga</p>
       </div>
       <div class="footer-column">
         <h3>Quick Links</h3>
+        <!-- ✅ FIX: increased contrast on footer links via CSS above -->
         <a href="#menu">Menu</a>
         <a href="#gallery">Gallery</a>
         <a href="#reservation">Reservation</a>
@@ -501,81 +633,116 @@
       <div class="footer-column">
         <h3>Reviews</h3>
         <div class="footer-review-links">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank" class="footer-review-link"><img src="TRIPADVISOR.png" alt="TripAdvisor" style="width:18px; height:18px;"> TripAdvisor</a>
-          <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank" class="footer-review-link"><i class="fab fa-google"></i> Google</a>
-          <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" class="footer-review-link"><img src="TableAgent_logo.png" alt="TableAgent" style="width:18px; height:18px;"> TableAgent</a>
+          <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank" rel="noopener noreferrer" class="footer-review-link" aria-label="L'artista on TripAdvisor">
+            <img src="TRIPADVISOR.png" alt="" width="18" height="18" aria-hidden="true"> TripAdvisor
+          </a>
+          <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank" rel="noopener noreferrer" class="footer-review-link" aria-label="L'artista on Google Reviews">
+            <i class="fab fa-google" aria-hidden="true"></i> Google
+          </a>
+          <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" rel="noopener noreferrer" class="footer-review-link" aria-label="L'artista on TableAgent">
+            <img src="TableAgent_logo.png" alt="" width="18" height="5" aria-hidden="true"> TableAgent
+          </a>
         </div>
       </div>
       <div class="footer-column">
         <h3>Search</h3>
-        <p style="font-size:13px;">best italian restaurant Riga • italian near me • best pasta Riga • riga old town italian • romantic dinner riga • private dining riga • neapolitan pizza riga • fresh pasta riga • italian wine list riga</p>
+        <p style="font-size:13px; color:rgba(255,255,255,0.8);">best italian restaurant Riga • italian near me • best pasta Riga • riga old town italian • romantic dinner riga • private dining riga • neapolitan pizza riga • fresh pasta riga • italian wine list riga</p>
       </div>
     </div>
-    <div class="footer-bottom" style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.1); max-width:1200px; margin:20px auto 0;">
-      <p>© 2025 L'ARTISTA – Vaļņu iela 25, Riga LV-1050. All rights reserved.</p>
+    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.1); max-width:1200px; margin:20px auto 0;">
+      <p style="color:rgba(255,255,255,0.8);">© 2025 L'ARTISTA – Vaļņu iela 25, Riga LV-1050. All rights reserved.</p>
     </div>
   </footer>
 
   <!-- JavaScript -->
   <script>
     (function(){
-      setTimeout(()=>{ let l=document.getElementById('pageLoader'); if(l){ l.style.opacity='0'; l.style.visibility='hidden'; } },500);
+      // ✅ FIX: Use class toggle instead of visibility (non-composited) for loader
+      setTimeout(function(){ 
+        var l = document.getElementById('pageLoader'); 
+        if(l){ l.classList.add('hidden'); setTimeout(function(){ l.style.display='none'; }, 350); } 
+      }, 500);
 
       // Mobile menu
-      const toggle = document.getElementById('mobileMenuToggle');
-      const menu = document.getElementById('mobileMenu');
-      const overlay = document.getElementById('menuOverlay');
-      const closeBtn = document.getElementById('mobileMenuClose');
-      if(toggle&&menu&&overlay){
-        toggle.addEventListener('click',()=>{ menu.classList.add('active'); overlay.classList.add('active'); });
-        function closeMobile(){ menu.classList.remove('active'); overlay.classList.remove('active'); }
-        closeBtn?.addEventListener('click',closeMobile);
-        overlay.addEventListener('click',closeMobile);
+      var toggle = document.getElementById('mobileMenuToggle');
+      var menu = document.getElementById('mobileMenu');
+      var overlay = document.getElementById('menuOverlay');
+      var closeBtn = document.getElementById('mobileMenuClose');
+      if(toggle && menu && overlay){
+        toggle.addEventListener('click', function(){
+          menu.classList.add('active');
+          overlay.classList.add('active');
+          menu.setAttribute('aria-hidden', 'false');
+          overlay.setAttribute('aria-hidden', 'false');
+          toggle.setAttribute('aria-expanded', 'true');
+        });
+        function closeMobile(){
+          menu.classList.remove('active');
+          overlay.classList.remove('active');
+          menu.setAttribute('aria-hidden', 'true');
+          overlay.setAttribute('aria-hidden', 'true');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+        if(closeBtn) closeBtn.addEventListener('click', closeMobile);
+        overlay.addEventListener('click', closeMobile);
+        // Close on mobile nav link click
+        menu.querySelectorAll('.mobile-nav-link').forEach(function(link){
+          link.addEventListener('click', closeMobile);
+        });
       }
 
-      // Menu tabs (map to categories)
-      const tabs = document.querySelectorAll('.menu-tab');
-      const catMap = { starters:'cat-starters', main:'cat-main', pizza:'cat-pizza', pasta:'cat-pasta', dessert:'cat-dessert', drinks:'cat-drinks', wine:'cat-wine' };
-      tabs.forEach(tab => {
+      // Menu tabs
+      var tabs = document.querySelectorAll('.menu-tab');
+      var catMap = { starters:'cat-starters', main:'cat-main', pizza:'cat-pizza', pasta:'cat-pasta', dessert:'cat-dessert', drinks:'cat-drinks', wine:'cat-wine' };
+      tabs.forEach(function(tab){
         tab.addEventListener('click', function(){
-          let key = this.dataset.cat;
-          tabs.forEach(t=>t.classList.remove('active')); this.classList.add('active');
-          document.querySelectorAll('.menu-category').forEach(c=>c.classList.remove('active'));
-          let activeId = catMap[key];
-          if(activeId) document.getElementById(activeId)?.classList.add('active');
+          var key = this.dataset.cat;
+          tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+          this.classList.add('active');
+          this.setAttribute('aria-selected','true');
+          document.querySelectorAll('.menu-category').forEach(function(c){ c.classList.remove('active'); });
+          var activeId = catMap[key];
+          if(activeId){ var el = document.getElementById(activeId); if(el) el.classList.add('active'); }
         });
       });
 
       // Gallery more photos
-      const moreBtn = document.getElementById('morePhotosBtn');
+      var moreBtn = document.getElementById('morePhotosBtn');
       if(moreBtn){
         moreBtn.addEventListener('click', function(){
-          let hidden = document.querySelectorAll('.gallery-item.hidden');
-          hidden.forEach(el => el.classList.remove('hidden'));
+          document.querySelectorAll('.gallery-item.hidden').forEach(function(el){ el.classList.remove('hidden'); });
+          // Play videos that became visible
+          document.querySelectorAll('.gallery-item video').forEach(function(v){ v.play().catch(function(){}); });
           this.style.display = 'none';
         });
       }
 
-      // Smooth scroll anchor links (fixes hero buttons)
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      // Smooth scroll anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
         anchor.addEventListener('click', function(e){
           e.preventDefault();
-          let href = this.getAttribute('href');
-          if(href==='#') return;
-          let target = document.querySelector(href);
+          var href = this.getAttribute('href');
+          if(href === '#') return;
+          var target = document.querySelector(href);
           if(target) target.scrollIntoView({behavior:'smooth'});
+        });
+      });
+
+      // Language button toggle
+      document.querySelectorAll('.language-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          document.querySelectorAll('.language-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+          this.classList.add('active');
+          this.setAttribute('aria-pressed','true');
         });
       });
     })();
   </script>
+
   <script>
     if('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-          console.log('ServiceWorker registration successful');
-        }).catch(function(err) {
-          console.log('ServiceWorker registration failed: ', err);
-        });
+        navigator.serviceWorker.register('service-worker.js').catch(function(err){ console.log('SW failed:', err); });
       });
     }
   </script>
