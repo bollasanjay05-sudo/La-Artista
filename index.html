@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>L'artista Riga | Italian Restaurant</title>
+  <meta name="description" content="L'artista Riga. Authentic Italian pasta, pizza, seafood, desserts and wine in Riga Old Town. Book via Table Agent.">
+  <meta name="keywords" content="Italian restaurant Riga, L'artista Riga, best pasta Riga, pizza Riga, Riga Old Town restaurant, romantic dinner Riga, fresh pasta Riga, Italian wine Riga">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" sizes="60x60" href="favicon-60x60.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon-60x60.png">
+  <link rel="shortcut icon" href="favicon-60x60.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1F3D2B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #1F3D2B;
+      --green-soft: #2a5a3a;
+      --red: #D94B3F;
+      --gold: #C8A951;
+      --ivory: #faf7f2;
+      --paper: #fffdf8;
+      --ink: #1A1A1A;
+      --muted: #626262;
+      --line: rgba(31, 61, 43, 0.13);
+      --shadow: 0 18px 45px rgba(31, 61, 43, 0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.55;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+    img, video { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button, a { cursor: pointer; }
+    input, select, textarea { font-size: 16px; }
+    section { scroll-margin-top: 86px; }
+    .container { width: min(1200px, calc(100% - 40px)); margin: 0 auto; }
+    .italian-flag-stripe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      z-index: 3000;
+      background: linear-gradient(to right, #1F3D2B 33.33%, #fff 33.33% 66.66%, #D6273B 66.66%);
+    }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 22px;
+      background: var(--green);
+      color: #fff;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+    .loader-logo { font-family: "Playfair Display", serif; font-size: 42px; font-weight: 700; letter-spacing: 1px; }
+    .loader-spinner {
+      width: 56px;
+      height: 56px;
+      border: 4px solid rgba(255,255,255,.2);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .premium-navbar {
+      position: sticky;
+      top: 4px;
+      z-index: 2500;
+      background: rgba(250, 247, 242, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(214, 39, 59, .12);
+    }
+    .nav-container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; min-width: 0; }
+    .custom-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: #fff;
+      overflow: hidden;
+      flex: 0 0 auto;
+      box-shadow: 0 8px 18px rgba(0,0,0,.1);
+    }
+    .custom-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+    .logo-fallback {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(145deg, var(--green), var(--red));
+      font-family: "Playfair Display", serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
+    .logo-main { font-family: "Playfair Display", serif; font-size: 23px; font-weight: 700; color: var(--green); letter-spacing: .4px; }
+    .logo-sub { font-size: 10px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-link {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      transition: color .2s ease;
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--red); }
+    .nav-cta {
+      padding: 11px 20px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(217, 75, 63, .25);
+    }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .menu-toggle span { width: 27px; height: 2px; background: var(--red); border-radius: 2px; }
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2600;
+      background: rgba(0,0,0,.42);
+      opacity: 0;
+      visibility: hidden;
+      transition: .2s ease;
+    }
+    .menu-overlay.active { opacity: 1; visibility: visible; }
+    .premium-mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      z-index: 2700;
+      width: min(86vw, 340px);
+      height: 100dvh;
+      padding: 72px 28px 32px;
+      background: var(--green);
+      color: #fff;
+      box-shadow: -10px 0 30px rgba(0,0,0,.22);
+      transition: right .25s ease;
+      overflow-y: auto;
+    }
+    .premium-mobile-menu.active { right: 0; }
+    .mobile-menu-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .mobile-title { font-family: "Playfair Display", serif; font-size: 30px; font-weight: 700; }
+    .mobile-close { width: 44px; height: 44px; border: 0; color: #fff; background: transparent; font-size: 30px; }
+    .mobile-nav-link {
+      display: block;
+      padding: 17px 0;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .mobile-call {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 34px;
+      padding: 15px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .hero-premium {
+      min-height: calc(100dvh - 76px);
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 80px 0 72px;
+      overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; z-index: -2; background: var(--green); }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.62); }
+    .premium-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(31,61,43,.26), rgba(31,61,43,.58));
+    }
+    .premium-hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+    }
+    .hero-logo { width: 122px; height: 122px; margin: 0 auto 22px; border-width: 4px; }
+    .title-line-1 {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 1.02;
+      font-weight: 700;
+      text-shadow: 0 3px 18px rgba(0,0,0,.35);
+    }
+    .title-line-2 {
+      display: block;
+      margin-top: 18px;
+      font-size: clamp(15px, 2vw, 21px);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .premium-subtitle {
+      max-width: 680px;
+      margin: 28px auto 30px;
+      font-size: clamp(17px, 2vw, 21px);
+      color: rgba(255,255,255,.92);
+    }
+    .premium-hero-buttons { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 14px 30px;
+      border-radius: 999px;
+      border: 0;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-premium { background: var(--red); color: #fff; box-shadow: 0 12px 24px rgba(217,75,63,.32); }
+    .btn-outline-premium { background: rgba(255,255,255,.06); border: 2px solid #fff; color: #fff; }
+    .btn-green { background: var(--green); color: #fff; }
+
+    .section { padding: 64px 0; }
+    .section-header { text-align: center; margin-bottom: 34px; }
+    .section-header h2 {
+      font-family: "Playfair Display", serif;
+      color: var(--green);
+      font-size: clamp(34px, 4vw, 48px);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .section-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .divider-line { width: 54px; height: 1px; background: var(--red); opacity: .5; }
+    .divider-icon { color: var(--red); font-size: 18px; }
+
+    .premium-about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 520px);
+      gap: 46px;
+      align-items: center;
+    }
+    .premium-intro {
+      border-left: 4px solid var(--red);
+      padding-left: 20px;
+      margin-bottom: 22px;
+      font-size: 20px;
+      color: var(--green);
+      font-weight: 600;
+    }
+    .about-copy p + p { margin-top: 18px; }
+    .story-frame {
+      position: relative;
+      height: 430px;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 3px solid var(--gold);
+      background: #eee;
+      box-shadow: var(--shadow);
+    }
+    .story-track {
+      display: flex;
+      width: 600%;
+      height: 100%;
+      animation: storySlide 30s infinite ease-in-out;
+    }
+    .story-track img {
+      width: calc(100% / 6);
+      height: 100%;
+      object-fit: cover;
+      flex: 0 0 calc(100% / 6);
+    }
+    .story-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(31,61,43,.32));
+      pointer-events: none;
+    }
+    @keyframes storySlide {
+      0%, 12% { transform: translateX(0); }
+      17%, 29% { transform: translateX(-16.6667%); }
+      34%, 46% { transform: translateX(-33.3334%); }
+      51%, 63% { transform: translateX(-50.0001%); }
+      68%, 80% { transform: translateX(-66.6668%); }
+      85%, 97% { transform: translateX(-83.3335%); }
+      100% { transform: translateX(0); }
+    }
+
+    .menu-section {
+      width: min(1240px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 58px 28px;
+      border-radius: 32px;
+      background: var(--paper);
+      border: 1px solid rgba(214,39,59,.1);
+      box-shadow: 0 18px 45px rgba(31,61,43,.06);
+    }
+    .menu-tabs {
+      display: flex;
+      gap: 10px;
+      padding: 0 0 18px;
+      margin-bottom: 22px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .menu-tab {
+      flex: 0 0 auto;
+      min-height: 46px;
+      padding: 11px 22px;
+      border: 1px solid rgba(31,61,43,.16);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      transition: .2s ease;
+    }
+    .menu-tab.active { background: var(--red); color: #fff; border-color: var(--red); }
+    .menu-layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .menu-note {
+      position: sticky;
+      top: 94px;
+      padding: 24px;
+      border-radius: 20px;
+      background: #faf8f4;
+      border: 1px solid rgba(200,169,81,.24);
+    }
+    .menu-note h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.12;
+      margin-bottom: 12px;
+    }
+    .menu-note p { color: var(--muted); margin-bottom: 18px; }
+    .menu-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(217,75,63,.08);
+      color: var(--red);
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .menu-category { display: none; }
+    .menu-category.active { display: block; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .menu-item {
+      min-height: 138px;
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      gap: 16px;
+      padding: 17px;
+      border-radius: 20px;
+      background: #faf8f4;
+      border: 1px solid rgba(200,169,81,.22);
+    }
+    .dish-media {
+      width: 104px;
+      height: 104px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      background: linear-gradient(145deg, rgba(31,61,43,.08), rgba(217,75,63,.08));
+      flex: 0 0 auto;
+    }
+    .dish-media img { width: 100%; height: 100%; object-fit: cover; }
+    .dish-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      font-weight: 700;
+      background: #fff;
+    }
+    .menu-item-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 7px;
+    }
+    .menu-item h4 {
+      color: var(--red);
+      font-size: 19px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+    .price { color: var(--ink); font-weight: 900; font-size: 18px; white-space: nowrap; }
+    .menu-desc { color: var(--muted); font-size: 14px; }
+    .diet-icon { color: var(--green); margin-right: 6px; opacity: .8; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border: 0;
+      border-radius: 14px;
+      background: #eee;
+    }
+    .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-item.hidden { display: none; }
+    .more-photos-btn { margin: 24px auto 0; display: inline-flex; }
+    .center { text-align: center; }
+
+    .reservation-section {
+      width: min(1240px, calc(100% - 32px));
+      margin: 12px auto 0;
+      padding: 58px 20px;
+      border-radius: 32px;
+      background: #fff;
+      border: 1px solid rgba(214,39,59,.1);
+    }
+    .ta-iframe-container {
+      max-width: 840px;
+      margin: 0 auto;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #f8f8f8;
+      box-shadow: var(--shadow);
+    }
+    iframe.ta-frame { width: 100%; min-height: 760px; display: block; border: 0; -webkit-overflow-scrolling: touch; }
+    .booking-fallback {
+      max-width: 840px;
+      margin: 18px auto 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+      gap: 36px;
+      align-items: stretch;
+    }
+    .contact-card {
+      padding: 34px;
+      border-radius: 28px;
+      background: #fff;
+      border: 1px solid rgba(214,39,59,.1);
+      box-shadow: 0 12px 28px rgba(0,0,0,.025);
+    }
+    .contact-icon { color: var(--red); font-size: 32px; margin-bottom: 16px; }
+    .contact-card h3 { color: var(--green); font-size: 22px; margin-bottom: 16px; }
+    .contact-line { display: flex; gap: 10px; align-items: center; margin: 8px 0; }
+    .hours-display { margin-top: 24px; border-top: 1px solid #eee; }
+    .hours-day {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      align-items: start;
+    }
+    .hours-day.closed { color: #888; }
+    .hours-day strong { color: var(--green); }
+    .map-container {
+      min-height: 420px;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 3px solid var(--gold);
+      background: #eee;
+    }
+    .map-container iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .social-minimal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .social-minimal a {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 43px;
+      padding: 9px 17px;
+      border-radius: 999px;
+      background: rgba(214,39,59,.055);
+      border: 1px solid rgba(214,39,59,.18);
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .social-minimal i { color: var(--red); font-size: 18px; }
+    .social-minimal img { width: 19px; height: 19px; object-fit: contain; }
+
+    .footer {
+      margin-top: 50px;
+      padding: 58px 0 28px;
+      background: var(--green-soft);
+      color: #fff;
+    }
+    .footer-grid {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr 1fr 1.1fr;
+      gap: 34px;
+    }
+    .footer-logo {
+      width: 92px;
+      height: 92px;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      overflow: hidden;
+      background: #fff;
+    }
+    .footer-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .footer-column h3 {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--red);
+      font-size: 20px;
+    }
+    .footer-column a { display: block; color: rgba(255,255,255,.82); text-decoration: none; margin: 9px 0; }
+    .footer-column a:hover { color: #fff; }
+    .footer-review-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .footer-review-link {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 8px;
+      margin: 0 !important;
+      padding: 10px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.09);
+    }
+    .footer-review-link img { width: 18px; height: 18px; }
+    .footer-bottom {
+      width: min(1200px, calc(100% - 40px));
+      margin: 34px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.13);
+      text-align: center;
+      color: rgba(255,255,255,.74);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1020px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: flex; }
+      .premium-about-grid, .contact-grid, .menu-layout { grid-template-columns: 1fr; }
+      .menu-note { position: static; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .container, .nav-container, .footer-grid, .footer-bottom { width: min(100% - 28px, 1200px); }
+      .hero-premium { min-height: 88dvh; padding: 58px 0 54px; }
+      .hero-logo { width: 104px; height: 104px; }
+      .premium-hero-buttons .btn { width: 100%; }
+      .section { padding: 50px 0; }
+      .menu-section, .reservation-section { width: min(100% - 16px, 1240px); padding: 42px 14px; border-radius: 24px; }
+      .menu-item { grid-template-columns: 88px minmax(0, 1fr); gap: 13px; padding: 14px; min-height: 116px; }
+      .dish-media { width: 88px; height: 88px; border-radius: 14px; }
+      .menu-item h4 { font-size: 17px; }
+      .price { font-size: 17px; }
+      .story-frame { height: 330px; border-radius: 20px; }
+      .contact-card { padding: 24px 20px; border-radius: 22px; }
+      .hours-day { grid-template-columns: 92px minmax(0, 1fr); gap: 10px; }
+      .map-container { min-height: 330px; border-radius: 22px; }
+      iframe.ta-frame { min-height: 700px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="italian-flag-stripe"></div>
+
+  <div class="loader" id="pageLoader" aria-label="Loading">
+    <div class="loader-logo">L'ARTISTA</div>
+    <div class="loader-spinner"></div>
+  </div>
+
+  <nav class="premium-navbar" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#home" class="logo" aria-label="L'artista Riga home">
+        <div class="custom-logo">
+          <img src="lartista-logo.png" alt="L'ARTISTA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback">LA</div>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">L'ARTISTA</span>
+          <span class="logo-sub">RIGA</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#reservation" class="nav-link nav-cta">Book</a></li>
+      </ul>
+      <button class="menu-toggle" id="mobileMenuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <aside class="premium-mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <div class="mobile-menu-head">
+      <span class="mobile-title">L'ARTISTA</span>
+      <button class="mobile-close" id="mobileMenuClose" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    </div>
+    <a href="#home" class="mobile-nav-link">Home</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#menu" class="mobile-nav-link">Menu</a>
+    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+    <a href="#reservation" class="mobile-nav-link">Reservation</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="tel:+37125455947" class="mobile-call"><i class="fas fa-phone-alt"></i> +371 25455947</a>
+  </aside>
+
+  <main>
+    <section id="home" class="hero-premium">
+      <div class="hero-bg"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista restaurant interior"></div>
+      <div class="premium-overlay"></div>
+      <div class="container">
+        <div class="premium-hero-content">
+          <div class="custom-logo hero-logo">
+            <img src="lartista-logo.png" alt="L'artista logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="logo-fallback">L'ARTISTA</div>
+          </div>
+          <h1 class="premium-title">
+            <span class="title-line-1">Italian Restaurant in Riga</span>
+            <span class="title-line-2">Authentic Fresh Italian</span>
+          </h1>
+          <p class="premium-subtitle">Fresh pasta, pizza, seafood, desserts and Italian hospitality in Riga Old Town.</p>
+          <div class="premium-hero-buttons">
+            <a href="#reservation" class="btn btn-premium"><i class="fas fa-calendar-check"></i> Book a Table</a>
+            <a href="#menu" class="btn btn-outline-premium"><i class="fas fa-book-open"></i> View Menu</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Story</h2>
+          <div class="subtitle">Authentic Italian Excellence</div>
+          <div class="section-divider"><div class="divider-line"></div><i class="fas fa-star divider-icon"></i><div class="divider-line"></div></div>
+        </div>
+        <div class="premium-about-grid">
+          <div class="about-copy">
+            <p class="premium-intro">Welcome to <span style="color:var(--red);">L'ARTISTA</span>, Riga's destination for authentic Italian cuisine, warm service and carefully crafted plates.</p>
+            <p>At L'Artista, every meal is treated like a small work of art. In the historic streets of Riga Old Town, our restaurant brings together Italian flavor, fresh ingredients and the beauty of local hospitality.</p>
+            <p>Grazie for dining with us. We invite you to relax, indulge and enjoy honest Italian food: handmade pasta, expressive pizza, seafood, seasonal starters and classic desserts.</p>
+          </div>
+          <div class="story-frame" aria-label="L'artista ambience photo carousel">
+            <div class="story-track">
+              <img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="L'artista dining room">
+              <img src="LARTISTA AMBIANCE/R6II7523.jpg" alt="L'artista table setting">
+              <img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="L'artista interior">
+              <img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt="L'artista ambience">
+              <img src="LARTISTA AMBIANCE/R6II7601.jpg" alt="L'artista restaurant details">
+              <img src="LARTISTA AMBIANCE/R6II7614.jpg" alt="L'artista restaurant evening">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+      <div class="section-header">
+        <h2>Our Menu</h2>
+        <div class="subtitle">Updated from the latest menu</div>
+        <div class="section-divider"><div class="divider-line"></div><i class="fas fa-utensils divider-icon"></i><div class="divider-line"></div></div>
+      </div>
+      <div class="menu-tabs" id="menuTabs" aria-label="Menu categories"></div>
+      <div class="menu-layout">
+        <aside class="menu-note">
+          <h3 id="menuNoteTitle">Starters</h3>
+          <p id="menuNoteText">Begin with Italian antipasti, seafood, salads and warm plates made for sharing.</p>
+          <span class="menu-count" id="menuCount"><i class="fas fa-list"></i> 0 items</span>
+        </aside>
+        <div id="menuCategories"></div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Photos</h2>
+          <div class="subtitle">Gallery</div>
+          <div class="section-divider"><div class="divider-line"></div><i class="fas fa-camera divider-icon"></i><div class="divider-line"></div></div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <button class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7423-HDR.jpg" alt="L'artista ambience"></button>
+          <button class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7513.jpg" alt="L'artista tables"></button>
+          <button class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7523.jpg" alt="Restaurant detail"></button>
+          <button class="gallery-item"><img src="LARTISTA AMBIANCE/R6II7575.jpg" alt="Restaurant interior"></button>
+          <button class="gallery-item"><img src="LARTISTA AMBIANCE/R6II2970.jpg" alt="Restaurant atmosphere"></button>
+          <button class="gallery-item"><img src="LARTISTA AMBIANCE/R6II3001.jpg.jpg" alt="Restaurant table"></button>
+          <button class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3005.jpg.jpg" alt="L'artista photo"></button>
+          <button class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3061.jpg" alt="L'artista photo"></button>
+          <button class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3109.jpg" alt="L'artista photo"></button>
+          <button class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II3116.jpg" alt="L'artista photo"></button>
+          <button class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II7601.jpg" alt="L'artista photo"></button>
+          <button class="gallery-item hidden"><img src="LARTISTA AMBIANCE/R6II7614.jpg" alt="L'artista photo"></button>
+          <button class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/04.mp4.mp4" type="video/mp4"></video></button>
+          <button class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/07.mp4.mp4" type="video/mp4"></video></button>
+          <button class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/Video+1.mp4.mp4" type="video/mp4"></video></button>
+          <button class="gallery-item hidden"><video muted loop playsinline preload="metadata"><source src="LARTISTA AMBIANCE/Video+2.mp4.mp4" type="video/mp4"></video></button>
+        </div>
+        <div class="center">
+          <button id="morePhotosBtn" class="btn btn-premium more-photos-btn"><i class="fas fa-plus-circle"></i> More Photos</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservation" class="reservation-section">
+      <div class="section-header">
+        <h2>Reserve Your Table</h2>
+        <div class="subtitle">Book via Table Agent</div>
+        <div class="section-divider"><div class="divider-line"></div><i class="fas fa-calendar-check divider-icon"></i><div class="divider-line"></div></div>
+      </div>
+      <div class="ta-iframe-container">
+        <iframe src="https://tableagent.com/iframe/lartista-riga/v/medium/" class="ta-frame" sandbox="allow-forms allow-modals allow-same-origin allow-scripts allow-top-navigation-by-user-activation" title="Table Agent booking"></iframe>
+      </div>
+      <div class="booking-fallback">
+        <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" rel="noopener" class="btn btn-green"><i class="fas fa-arrow-up-right-from-square"></i> Open Table Agent</a>
+        <a href="tel:+37125455947" class="btn btn-premium"><i class="fas fa-phone-alt"></i> Call Restaurant</a>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Contact Us</h2>
+          <div class="subtitle">Visit Our Restaurant</div>
+          <div class="section-divider"><div class="divider-line"></div><i class="fas fa-map-marker-alt divider-icon"></i><div class="divider-line"></div></div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+            <h3>Valnu iela 25, Riga LV-1050</h3>
+            <p class="contact-line"><i class="fas fa-phone-alt"></i> <a href="tel:+37125455947">+371 25455947</a></p>
+            <p class="contact-line"><i class="fas fa-envelope"></i> <a href="mailto:lartista2025@gmail.com">lartista2025@gmail.com</a></p>
+            <div class="hours-display" aria-label="Opening hours">
+              <div class="hours-day closed"><strong>Monday</strong><span>Closed</span></div>
+              <div class="hours-day closed"><strong>Tuesday</strong><span>Closed</span></div>
+              <div class="hours-day"><strong>Wednesday</strong><span>3:00 PM - 11:00 PM</span></div>
+              <div class="hours-day"><strong>Thursday</strong><span>3:00 PM - 11:00 PM</span></div>
+              <div class="hours-day"><strong>Friday</strong><span>12:00 PM - 11:00 PM</span></div>
+              <div class="hours-day"><strong>Saturday</strong><span>12:00 PM - 11:00 PM</span></div>
+              <div class="hours-day"><strong>Sunday</strong><span>12:00 PM - 11:00 PM</span></div>
+            </div>
+            <div class="social-minimal">
+              <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank" rel="noopener"><img src="TRIPADVISOR.png" alt=""> TripAdvisor</a>
+              <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank" rel="noopener"><i class="fab fa-google"></i> Google</a>
+              <a href="https://www.facebook.com/profile.php?id=61586930476783" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
+              <a href="https://www.instagram.com/lartista_riga?igsh=bG1ta2F3Yjc5NW9p" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
+              <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" rel="noopener"><img src="TableAgent_logo.png" alt=""> TableAgent</a>
+            </div>
+          </div>
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.318064459008!2d24.105215576812966!3d56.960328202720524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfb0e5073b69%3A0x400fcd3f2bbba0!2sVa%C4%BC%C5%86u%20iela%2025%2C%20Centra%20rajons%2C%20R%C4%ABga%2C%20LV-1050!5e0!3m2!1sen!2slv!4v1712234567890!5m2!1sen!2slv" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to L'artista Riga"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="lartista-logo.png" alt="L'ARTISTA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback">LA</div>
+        </div>
+        <h3>L'ARTISTA</h3>
+        <p style="color:rgba(255,255,255,.74);">Italian Restaurant Riga</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reservation">Reservation</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-column">
+        <h3>Reviews</h3>
+        <div class="footer-review-links">
+          <a href="https://www.tripadvisor.com/Restaurant_Review-g274967-d34048967-Reviews-L_artista-Riga_Riga_Region.html" target="_blank" rel="noopener" class="footer-review-link"><img src="TRIPADVISOR.png" alt=""> TripAdvisor</a>
+          <a href="https://share.google/NWrlK2jda9LTUFbij" target="_blank" rel="noopener" class="footer-review-link"><i class="fab fa-google"></i> Google</a>
+          <a href="https://tableagent.com/riga/lartista-riga/" target="_blank" rel="noopener" class="footer-review-link"><img src="TableAgent_logo.png" alt=""> TableAgent</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Search</h3>
+        <p style="font-size:13px; color:rgba(255,255,255,.74);">best Italian restaurant Riga, Italian near me, best pasta Riga, Riga Old Town Italian, romantic dinner Riga, private dining Riga, pizza Riga, fresh pasta Riga, Italian wine list Riga</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 L'ARTISTA, Valnu iela 25, Riga LV-1050. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuData = [
+      {
+        id: "starters",
+        label: "Starters",
+        note: "Begin with Italian antipasti, seafood, salads and warm plates made for sharing.",
+        items: [
+          { name: "Antipasto", price: "29", desc: "calamata olives / fig jam / different kinds of meats / cheeses", img: "LARTISTA DISHES/ANTIPASTO.jpg" },
+          { name: "Cured Tuna", price: "23", desc: "carrot-ginger gel / basil oil / lemon zest" },
+          { name: "Bruschetta Mortadella", price: "12", desc: "mortadella / stracciatella / pistachios", img: "LARTISTA DISHES/BRUSCHETTA CLASSIC.jpg" },
+          { name: "Bruschetta Zucchini", price: "12", desc: "zucchini / herb cream cheese / roasted pine nuts", icon: "leaf" },
+          { name: "Bruschetta Tomatoes", price: "11", desc: "tomatoes / pesto / ciliegine", icon: "leaf" },
+          { name: "Caesar Salad", price: "16", desc: "croutons / salad / parmigiano reggiano", img: "LARTISTA DISHES/CAESAR SALAD.jpg", icon: "leaf" },
+          { name: "Creamy Burrata", price: "17", desc: "pesto / basil oil / cherry tomatoes", img: "LARTISTA DISHES/CREAMY BURATA.jpg", icon: "leaf" },
+          { name: "Vitello Tonnato", price: "20", desc: "pickled onions / capers", img: "LARTISTA DISHES/VITELLO TONNATO.jpg" },
+          { name: "Zuppa di Pesce", price: "19", desc: "selection of seafood / stracciatella", img: "LARTISTA DISHES/ZUPA DI PESCA.jpg" },
+          { name: "Beef Carpaccio", price: "18", desc: "arugula / parmigiano reggiano / truffle oil", img: "LARTISTA DISHES/BEEF CARPACCIO.jpg" },
+          { name: "Steamed Mussels", price: "22", desc: "white wine-butter sauce / garlic / herbs" },
+          { name: "Lemon Garlic Shrimps", price: "17", desc: "cherry tomatoes / pistachio", img: "LARTISTA DISHES/LEMON GARLIC SHRIMPS.jpg" },
+          { name: "Parmigiana di Melanzane", price: "17", desc: "eggplant / tomato / cheese / basil / pesto / parmigiano", img: "LARTISTA DISHES/PARMIGIANA.jpg", icon: "leaf" },
+          { name: "Insalata Mista", price: "12", desc: "fresh seasonal mixed salad", icon: "leaf" }
+        ]
+      },
+      {
+        id: "main",
+        label: "Main Course",
+        note: "Italian comfort plates, risotto, seafood and veal from the latest menu.",
+        items: [
+          { name: "Cannelloni", price: "25", desc: "braised beef cheeks / fresh mozzarella / mascarpone cream" },
+          { name: "Seabass Fillet", price: "26", desc: "rucola / spinach risotto", img: "LARTISTA DISHES/SEA BASS FILLET.jpg" },
+          { name: "Lemon Butter Escalopes", price: "32", desc: "rosemary-garlic roasted potatoes or fresh seasonal salad", img: "LARTISTA DISHES/LEMON BUTTER VEAL ESCAPOLES.jpg" },
+          { name: "Creamy Truffle Risotto", price: "25", desc: "fresh Italian truffles", img: "LARTISTA DISHES/TRUFFLE RISOTTO.jpg" },
+          { name: "Spinach-Zucchini Risotto with Shrimps", price: "25", desc: "creamy risotto with zucchini, spinach and shrimps" },
+          { name: "Lobster Tails with Spinach Risotto", price: "49", desc: "garlic butter" }
+        ]
+      },
+      {
+        id: "pasta",
+        label: "Pasta",
+        note: "Fresh Italian pasta, classic Roman sauces and L'artista signatures.",
+        items: [
+          { name: "Carbonara", price: "20", desc: "guanciale / pecorino", img: "LARTISTA DISHES/PASTA CARBONARA.jpg" },
+          { name: "Cacio e Pepe", price: "19", desc: "black pepper / pecorino", img: "LARTISTA DISHES/CACIO E PEPE WITH BLACK TRUFFLES.jpg" },
+          { name: "Truffle Cacio e Pepe", price: "24", desc: "fresh truffle / black pepper / pecorino", img: "LARTISTA DISHES/CACIO E PEPE WITH BLACK TRUFFLES.jpg" },
+          { name: "Pasta al Pesto", price: "19", desc: "pistachio / stracciatella", img: "LARTISTA DISHES/PISTACIO PESTO STRACCIATELLA.jpg" },
+          { name: "Frutti di Mare", price: "22", desc: "white wine-tomato sauce / herbs", img: "LARTISTA DISHES/FRUTTI DI MARE.jpg" },
+          { name: "Home Made Ravioli", price: "19", desc: "ricotta and spinach / gorgonzola sauce / basil oil", img: "LARTISTA DISHES/Homemade Ravioli.jpeg", icon: "leaf" },
+          { name: "Penne all'Arrabbiata", price: "13", desc: "parmigiano reggiano / tomato sauce / chili", img: "LARTISTA DISHES/PENNE ALLA ARRABIATA.jpg" },
+          { name: "L'artista Signature Pasta", price: "35", desc: "lobster / caviar / white wine-butter sauce" }
+        ]
+      },
+      {
+        id: "pizza",
+        label: "Pizza",
+        note: "Italian pizza with fresh mozzarella, bold toppings and crisp dough.",
+        items: [
+          { name: "Margherita", price: "12", desc: "tomato sauce / extra-virgin olive oil / fresh mozzarella / basil leaves", img: "LARTISTA DISHES/Margherita.jpg", icon: "leaf" },
+          { name: "Mortadella", price: "21", desc: "tomato sauce / fresh mozzarella / filone cheese / basil pesto / pistachio", img: "LARTISTA DISHES/MORTADELLA & STRACCIATELLA.jpg" },
+          { name: "Napoli Salami", price: "19", desc: "tomato sauce / fresh mozzarella / filone cheese", img: "LARTISTA DISHES/NAPOLI SALAMI.jpg" },
+          { name: "Prosciutto", price: "22", desc: "tomato sauce / fresh mozzarella / filone cheese / arugula / parmigiano reggiano / truffle oil", img: "LARTISTA DISHES/PROSCUTTO PIZZA.jpg" },
+          { name: "Chorizo", price: "17", desc: "chorizo picante / tomato sauce / fresh mozzarella / chilli" },
+          { name: "L'artista Pizza", price: "22", desc: "tomato sauce / fresh mozzarella / filone cheese / artichokes", icon: "leaf" },
+          { name: "5 Formaggi", price: "18", desc: "fresh mozzarella / filone cheese / brie / gorgonzola / mascarpone cream", img: "LARTISTA DISHES/4FORMAGGI.jpg" },
+          { name: "Tuna Cipolla", price: "21", desc: "capers / olives" },
+          { name: "Marinara", price: "15", desc: "tomato sauce / calamata olives / anchovies / capers", img: "LARTISTA DISHES/PIZZA MARINARA.jpg" }
+        ]
+      },
+      {
+        id: "desserts",
+        label: "Desserts",
+        note: "Classic Italian desserts, fresh citrus and pistachio notes.",
+        items: [
+          { name: "Classic Tiramisu", price: "10", desc: "mascarpone cream / coffee / cocoa", img: "LARTISTA DISHES/TIRAMISU.jpg" },
+          { name: "Lemon Posset", price: "10", desc: "lemon caviar / pistachios", img: "LARTISTA DISHES/LEMON POSETTA.jpg" },
+          { name: "Cannoli", price: "10", desc: "mascarpone-vanilla cream / almonds / pistachios", img: "LARTISTA DISHES/Cannoli Siciliani.jpeg" }
+        ]
+      },
+      {
+        id: "drinks",
+        label: "Drinks",
+        note: "Ask the team for cocktails, soft drinks, aperitivi and after-dinner drinks.",
+        items: [
+          { name: "Cocktails", price: "", desc: "Italian classics and house drinks" },
+          { name: "Soft Drinks", price: "", desc: "A curated selection of soft drinks and waters" },
+          { name: "Coffee", price: "", desc: "Espresso, cappuccino and Italian coffee service" }
+        ]
+      },
+      {
+        id: "wine",
+        label: "Wine",
+        note: "Italian bottles selected for pasta, pizza, seafood and slow dinners.",
+        items: [
+          { name: "Italian Wine List", price: "", desc: "Ask for the current bottle and glass selection" },
+          { name: "Sparkling Wine", price: "", desc: "Aperitivo-friendly bubbles and celebratory bottles" },
+          { name: "Dessert Wine", price: "", desc: "Sweet pairings for tiramisu, cannoli and citrus desserts" }
+        ]
+      }
+    ];
+
+    const iconMap = {
+      leaf: '<i class="fas fa-leaf diet-icon" aria-label="Vegetarian"></i>'
+    };
+
+    const tabsEl = document.getElementById("menuTabs");
+    const categoriesEl = document.getElementById("menuCategories");
+    const noteTitleEl = document.getElementById("menuNoteTitle");
+    const noteTextEl = document.getElementById("menuNoteText");
+    const menuCountEl = document.getElementById("menuCount");
+
+    function dishImage(item) {
+      const initial = item.name.trim().charAt(0).toUpperCase();
+      if (!item.img) return `<div class="dish-media"><div class="dish-placeholder">${initial}</div></div>`;
+      return `
+        <div class="dish-media">
+          <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className:'dish-placeholder', textContent:'${initial}'}));">
+        </div>
+      `;
+    }
+
+    function renderMenu() {
+      tabsEl.innerHTML = menuData.map((cat, index) => `
+        <button class="menu-tab${index === 0 ? " active" : ""}" type="button" data-cat="${cat.id}" aria-controls="cat-${cat.id}">${cat.label}</button>
+      `).join("");
+
+      categoriesEl.innerHTML = menuData.map((cat, index) => `
+        <div class="menu-category${index === 0 ? " active" : ""}" id="cat-${cat.id}">
+          <div class="menu-grid">
+            ${cat.items.map(item => `
+              <article class="menu-item">
+                ${dishImage(item)}
+                <div>
+                  <div class="menu-item-header">
+                    <h4>${iconMap[item.icon] || ""}${item.name}</h4>
+                    ${item.price ? `<span class="price">${item.price}</span>` : ""}
+                  </div>
+                  <p class="menu-desc">${item.desc}</p>
+                </div>
+              </article>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+
+      updateMenuNote(menuData[0]);
+    }
+
+    function updateMenuNote(category) {
+      noteTitleEl.textContent = category.label;
+      noteTextEl.textContent = category.note;
+      menuCountEl.innerHTML = `<i class="fas fa-list"></i> ${category.items.length} items`;
+    }
+
+    function setActiveCategory(id) {
+      const category = menuData.find(cat => cat.id === id) || menuData[0];
+      document.querySelectorAll(".menu-tab").forEach(tab => tab.classList.toggle("active", tab.dataset.cat === category.id));
+      document.querySelectorAll(".menu-category").forEach(panel => panel.classList.toggle("active", panel.id === `cat-${category.id}`));
+      updateMenuNote(category);
+    }
+
+    renderMenu();
+    tabsEl.addEventListener("click", event => {
+      const tab = event.target.closest(".menu-tab");
+      if (!tab) return;
+      setActiveCategory(tab.dataset.cat);
+    });
+
+    const loader = document.getElementById("pageLoader");
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        if (!loader) return;
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+      }, 450);
+    });
+
+    const toggle = document.getElementById("mobileMenuToggle");
+    const menu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("menuOverlay");
+    const closeBtn = document.getElementById("mobileMenuClose");
+
+    function closeMobileMenu() {
+      menu.classList.remove("active");
+      overlay.classList.remove("active");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function openMobileMenu() {
+      menu.classList.add("active");
+      overlay.classList.add("active");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    toggle.addEventListener("click", openMobileMenu);
+    closeBtn.addEventListener("click", closeMobileMenu);
+    overlay.addEventListener("click", closeMobileMenu);
+    document.querySelectorAll(".mobile-nav-link").forEach(link => link.addEventListener("click", closeMobileMenu));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", event => {
+        const target = document.querySelector(anchor.getAttribute("href"));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    const moreBtn = document.getElementById("morePhotosBtn");
+    moreBtn.addEventListener("click", () => {
+      document.querySelectorAll(".gallery-item.hidden").forEach(item => {
+        item.classList.remove("hidden");
+        const video = item.querySelector("video");
+        if (video) video.play().catch(() => {});
+      });
+      moreBtn.style.display = "none";
+    });
+
+    document.querySelectorAll(".gallery-item video").forEach(video => {
+      video.addEventListener("mouseenter", () => video.play().catch(() => {}));
+      video.addEventListener("mouseleave", () => video.pause());
+    });
+
+    if ("serviceWorker" in navigator && location.protocol !== "file:") {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
